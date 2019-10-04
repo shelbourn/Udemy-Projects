@@ -86,3 +86,11 @@ console.log(now / 2)
 // Logical Operators
 var johnOlder = ageJohn > ageMark
 console.log(johnOlder)
+
+// TypeOf Operator
+console.log(typeof johnOlder)
+console.log(typeof ageJohn)
+console.log(typeof 'Mark is older than John')
+
+var x // Undefined variable
+console.log(typeof x)
