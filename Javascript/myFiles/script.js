@@ -48,3 +48,19 @@ console.log(
 )
 
 // Variable Mutation
+age = 'twenty eight'
+job = 'driver'
+
+alert(
+	firstName +
+		' ' +
+		age +
+		' ' +
+		'year old ' +
+		job +
+		'. Is he married? ' +
+		isMarried
+) // alert pop-up message
+
+var lastName = prompt('What is his last name?')
+console.log(firstName + ' ' + lastName) // prompt pop-up message
