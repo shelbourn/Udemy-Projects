@@ -69,13 +69,20 @@
  * Basic Operators
  *************************************/
 
-var now, yearJohn, yearMark
+// Math Operators
+var now, yearJohn, yearMark, ageJohn, ageMark
 now = 2018
-yearJohn = now - 28
-yearMark = now - 33
+ageJohn = 28
+ageMark = 33
+yearJohn = now - ageJohn
+yearMark = now - ageMark
 console.log(yearJohn, yearMark)
 
 console.log(now * 2)
 console.log(now + 2)
 console.log(now - 5)
 console.log(now / 2)
+
+// Logical Operators
+var johnOlder = ageJohn > ageMark
+console.log(johnOlder)
