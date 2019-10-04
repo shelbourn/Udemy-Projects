@@ -27,40 +27,55 @@
  *************************************/
 
 // Type Coercion
-var firstName = 'John'
-var age = 28
+// var firstName = 'John'
+// var age = 28
 
-console.log(firstName + ' ' + age) //string joining (type coercion)
+// console.log(firstName + ' ' + age) //string joining (type coercion)
 
-var job, isMarried
-job = 'Teacher'
-isMarried = false
+// var job, isMarried
+// job = 'Teacher'
+// isMarried = false
 
-console.log(
-	firstName +
-		' ' +
-		age +
-		' ' +
-		'year old ' +
-		job +
-		'. Is he married? ' +
-		isMarried
-)
+// console.log(
+// 	firstName +
+// 		' ' +
+// 		age +
+// 		' ' +
+// 		'year old ' +
+// 		job +
+// 		'. Is he married? ' +
+// 		isMarried
+// )
 
 // Variable Mutation
-age = 'twenty eight'
-job = 'driver'
+// age = 'twenty eight'
+// job = 'driver'
 
-alert(
-	firstName +
-		' ' +
-		age +
-		' ' +
-		'year old ' +
-		job +
-		'. Is he married? ' +
-		isMarried
-) // alert pop-up message
+// alert(
+// 	firstName +
+// 		' ' +
+// 		age +
+// 		' ' +
+// 		'year old ' +
+// 		job +
+// 		'. Is he married? ' +
+// 		isMarried
+// ) // alert pop-up message
 
-var lastName = prompt('What is his last name?')
-console.log(firstName + ' ' + lastName) // prompt pop-up message
+// var lastName = prompt('What is his last name?')
+// console.log(firstName + ' ' + lastName) // prompt pop-up message
+
+/************************************
+ * Basic Operators
+ *************************************/
+
+var now, yearJohn, yearMark
+now = 2018
+yearJohn = now - 28
+yearMark = now - 33
+console.log(yearJohn, yearMark)
+
+console.log(now * 2)
+console.log(now + 2)
+console.log(now - 5)
+console.log(now / 2)
