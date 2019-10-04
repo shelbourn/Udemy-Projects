@@ -1,7 +1,7 @@
-console.log("Hello World!!!");
+console.log('Hello World!!!')
 
-var firstName = "John";
-console.log(firstName);
+var firstName = 'John'
+console.log(firstName)
 
-var lastName = "Smith";
-var age = 28;
+var lastName = 'Smith'
+var age = 28

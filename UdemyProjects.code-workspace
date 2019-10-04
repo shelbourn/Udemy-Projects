@@ -4,5 +4,9 @@
       "path": "."
     }
   ],
-  "settings": {}
+  "settings": {
+    "prettier.singleQuote": true,
+    "prettier.useTabs": true,
+    "prettier.tabWidth": 4
+  },
 }
