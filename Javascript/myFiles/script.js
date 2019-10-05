@@ -94,3 +94,9 @@ console.log(typeof 'Mark is older than John')
 
 var x // Undefined variable
 console.log(typeof x)
+
+/************************************
+ * Operator Precedence
+ *************************************/
+
+ 
