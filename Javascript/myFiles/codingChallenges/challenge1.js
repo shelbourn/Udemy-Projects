@@ -12,7 +12,7 @@
 
  var markBmi = markWeight / (markHeight^2)
 
- var johnBmi = johnWeight /(johnHeight^2)
+ var johnBmi = johnWeight / (johnHeight^2)
 
  var markIsFatter = markBmi > johnBmi
 
