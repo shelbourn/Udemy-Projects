@@ -16,3 +16,4 @@
 
  var markIsFatter = markBmi > johnBmi
 
+ console.log("Is Mark's BMI greater than John's?" + ' ' + markIsFatter)
