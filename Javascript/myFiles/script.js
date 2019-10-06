@@ -214,7 +214,7 @@ console.log(drink)
 // Switch statement (Good for more complex if/else statements)
 var job = 'instructor'
 switch (job) {
-	case 'teacher':
+	case 'teacher': // multiple conditions per case instance
 	case 'instructor':
 		console.log(firstName + ' teaches kids how to code.')
 		break
@@ -242,6 +242,7 @@ switch (job) {
 // 	console.log(firstName + ' is a man.')
 // }
 
+// Checks to see if the value is true and then executes code.
 switch (true) {
 	case age < 13:
 		console.log(firstName + ' is a boy.')
