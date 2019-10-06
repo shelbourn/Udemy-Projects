@@ -242,6 +242,8 @@ switch (job) {
 // 	console.log(firstName + ' is a man.')
 // }
 
+// Converts this ^ to this...
+
 // Checks to see if the value is true and then executes code.
 switch (true) {
 	case age < 13:
