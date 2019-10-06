@@ -138,42 +138,46 @@
  * If/Else Statements
  *************************************/
 
-var firstName = 'John'
-var civilStatus = 'single'
+// var firstName = 'John'
+// var civilStatus = 'single'
 
-if (civilStatus === 'married') {
-	console.log(firstName + ' is married!')
-} else {
-	console.log(firstName + ' will hopefully marry soon :)')
-}
+// if (civilStatus === 'married') {
+// 	console.log(firstName + ' is married!')
+// } else {
+// 	console.log(firstName + ' will hopefully marry soon :)')
+// }
 
-var isMarried = true
-if (isMarried) {
-	// isMarried is already a boolean so do not need to test for === true/false
-	console.log(firstName + ' is married!')
-} else {
-	console.log(firstName + ' will hopefully marry soon :)')
-}
+// var isMarried = true
+// if (isMarried) {
+// 	// isMarried is already a boolean so do not need to test for === true/false
+// 	console.log(firstName + ' is married!')
+// } else {
+// 	console.log(firstName + ' will hopefully marry soon :)')
+// }
 
-var markWeight, markHeight
-markWeight = 78
-markHeight = 6
+// var markWeight, markHeight
+// markWeight = 78
+// markHeight = 6
 
-var johnWeight, johnHeight
-johnWeight = 84
-johnHeight = 5
+// var johnWeight, johnHeight
+// johnWeight = 84
+// johnHeight = 5
 
-var markBmi = markWeight / (markHeight ^ 2)
+// var markBmi = markWeight / (markHeight ^ 2)
 
-var johnBmi = johnWeight / (johnHeight ^ 2)
+// var johnBmi = johnWeight / (johnHeight ^ 2)
 
-var markIsFatter = markBmi > johnBmi
+// var markIsFatter = markBmi > johnBmi
 
-if (markBmi > johnBmi) {
-	console.log("Mark's BMI is higher than John's.")
-} else {
-	console.log("John's BMI is higher than Mark's.")
-}
+// if (markBmi > johnBmi) {
+// 	console.log("Mark's BMI is higher than John's.")
+// } else {
+// 	console.log("John's BMI is higher than Mark's.")
+// }
 //  console.log("Is Mark's BMI greater than John's?" + ' ' + markIsFatter)
 //  console.log(markBmi)
 //  console.log(johnBmi)
+
+/************************************
+ * Boolean Logic
+ *************************************/
