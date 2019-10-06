@@ -181,3 +181,15 @@
 /************************************
  * Boolean Logic
  *************************************/
+
+var firstName = 'John'
+var age = 16
+
+if (age < 15) {
+	console.log(firstName + ' is a boy.')
+} else if (age >= 13 && age < 20) {
+	// Between 13 and 20 === age >= 13 AND age < 20
+	console.log(firstName + ' is a teenage boy.')
+} else {
+	console.log(firstName + ' is a man.')
+}
