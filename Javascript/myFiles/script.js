@@ -154,3 +154,26 @@ if (isMarried) {
 } else {
 	console.log(firstName + ' will hopefully marry soon :)')
 }
+
+var markWeight, markHeight
+markWeight = 78
+markHeight = 6
+
+var johnWeight, johnHeight
+johnWeight = 84
+johnHeight = 5
+
+var markBmi = markWeight / (markHeight ^ 2)
+
+var johnBmi = johnWeight / (johnHeight ^ 2)
+
+var markIsFatter = markBmi > johnBmi
+
+if (markBmi > johnBmi) {
+	console.log("Mark's BMI is higher than John's.")
+} else {
+	console.log("John's BMI is higher than Mark's.")
+}
+//  console.log("Is Mark's BMI greater than John's?" + ' ' + markIsFatter)
+//  console.log(markBmi)
+//  console.log(johnBmi)
