@@ -197,5 +197,18 @@
 // }
 
 /************************************
- * The Ternary Operator and Switch Statements
+ * The Ternary (Conditional) Operator and Switch Statements
  *************************************/
+
+// Ternary Operator (Good for simple if/else statements)
+var firstName = 'John'
+var age = 16
+
+age >= 18 // Ternary is like an if/else statements with var + ? + :
+	? console.log(firstName + ' drinks beer.')
+	: console.log(firstName + ' drinks juice.')
+
+var drink = age >= 18 ? 'beer' : 'juice'
+console.log(drink)
+
+// Switch statement (Good for more complex if/else statements)
