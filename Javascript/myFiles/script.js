@@ -99,37 +99,41 @@
  * Operator Precedence
  *************************************/
 
-var now = 2018
-var yearJohn = 1989
-var fullAge = 18
+// var now = 2018
+// var yearJohn = 1989
+// var fullAge = 18
 
-// Multiple Operators
-var isFullAge = now - yearJohn >= fullAge
-console.log(isFullAge)
+// // Multiple Operators
+// var isFullAge = now - yearJohn >= fullAge
+// console.log(isFullAge)
 
-// Grouping
-var ageJohn = now - yearJohn
-var ageMark = 35
-var average = (ageJohn + ageMark) / 2
-console.log(average)
+// // Grouping
+// var ageJohn = now - yearJohn
+// var ageMark = 35
+// var average = (ageJohn + ageMark) / 2
+// console.log(average)
 
-// Multiple Assignments
-var x, y
-x = y = (3 + 5) * 4 - 6 // 8 * 4 - 6 // 32 - 6 // 26
-console.log(x, y)
+// // Multiple Assignments
+// var x, y
+// x = y = (3 + 5) * 4 - 6 // 8 * 4 - 6 // 32 - 6 // 26
+// console.log(x, y)
 
-// 2 + 4 +5 (left to right)
-// Assignment operator is right to left
+// // 2 + 4 +5 (left to right)
+// // Assignment operator is right to left
 
-// More Operators
-x *= 2 // x = x * 2
-console.log(x)
+// // More Operators
+// x *= 2 // x = x * 2
+// console.log(x)
 
-x += 10 // x = x + 10
-console.log(x)
+// x += 10 // x = x + 10
+// console.log(x)
 
-x ++ // x += 1, x = x+1
-console.log(x)
+// x ++ // x += 1, x = x+1
+// console.log(x)
 
-x -- // x -= 1, x = x-1
-console.log(x)
+// x -- // x -= 1, x = x-1
+// console.log(x)
+
+/************************************
+ * If/Else Statements
+ *************************************/
