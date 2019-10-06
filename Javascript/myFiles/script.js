@@ -183,9 +183,9 @@
  *************************************/
 
 var firstName = 'John'
-var age = 16
+var age = 10
 
-if (age < 15) {
+if (age < 12) {
 	console.log(firstName + ' is a boy.')
 } else if (age >= 13 && age < 20) {
 	// Between 13 and 20 === age >= 13 AND age < 20
