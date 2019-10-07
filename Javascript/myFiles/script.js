@@ -268,21 +268,21 @@
 
 // truthy values: NOT falsy values
 
-var height
+// var height
 
-height = 23
-// checks whether height is defined or === 0
-if (height || height === 0) {
-	console.log('Variable is defined.')
-} else {
-	console.log('Variable has NOT been defined.')
-}
+// height = 23
+// // checks whether height is defined or === 0
+// if (height || height === 0) {
+// 	console.log('Variable is defined.')
+// } else {
+// 	console.log('Variable has NOT been defined.')
+// }
 
-// Equality operators
-// String '23' converted to number 23 for comparison with ==
-if (height == '23') {
-	console.log('The == operator does type coercion!')
-}
+// // Equality operators
+// // String '23' converted to number 23 for comparison with ==
+// if (height == '23') {
+// 	console.log('The == operator does type coercion!')
+// }
 
 // Will return false because '23 does not match the number 23
 // if (height === '23') {
