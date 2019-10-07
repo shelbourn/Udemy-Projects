@@ -277,3 +277,9 @@ if (height || height === 0) {
 } else {
 	console.log('Variable has NOT been defined.')
 }
+
+// Equality operators
+// String '23' converted to number 23 for comparison with ==
+if (height == '23') {
+	console.log('The == operator does type coercion!')
+}
