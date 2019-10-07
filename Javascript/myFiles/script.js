@@ -283,3 +283,8 @@ if (height || height === 0) {
 if (height == '23') {
 	console.log('The == operator does type coercion!')
 }
+
+// Will return false because '23 does not match the number 23
+// if (height === '23') {
+// 	console.log('The === does not do type coercion.')
+// }
