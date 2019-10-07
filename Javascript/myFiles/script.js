@@ -271,7 +271,8 @@
 var height
 
 height = 23
-if (height) {
+// checks whether height is defined or === 0
+if (height || height === 0) {
 	console.log('Variable is defined.')
 } else {
 	console.log('Variable has NOT been defined.')
