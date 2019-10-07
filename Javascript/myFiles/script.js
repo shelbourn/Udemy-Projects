@@ -201,60 +201,65 @@
  *************************************/
 
 // Ternary Operator (Good for simple if/else statements)
-var firstName = 'John'
-var age = 12
-
-age >= 18 // Ternary is like an if/else statements with var + ? + :
-	? console.log(firstName + ' drinks beer.')
-	: console.log(firstName + ' drinks juice.')
-
-var drink = age >= 18 ? 'beer' : 'juice'
-console.log(drink)
-
-// Switch statement (Good for more complex if/else statements)
-var job = 'instructor'
-switch (job) {
-	case 'teacher': // multiple conditions per case instance
-	case 'instructor':
-		console.log(firstName + ' teaches kids how to code.')
-		break
-	case 'driver':
-		console.log(firstName + ' drives an Uber in Lisbon')
-		break
-	case 'designer':
-		console.log(firstName + ' designs beautiful websites.')
-		break
-	default:
-		console.log(firstName + ' does something else.')
-}
-
 // var firstName = 'John'
-// var age = 20
+// var age = 12
 
-// if (age < 13) {
-// 	console.log(firstName + ' is a boy.')
-// } else if (age >= 13 && age < 20) {
-// 	// Between 13 and 20 === age >= 13 AND age < 20
-// 	console.log(firstName + ' is a teenage boy.')
-// } else if (age >= 20 && age < 30) {
-// 	console.log(firstName + ' is a young man.')
-// } else {
-// 	console.log(firstName + ' is a man.')
+// // Ternary is like an if/else statements with var + ? + :
+// age >= 18
+// 	? console.log(firstName + ' drinks beer.')
+// 	: console.log(firstName + ' drinks juice.')
+
+// var drink = age >= 18 ? 'beer' : 'juice'
+// console.log(drink)
+
+// // Switch statement (Good for more complex if/else statements)
+// var job = 'instructor'
+// switch (job) {
+// 	case 'teacher': // multiple conditions per case instance
+// 	case 'instructor':
+// 		console.log(firstName + ' teaches kids how to code.')
+// 		break
+// 	case 'driver':
+// 		console.log(firstName + ' drives an Uber in Lisbon')
+// 		break
+// 	case 'designer':
+// 		console.log(firstName + ' designs beautiful websites.')
+// 		break
+// 	default:
+// 		console.log(firstName + ' does something else.')
 // }
 
-// Converts this ^ to this...
+// // var firstName = 'John'
+// // var age = 20
 
-// Checks to see if the value is true and then executes code.
-switch (true) {
-	case age < 13:
-		console.log(firstName + ' is a boy.')
-		break
-	case age >= 13 && age < 20:
-		console.log(firstName + ' is a teenage boy.')
-		break
-	case age >= 20 && age < 30:
-		console.log(firstName + ' is a young man.')
-		break
-	default:
-		console.log(firstName + ' is a man.')
-}
+// // if (age < 13) {
+// // 	console.log(firstName + ' is a boy.')
+// // } else if (age >= 13 && age < 20) {
+// // 	// Between 13 and 20 === age >= 13 AND age < 20
+// // 	console.log(firstName + ' is a teenage boy.')
+// // } else if (age >= 20 && age < 30) {
+// // 	console.log(firstName + ' is a young man.')
+// // } else {
+// // 	console.log(firstName + ' is a man.')
+// // }
+
+// // Converts this ^ to this...
+
+// // Checks to see if the value is true and then executes code.
+// switch (true) {
+// 	case age < 13:
+// 		console.log(firstName + ' is a boy.')
+// 		break
+// 	case age >= 13 && age < 20:
+// 		console.log(firstName + ' is a teenage boy.')
+// 		break
+// 	case age >= 20 && age < 30:
+// 		console.log(firstName + ' is a young man.')
+// 		break
+// 	default:
+// 		console.log(firstName + ' is a man.')
+// }
+
+/************************************
+ * Truthy and Falsy Values and Equality Operators
+ *************************************/
