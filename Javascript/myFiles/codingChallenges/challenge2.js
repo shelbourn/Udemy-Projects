@@ -1,7 +1,7 @@
 // Challenge 2
 var johnTeamAvg = (89 + 120 + 103) / 3
 var mikeTeamAvg = (89 + 120 + 103) / 3
-var maryTeamAvg = (90 + 120 + 103) / 3
+var maryTeamAvg = (89 + 120 + 103) / 3
 console.log(johnTeamAvg, mikeTeamAvg, maryTeamAvg)
 
 switch (true) {
@@ -32,3 +32,14 @@ switch (true) {
 				' points!'
 		)
 }
+
+// Alternate Method
+// if (johnTeamAvg > (mikeTeamAvg && maryTeamAvg)) {
+// 	console.log('John is cool with ' + johnTeamAvg + ' points!')
+// } else if (mikeTeamAvg > (johnTeamAvg && maryTeamAvg)) {
+// 	console.log('Mike is cool with ' + mikeTeamAvg + ' points!')
+// } else if (maryTeamAvg > (johnTeamAvg && mikeTeamAvg)) {
+// 	console.log('Mary is cool with ' + maryTeamAvg + ' points!')
+// } else {
+// 	console.log('There is a three-way draw. Fight to the death!!!!!')
+// }
