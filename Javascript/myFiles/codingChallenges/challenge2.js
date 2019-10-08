@@ -1,7 +1,7 @@
 // Challenge 2
 var johnTeamAvg = (89 + 120 + 103) / 3
 var mikeTeamAvg = (89 + 120 + 103) / 3
-var maryTeamAvg = (89 + 120 + 103) / 3
+var maryTeamAvg = (90 + 120 + 103) / 3
 
 switch (true) {
 	case johnTeamAvg > (mikeTeamAvg && maryTeamAvg):
