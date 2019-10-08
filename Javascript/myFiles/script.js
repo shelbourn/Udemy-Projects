@@ -293,6 +293,7 @@
  * Functions
  *************************************/
 
+// Functions with return statements save the results for later use
 function calculateAge(birthYear) {
 	return 2018 - birthYear
 }
@@ -303,6 +304,7 @@ var ageJane = calculateAge(1969)
 
 console.log(ageJohn, ageMike, ageJane)
 
+// Functions do not need return statments
 function yearsUntilRetirement(year, firstName) {
 	var age = calculateAge(year)
 	var retirement = 65 - age
