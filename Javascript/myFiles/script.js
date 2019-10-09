@@ -318,3 +318,7 @@
 // yearsUntilRetirement(1946, 'John')
 // yearsUntilRetirement(1976, 'Mike')
 // yearsUntilRetirement(1965, 'Dude')
+
+/************************************
+ * Function Statements and Expressions
+ *************************************/
