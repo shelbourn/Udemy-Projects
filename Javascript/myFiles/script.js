@@ -352,41 +352,49 @@
  *************************************/
 
 // Initialize new array
-var names = ['John', 'Mark', 'Jane']
-var years = new Array(1990, 1968, 1948)
+// var names = ['John', 'Mark', 'Jane']
+// var years = new Array(1990, 1968, 1948)
 
-console.log(names)
-console.log(names.length)
+// console.log(names)
+// console.log(names.length)
 
-// Mutate array data
-// Changing record at index 1
-names[1] = 'Ben'
-console.log(names)
+// // Mutate array data
+// // Changing record at index 1
+// names[1] = 'Ben'
+// console.log(names)
 
-// Adding record at index 5
-names[5] = 'Mary'
-console.log(names)
+// // Adding record at index 5
+// names[5] = 'Mary'
+// console.log(names)
 
-// Adds record after last index in array
-names[names.length] = 'Matt'
-console.log(names)
+// // Adds record after last index in array
+// names[names.length] = 'Matt'
+// console.log(names)
 
-// Arrays with different data types
-var john = ['John', 'Smith', 1990, 'teacher', false]
+// // Arrays with different data types
+// var john = ['John', 'Smith', 1990, 'designer', false]
 
-// Push Method (funtion) - adds element to end of array
-john.push('blue')
-// Unshift adds element to beginning of array
-john.unshift('Mr. ')
-console.log(john)
+// // Push Method (funtion) - adds element to end of array
+// john.push('blue')
+// // Unshift adds element to beginning of array
+// john.unshift('Mr. ')
+// console.log(john)
 
-// Pop removes last element in array
-john.pop()
-console.log(john)
+// // Pop removes last element in array
+// john.pop()
+// console.log(john)
 
-// Shift removes first element of array
-john.shift()
-console.log(john)
+// // Shift removes first element of array
+// john.shift()
+// console.log(john)
 
-// indexOf returns the index of the passed argument (element)
-console.log(john.indexOf(1990))
+// // indexOf returns the index of the passed argument (element)
+// console.log(john.indexOf(1990))
+// // indexOf returns (-1) if there is no valid element in array
+
+// // Tests for John's job title and returns a string
+// var isDesigner =
+// 	john.indexOf('designer') === -1
+// 		? 'John is not a designer.'
+// 		: 'John is a designer.'
+// console.log(isDesigner)
