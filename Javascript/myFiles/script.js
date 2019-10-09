@@ -351,12 +351,14 @@
  * Arrays
  *************************************/
 
+// Initialize new array
 var names = ['John', 'Mark', 'Jane']
 var years = new Array(1990, 1968, 1948)
 
 console.log(names)
 console.log(names.length)
 
+// Mutate array data
 // Changing record at index 1
 names[1] = 'Ben'
 console.log(names)
