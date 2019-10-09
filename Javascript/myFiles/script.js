@@ -350,3 +350,9 @@
 /************************************
  * Arrays
  *************************************/
+
+var names = ['John', 'Mark', 'Jane']
+var years = new Array(1990, 1968, 1948)
+
+console.log(names)
+console.log(names.length)
