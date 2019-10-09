@@ -370,3 +370,6 @@ console.log(names)
 // Adds record after last index in array
 names[names.length] = 'Matt'
 console.log(names)
+
+// Arrays with different data types
+var john = ['John', 'Smith', 1990, 'teacher', false]
