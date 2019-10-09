@@ -375,6 +375,11 @@ console.log(names)
 var john = ['John', 'Smith', 1990, 'teacher', false]
 
 // Push Method (funtion) - adds element to end of array
-
 john.push('blue')
+// Unshift adds element to beginning of array
+john.unshift('Mr. ')
+console.log(john)
+
+// Pop removes last element in array
+john.pop()
 console.log(john)
