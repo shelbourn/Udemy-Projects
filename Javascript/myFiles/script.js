@@ -383,3 +383,10 @@ console.log(john)
 // Pop removes last element in array
 john.pop()
 console.log(john)
+
+// Shift removes first element of array
+john.shift()
+console.log(john)
+
+// indexOf returns the index of the passed argument (element)
+console.log(john.indexOf(1990))
