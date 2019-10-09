@@ -373,3 +373,8 @@ console.log(names)
 
 // Arrays with different data types
 var john = ['John', 'Smith', 1990, 'teacher', false]
+
+// Push Method (funtion) - adds element to end of array
+
+john.push('blue')
+console.log(john)
