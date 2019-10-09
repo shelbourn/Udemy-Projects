@@ -328,6 +328,7 @@
 
 // Function Expression
 // Anything that produces a single result in JS is an expression
+// Statements in JS perform actions (Declarations, While loop, if-else, etc.)
 var whatDoYouDo = function(job, firstName) {
 	switch (job) {
 		case 'teacher':
