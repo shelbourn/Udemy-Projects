@@ -294,27 +294,27 @@
  *************************************/
 
 // Functions with return statements save the results for later use
-function calculateAge(birthYear) {
-	return 2018 - birthYear
-}
+// function calculateAge(birthYear) {
+// 	return 2018 - birthYear
+// }
 
-var ageJohn = calculateAge(1990)
-var ageMike = calculateAge(1948)
-var ageJane = calculateAge(1969)
+// var ageJohn = calculateAge(1990)
+// var ageMike = calculateAge(1948)
+// var ageJane = calculateAge(1969)
 
-console.log(ageJohn, ageMike, ageJane)
+// console.log(ageJohn, ageMike, ageJane)
 
-// Functions do not need return statments
-function yearsUntilRetirement(year, firstName) {
-	var age = calculateAge(year)
-	var retirement = 65 - age
-	if (retirement > 0) {
-		console.log(firstName + ' retires in ' + retirement + ' years.')
-	} else {
-		console.log(firstName + ' is already retired.')
-	}
-}
+// // Functions do not need return statments
+// function yearsUntilRetirement(year, firstName) {
+// 	var age = calculateAge(year)
+// 	var retirement = 65 - age
+// 	if (retirement > 0) {
+// 		console.log(firstName + ' retires in ' + retirement + ' years.')
+// 	} else {
+// 		console.log(firstName + ' is already retired.')
+// 	}
+// }
 
-yearsUntilRetirement(1946, 'John')
-yearsUntilRetirement(1976, 'Mike')
-yearsUntilRetirement(1965, 'Dude')
+// yearsUntilRetirement(1946, 'John')
+// yearsUntilRetirement(1976, 'Mike')
+// yearsUntilRetirement(1965, 'Dude')
