@@ -1,3 +1,4 @@
+// My Solution
 function calcTip(bill) {
 	if (bill < 50) {
 		return bill * 0.2
@@ -12,6 +13,12 @@ var bill1 = 124
 var bill2 = 48
 var bill3 = 268
 
+var tip1 = calcTip(bill1)
+var tip2 = calcTip(bill2)
+var tip3 = calcTip(bill3)
+
 var tips = [tip1, tip2, tip3]
 var totalBills = [bill1 + tip1, bill2 + tip2, bill3 + tip3]
 console.log(tips, totalBills)
+
+// Instructor's Solution
