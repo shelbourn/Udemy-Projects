@@ -327,6 +327,7 @@
 // function whatDoYouDo(job, firstName) {}
 
 // Function Expression
+// Anything that produces a single result in JS is an expression
 var whatDoYouDo = function(job, firstName) {
 	switch (job) {
 		case 'teacher':
