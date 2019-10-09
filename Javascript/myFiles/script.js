@@ -343,3 +343,4 @@ var whatDoYouDo = function(job, firstName) {
 console.log(whatDoYouDo('teacher', 'Matt'))
 console.log(whatDoYouDo('designer', 'Mofo'))
 console.log(whatDoYouDo('driver', 'Bitch'))
+console.log(whatDoYouDo('retired', 'Nick'))
