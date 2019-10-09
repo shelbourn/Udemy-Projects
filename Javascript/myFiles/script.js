@@ -326,9 +326,9 @@
 // Function Declaration
 // function whatDoYouDo(job, firstName) {}
 
-// Function Expression
+// Function Expressions
 // Anything that produces a single result in JS is an expression
-// Statements in JS perform actions (Declarations, While loop, if-else, etc.)
+// Statements in JS perform actions (Function Declarations, While loop, if-else, etc.)
 var whatDoYouDo = function(job, firstName) {
 	switch (job) {
 		case 'teacher':
