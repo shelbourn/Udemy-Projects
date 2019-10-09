@@ -356,3 +356,15 @@ var years = new Array(1990, 1968, 1948)
 
 console.log(names)
 console.log(names.length)
+
+// Changing record at index 1
+names[1] = 'Ben'
+console.log(names)
+
+// Adding record at index 5
+names[5] = 'Mary'
+console.log(names)
+
+// Adds record after last index in array
+names[names.length] = 'Matt'
+console.log(names)
