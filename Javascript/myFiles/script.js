@@ -446,7 +446,7 @@
 var john = {
 	firstName: 'John', // Key-value pair
 	lastName: 'Smith',
-	birthYear: 1990,
+	birthYear: 1992,
 	family: ['Jane', 'Mark', 'Bob', 'Emily'],
 	job: 'teacher',
 	isMarried: false,
@@ -454,5 +454,6 @@ var john = {
 		return 2019 - this.birthYear // 'this' refers to 'this object'
 	},
 }
-
-console.log(john.calcAge(1990))
+john.age = john.calcAge() // Adds 'age' property to 'John' object
+console.log(john.calcAge())
+console.log(john)
