@@ -443,19 +443,19 @@
 // Only objects can have methods
 
 // Object Methods
-var john = {
-	firstName: 'John', // Key-value pair
-	lastName: 'Smith',
-	birthYear: 1992,
-	family: ['Jane', 'Mark', 'Bob', 'Emily'],
-	job: 'teacher',
-	isMarried: false,
-	calcAge: function() {
-		this.age = 2019 - this.birthYear // Adds 'age' to object via function
-		// return 2019 - this.birthYear // 'this' refers to 'this object'
-	},
-}
-john.calcAge() // Calling the calcAge function
-// john.age = john.calcAge() // Adds 'age' property to 'John' object
-console.log(john.calcAge())
-console.log(john)
+// var john = {
+// 	firstName: 'John', // Key-value pair
+// 	lastName: 'Smith',
+// 	birthYear: 1992,
+// 	family: ['Jane', 'Mark', 'Bob', 'Emily'],
+// 	job: 'teacher',
+// 	isMarried: false,
+// 	calcAge: function() {
+// 		this.age = 2019 - this.birthYear // Adds 'age' to object via function
+// 		// return 2019 - this.birthYear // 'this' refers to 'this object'
+// 	},
+// }
+// john.calcAge() // Calling the calcAge function
+// // john.age = john.calcAge() // Adds 'age' property to 'John' object
+// console.log(john.calcAge())
+// console.log(john)
