@@ -407,7 +407,7 @@
 // With objects, order does not matter
 // With arrays, order does matter
 
-// Creating and accessing data within objects
+// Object Literal Method
 var john = {
 	firstName: 'John', // Key-value pair
 	lastName: 'Smith',
@@ -427,4 +427,9 @@ john.job = 'designer'
 john['isMarried'] = true
 console.log(john)
 
-// Alternate method for initializing an object
+// Create using 'new Object' Syntax
+var jane = new Object()
+jane.firstName = 'Jane'
+jane.birthYear = 1969
+jane['lastName'] = 'Smith'
+console.log(jane)
