@@ -406,3 +406,13 @@
 // Objects use key-value pairs
 // With objects, order does not matter
 // With arrays, order does matter
+
+var john = {
+	firstName: 'John', // Key-value pair
+	lastName: 'Smith',
+	birthYear: 1990,
+	family: ['Jane', 'Mark', 'Bob', 'Emily'],
+	job: 'teacher',
+	isMarried: false,
+}
+console.log(john)
