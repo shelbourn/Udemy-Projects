@@ -415,4 +415,7 @@ var john = {
 	job: 'teacher',
 	isMarried: false,
 }
-console.log(john.firstName) // firstName = key
+console.log(john.firstName) // firstName = key [dot notation]
+console.log(john['lastName']) // bracket notation -- key MUST be in 'QUOTES'
+var x = 'birthYear' // assigning key to variable with key in 'QUOTES'
+console.log(john[x])
