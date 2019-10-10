@@ -437,3 +437,22 @@
 /************************************
  * Objects and Methods --> IMPORTANT
  *************************************/
+
+// Functions attached to objects are called 'Methods'
+// Arrarys are also objects
+// Only objects can have methods
+
+// Object Methods
+var john = {
+	firstName: 'John', // Key-value pair
+	lastName: 'Smith',
+	birthYear: 1990,
+	family: ['Jane', 'Mark', 'Bob', 'Emily'],
+	job: 'teacher',
+	isMarried: false,
+	calcAge: function(birthYear) {
+		return 2019 - birthYear
+	},
+}
+
+console.log(john.calcAge(1990))
