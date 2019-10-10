@@ -450,12 +450,12 @@ var john = {
 	family: ['Jane', 'Mark', 'Bob', 'Emily'],
 	job: 'teacher',
 	isMarried: false,
-	calcAge: function(birthYear) {
+	calcAge: function() {
 		this.age = 2019 - this.birthYear // Adds 'age' to object via function
 		// return 2019 - this.birthYear // 'this' refers to 'this object'
 	},
 }
-john.calcAge()
+john.calcAge() // Calling the calcAge function
 // john.age = john.calcAge() // Adds 'age' property to 'John' object
 console.log(john.calcAge())
 console.log(john)
