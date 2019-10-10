@@ -423,3 +423,8 @@ var x = 'birthYear' // assigning key to variable with key in 'QUOTES'
 console.log(john[x])
 
 // Mutating data within objects
+john.job = 'designer'
+john['isMarried'] = true
+console.log(john)
+
+// Alternate method for initializing an object
