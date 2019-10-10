@@ -451,7 +451,7 @@ var john = {
 	job: 'teacher',
 	isMarried: false,
 	calcAge: function(birthYear) {
-		return 2019 - birthYear
+		return 2019 - this.birthYear // 'this' refers to 'this object'
 	},
 }
 
