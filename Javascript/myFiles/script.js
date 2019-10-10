@@ -415,4 +415,4 @@ var john = {
 	job: 'teacher',
 	isMarried: false,
 }
-console.log(john)
+console.log(john.firstName) // firstName = key
