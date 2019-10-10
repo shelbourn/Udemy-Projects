@@ -402,3 +402,7 @@
 /************************************
  * Objects and Properties --> IMPORTANT
  *************************************/
+
+// Objects use key-value pairs
+// With objects, order does not matter
+// With arrays, order does matter
