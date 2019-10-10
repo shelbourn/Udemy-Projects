@@ -408,28 +408,28 @@
 // With arrays, order does matter
 
 // Object Literal Method
-var john = {
-	firstName: 'John', // Key-value pair
-	lastName: 'Smith',
-	birthYear: 1990,
-	family: ['Jane', 'Mark', 'Bob', 'Emily'],
-	job: 'teacher',
-	isMarried: false,
-}
+// var john = {
+// 	firstName: 'John', // Key-value pair
+// 	lastName: 'Smith',
+// 	birthYear: 1990,
+// 	family: ['Jane', 'Mark', 'Bob', 'Emily'],
+// 	job: 'teacher',
+// 	isMarried: false,
+// }
 
-console.log(john.firstName) // firstName = key [dot notation]
-console.log(john['lastName']) // bracket notation -- key MUST be in 'QUOTES'
-var x = 'birthYear' // assigning key to variable with key in 'QUOTES'
-console.log(john[x])
+// console.log(john.firstName) // firstName = key [dot notation]
+// console.log(john['lastName']) // bracket notation -- key MUST be in 'QUOTES'
+// var x = 'birthYear' // assigning key to variable with key in 'QUOTES'
+// console.log(john[x])
 
-// Mutating data within objects
-john.job = 'designer'
-john['isMarried'] = true
-console.log(john)
+// // Mutating data within objects
+// john.job = 'designer'
+// john['isMarried'] = true
+// console.log(john)
 
-// Create using 'new Object' Syntax
-var jane = new Object()
-jane.firstName = 'Jane'
-jane.birthYear = 1969
-jane['lastName'] = 'Smith'
-console.log(jane)
+// // Create using 'new Object' Syntax
+// var jane = new Object()
+// jane.firstName = 'Jane'
+// jane.birthYear = 1969
+// jane['lastName'] = 'Smith'
+// console.log(jane)
