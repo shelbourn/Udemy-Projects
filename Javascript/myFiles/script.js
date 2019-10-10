@@ -451,9 +451,11 @@ var john = {
 	job: 'teacher',
 	isMarried: false,
 	calcAge: function(birthYear) {
-		return 2019 - this.birthYear // 'this' refers to 'this object'
+		this.age = 2019 - this.birthYear // Adds 'age' to object via function
+		// return 2019 - this.birthYear // 'this' refers to 'this object'
 	},
 }
-john.age = john.calcAge() // Adds 'age' property to 'John' object
+john.calcAge()
+// john.age = john.calcAge() // Adds 'age' property to 'John' object
 console.log(john.calcAge())
 console.log(john)
