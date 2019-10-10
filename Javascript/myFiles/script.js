@@ -433,3 +433,7 @@
 // jane.birthYear = 1969
 // jane['lastName'] = 'Smith'
 // console.log(jane)
+
+/************************************
+ * Objects and Methods --> IMPORTANT
+ *************************************/
