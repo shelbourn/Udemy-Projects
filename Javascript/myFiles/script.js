@@ -398,3 +398,7 @@
 // 		? 'John is not a designer.'
 // 		: 'John is a designer.'
 // console.log(isDesigner)
+
+/************************************
+ * Objects and Properties
+ *************************************/
