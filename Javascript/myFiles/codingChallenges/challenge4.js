@@ -6,15 +6,15 @@ var john = {
 	},
 }
 john.calcBmi()
-john.bmi = john.calcBmi()
-var mark = {
-	mass: 100,
-	height: 2.5,
-	calcBmi: function() {
-		this.bmi = this.mass / (this.height ^ 2)
-	},
-}
-mark.calcBmi()
-mark.bmi = mark.calcBmi()
+// john.bmi = john.calcBmi()
+// var mark = {
+// 	mass: 100,
+// 	height: 2.5,
+// 	calcBmi: function() {
+// 		this.bmi = this.mass / (this.height ^ 2)
+// 	},
+// }
+// mark.calcBmi()
+// mark.bmi = mark.calcBmi()
 
-console.log(john.bmi(), mark.bmi())
+console.log(john.calcBmi())
