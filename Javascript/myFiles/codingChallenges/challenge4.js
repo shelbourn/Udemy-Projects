@@ -1,16 +1,18 @@
 var john = {
 	mass: 90,
 	height: 2,
-	johnBmi: function() {
+	calcBmi: function() {
 		this.bmi = this.mass / (this.height ^ 2)
 	},
 }
+john.bmi()
+john.bmi = john.calcBmi()
 var mark = {
 	mass: 100,
 	height: 2.5,
-	markBmi: function() {
+	calcBmi: function() {
 		this.bmi = this.mass / (this.height ^ 2)
 	},
 }
-console.log(john.johnBmi(), mark.markBmi())
-console.log(john)
+mark.bmi()
+mark.bmi = mark.calcBmi()
