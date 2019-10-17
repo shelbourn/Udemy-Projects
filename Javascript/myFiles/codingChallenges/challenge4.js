@@ -16,8 +16,6 @@ var mark = {
 }
 mark.calcBmi()
 
-john.bmi = john.calcBmi()
 console.log(john)
 
-mark.bmi = mark.calcBmi()
 console.log(mark)
