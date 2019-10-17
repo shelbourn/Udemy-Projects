@@ -12,3 +12,6 @@ var mark = {
 		;(this.mass / this.height) ^ 2
 	},
 }
+
+john.johnBMI()
+mark.markBMI()
