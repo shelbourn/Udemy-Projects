@@ -1,6 +1,6 @@
 var john = {
-	mass: 23,
-	height: 5,
+	mass: 200,
+	height: 6,
 	calcBmi: function() {
 		this.bmi = this.mass / (this.height ^ 2)
 	},
@@ -8,13 +8,33 @@ var john = {
 john.calcBmi()
 
 var mark = {
-	mass: 25,
-	height: 7.5,
+	mass: 215,
+	height: 5.8,
 	calcBmi: function() {
 		this.bmi = this.mass / (this.height ^ 2)
 	},
 }
 mark.calcBmi()
+
+if (john.bmi > mark.bmi) {
+	console.log(
+		'John is fatter than Mark with a BMI of ' +
+			john.bmi +
+			' while Mark has a BMI of ' +
+			mark.bmi +
+			'.'
+	)
+} else if (mark.bmi > john.bmi) {
+	console.log(
+		'Mark is fatter than John with a BMI of ' +
+			mark.bmi +
+			' while John has a BMI of ' +
+			john.bmi +
+			'.'
+	)
+} else {
+	console.log('John and Mark are equally as fat. =)')
+}
 
 console.log(john)
 
