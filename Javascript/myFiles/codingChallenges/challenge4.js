@@ -15,3 +15,4 @@ var mark = {
 
 john.johnBMI()
 mark.markBMI()
+console.log(john.johnBMI, mark.markBMI)
