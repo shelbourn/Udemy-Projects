@@ -17,4 +17,6 @@ john.calcBmi()
 // mark.calcBmi()
 // mark.bmi = mark.calcBmi()
 
-console.log(john.calcBmi())
+console.log(john)
+john.bmi = john.calcBmi()
+console.log(john.bmi)
