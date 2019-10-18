@@ -1,22 +1,22 @@
 var john = {
-	mass: 200,
-	height: 6,
+	mass: 92,
+	height: 1.5,
 	calcBmi: function() {
 		this.bmi = this.mass / (this.height ^ 2)
 		return this.bmi
 	},
 }
-// john.calcBmi()
+john.calcBmi()
 
 var mark = {
-	mass: 215,
-	height: 5.8,
+	mass: 78,
+	height: 2.2,
 	calcBmi: function() {
 		this.bmi = this.mass / (this.height ^ 2)
 		return this.bmi
 	},
 }
-// mark.calcBmi()
+mark.calcBmi()
 
 if (john.bmi > mark.bmi) {
 	console.log(
