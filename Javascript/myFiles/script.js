@@ -464,6 +464,7 @@
  * Loops and Iteration (Control Structure)
  *************************************/
 
+// For Loop
 for (var i = 0; i < 10; i++) {
 	console.log(i)
 }
@@ -484,3 +485,12 @@ for (var i = 0; i < john.length; i++) {
 	// USE .length PROPERTY!!!
 	console.log(john[i])
 }
+
+// While Loop
+var i = 0
+while (i < john.length) {
+	console.log(john[i])
+	i++
+}
+
+// Continue and Break Statments
