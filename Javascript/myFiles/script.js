@@ -515,5 +515,6 @@ while (i < john.length) {
 var john = ['John', 'Smith', 1990, 'designer', false, 'blue']
 
 for (var i = john.length - 1; i <= john.length; i--) {
+	// REMEMBER THAT JS USES INDEXES AT O (john.length - 1)
 	console.log(john[i])
 }
