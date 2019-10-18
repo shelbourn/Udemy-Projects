@@ -511,9 +511,9 @@ while (i < john.length) {
 
 /* Continue statement checks a condition and if it passes false then it continues to the next iteration. With break statements, if a condition is met then the entire loop exits. */
 
-// Quick Challenge: Reverse Iteration
+// Quick Challenge: Looping Backwards
 var john = ['John', 'Smith', 1990, 'designer', false, 'blue']
 
-for (var i = john.length; i <= john.length; i--) {
+for (var i = john.length - 1; i <= john.length; i--) {
 	console.log(john[i])
 }
