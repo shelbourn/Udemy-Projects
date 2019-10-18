@@ -27,8 +27,8 @@ if (john.calcBmi() > mark.calcBmi()) {
 			mark.bmi +
 			'.'
 	)
-} else if (mark.calcBmi() > john.calcBmi()) {
-	// Calling method when performing calculation
+} else if (mark.bmi > john.bmi) {
+	// Method has already been called above so no need to call it again
 	console.log(
 		'Mark is fatter than John with a BMI of ' +
 			mark.bmi +
