@@ -495,10 +495,18 @@ while (i < john.length) {
 }
 */
 
-// Continue and Break Statments
+// Continue Statment
 var john = ['John', 'Smith', 1990, 'designer', false, 'blue']
 
 for (var i = 0; i < john.length; i++) {
 	if (typeof john[i] !== 'string') continue
 	console.log(john[i])
 }
+
+// Break Statement
+for (var i = 0; i < john.length; i++) {
+	if (typeof john[i] !== 'string') break
+	console.log(john[i])
+}
+
+/* Continue statement checks a condition and if it passes false then it continues to the next iteration. With break statements, if a condition is met then the entire loop exits. */
