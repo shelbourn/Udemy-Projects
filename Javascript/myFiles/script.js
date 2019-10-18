@@ -459,3 +459,7 @@
 // // john.age = john.calcAge() // Adds 'age' property to 'John' object
 // console.log(john.calcAge())
 // console.log(john)
+
+/************************************
+ * Loops and Iteration
+ *************************************/
