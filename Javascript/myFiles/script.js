@@ -461,5 +461,14 @@
 // console.log(john)
 
 /************************************
- * Loops and Iteration
+ * Loops and Iteration (Control Structure)
  *************************************/
+
+for (var i = 0; i < 10; i++) {
+	console.log(i)
+}
+
+// i = 0, 0 < 10 is true, log i to console, i++
+// ...
+// ...
+// i = 10, 10 < 10 is false, loop exits
