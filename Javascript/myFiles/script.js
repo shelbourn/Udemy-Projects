@@ -474,6 +474,7 @@ for (var i = 0; i < 10; i++) {
 // ...
 // i = 10, 10 < 10 is false, loop exits
 
+/*
 for (var i = 1; i <= 20; i += 2) {
 	// add 2 to i after each iteration
 	console.log(i)
@@ -492,5 +493,12 @@ while (i < john.length) {
 	console.log(john[i])
 	i++
 }
+*/
 
 // Continue and Break Statments
+var john = ['John', 'Smith', 1990, 'designer', false, 'blue']
+
+for (var i = 0; i < john.length; i++) {
+	// USE .length PROPERTY!!!
+	console.log(john[i])
+}
