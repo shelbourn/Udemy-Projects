@@ -6,7 +6,7 @@ var john = {
 		return this.bmi
 	},
 }
-john.calcBmi()
+// john.calcBmi()
 
 var mark = {
 	mass: 78,
@@ -16,9 +16,10 @@ var mark = {
 		return this.bmi
 	},
 }
-mark.calcBmi()
+// mark.calcBmi()
 
-if (john.bmi > mark.bmi) {
+if (john.calcBmi() > mark.calcBmi()) {
+	// Calling method when performing calculation
 	console.log(
 		'John is fatter than Mark with a BMI of ' +
 			john.bmi +
@@ -26,7 +27,8 @@ if (john.bmi > mark.bmi) {
 			mark.bmi +
 			'.'
 	)
-} else if (mark.bmi > john.bmi) {
+} else if (mark.calcBmi() > john.calcBmi()) {
+	// Calling method when performing calculation
 	console.log(
 		'Mark is fatter than John with a BMI of ' +
 			mark.bmi +
