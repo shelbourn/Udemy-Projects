@@ -465,9 +465,9 @@
  *************************************/
 
 // For Loop
-for (var i = 0; i < 10; i++) {
-	console.log(i)
-}
+// for (var i = 0; i < 10; i++) {
+// 	console.log(i)
+// }
 
 // i = 0, 0 < 10 is true, log i to console, i++
 // ...
@@ -512,9 +512,9 @@ while (i < john.length) {
 /* Continue statement checks a condition and if it passes false then it continues to the next iteration. With break statements, if a condition is met then the entire loop exits. */
 
 // Quick Challenge: Looping Backwards
-var john = ['John', 'Smith', 1990, 'designer', false, 'blue']
+// var john = ['John', 'Smith', 1990, 'designer', false, 'blue']
 
-for (var i = john.length - 1; i >= 0; i--) {
-	// REMEMBER THAT JS USES INDEXES AT O (john.length - 1)
-	console.log(john[i])
-}
+// for (var i = john.length - 1; i >= 0; i--) {
+// 	// REMEMBER THAT JS USES INDEXES AT O (john.length - 1)
+// 	console.log(john[i])
+// }
