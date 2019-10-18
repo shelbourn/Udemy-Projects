@@ -478,7 +478,7 @@ for (var i = 1; i <= 20; i += 2) {
 	console.log(i)
 }
 
-var john = ['John', 'Smith', 1990, 'designer', false]
+var john = ['John', 'Smith', 1990, 'designer', false, 'blue']
 
 for (var i = 0; i < john.length; i++) {
 	// USE .length PROPERTY!!!
