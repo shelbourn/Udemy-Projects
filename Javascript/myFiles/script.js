@@ -472,3 +472,8 @@ for (var i = 0; i < 10; i++) {
 // ...
 // ...
 // i = 10, 10 < 10 is false, loop exits
+
+for (var i = 1; i <= 20; i += 2) {
+	// add 2 to i after each iteration
+	console.log(i)
+}
