@@ -477,3 +477,9 @@ for (var i = 1; i <= 20; i += 2) {
 	// add 2 to i after each iteration
 	console.log(i)
 }
+
+var john = ['John', 'Smith', 1990, 'designer', false]
+
+for (var i = 0; i < 6; i++) {
+	console.log(john[i])
+}
