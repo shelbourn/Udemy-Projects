@@ -514,7 +514,7 @@ while (i < john.length) {
 // Quick Challenge: Looping Backwards
 var john = ['John', 'Smith', 1990, 'designer', false, 'blue']
 
-for (var i = john.length - 1; i <= john.length; i--) {
+for (var i = john.length - 1; i >= 0; i--) {
 	// REMEMBER THAT JS USES INDEXES AT O (john.length - 1)
 	console.log(john[i])
 }
