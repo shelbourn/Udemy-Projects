@@ -481,5 +481,6 @@ for (var i = 1; i <= 20; i += 2) {
 var john = ['John', 'Smith', 1990, 'designer', false]
 
 for (var i = 0; i < john.length; i++) {
+	// USE .length PROPERTY!!!
 	console.log(john[i])
 }
