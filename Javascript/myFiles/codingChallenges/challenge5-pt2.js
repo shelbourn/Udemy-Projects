@@ -15,7 +15,6 @@ var markDining = function() {
 console.log(markTips)
 console.log(markBills)
 
-var markBills = [77, 375, 110, 45]
 var sumTip = 0
 
 var markTip = function() {
