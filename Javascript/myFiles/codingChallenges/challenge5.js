@@ -20,3 +20,5 @@ var johnDining = {
 	},
 }
 console.log(johnDining, johnDining.calcTip())
+
+var markDining = function
