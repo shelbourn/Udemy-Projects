@@ -43,8 +43,7 @@ var markTip
 
 var avgTip = function() {
 	for (i = 0; i < Array.length; i++) {
-		markTip += markBills[i]
+	 0 =+ markBills[i]
 	}
-	return markTip
 }
 console.log(avgTip(markBills))
