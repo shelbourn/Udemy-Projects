@@ -73,3 +73,19 @@ console.log(johnDining, markDining)
 johnDining.average = calcAvg(johnDining.tips)
 markDining.average = calcAvg(markDining.tips)
 console.log(johnDining, markDining)
+
+if (johnDining.average > markDining.average) {
+	console.log(
+		johnDining.fullname +
+			"'s family pays higher tips, with an average of $" +
+			johnDining.average +
+			' dollars per meal.'
+	)
+} else {
+	console.log(
+		markDining.fullname +
+			"'s family pays higher tips, with an average of $" +
+			markDining.average +
+			' dollars per meal.'
+	)
+}
