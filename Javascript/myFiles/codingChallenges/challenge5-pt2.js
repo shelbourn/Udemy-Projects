@@ -1,5 +1,5 @@
 /***************************
- * My Solution
+ * My Solution (Attempt 1)
  */
 
 // var markBills = [77, 375, 110, 45]
