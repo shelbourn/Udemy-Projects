@@ -55,6 +55,21 @@ var markDining = {
 		}
 	},
 }
+
+function calcAvg(tips) {
+	var sum = 0
+	// Calculates sum of tips in array
+	for (var i = 0; i < tips.length; i++) {
+		sum = sum + tips[i]
+	}
+	// Calculates average of tips in array
+	return sum / tips.length
+}
+
 johnDining.calcTip()
 markDining.calcTip()
+console.log(johnDining, markDining)
+
+johnDining.average = calcAvg(johnDining.tips)
+markDining.average = calcAvg(markDining.tips)
 console.log(johnDining, markDining)
