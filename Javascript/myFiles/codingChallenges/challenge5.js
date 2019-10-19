@@ -7,7 +7,7 @@ var johnDining = {
 			if (this.bills[i] < 50) {
 				tip = this.bills[i] * 0.2
 				// this.tips.push(tip)
-			} else if (this.bills[i] >= 50 || this.bills[i] <= 200) {
+			} else if (this.bills[i] >= 50 && this.bills[i] <= 200) {
 				tip = this.bills[i] * 0.15
 				// this.tips.push(tip)
 			} else {
@@ -21,4 +21,17 @@ var johnDining = {
 }
 console.log(johnDining, johnDining.calcTip())
 
-var markDining = function
+var markBills = [77, 375, 110, 45]
+var markTips = []
+var markDining = function() {
+	for (i = 0; i < markBills.length; i++) {
+		if (markBills[i] < 100) {
+			markTips.push(markBills[i] * 0.2)
+		} else if (markBills[i] >= 100 && markbills[i] <= 300) {
+			marktips.push(markBills[i] * 0.1)
+		} else {
+			marktips.push(markBills[i] * 0.25)
+		}
+	}
+}
+console.log(markTips)
