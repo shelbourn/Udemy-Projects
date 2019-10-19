@@ -7,20 +7,20 @@ var johnDining = {
 		for (var i = 0; i < this.bills.length; i++) {
 			// Determine percentange based on tipping rules
 
-			var percentange
+			var percentage
 			var bill = this.bills[i]
 
 			if (bill < 50) {
 				percentage = 0.2
 			} else if (bill >= 50 && bill < 200) {
-				percentange = 0.15
+				percentage = 0.15
 			} else {
-				percentange = 0.1
+				percentage = 0.1
 			}
 
 			// Add results to the corresponding arrarys
-			this.tips[i] = bill * percentange
-			this.totalBill[i] = bill + bill * percentange
+			this.tips[i] = bill * percentage
+			this.totalBill[i] = bill + bill * percentage
 		}
 	},
 }
