@@ -1,9 +1,10 @@
 var johnDining = {
 	bills: [124, 48, 268, 180, 42],
-	tips: [],
-	totalBill: [],
+	fullname: 'John Smith',
 	calcTip: function() {
-		for (i = 0; i < this.bills.length; i++) {
+		this.tips = []
+		this.totalBill = []
+		for (var i = 0; i < this.bills.length; i++) {
 			if (this.bills[i] < 50) {
 				tip = this.bills[i] * 0.2
 				// this.tips.push(tip)
