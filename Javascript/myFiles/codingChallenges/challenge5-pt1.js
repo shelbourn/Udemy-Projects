@@ -19,7 +19,10 @@ var johnDining = {
 			}
 
 			// Add results to the corresponding arrarys
+			this.tips[i] = bill * percentange
+			this.totalBill[i] = bill + bill * percentange
 		}
 	},
 }
-console.log(johnDining, johnDining.calcTip())
+johnDining.calcTip()
+console.log(johnDining)
