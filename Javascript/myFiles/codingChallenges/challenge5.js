@@ -37,3 +37,14 @@ console.log(johnDining, johnDining.calcTip())
 // }
 // console.log(markTips)
 // console.log(markBills)
+
+var markBills = [77, 375, 110, 45]
+var markTip
+
+var avgTip = function() {
+	for (i = 0; i < Array.length; i++) {
+		markTip += markBills[i]
+	}
+	return markTip
+}
+console.log(avgTip(markBills))
