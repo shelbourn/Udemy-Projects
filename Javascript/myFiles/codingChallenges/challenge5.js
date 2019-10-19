@@ -21,17 +21,19 @@ var johnDining = {
 }
 console.log(johnDining, johnDining.calcTip())
 
-var markBills = [77, 375, 110, 45]
-var markTips = []
-var markDining = function() {
-	for (i = 0; i < markBills.length; i++) {
-		if (markBills[i] < 100) {
-			markTips.push(markBills[i] * 0.2)
-		} else if (markBills[i] >= 100 && markbills[i] <= 300) {
-			marktips.push(markBills[i] * 0.1)
-		} else {
-			marktips.push(markBills[i] * 0.25)
-		}
-	}
-}
-console.log(markTips)
+// var markBills = [77, 375, 110, 45]
+// var markTips = []
+// var markDining = function() {
+// 	for (i = 0; i < markBills.length; i++) {
+// 		if (markBills[i] < 100) {
+// 			markBills[i] * 0.2
+// 		} else if (markBills[i] >= 100 && markbills[i] <= 300) {
+// 			markBills[i] * 0.1
+// 		} else {
+// 			markBills[i] * 0.25
+// 		}
+// 	}
+// 	markTips.push(markDining())
+// }
+// console.log(markTips)
+// console.log(markBills)
