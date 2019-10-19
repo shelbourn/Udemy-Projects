@@ -1,6 +1,7 @@
-var dining = {
+var johnDining = {
 	bills: [124, 48, 268, 180, 42],
 	tips: [],
+	totalBill: [],
 	calcTip: function() {
 		for (i = 0; i < this.bills.length; i++) {
 			if (this.bills[i] < 50) {
@@ -14,7 +15,8 @@ var dining = {
 				// this.tips.push(tip)
 			}
 			this.tips.push(tip)
+			this.totalBill.push(this.bills[i] + this.tips[i])
 		}
 	},
 }
-console.log(dining, dining.calcTip())
+console.log(johnDining, johnDining.calcTip())
