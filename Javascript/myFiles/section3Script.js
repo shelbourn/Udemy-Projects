@@ -28,5 +28,12 @@ retirement(1990) // This works with function expressions
 // Variables
 
 console.log(age)
-var age = 23
+var age = 23 // Stored in Global Variable object as different value from 'var age' below
+
+function foo() {
+	console.log(age)
+	var age = 65
+	console.log(age)
+}
+foo()
 console.log(age)
