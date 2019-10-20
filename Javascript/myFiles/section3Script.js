@@ -9,31 +9,31 @@
 
 // Function declaration
 
-calcAge(1965)
+// calcAge(1965)
 
-function calcAge(year) {
-	console.log(2016 - year)
-}
+// function calcAge(year) {
+// 	console.log(2016 - year)
+// }
 
-// Function Expression
+// // Function Expression
 
-// retirement(1965) // Does not work with function expressions
+// // retirement(1965) // Does not work with function expressions
 
-var retirement = function(year) {
-	console.log(65 - (2016 - year))
-}
+// var retirement = function(year) {
+// 	console.log(65 - (2016 - year))
+// }
 
-retirement(1990) // This works with function expressions
+// retirement(1990) // This works with function expressions
 
-// Variables
+// // Variables
 
-console.log(age)
-var age = 23 // Stored in Global Variable object as different value from 'var age' below
+// console.log(age)
+// var age = 23 // Stored in Global Variable object as different value from 'var age' below
 
-function foo() {
-	console.log(age)
-	var age = 65
-	console.log(age)
-}
-foo()
-console.log(age)
+// function foo() {
+// 	console.log(age)
+// 	var age = 65
+// 	console.log(age)
+// }
+// foo()
+// console.log(age)
