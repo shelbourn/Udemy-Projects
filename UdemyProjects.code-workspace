@@ -6,6 +6,7 @@
   ],
   "settings": {
     "prettier.singleQuote": true,
-    "prettier.useTabs": true
+    "prettier.useTabs": true,
+    "prettier.trailingComma": "es5"
   },
 }
