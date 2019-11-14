@@ -1,4 +1,4 @@
-const userInput = 25
+const userInput = 25 // This value does not change with calculations below
 let currentResult
 
 currentResult = 18 + userInput
