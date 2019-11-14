@@ -6,10 +6,9 @@ function add(num1, num2) {
 	return result
 }
 
-add(1, 2) // Calling the function
-add(5, 5)
+const additionResult = add(1, 2) // Calling the function
 
-currentResult = ((currentResult + 10) * 3) / 2 - 1
+currentResult = additionResult
 
 let calculationDescription = `(${defaultResult} + 10) * 3 / 2 - 1`
 
