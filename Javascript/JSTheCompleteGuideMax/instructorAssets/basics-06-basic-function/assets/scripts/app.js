@@ -6,7 +6,8 @@ function add(num1, num2) {
 	alert(`The result is ${result}.`)
 }
 
-add() // Calling the function
+add(1, 2) // Calling the function
+add(5, 5)
 
 currentResult = ((currentResult + 10) * 3) / 2 - 1
 
