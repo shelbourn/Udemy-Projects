@@ -13,7 +13,7 @@ let calculationDescription = `(${defaultResult} + 10) * 3 / 2 - 1`
 outputResult(currentResult, calculationDescription)
 
 // function add(num1, num2) {
-	// Can declare function after it is called due to hoisting
+// Can declare function after it is called due to hoisting
 // 	const result = num1 + num2
 // 	return result
-}
+// }
