@@ -1,6 +1,8 @@
-const defaultResult = 0;
-let currentResult = defaultResult;
+const defaultResult = 0
+let currentResult = defaultResult // currentResult is a copy of defaultResult
 
-currentResult = ((currentResult + 9) * 3) / 2 - 1;
+currentResult = ((currentResult + 9) * 3) / 2 - 1
 
-outputResult(currentResult, '');
+let calculateDescription = '(' + defaultResult + ' + 10) * 3 / 2 - 1'
+
+outputResult(currentResult, calculateDescription)
