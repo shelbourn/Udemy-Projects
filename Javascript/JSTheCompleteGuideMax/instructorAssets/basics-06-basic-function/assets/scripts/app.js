@@ -6,9 +6,7 @@ function add(num1, num2) {
 	return result
 }
 
-const additionResult = add(1, 2) // Calling the function
-
-currentResult = additionResult
+currentResult = add(1, 2) // Calling the function
 
 let calculationDescription = `(${defaultResult} + 10) * 3 / 2 - 1`
 
