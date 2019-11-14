@@ -9,7 +9,7 @@ currentResult = currentResult * 12
 
 currentResult = currentResult / 3
 
-alert(`The user\'s input is ${userInput}`)
-alert(`The current result is ${currentResult}`)
+alert(`The user\'s input is ${userInput}`) // Template String Method
+alert(`The current result is ${currentResult}`) // Template String Method
 
 console.log(currentResult)
