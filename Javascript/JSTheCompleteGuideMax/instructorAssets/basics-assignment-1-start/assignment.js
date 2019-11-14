@@ -9,7 +9,7 @@ currentResult = currentResult * 12
 
 currentResult = currentResult / 3
 
-alert(userInput)
-alert(currentResult)
+alert(`The user\'s input is ${userInput}`)
+alert(`The current result is ${currentResult}`)
 
 console.log(currentResult)
