@@ -52,3 +52,18 @@ FROM EMPLOYEES;
 DESCRIBE EMPLOYEES;
 
 DESC EMPLOYEES;
+
+-- Restricting data retrieval with WHERE clause
+SELECT *
+FROM EMPLOYEES
+WHERE DEPARTMENT_ID=90;
+
+SELECT *
+FROM EMPLOYEES
+WHERE SALARY=24000;
+
+/* NOTES on WHERE CLAUSE: 
+1.) Character strings and date values are enclosed within single quotation marks.
+2.) Character values are case-sensitive and date values are format-sensitive.
+3.) The default date display format is DD-MON-RR.
+*/
