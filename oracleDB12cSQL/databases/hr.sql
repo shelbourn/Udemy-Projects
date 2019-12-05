@@ -1,3 +1,4 @@
+-- Select Statement
 SELECT *
 FROM employees;
 
@@ -18,7 +19,6 @@ FROM employees;
 
 SELECT LAST_NAME, JOB_ID, SALARY, COMMISSION_PCT, COMMISSION_PCT+10
 FROM employees;
-
 
 -- Aliases
 SELECT LAST_NAME, LAST_NAME AS name, LAST_NAME lname, LAST_NAME "LAST name"
@@ -47,5 +47,8 @@ FROM EMPLOYEES;
 SELECT DISTINCT DEPARTMENT_ID, JOB_ID
 FROM EMPLOYEES;
 
--- Descrivbe Operator
+-- Describe Operator
 -- Describe displays the structure of a table
+DESCRIBE EMPLOYEES;
+
+DESC EMPLOYEES;
