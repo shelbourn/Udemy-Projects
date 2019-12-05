@@ -67,3 +67,13 @@ WHERE SALARY=24000;
 2.) Character values are case-sensitive and date values are format-sensitive.
 3.) The default date display format is DD-MON-RR.
 */
+
+SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, JOB_ID
+FROM EMPLOYEES
+WHERE FIRST_NAME='Steven';
+
+-- This won't work because character strings in where clause are case-sensitive
+-- Data inside the table are case-sensitive
+SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, JOB_ID
+FROM EMPLOYEES
+WHERE FIRST_NAME='steven';
