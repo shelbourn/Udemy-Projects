@@ -121,3 +121,19 @@ SELECT * FROM EMPLOYEES
 WHERE FIRST_NAME BETWEEN 'A' AND 'C'
 ORDER BY FIRST_NAME;
 
+/* There are employees with first names that start with 'C' but they do not show up
+in the previous BETWEEN query because they are greater than just the character 'C'.
+If you wanted to include all the employees with first names that start with 'C'
+the query would look like this:
+
+SELECT * FROM EMPLOYEES
+WHERE FIRST_NAME BETWEEN 'A' AND 'D'
+ORDER BY FIRST_NAME;
+*/
+SELECT * FROM EMPLOYEES
+ORDER BY FIRST_NAME;
+
+-- Includes employees with first names that begin with 'C'
+SELECT * FROM EMPLOYEES
+WHERE FIRST_NAME BETWEEN 'A' AND 'D'
+ORDER BY FIRST_NAME;
