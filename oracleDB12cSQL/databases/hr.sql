@@ -77,3 +77,35 @@ WHERE FIRST_NAME='Steven';
 SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, JOB_ID
 FROM EMPLOYEES
 WHERE FIRST_NAME='steven';
+
+-- Using date values in the WHERE clause
+SELECT *
+FROM EMPLOYEES
+WHERE HIRE_DATE='17-OCT-03';
+
+-- Using Comparison Operators
+SELECT * FROM EMPLOYEES
+WHERE SALARY >= 10000;
+
+SELECT *
+FROM EMPLOYEES
+WHERE HIRE_DATE > '17-OCT-03';
+
+-- Comparison operators with character strings use ASCII code
+SELECT * FROM EMPLOYEES
+WHERE FIRST_NAME > 'Alberto';
+
+-- Comparison with sorting using ORDER BY clause
+SELECT * FROM EMPLOYEES
+WHERE FIRST_NAME > 'Alberto'
+ORDER BY FIRST_NAME;
+
+SELECT * FROM EMPLOYEES
+WHERE FIRST_NAME < 'Alberto'
+ORDER BY FIRST_NAME;
+
+/* For more information about character strings using comparison operators go to:
+https://docs.oracle.com/cd/B12037_01/server.101/b10759/sql_elements002.htm
+*/
+
+
