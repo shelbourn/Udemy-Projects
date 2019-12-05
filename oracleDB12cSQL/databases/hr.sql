@@ -137,3 +137,14 @@ ORDER BY FIRST_NAME;
 SELECT * FROM EMPLOYEES
 WHERE FIRST_NAME BETWEEN 'A' AND 'D'
 ORDER BY FIRST_NAME;
+
+-- Using the IN operator (OR for values)
+SELECT * FROM EMPLOYEES
+WHERE SALARY IN (10000, 25000, 17000); -- The order of the values is not important
+
+/* Using the LIKE operator. Usually used with _ or %
+_ means one character
+% means zero or more characters
+*/
+
+
