@@ -108,4 +108,16 @@ ORDER BY FIRST_NAME;
 https://docs.oracle.com/cd/B12037_01/server.101/b10759/sql_elements002.htm
 */
 
+-- Using the BETWEEN AND Operator
+SELECT * FROM EMPLOYEES
+WHERE SALARY BETWEEN 10000 AND 20000 -- Always put the lower limit first
+ORDER BY FIRST_NAME;
+
+SELECT * FROM EMPLOYEES
+WHERE SALARY BETWEEN 20000 AND 10000; -- No result when the higher limit is first
+
+-- You can use operators with VARCHAR columns also
+SELECT * FROM EMPLOYEES
+WHERE FIRST_NAME BETWEEN 'A' AND 'C'
+ORDER BY FIRST_NAME;
 
