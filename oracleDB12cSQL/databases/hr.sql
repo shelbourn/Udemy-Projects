@@ -147,4 +147,17 @@ _ means one character
 % means zero or more characters
 */
 
+SELECT * FROM EMPLOYEES
+WHERE FIRST_NAME LIKE 'S%'; -- All first names that start with 'S'
 
+SELECT * FROM EMPLOYEES
+WHERE FIRST_NAME LIKE '%s'; -- All first names that end with 's'
+
+SELECT * FROM EMPLOYEES
+WHERE FIRST_NAME LIKE '%am%'; -- All first names that include 'am'
+
+SELECT * FROM EMPLOYEES
+WHERE FIRST_NAME LIKE '_d%'; -- All first names where the second character is a 'd'
+
+SELECT * FROM EMPLOYEES
+WHERE FIRST_NAME LIKE '__s%'; -- All first names where the third character is an 's'
