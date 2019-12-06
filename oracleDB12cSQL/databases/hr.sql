@@ -326,3 +326,8 @@ order by salary + 100;
 select employee_id, salary
 from employees
 order by department_id; -- but this is not logical and not recommended.
+
+-- Can order by more than one column
+select department_id, first_name, salary
+from employees
+order by department_id, first_name; -- orders first by department_id and then by first_name
