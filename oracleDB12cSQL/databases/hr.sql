@@ -211,3 +211,11 @@ FROM EMPLOYEES
 WHERE FIRST_NAME NOT LIKE 'S%'; -- All employees who's names do not begin with the letter 'S'
 
 -- Using the NOT EQUAL operator
+SELECT *
+FROM EMPLOYEES
+WHERE DEPARTMENT_ID <> 50;
+
+-- Above is the same as...
+select *
+from employees
+where DEPARTMENT_ID != 50;
