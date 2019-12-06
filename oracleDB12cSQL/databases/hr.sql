@@ -321,3 +321,8 @@ order by n;
 select employee_id, salary, salary + 100
 from employees
 order by salary + 100;
+
+-- Can order by columns not in the SELECT statement
+select employee_id, salary
+from employees
+order by department_id; -- but this is not logical and not recommended.
