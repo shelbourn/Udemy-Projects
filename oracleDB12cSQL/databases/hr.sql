@@ -340,3 +340,9 @@ order by department_id asc, first_name desc;
 select department_id, first_name, salary
 from employees
 order by 1; -- refers to the first column named in the SELECT statement (DEPARTMENT_ID)
+
+select department_id, first_name, salary
+from employees
+order by 1, 3; -- Order by column 1 and then by column 3
+
+-- Using the FETCH clause
