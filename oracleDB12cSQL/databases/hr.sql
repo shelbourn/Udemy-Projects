@@ -307,3 +307,12 @@ order by commission_pct; -- NULL values come last by default in ascending order
 
 select * from employees
 order by commission_pct desc; -- NULL values come first by default in descending order
+
+-- NULLS FIRST makes NULLS appear first
+select * from employees
+order by commission_pct nulls first;
+
+-- You can use ORDER BY using aliases as well
+select first_name n
+from employees
+order by n;
