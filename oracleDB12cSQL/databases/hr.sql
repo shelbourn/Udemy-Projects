@@ -331,3 +331,12 @@ order by department_id; -- but this is not logical and not recommended.
 select department_id, first_name, salary
 from employees
 order by department_id, first_name; -- orders first by department_id and then by first_name
+
+select department_id, first_name, salary
+from employees
+order by department_id asc, first_name desc;
+
+-- Can order by the column number as it appears in the SELECT statement
+select department_id, first_name, salary
+from employees
+order by 1; -- refers to the first column named in the SELECT statement (DEPARTMENT_ID)
