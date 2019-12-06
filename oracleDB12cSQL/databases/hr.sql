@@ -297,3 +297,10 @@ select * from employees
 order by hire_date desc;
 
 -- Using WHERE and ORDER BY
+select * from employees
+where department_id = 90
+order by employee_id;
+
+-- NULL values in ORDER BY
+select * from employees
+order by commission_pct; -- NULL values come last by default in ascending order
