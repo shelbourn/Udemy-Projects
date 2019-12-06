@@ -286,3 +286,14 @@ order by last_name;
 -- BEST PRACTICE IS TO USE PARENS FOR CONDITIONS
 
 -- Using the ORDER BY clause
+select * from employees
+order by hire_date; -- The default order is always ASC (ascending)
+
+select * from employees
+order by hire_date ASC; -- Same as above. No need to put ASC because the default is always ASC
+
+-- ORDER BY descending
+select * from employees
+order by hire_date desc;
+
+-- Using WHERE and ORDER BY
