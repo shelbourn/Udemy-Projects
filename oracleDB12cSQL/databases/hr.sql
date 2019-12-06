@@ -161,3 +161,17 @@ WHERE FIRST_NAME LIKE '_d%'; -- All first names where the second character is a 
 
 SELECT * FROM EMPLOYEES
 WHERE FIRST_NAME LIKE '__s%'; -- All first names where the third character is an 's'
+
+-- Now suppose there is a value in any column containing _ or % (i.e. job_id)
+-- Then there must be a special way to search for these characters
+
+-- Incorrect method for searching
+SELECT JOB_ID
+FROM JOBS
+WHERE JOB_ID LIKE 'SA_%';
+
+-- Correct method of searching
+SELECT JOB_ID
+FROM JOBS
+WHERE JOB_ID LIKE 'SA/_%' escape '/'; -- The '/' escapes the character that follows it
+
