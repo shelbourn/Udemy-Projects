@@ -272,4 +272,7 @@ order by last_name;
 7.) NOT logical operator
 8.) AND logical operator
 9.) OR logical operator
+
+You can use parenthesis () to override rules of precedence
 */
+
