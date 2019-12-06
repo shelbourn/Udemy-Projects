@@ -168,10 +168,15 @@ WHERE FIRST_NAME LIKE '__s%'; -- All first names where the third character is an
 -- Incorrect method for searching
 SELECT JOB_ID
 FROM JOBS
-WHERE JOB_ID LIKE 'SA_%';
+WHERE JOB_ID LIKE 'SA_%'; -- This would include 'SAP cons' which has a space when we are only looking for jobs that start with 'SA_'
 
 -- Correct method of searching
 SELECT JOB_ID
 FROM JOBS
 WHERE JOB_ID LIKE 'SA/_%' escape '/'; -- The '/' escapes the character that follows it
 
+-- Another example: Suppose we have a job_id called MANA%GER
+-- And we need to pick all the JOB_ID that have the '%' character
+SELECT JOB_ID
+FROM JOBS
+WHERE JOB_ID LIKE '%/%%' escape '/'; -- Retrieves all JOB_ID that include the character '%'
