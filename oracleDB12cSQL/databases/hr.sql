@@ -210,3 +210,4 @@ SELECT *
 FROM EMPLOYEES
 WHERE FIRST_NAME NOT LIKE 'S%'; -- All employees who's names do not begin with the letter 'S'
 
+-- Using the NOT EQUAL operator
