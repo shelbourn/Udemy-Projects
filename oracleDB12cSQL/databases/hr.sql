@@ -221,3 +221,25 @@ from employees
 where department_id != 50;
 
 -- Using logical operators (AND, OR, NOT)
+-- Defining conditions using the logical operators (AND, OR, NOT)
+-- The AND operator requires that both arguements are TRUE
+select employee_id, last_name, job_id, department_id
+from employees
+where salary >= 10000
+and department_id = 90
+order by last_name;
+
+-- The OR operator requires that either arguement be TRUE
+select employee_id, last_name, job_id, department_id
+from employees
+where salary >= 10000
+or department_id = 90
+order by last_name;
+
+-- Another example using multiple AND operators
+select employee_id, last_name, job_id, salary, department_id, commission_pct
+from employees
+where salary > 2000
+and department_id in (60, 90)
+and commission_pct is null
+order by last_name;
