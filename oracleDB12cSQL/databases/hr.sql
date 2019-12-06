@@ -304,3 +304,6 @@ order by employee_id;
 -- NULL values in ORDER BY
 select * from employees
 order by commission_pct; -- NULL values come last by default in ascending order
+
+select * from employees
+order by commission_pct desc; -- NULL values come first by default in descending order
