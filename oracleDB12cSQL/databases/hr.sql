@@ -218,4 +218,6 @@ WHERE DEPARTMENT_ID <> 50;
 -- Above is the same as...
 select *
 from employees
-where DEPARTMENT_ID != 50;
+where department_id != 50;
+
+-- Using logical operators (AND, OR, NOT)
