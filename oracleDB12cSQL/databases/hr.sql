@@ -182,3 +182,18 @@ FROM JOBS
 WHERE JOB_ID LIKE '%/%%' escape '/'; -- Retrieves all JOB_ID that include the character '%'
 
 -- Using the IS NULL operator
+SELECT FIRST_NAME, COMMISSION_PCT
+FROM EMPLOYEES;
+
+-- Select employees who do not receive commission
+SELECT *
+FROM EMPLOYEES
+WHERE COMMISSION_PCT IS NULL;
+
+-- Incorrect useage
+SELECT *
+FROM EMPLOYEES
+WHERE COMMISSION_PCT=NULL;
+
+-- Using NOT Operater
+-- Can also use NOT IN, NOT LIKE, NOT NULL, NOT BETWEEN AND
