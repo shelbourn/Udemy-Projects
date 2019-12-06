@@ -345,4 +345,19 @@ select department_id, first_name, salary
 from employees
 order by 1, 3; -- Order by column 1 and then by column 3
 
--- Using the FETCH clause
+-- Using the FETCH clause (Used for top-end queries i.e. top 3 sales people)
+-- Using SQL row limition clause in query
+select employee_id, first_name
+from employees
+order by employee_id;
+
+select employee_id, first_name
+from employees
+order by employee_id
+fetch first 5 rows only;
+
+select employee_id, first_name
+from employees
+order by employee_id
+fetch first 50 percent rows only;
+
