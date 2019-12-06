@@ -381,3 +381,7 @@ from employees
 order by salary desc
 fetch first 2 rows only; -- Even though record 2 and 3 both have the same salary, this query will only retrieve the first two records
 
+select employee_id, first_name, salary
+from employees
+order by salary desc
+fetch first 2 rows with ties; -- Includes both records that have the same salary
