@@ -316,3 +316,8 @@ order by commission_pct nulls first;
 select first_name n -- n given as alias to FIRST_NAME
 from employees
 order by n;
+
+-- Ordering by expressions
+select employee_id, salary, salary + 100
+from employees
+order by salary + 100;
