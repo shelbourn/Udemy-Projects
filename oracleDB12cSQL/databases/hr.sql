@@ -361,3 +361,7 @@ from employees
 order by employee_id
 fetch first 50 percent rows only;
 
+select employee_id, first_name
+from employees
+order by employee_id
+offset 5 rows fetch next 5 rows only;
