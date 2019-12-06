@@ -370,3 +370,14 @@ select employee_id, first_name
 from employees
 order by employee_id
 offset 4 rows fetch next 50 percent rows only;
+
+-- Using TIES with FETCH
+select employee_id, first_name, salary
+from employees
+order by salary desc;
+
+select employee_id, first_name, salary
+from employees
+order by salary desc
+fetch first 2 rows only; -- Even though record 2 and 3 both have the same salary, this query will only retrieve the first two records
+
