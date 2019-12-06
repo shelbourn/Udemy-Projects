@@ -243,3 +243,21 @@ where salary > 2000
 and department_id in (60, 90)
 and commission_pct is null
 order by last_name;
+
+-- IMPORTANT
+-- SQL execution with logical operators has priorities
+-- AND takes precedence over OR
+-- In this statement 'JOB_ID = 'AD_PRES' AND SALARY > 15000' will execute first
+select last_name , job_id, salary
+from employees
+where job_id = 'SA_REP' -- First condition
+or job_id = 'AD_PRES' and salary > 15000 -- Second condition
+order by last_name;
+
+-- The query above is the same as this...
+select last_name, job_id, salary
+from employees
+where job_id = 'SA_REP'
+or (job_id = 'AD_PRES' and salary > 15000)
+order by last_name;
+
