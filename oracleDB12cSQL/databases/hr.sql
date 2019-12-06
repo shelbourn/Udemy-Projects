@@ -279,6 +279,10 @@ You can use parenthesis () or brackets [] to override rules of precedence
 -- When you use parenthesis you can override any priorities
 select last_name, job_id, salary
 from employees
-where (job_id = 'SA_REP' or job_id = 'AD_PRES')
-and salary > 15000
+where (job_id = 'SA_REP' or job_id = 'AD_PRES') -- First condition
+and salary > 15000 -- Second condition
 order by last_name;
+
+-- BEST PRACTICE IS TO USE PARENS FOR CONDITIONS
+
+-- Using the ORDER BY clause
