@@ -301,18 +301,18 @@ select * from employees
 where department_id = 90
 order by employee_id;
 
--- NULL values in ORDER BY
+-- NULL values in ORDER BY ** IMPORTANT **
 select * from employees
 order by commission_pct; -- NULL values come last by default in ascending order
 
 select * from employees
 order by commission_pct desc; -- NULL values come first by default in descending order
 
--- NULLS FIRST makes NULLS appear first
+-- NULLS FIRST makes NULLS appear first, then the remainder of the results ordered in ascending order by default
 select * from employees
 order by commission_pct nulls first;
 
 -- You can use ORDER BY using aliases as well
-select first_name n
+select first_name n -- n given as alias to FIRST_NAME
 from employees
 order by n;
