@@ -180,3 +180,5 @@ WHERE JOB_ID LIKE 'SA/_%' escape '/'; -- The '/' escapes the character that foll
 SELECT JOB_ID
 FROM JOBS
 WHERE JOB_ID LIKE '%/%%' escape '/'; -- Retrieves all JOB_ID that include the character '%'
+
+-- Using the IS NULL operator
