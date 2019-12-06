@@ -273,6 +273,12 @@ order by last_name;
 8.) AND logical operator
 9.) OR logical operator
 
-You can use parenthesis () to override rules of precedence
+You can use parenthesis () or brackets [] to override rules of precedence
 */
 
+-- When you use parenthesis you can override any priorities
+select last_name, job_id, salary
+from employees
+where (job_id = 'SA_REP' or job_id = 'AD_PRES')
+and salary > 15000
+order by last_name;
