@@ -261,3 +261,15 @@ where job_id = 'SA_REP'
 or (job_id = 'AD_PRES' and salary > 15000)
 order by last_name;
 
+/* RULES OF PRECEDENCE
+
+1.) Arithmetic Operators
+2.) Concatenation Operator
+3.) Comparison conditions
+4.) IS [NOT] NULL, LIKE, [NOT] IN
+5.) [NOT] BETWEEN
+6.) Not equal to
+7.) NOT logical operator
+8.) AND logical operator
+9.) OR logical operator
+*/
