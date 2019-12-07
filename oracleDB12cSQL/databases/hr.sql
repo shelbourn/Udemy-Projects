@@ -457,5 +457,22 @@ undefine emp_to
 -- The double ampersand defines the variable and assigns it at the same time, and it can be re-used.
 select * from departments where department_id = &&p;
 
-undefine p -- && variable remains until the end of the session
+undefine p; -- && variable remains until the end of the session
 
+select employee_id, last_name, job_id, &&column_name -- this defines the column name
+from employees
+order by &column_name;
+
+undefine column_name;
+
+/*
+Use the VERIFY command to toggle the display of the substitution variable,
+both before and after SQL Developer replaces substitution variables with values.
+*/
+
+-- The VERIFY command should be executed with the SELECT statement
+-- VERIFY shows the old output and the new output in the SCRIPT OUTPUT tab
+set verify on
+select employee_id, last_name, salary
+from employees
+where employee_id = &e_num;
