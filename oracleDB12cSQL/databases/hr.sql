@@ -482,3 +482,7 @@ where employee_id = &e_num;
 select * from departments
 where department_name like '%&t%'; -- Here we are trying to retrieve records that have the '&' in the name, but Oracle see '&' as a variable.
 
+set define off; -- Disables the '&' character for indicating a variable
+
+select * from departments
+where department_name like '%&t%';
