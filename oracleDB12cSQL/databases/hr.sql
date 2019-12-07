@@ -479,4 +479,6 @@ where employee_id = &e_num;
 
 -- Using SET DEFINE OFF
 -- Use to prevent Oracle server from displaying the prompt window for specific responses
+select * from departments
+where department_name like '%&t%'; -- Here we are trying to retrieve records that have the '&' in the name, but Oracle see '&' as a variable.
 
