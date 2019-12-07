@@ -422,3 +422,8 @@ where &condition
 order by &order_column;
 
 -- DEFINE / UNDEFINE statements
+/*
+Use the DEFINE command to create and assign a value to a variable.
+Use the UNDEFINE command to remove a variable.
+*/
+
