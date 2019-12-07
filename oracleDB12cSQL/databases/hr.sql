@@ -444,3 +444,13 @@ select * from employees
 where department_id = &dept_id;
 
 undefine dept_id -- Deletes the dept_id variable
+
+accept emp_from prompt 'Please enter the starting employee number.';
+accept emp_to prompt 'Please enter the ending employee number.';
+select * from employees
+where employee_id between &emp_from and &emp_to;
+
+undefine emp_from
+undefine emp_to
+
+--Double ampersand / SET VERIFY / SET DEFINE
