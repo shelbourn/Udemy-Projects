@@ -437,3 +437,10 @@ where employee_id = &employee_num;
 undefine employee_num; -- Deletes variable 'employee_num'
 
 -- ACCEPT / PROMPT commands and alteration
+-- You can change the prompt message as follows
+-- But it should be executed as a script
+accept dept_id prompt 'Please enter the department ID';
+select * from employees
+where department_id = &dept_id;
+
+undefine dept_id -- Deletes the dept_id variable
