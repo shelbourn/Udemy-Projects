@@ -387,3 +387,18 @@ order by salary desc
 fetch first 2 rows with ties; -- Includes both records that have the same salary
 
 -- Using substitution variables
+/*
+Use substitution variables to:
+Temporarily store values with single ampersand (&) and double ampersand (&&) substitution
+Use substitution variables to supplement the following:
+WHERE conditions
+ORDER BY clauses
+Column expressions
+Table names
+Entire SELECT statments
+*/
+
+select employee_id, last_name, salary, department_id
+from employees
+where employee_id = &employee_num; -- When using the single (&) the variable will be discarded after it is used
+
