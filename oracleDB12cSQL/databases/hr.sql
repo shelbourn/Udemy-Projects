@@ -413,3 +413,12 @@ select employee_id, first_name, last_name, salary, department_id
 from employees
 where first_name = &ename -- With no sing quote marks now you have to include the quotes in the SQL prompt window
 order by 2;
+
+-- Specifying Column Name, Expressions, and Text
+-- &column_name = salary :: &condition = salary > 10000 :: &order_column = employee_id
+select employee_id, last_name, job_id, &column_name
+from employees
+where &condition
+order by &order_column;
+
+-- DEFINE / UNDEFINE statements
