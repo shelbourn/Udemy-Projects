@@ -436,3 +436,4 @@ where employee_id = &employee_num;
 
 undefine employee_num; -- Deletes variable 'employee_num'
 
+-- ACCEPT / PROMPT commands and alteration
