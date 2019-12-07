@@ -476,3 +476,7 @@ set verify on
 select employee_id, last_name, salary
 from employees
 where employee_id = &e_num;
+
+-- Using SET DEFINE OFF
+-- Use to prevent Oracle server from displaying the prompt window for specific responses
+
