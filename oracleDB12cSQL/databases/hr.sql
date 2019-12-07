@@ -438,8 +438,8 @@ undefine employee_num; -- Deletes variable 'employee_num'
 
 -- ACCEPT / PROMPT commands and alteration
 -- You can change the prompt message as follows
--- But it should be executed as a script
-accept dept_id prompt 'Please enter the department ID';
+-- ACCEPT / PROMPT commands should be executed with the SELECT statement together.
+accept dept_id prompt 'Please enter the department ID'; -- 'dept_id' is the variable and the PROMPT is the message that pops up
 select * from employees
 where department_id = &dept_id;
 
