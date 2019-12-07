@@ -425,5 +425,14 @@ order by &order_column;
 /*
 Use the DEFINE command to create and assign a value to a variable.
 Use the UNDEFINE command to remove a variable.
+DEFINE assigns a value to a variable for the ENTIRE SESSION, unlike the (&) which is destroyed immediately after execution.
 */
+
+define employee_num = 200; -- This variable is valid for the current session only
+
+select employee_id, last_name, salary, department_id
+from employees
+where employee_id = &employee_num;
+
+undefine employee_num; -- Deletes variable 'employee_num'
 
