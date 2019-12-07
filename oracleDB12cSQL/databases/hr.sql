@@ -454,3 +454,8 @@ undefine emp_from
 undefine emp_to
 
 --Double ampersand / SET VERIFY / SET DEFINE
+-- The double ampersand defines the variable and assigns it at the same time, and it can be re-used.
+select * from departments where department_id = &&p;
+
+undefine p -- && variable remains until the end of the session
+
