@@ -402,3 +402,14 @@ select employee_id, last_name, salary, department_id
 from employees
 where employee_id = &employee_num; -- When using the single (&) the variable will be discarded after it is used
 
+-- Using (&) with VARCHAR
+select employee_id, first_name, last_name, salary, department_id
+from employees
+where first_name = '&ename' -- FIRST_NAME tied to variable 'ename'. STRINGS ARE CASE-SENSITIVE!!!
+order by 2;
+
+-- The query above is the same as this...
+select employee_id, first_name, last_name, salary, department_id
+from employees
+where first_name = &ename -- With no sing quote marks now you have to include the quotes in the SQL prompt window
+order by 2;
