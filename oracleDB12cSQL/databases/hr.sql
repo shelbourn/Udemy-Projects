@@ -605,3 +605,12 @@ select trim (leading ' ' from ' khaled khudari ') V from dual; -- removes the le
 select trim (trailing ' ' from ' khaled khudari ') V from dual; -- removes the trailing ' '
 
 select trim (both ' ' from ' khaled khudari ') V from dual; -- removes both ' ' from the string.
+
+select trim ('k' from 'khaled khudari') V from dual;
+
+select trim (leading 'k' from 'khaled khudari') V from dual;
+
+select trim (trailing 'k' from 'khaled khudari') V from dual;
+
+select trim ('  khaled khudari  ') V from dual; -- If no character is specified to be trimmed then spaces will be removed by default.
+
