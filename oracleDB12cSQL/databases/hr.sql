@@ -564,3 +564,14 @@ from employees
 where first_name = 'Nanette';
 
 -- Character Manipulation functions (LPAD, RPAD, REPLACE, TRIM)
+-- LPAD & RPAD return an expression left-padded or right-padded to a length of n characters
+select employee_id, first_name, salary, lpad (salary, 10, '#'), rpad (salary, 10, '*')
+from employees
+
+/*
+The above query will return the salary of each employee extended to 10 characters.
+With the LPAD, the left side of the the salary will be filled in with '#'
+to 10 characters if the salary is less than 10 characters.
+With the RPAD, the right side of the salary will be filled with '*'
+to 10 characters if the salary is less than 10 characters.
+*/
