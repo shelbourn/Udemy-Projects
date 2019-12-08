@@ -501,6 +501,8 @@ Character Functions
 select employee_id, first_name, upper (first_name), lower (first_name), initcap (first_name)
 from employees;
 
+-- Single row functions can be used with the SELECT, WHERE, and ORDER BY clauses.
+
 select employee_id, first_name, upper (first_name), lower (first_name), initcap (first_name)
 from employees
 where upper (first_name) = 'PATRICK';
@@ -509,3 +511,5 @@ select employee_id, first_name, upper (first_name), lower (first_name), initcap 
 from employees
 where upper (first_name) = upper ('patrick')
 order by upper (first_name);
+
+-- Character Functions (CONCAT, SUBSTR, LENGTH)
