@@ -603,3 +603,5 @@ select trim (' ' from ' khaled khudari ') V from dual;
 select trim (leading ' ' from ' khaled khudari ') V from dual; -- removes the leading ' '
 
 select trim (trailing ' ' from ' khaled khudari ') V from dual; -- removes the trailing ' '
+
+select trim (both ' ' from ' khaled khudari ') V from dual; -- removes both ' ' from the string.
