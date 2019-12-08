@@ -591,3 +591,15 @@ The above query replaces 'a' with '*' and 'en' with '#'
 select * from dual;
 
 select 1+1+3 from dual;
+
+select 1+5 from employees;
+
+-- TRIM syntax:
+-- TRIM ( [ [ LEADING | TRAILING | BOTH ] trim_character FROM ] string1 )
+-- If LEADING or TRAILING is not used then the default will be to trim from beginning and end
+-- TRIM cannot remove any characters from the middle of a string
+select trim (' ' from ' khaled khudari ') V from dual;
+
+select trim (leading ' ' from ' khaled khudari ') V from dual; -- removes the leading ' '
+
+select trim (trailing ' ' from ' khaled khudari ') V from dual; -- removes the trailing ' '
