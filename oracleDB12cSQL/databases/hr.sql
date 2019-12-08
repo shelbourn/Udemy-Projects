@@ -585,3 +585,9 @@ from employees;
 /*
 The above query replaces 'a' with '*' and 'en' with '#'
 */
+
+-- TRIM function
+-- DUAL is a public table that you can use to view the results from functions and calculations
+select * from dual;
+
+select 1+1+3 from dual;
