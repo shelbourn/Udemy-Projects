@@ -566,7 +566,7 @@ where first_name = 'Nanette';
 -- Character Manipulation functions (LPAD, RPAD, REPLACE, TRIM)
 -- LPAD & RPAD return an expression left-padded or right-padded to a length of n characters
 select employee_id, first_name, salary, lpad (salary, 10, '&'), rpad (salary, 10, '*')
-from employees
+from employees;
 
 /*
 The above query will return the salary of each employee extended to 10 characters.
@@ -579,3 +579,9 @@ to 10 characters if the salary is less than 10 characters.
 -- REPLACE function
 -- Searches a text expression for a character string and, if found,
 -- replaces it with a specified replacement string
+select employee_id, first_name, replace (first_name, 'a', '*'), replace (first_name, 'en', '#')
+from employees;
+
+/*
+The above query replaces 'a' with '*' and 'en' with '#'
+*/
