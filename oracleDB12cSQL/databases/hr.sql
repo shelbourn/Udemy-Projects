@@ -562,3 +562,5 @@ instr (first_name, 'e', 5),
 instr (first_name, 'e', 1, 2)
 from employees
 where first_name = 'Nanette';
+
+-- Character Manipulation functions (LPAD, RPAD, REPLACE, TRIM)
