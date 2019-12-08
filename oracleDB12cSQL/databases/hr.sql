@@ -545,6 +545,7 @@ from employees;
 -- 1 is the default for m and n
 -- n refers to the occurrence of the searched for string. (2nd occurrence of 'E', etc)
 -- INSTR stands for 'IN STRING'
+-- INSTR can be more than 1 character
 
 /*
 INSTR returns the numeric position of a named string.
