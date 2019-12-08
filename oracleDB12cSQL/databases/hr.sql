@@ -514,5 +514,11 @@ order by upper (first_name);
 
 -- Character Manipulation Functions (CONCAT, SUBSTR, LENGTH)
 -- CONCAT function (Equivalent to concatentation operator [||])
+-- CONCAT function can only take two arguements (arguement 1, arguement 2)
+-- The CONCAT operator (||) is more flexible
 select employee_id, upper (first_name), last_name, upper (concat(first_name, last_name))
 from employees;
+
+select employee_id, first_name, last_name, first_name || ' ' || last_name || ' ' || salary "Full Name with Salary"
+from employees;
+
