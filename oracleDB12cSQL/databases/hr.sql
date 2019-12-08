@@ -488,5 +488,5 @@ select * from departments
 where department_name like '%&t%';
 
 -- Functions
--- Singles-row functions return one result per row
+-- Single-row functions return one result per row
 -- Multiple-row functions return one result per set of rows
