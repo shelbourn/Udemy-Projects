@@ -543,6 +543,7 @@ from employees;
 -- instr (column/expression, m, n)
 -- m is the starting search positions, n is the occurrence
 -- 1 is the default for m and n
+-- n refers to the occurrence of the searched for string. (2nd occurrence of 'E', etc)
 -- INSTR stands for 'IN STRING'
 
 /*
