@@ -513,3 +513,6 @@ where upper (first_name) = upper ('patrick')
 order by upper (first_name);
 
 -- Character Manipulation Functions (CONCAT, SUBSTR, LENGTH)
+-- CONCAT function (Equivalent to concatentation operator [||])
+select employee_id, upper (first_name), last_name, upper (concat(first_name, last_name))
+from employees;
