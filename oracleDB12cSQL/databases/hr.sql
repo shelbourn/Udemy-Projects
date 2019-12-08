@@ -512,4 +512,4 @@ from employees
 where upper (first_name) = upper ('patrick')
 order by upper (first_name);
 
--- Character Functions (CONCAT, SUBSTR, LENGTH)
+-- Character Manipulation Functions (CONCAT, SUBSTR, LENGTH)
