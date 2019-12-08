@@ -515,10 +515,20 @@ order by upper (first_name);
 -- Character Manipulation Functions (CONCAT, SUBSTR, LENGTH)
 -- CONCAT function (Equivalent to concatentation operator [||])
 -- CONCAT function can only take two arguements (arguement 1, arguement 2)
--- The CONCAT operator (||) is more flexible
+-- The CONCAT operator (||) is more flexible because it can take more than 2 arguements
 select employee_id, upper (first_name), last_name, upper (concat(first_name, last_name))
 from employees;
 
 select employee_id, first_name, last_name, first_name || ' ' || last_name || ' ' || salary "Full Name with Salary"
 from employees;
 
+-- SUBSTR (sub-string) function
+-- Can take 3 arguements (column/expression, m, n)
+-- m is the starting position, n is the number of character for the sub-string
+select employee_id,
+first_name,
+substr (first_name, 1, 3),
+substr (first_name, 2, 4),
+substr (first_name, 2), -- without the n value the sub-string will stop at the end of the string
+substr (first_name, -3) -- with a negative value the sub-string will start from the end of the string
+from employees;
