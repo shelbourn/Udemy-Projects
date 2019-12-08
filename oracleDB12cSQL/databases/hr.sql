@@ -537,3 +537,5 @@ from employees;
 -- Returns the length of an expression, value, or string
 select first_name, length (first_name)
 from employees;
+
+-- Character Manupulation Functions (INSTR)
