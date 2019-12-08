@@ -532,3 +532,8 @@ substr (first_name, 2, 4),
 substr (first_name, 2), -- without the n value the sub-string will stop at the end of the string
 substr (first_name, -3) -- with a negative value the sub-string will start from the end of the string
 from employees;
+
+-- LENGTH function
+-- Returns the length of an expression, value, or string
+select first_name, length (first_name)
+from employees;
