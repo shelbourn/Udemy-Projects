@@ -490,3 +490,11 @@ where department_name like '%&t%';
 -- Functions
 -- Single-row functions return one result per row
 -- Multiple-row functions return one result per set of rows
+
+/*
+Character Functions
+1.) Case conversion functions
+2.) Character manipulation functions
+*/
+
+--  Case conversion functions (UPPER, LOWER, INITCAP)
