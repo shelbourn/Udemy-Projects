@@ -498,3 +498,14 @@ Character Functions
 */
 
 --  Case conversion functions (UPPER, LOWER, INITCAP)
+select employee_id, first_name, upper (first_name), lower (first_name), initcap (first_name)
+from employees;
+
+select employee_id, first_name, upper (first_name), lower (first_name), initcap (first_name)
+from employees
+where upper (first_name) = 'PATRICK';
+
+select employee_id, first_name, upper (first_name), lower (first_name), initcap (first_name)
+from employees
+where upper (first_name) = upper ('patrick')
+order by upper (first_name);
