@@ -539,3 +539,24 @@ select first_name, length (first_name)
 from employees;
 
 -- Character Manupulation Functions (INSTR)
+-- Takes 3 arguements
+-- instr (column/expression, m, n)
+-- m is the starting search positions, n is the occurrence
+-- 1 is the default for m and n
+-- INSTR stands for 'IN STRING'
+
+/*
+INSTR returns the numeric position of a named string.
+Optionally, you can provide a position m to start searching,
+and the occurrence n of the string. m and n default to 1,
+meaning the search starts at the beginning of the string
+and reports the first occurrence.
+*/
+
+select first_name,
+instr (first_name, 'e'),
+instr (first_name, 'e', 2),
+instr (first_name, 'e', 5),
+instr (first_name, 'e', 1, 2)
+from employees
+where first_name = 'Nanette';
