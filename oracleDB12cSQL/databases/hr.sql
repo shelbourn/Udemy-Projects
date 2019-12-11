@@ -631,3 +631,5 @@ select round (10.499, 1) from dual; -- 10.5
 select round (10.499, 2) from dual; -- 10.50
 
 select round (10.493, 2) from dual;
+
+select round (55.993, 1) from dual;
