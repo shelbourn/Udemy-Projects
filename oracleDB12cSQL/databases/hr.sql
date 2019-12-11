@@ -614,3 +614,5 @@ select trim (trailing 'k' from 'khaled khudari') V from dual;
 
 select trim ('  khaled khudari  ') V from dual; -- If no character is specified to be trimmed then spaces will be removed by default.
 
+select trim (leading 'M' from 'Matthew Shelbourn') from dual; -- Characters are CASE SENSITIVE 'm' will not work in this case
+
