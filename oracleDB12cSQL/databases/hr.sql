@@ -633,3 +633,13 @@ select round (10.499, 2) from dual; -- 10.50
 select round (10.493, 2) from dual;
 
 select round (55.993, 1) from dual;
+
+select round (55.993, -1) from dual; -- Negative values round numbers to the left of the decimal place
+
+select round (55.493, -2) from dual; -- 55 rounded up equals 100
+
+select round (555.493, -2) from dual;
+
+select round (570.493, -3) from dual;
+
+select round (470.493, -3) from dual;
