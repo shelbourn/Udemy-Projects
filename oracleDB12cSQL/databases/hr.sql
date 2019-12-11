@@ -617,3 +617,17 @@ select trim ('  khaled khudari  ') V from dual; -- If no character is specified 
 select trim (leading 'M' from 'Matthew Shelbourn') from dual; -- Characters are CASE SENSITIVE 'm' will not work in this case
 
 -- Number Functions (ROUND, TRUNC, MOD)
+-- ROUND: Rounds value to specified decimal place
+-- TRUNC: Truncates value to a specified decimal value
+-- MOD: (Modulus) Returns remaineder of division of two numbers
+select round (10.5) from dual; -- If no rounding decimal value is given then it will round to the nearest whole number
+
+select round (150.49) from dual;
+
+select round (10.48, 1) from dual; -- Rounds to one digit after decimal (10s place)
+
+select round (10.499, 1) from dual; -- 10.5
+
+select round (10.499, 2) from dual; -- 10.50
+
+select round (10.493, 2) from dual;
