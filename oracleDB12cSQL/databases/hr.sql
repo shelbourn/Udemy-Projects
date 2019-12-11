@@ -616,3 +616,4 @@ select trim ('  khaled khudari  ') V from dual; -- If no character is specified 
 
 select trim (leading 'M' from 'Matthew Shelbourn') from dual; -- Characters are CASE SENSITIVE 'm' will not work in this case
 
+-- Number Functions (ROUND, TRUNC, MOD)
