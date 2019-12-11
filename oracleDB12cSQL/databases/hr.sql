@@ -643,3 +643,5 @@ select round (555.493, -2) from dual;
 select round (570.493, -3) from dual;
 
 select round (470.493, -3) from dual;
+
+select round (1470.493, -2) from dual;
