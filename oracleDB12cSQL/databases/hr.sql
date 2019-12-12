@@ -659,3 +659,12 @@ select trunc (998.6565, -3) from dual;
 
 -- MOD Functions
 -- Modulus: Returns the remainder of dividing two numbers
+select mod (15, 2) from dual; -- 15/2 = 7 with a remainder of 1
+
+select mod (15, 3) from dual; -- 15/3 =5 with a remainder of 0
+
+-- the MOD function is often used to know if a number is odd or even by dividing by 2
+
+select mod (100, 2) from dual; -- If MOD returns 0 then the number is even
+
+select mod (101, 2) from dual; -- If MOD returns 1 then the number is odd
