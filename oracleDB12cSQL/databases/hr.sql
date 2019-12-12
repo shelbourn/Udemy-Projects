@@ -651,3 +651,6 @@ select trunc (10.6565) from dual; -- With no parameters all decimals are truncat
 
 select trunc (10.6565, 2) from dual; -- Truncates the two decimals after the first two digits to the right of the decimal place
 
+select trunc (998.6565, -2) from dual; -- Truncates (turns to zeroes) the digits two places to the left of the decimal place
+
+select trunc (998.6565, -3) from dual;
