@@ -735,3 +735,7 @@ from employees;
 
 select employee_id, first_name, hire_date, add_months (hire_date, 4)
 from employees;
+
+-- Negative number for parameter subtracts months from date
+select employee_id, first_name, hire_date, add_months (hire_date, -2)
+from employees;
