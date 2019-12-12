@@ -654,3 +654,6 @@ select trunc (10.6565, 2) from dual; -- Truncates the two decimals after the fir
 select trunc (998.6565, -2) from dual; -- Truncates (turns to zeroes) the digits two places to the left of the decimal place
 
 select trunc (998.6565, -3) from dual;
+
+-- MOD Functions
+-- Modulus: Returns the remainder of dividing two numbers
