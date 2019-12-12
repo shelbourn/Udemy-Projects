@@ -670,3 +670,11 @@ select mod (100, 2) from dual; -- If MOD returns 0 then the number is even
 select mod (101, 2) from dual; -- If MOD returns 1 then the number is odd
 
 -- Date Functions (SYSDATE)
+-- Default date forat is DD-MM-RR(YEAR)
+
+/*
+Date + Number = Date
+Date - Number = Date
+Date - Date = Number of Days
+Date + Number/24 = Date
+*/
