@@ -645,3 +645,9 @@ select round (570.493, -3) from dual;
 select round (470.493, -3) from dual;
 
 select round (1470.493, -2) from dual;
+
+-- TRUNC functions
+select trunc (10.6565) from dual; -- With no parameters all decimals are truncated
+
+select trunc (10.6565, 2) from dual; -- Truncates the two decimals after the first two digits to the right of the decimal place
+
