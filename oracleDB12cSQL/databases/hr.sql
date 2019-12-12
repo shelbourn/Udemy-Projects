@@ -647,11 +647,13 @@ select round (470.493, -3) from dual;
 select round (1470.493, -2) from dual;
 
 -- TRUNC functions
+-- To the left of the decimal place TRUNC turns digits into zeroes
+-- To the right of the decimal place TRUNC deletes all digits after the specified parameter
 select trunc (10.6565) from dual; -- With no parameters all decimals are truncated
 
 select trunc (10.6565, 2) from dual; -- Truncates the two decimals after the first two digits to the right of the decimal place
 
-select trunc (998.6565, -2) from dual; -- Truncates (turns to zeroes) the digits two places to the left of the decimal place
+select trunc (9998.6565, -2) from dual; -- Truncates (turns to zeroes) the digits two places to the left of the decimal place
 
 select trunc (998.6565, -3) from dual;
 
