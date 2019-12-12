@@ -739,3 +739,17 @@ from employees;
 -- Negative number for parameter subtracts months from date
 select employee_id, first_name, hire_date, add_months (hire_date, -2)
 from employees;
+
+-- NEXT_DAY Function
+-- Takes 2 parameters
+-- 1st parameter: Valid date
+-- 2nd parameter: Valid day of the week
+
+select sysdate, next_day (sysdate, 'FRIDAY') from dual;
+-- The above query retrieves the date of the next Friday from the SYSDATE
+
+-- Days can also be referred to by number of the week
+-- 1 = Sunday
+-- 7 = Saturday
+-- NLS_DATE_LANGUAGE
+select sysdate, next_day (sysdate, 1) from dual;
