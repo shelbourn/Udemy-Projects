@@ -689,4 +689,11 @@ A value between 0-49 will return in 20xx format
 
 -- What is SYSDATE
 -- SYSDATE is a function that returns the current database server's date and time
+select sysdate from dual;
 
+-- Using arithmetic operators with dates
+-- Date + Number = Date
+
+select sysdate, sysdate + 3 from dual; -- adding days
+
+select sysdate, sysdate - 3 from dual; -- subtracting days
