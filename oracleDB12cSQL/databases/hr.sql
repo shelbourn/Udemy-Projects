@@ -717,3 +717,10 @@ from employees
 where first_name = 'Adam';
 
 -- Date Functions (MONTHS_BETWEEN, ADD_MONTHS, NEXT_DAY, LAST_DAY)
+
+-- MONTHS_BETWEEN Function
+-- MONTHS_BETWEEN is more accurate than number of days divided by 30
+-- Always put the larger number first in the MONTHS_BETWEEN arguements
+
+select employee_id, first_name, months_between (sysdate, hire_date), (sysdate - hire_date) / 30
+from employees;
