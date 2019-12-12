@@ -753,3 +753,8 @@ select sysdate, next_day (sysdate, 'sunday') from dual;
 -- 7 = Saturday
 -- NLS_DATE_LANGUAGE
 select sysdate, next_day (sysdate, 1) from dual;
+
+-- LAST_DAY Function
+-- This selects the last date of the month based on a given date
+
+select last_day (sysdate) from dual;
