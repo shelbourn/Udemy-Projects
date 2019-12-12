@@ -696,4 +696,12 @@ select sysdate from dual;
 
 select sysdate, sysdate + 3 from dual; -- adding days
 
+-- Date - Number = Date
+
 select sysdate, sysdate - 3 from dual; -- subtracting days
+
+-- Data - Date = Number of Days
+
+select employee_id, sysdate, hire_date, sysdate - hire_date, round (sysdate - hire_date), round ((sysdate - hire_date) / 365) years
+from employees
+order by years desc;
