@@ -669,3 +669,4 @@ select mod (100, 2) from dual; -- If MOD returns 0 then the number is even
 
 select mod (101, 2) from dual; -- If MOD returns 1 then the number is odd
 
+-- Date Functions (SYSDATE)
