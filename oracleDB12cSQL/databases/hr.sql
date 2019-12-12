@@ -745,7 +745,7 @@ from employees;
 -- 1st parameter: Valid date
 -- 2nd parameter: Valid day of the week
 
-select sysdate, next_day (sysdate, 'FRIDAY') from dual;
+select sysdate, next_day (sysdate, 'sunday') from dual;
 -- The above query retrieves the date of the next Friday from the SYSDATE
 
 -- Days can also be referred to by number of the week
