@@ -758,3 +758,16 @@ select sysdate, next_day (sysdate, 1) from dual;
 -- This selects the last date of the month based on a given date
 
 select last_day (sysdate) from dual;
+
+-- *** GOOD EXAMPLE ***
+
+/*
+Display the employee number, first name, hire date, number of months employeed,
+six month review date, first Friday after hire date,
+for all employees who have been employeed for fewer than 150 months
+*/
+
+select employee_id, first_name, hire_date, add_months (hire_date, 6) "Review Date",
+months_between (sysdate, hire_date) "Months Employed", next_day (hire_date, 'friday')
+from employees
+where months_between (sysdate, hire_date) < 150;
