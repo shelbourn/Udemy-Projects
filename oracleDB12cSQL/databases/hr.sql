@@ -678,3 +678,15 @@ Date - Number = Date
 Date - Date = Number of Days
 Date + Number/24 = Date
 */
+
+select first_name, hire_date
+from employees;
+
+/* Notes on year (RR) format
+In general, if the value is between 50-99 returns 19xx format
+A value between 0-49 will return in 20xx format
+*/
+
+-- What is SYSDATE
+-- SYSDATE is a function that returns the current database server's date and time
+
