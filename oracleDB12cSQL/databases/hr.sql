@@ -715,3 +715,5 @@ select sysdate + 5/24 from dual; -- Adding 5 hours to current server time
 select employee_id, first_name, sysdate - hire_date "Number of Days", round ((sysdate - hire_date) / 7) "Number of Weeks"
 from employees
 where first_name = 'Adam';
+
+-- Date Functions (MONTHS_BETWEEN, ADD_MONTHS, NEXT_DAY, LAST_DAY)
