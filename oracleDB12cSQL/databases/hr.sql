@@ -771,3 +771,5 @@ select employee_id, first_name, hire_date, add_months (hire_date, 6) "Review Dat
 months_between (sysdate, hire_date) "Months Employed", next_day (hire_date, 'friday')
 from employees
 where months_between (sysdate, hire_date) < 150;
+
+-- Date Functions (ROUND, TRUNC)
