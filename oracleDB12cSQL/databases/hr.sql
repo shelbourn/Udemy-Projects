@@ -720,7 +720,18 @@ where first_name = 'Adam';
 
 -- MONTHS_BETWEEN Function
 -- MONTHS_BETWEEN is more accurate than number of days divided by 30
--- Always put the larger number first in the MONTHS_BETWEEN arguements
+-- Always put the larger number first in the MONTHS_BETWEEN parameters
 
 select employee_id, first_name, months_between (sysdate, hire_date), (sysdate - hire_date) / 30
+from employees;
+
+-- NOTE: If date 1 is less than date 2 then the result will be negative
+select employee_id, first_name, months_between (hire_date, sysdate)
+from employees;
+
+-- ADD_MONTHS Function
+-- 1st parameter is date to add months to
+-- 2nd parameter is the number of months to add
+
+select employee_id, first_name, hire_date, add_months (hire_date, 4)
 from employees;
