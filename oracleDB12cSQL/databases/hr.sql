@@ -705,3 +705,13 @@ select sysdate, sysdate - 3 from dual; -- subtracting days
 select employee_id, sysdate, hire_date, sysdate - hire_date, round (sysdate - hire_date), round ((sysdate - hire_date) / 365) years
 from employees
 order by years desc;
+
+-- Date + Number/24 = Adding number of hours to a date
+
+select sysdate + 5/24 from dual; -- Adding 5 hours to current server time
+
+-- Example 1: We need to know how many weeks the employee 'Adam' has worked so far
+
+select employee_id, first_name, sysdate - hire_date "Number of Days", round ((sysdate - hire_date) / 7) "Number of Weeks"
+from employees
+where first_name = 'Adam';
