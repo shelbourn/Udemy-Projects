@@ -8,5 +8,8 @@ function nameAlert2(name) {
 	alert(name)
 }
 
-nameAlert1()
+// Cannot return a function when it is being used for an event listener
+// nameAlert1()
 nameAlert2('Matt')
+
+task3Element.addEventListener('click', nameAlert1)
