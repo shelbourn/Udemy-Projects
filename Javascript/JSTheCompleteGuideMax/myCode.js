@@ -24,3 +24,10 @@ outputResult(currentResult, calculationDescription)
 When referring to userName inside of the greetUser function we now
 always refer to the local, shadowed variable. Only if no such local variable existed, JavaScript would fall back to the global variable.
 */
+
+/* NOTES ON RETURN STATEMENT
+
+Return ends the execution of the function.
+No code within the function will be executed after it is returned.
+Functions can be returned with only 'return'.
+*/
