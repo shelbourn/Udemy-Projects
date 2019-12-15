@@ -7,3 +7,6 @@ function nameAlert1() {
 function nameAlert2(name) {
 	alert(name)
 }
+
+nameAlert1()
+nameAlert2('Matt')
