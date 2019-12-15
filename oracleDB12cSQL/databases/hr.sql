@@ -775,7 +775,7 @@ where months_between (sysdate, hire_date) < 150;
 -- Date Functions (ROUND, TRUNC)
 
 /*
-The ROUND and TRUN functions can be used for number and date values. When used with
+The ROUND and TRUNC functions can be used for number and date values. When used with
 dates, these functions round or truncate to the specified format model. Therefore, you can
 round dates to the nearest year or month. If the format model is month, dates 1-15 result in
 the first day of the current month. Dates 16-31 result in the first day of the next month. If the
@@ -783,4 +783,11 @@ format model is year, months 1-6 result in January 1 of the current year. Months
 January 1 of the next year.
 */
 
+--TRUNC function for dates resets the day of the month to the first day of the month
 
+select employee_id,
+first_name,
+hire_date,
+round (hire_date, 'month'), trunc (hire_date, 'month')
+from employees
+order by hire_date;
