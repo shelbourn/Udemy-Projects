@@ -1,4 +1,4 @@
-const userInput = prompt() // This value does not change with calculations below
+const userInput = prompt('Please enter a number') // This value does not change with calculations below
 let currentResult
 
 currentResult = 18 + userInput
