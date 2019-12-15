@@ -783,7 +783,7 @@ format model is year, months 1-6 result in January 1 of the current year. Months
 January 1 of the next year.
 */
 
---TRUNC function for dates resets the day of the month to the first day of the month
+--TRUNC function for dates formatted by month resets the day of the month to the first day of the month
 
 select employee_id,
 first_name,
@@ -791,3 +791,13 @@ hire_date,
 round (hire_date, 'month'), trunc (hire_date, 'month')
 from employees
 order by hire_date;
+
+-- TRUNC functions formatted by year resets the date to the first day of the given year
+
+select employee_id,
+first_name,
+hire_date,
+round (hire_date, 'year'), trunc (hire_date, 'year')
+from employees
+order by hire_date;
+
