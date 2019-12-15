@@ -792,6 +792,8 @@ round (hire_date, 'month'), trunc (hire_date, 'month')
 from employees
 order by hire_date;
 
+-- ROUND functions formatted by year resets the date to the first day of the year if the month
+-- is June or Earlier and the next year if the month is July or later
 -- TRUNC functions formatted by year resets the date to the first day of the given year
 
 select employee_id,
