@@ -64,3 +64,4 @@ function add() {
 addBtn.addEventListener('click', add)
 
 // Functions with empty parens indicate that the function does not require any parameters.
+// Function parameters are essentially variables to be used within the function
