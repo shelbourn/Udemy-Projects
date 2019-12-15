@@ -30,4 +30,6 @@ always refer to the local, shadowed variable. Only if no such local variable exi
 Return ends the execution of the function.
 No code within the function will be executed after it is returned.
 Functions can be returned with only 'return'.
+Return without any statement following simply ends the function's
+execution.
 */
