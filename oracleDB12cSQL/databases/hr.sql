@@ -813,3 +813,21 @@ order by hire_date;
 select first_name, upper (first_name), substr (upper (first_name) ,1,3),
 lpad (substr (upper (first_name), 1,3), 10, '*')
 from employees;
+
+-- Another example
+-- Assume that there is a column in a table that contains a name with 3 segments
+-- We need to split the string 'ahmed ali naser' to first_name, middle_name, last_name
+-- using select statement
+
+-- *** GOOD EXAMPLE ***
+
+select 'ahmed ali naser' FULL_NAME,
+substr ('ahmed ali naser', 1, instr ('ahmed ali naser', ' ', 1, 1) - 1) FIRST_NAME,
+substr ('ahmed ali naser', instr ('ahmed ali naser', ' ', 1, 1) + 1 ,
+instr ('ahmed ali naser', ' ', 1, 2) - instr ('ahmed ali naser', ' ', 1, 1) - 1) MIDDLE_NAME,
+substr ('ahmed ali naser', instr ('ahmed ali naser', ' ', 1, 2) + 1) LAST_NAME
+from dual;
+
+select 'ahmed ali naser' FULL_NAME,
+instr ('ahmed ali naser', ' ', 1, 1) - 1) FIRST_NAME
+from dual;
