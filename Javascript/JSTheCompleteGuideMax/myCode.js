@@ -19,7 +19,7 @@ let calculationDescription = `(${defaultResult} + 10) * 3 / 2 - 1`
 
 outputResult(currentResult, calculationDescription)
 
-/* SHADOW VARIABLES
+/* SHADOWED VARIABLES
 
 When referring to userName inside of the greetUser function we now
 always refer to the local, shadowed variable. Only if no such local variable existed, JavaScript would fall back to the global variable.
