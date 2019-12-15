@@ -7,6 +7,7 @@ let currentResult = defaultResult
 // Variables and constants defined inside a function block cannots be accessed outside the block
 // The below is called a "Pure Function"
 // It does not alter any global variables
+// Variables inside of functions get their own scope
 function add(num1, num2) {
   const result = num1 + num2
   return result
