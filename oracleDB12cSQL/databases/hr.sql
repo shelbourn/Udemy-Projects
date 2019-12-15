@@ -806,4 +806,10 @@ from employees
 order by hire_date;
 
 -- Nesting Functions
+-- Single-row functions can be nester to any level.
+-- Nest functions are evaluated from the deepest level to the
+-- least deep level.
 
+select first_name, upper (first_name), substr (upper (first_name) ,1,3),
+lpad (substr (upper (first_name), 1,3), 10, '*')
+from employees;
