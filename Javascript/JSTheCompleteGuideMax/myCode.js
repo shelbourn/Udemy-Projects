@@ -48,6 +48,11 @@ let currentResult = defaultResult
 // besides the event listener
 // Function remains active after script has run so the
 // outputResult variable must be included in the function for the code to work
+// Functions without return tell the JS engine to not execute the function immediately
+// but to store it in memory for future execution upon an event
+// JS ALWAYS EXECUTES A FUNCTION WHEN IT INCLUDES PARENS
+// This is why with event listeners only the function's name is used and not parens
+
 function add() {
 	currentResult = currentResult + userInput.value
 	outputResult(currentResult, '')
@@ -57,3 +62,5 @@ function add() {
 // 1.) String value
 // 2.) Function name WITHOUT PARENS
 addBtn.addEventListener('click', add)
+
+// Functions with empty parens indicate that the function does not require any parameters.
