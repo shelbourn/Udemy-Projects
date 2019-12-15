@@ -783,7 +783,9 @@ format model is year, months 1-6 result in January 1 of the current year. Months
 January 1 of the next year.
 */
 
---TRUNC function for dates formatted by month resets the day of the month to the first day of the month
+-- ROUND functions for dates formatted by month reset the date to the first day of the month for the 15th
+-- day or earlier and to the first day of the following month for the 16th day or later
+-- TRUNC function for dates formatted by month resets the day of the month to the first day of the month
 
 select employee_id,
 first_name,
