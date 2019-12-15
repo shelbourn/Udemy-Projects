@@ -38,3 +38,17 @@
 
 // Executing Functions "Indirectly"
 
+const defaultResult = 0
+let currentResult = defaultResult
+
+function add(num1, num2) {
+	const result = num1 + num2
+	return result
+}
+
+// Event Listeners take two parameters
+// 1.) String value
+// 2.) Function name WITHOUT PARENS
+addBtn.addEventListener('click', add)
+
+outputResult(currentResult, calculationDescription)
