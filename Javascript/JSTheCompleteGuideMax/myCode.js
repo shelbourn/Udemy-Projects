@@ -27,6 +27,8 @@ always refer to the local, shadowed variable. Only if no such local variable exi
 
 /* NOTES ON RETURN STATEMENT
 
+Useful for getting code out of the function.
+
 Return ends the execution of the function.
 No code within the function will be executed after it is returned.
 Functions can be returned with only 'return'.
