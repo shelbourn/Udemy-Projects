@@ -41,14 +41,19 @@
 const defaultResult = 0
 let currentResult = defaultResult
 
-function add(num1, num2) {
-	const result = num1 + num2
-	return result
+// Function has no return statement because it is just feeding
+// information to the event listener
+// It also alters a global variable, but since it doesn't return it
+// it indicates to the programmer that it is not to be used for anything
+// besides the event listener
+// Function remains active after script has run so the
+// outputResult variable must be included in the function for the code to work
+function add() {
+	currentResult = currentResult + userInput.value
+	outputResult(currentResult, '')
 }
 
 // Event Listeners take two parameters
 // 1.) String value
 // 2.) Function name WITHOUT PARENS
 addBtn.addEventListener('click', add)
-
-outputResult(currentResult, calculationDescription)
