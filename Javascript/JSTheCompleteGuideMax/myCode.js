@@ -98,3 +98,5 @@ For Example:
 But 3 + '3' = 33 due to JS concat properties for the '+' operator.
 
 // Even const vars when declared inside a function are only limited to function's local scope
+// DON'T REPEAT YOURSELF (DRY)!!!!!!!!!
+// Best to define all functions, global vars, global consts, and global lets at top of script
