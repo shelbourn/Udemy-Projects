@@ -69,3 +69,12 @@
 // Converting Data Types
 
 // Anything input by a user and imported via an html file will always be recognized by JS as a string
+const defaultResult = 0
+let currentResult = defaultResult
+
+function () {
+  currentResult = currentResult + userInput.value
+  outputResult(currentResult, '')
+}
+
+addBtn.addEventListener('click', add)
