@@ -76,8 +76,9 @@ let currentResult = defaultResult
 // If left as a string, JS will simply continue to concat every user input.
 // parseInt and parseFloat are built into JS. They take a string as a param and convert to integer or floating decimal
 function add() {
-	// currentResult = currentResult + parseInt(userInput.value)
-	currentResult = currentResult + +userInput.value // '+' can be used without parens as shorthand for parseInt('string')
+	// variable.toString() converts input to a string
+	currentResult = currentResult + parseInt(userInput.value) // More control over what to convert to
+	// currentResult = currentResult + +userInput.value // '+' can be used without parens as shorthand for parseInt('string')
 	outputResult(currentResult, '')
 }
 
