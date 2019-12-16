@@ -72,6 +72,8 @@
 const defaultResult = 0
 let currentResult = defaultResult
 
+// As the below function is, userInput.value is a string. We need to convert it to a number
+// If left as a string, JS will simply continue to concat every user input.
 function () {
   currentResult = currentResult + userInput.value
   outputResult(currentResult, '')
