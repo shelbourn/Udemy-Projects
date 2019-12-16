@@ -96,3 +96,5 @@ For Example:
 3 * '3' = 9
 
 But 3 + '3' = 33 due to JS concat properties for the '+' operator.
+
+// Even const vars when declared inside a function are only limited to function's local scope
