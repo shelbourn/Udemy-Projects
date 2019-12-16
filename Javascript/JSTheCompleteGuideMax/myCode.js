@@ -66,20 +66,33 @@
 // // Functions with empty parens indicate that the function does not require any parameters.
 // // Function parameters are essentially variables to be used within the function
 
-// Converting Data Types
+// // Converting Data Types
 
-// Anything input by a user and imported via an html file will always be recognized by JS as a string
-const defaultResult = 0
-let currentResult = defaultResult
+// // Anything input by a user and imported via an html file will always be recognized by JS as a string
+// const defaultResult = 0
+// let currentResult = defaultResult
 
-// As the below function is, userInput.value is a string. We need to convert it to a number
-// If left as a string, JS will simply continue to concat every user input.
-// parseInt and parseFloat are built into JS. They take a string as a param and convert to integer or floating decimal
-function add() {
-	// variable.toString() converts input to a string
-	currentResult = currentResult + parseInt(userInput.value) // More control over what to convert to
-	// currentResult = currentResult + +userInput.value // '+' can be used without parens as shorthand for parseInt('string')
-	outputResult(currentResult, '')
-}
+// // As the below function is, userInput.value is a string. We need to convert it to a number
+// // If left as a string, JS will simply continue to concat every user input.
+// // parseInt and parseFloat are built into JS. They take a string as a param and convert to integer or floating decimal
+// function add() {
+// 	// variable.toString() converts input to a string
+// 	currentResult = currentResult + parseInt(userInput.value) // More control over what to convert to
+// 	// currentResult = currentResult + +userInput.value // '+' can be used without parens as shorthand for parseInt('string')
+// 	outputResult(currentResult, '')
+// }
 
-addBtn.addEventListener('click', add)
+// addBtn.addEventListener('click', add)
+
+// Mixing String and Numbers
+
+/*
+The '+' operator is the only arithmetic operator that concats numbers and strings.
+All the rest of the arithmetic operators perform arithmetic operations on numbers and string.
+For Example:
+
+3 - '3' = 0
+3 / '3' = 1
+3 * '3' = 9
+
+But 3 + '3' = 33 due to JS concat properties for the '+' operator.
