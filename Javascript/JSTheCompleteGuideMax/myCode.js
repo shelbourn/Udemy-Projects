@@ -74,6 +74,7 @@ let currentResult = defaultResult
 
 // As the below function is, userInput.value is a string. We need to convert it to a number
 // If left as a string, JS will simply continue to concat every user input.
+// parseInt and parseFloatare built into JS. They take a string as a param and convert to integer or floating decimal
 function () {
   currentResult = currentResult + userInput.value
   outputResult(currentResult, '')
