@@ -831,3 +831,6 @@ from dual;
 select 'ahmed ali naser' FULL_NAME,
 instr ('ahmed ali naser', ' ', 1, 1) - 1) FIRST_NAME
 from dual;
+
+-- Implicit Data Conversion vs Explicit
+
