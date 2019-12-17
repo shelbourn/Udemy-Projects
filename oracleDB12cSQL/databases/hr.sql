@@ -833,4 +833,10 @@ instr ('ahmed ali naser', ' ', 1, 1) - 1) FIRST_NAME
 from dual;
 
 -- Implicit Data Conversion vs Explicit
+/*
+CONVERSION FUNCTIONS:
 
+1.) TO_DATE
+2.) TO_CHAR
+3.) TO_NUMBER
+*/
