@@ -843,3 +843,10 @@ CONVERSION FUNCTIONS:
 
 -- Implicit Data Type Conversion = Done by Oracle
 -- Explicit Data Type Conversion = Done by User using conversion function
+
+/* Implicit Date Type Conversion:
+
+-- Can convert VARCHAR or CHAR to NUMBER or DATE if the VARCHAR or CHAR is in a valid DATE or NUMBER format
+-- Can convert NUMBER or DATE to VARCHAR or CHAR
+
+*** BEST PRACTICE TO USE EXPLICIT DATA TYPE CONVERSION TO ENSURE RELIABILITY OF SQL STATEMENTS ***
