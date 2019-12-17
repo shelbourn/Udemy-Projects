@@ -840,3 +840,6 @@ CONVERSION FUNCTIONS:
 2.) TO_CHAR
 3.) TO_NUMBER
 */
+
+-- Implicit Data Type Conversion = Done by Oracle
+-- Explicit Data Type Conversion = Done by User using conversion function
