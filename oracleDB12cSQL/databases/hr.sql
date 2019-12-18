@@ -932,5 +932,20 @@ select to_char (1598, '$9,999') from dual;
 -- 'L' shows the local currency symbol
 select to_char (1598, 'L9,999') from dual;
 
+-- 'G' and the ',' produce the same result with the thousands separator
 select to_char (1598, '$9G999') from dual;
 ----------------------------------------------
+
+select to_char (1598.87) from dual;
+
+select to_char (1598.87, '9999.99') from dual;
+
+select to_char (1598.87, '9,999.99') from dual;
+
+select to_char (1598.87, '$9,999.99') from dual;
+
+-- 'D' and the '.' produce the same result with the decimal point
+select to_char (1598.87, '$9G999D99') from dual;
+
+-- The below query will round the decimal to the tenths place
+select to_char (1598.87, '9999.9') from dual;
