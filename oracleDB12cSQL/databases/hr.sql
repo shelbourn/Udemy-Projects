@@ -878,3 +878,11 @@ select to_char(sysdate, 'dd.mm.yyyy') from dual;
 -- In the query below you can use 'AM' or 'PM' and get the same result.
 select to_char(sysdate, 'dd.mm.yyyy hh:mm:ss AM') from dual;
 
+-- 24 Hour time format
+select to_char(sysdate, 'dd.mm.yyyy hh24:mm:ss AM') from dual;
+
+-- 'fm'(format) in front of TO_CHAR arguement removes unnecessary zeroes and spaces
+-- Arguements to TO_CHAR function are case-sensitive ('month' = july, 'MONTH' = JULY)
+select first_name, hire_date, to_char (hire_date, 'dd month yyyy') HIREDATE,
+to_char (hire_date, 'fmdd month yyyy') HIREDATE
+from employees;
