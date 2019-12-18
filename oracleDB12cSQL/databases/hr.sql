@@ -902,8 +902,10 @@ where to_char (hire_date, 'yyyy') = '2003';
 
 -- List all the employees who were employed in February
 select * from employees
-where to_char (hire_date, 'mm') = '02';
+where to_char (hire_date, 'mm') = '02'; -- '02' is required because 'fmMM' was not used
 
 -- Use 'fmDD' if you only want to search for '2' since 'fm' removes all zeroes and spaces
 select * from employees
 where to_char (hire_date, 'fmMM') = '2';
+
+-- Using TO_CHAR with Numbers
