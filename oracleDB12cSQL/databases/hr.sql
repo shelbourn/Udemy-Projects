@@ -920,3 +920,17 @@ L = Uses the floating local currency symbol
 . = Prints a decimal point
 , = Prints a comma as a thousands indicator
 */
+
+select to_char (1598) from dual;
+
+select to_char (1598, '9999') from dual;
+
+select to_char (1598, '9,999') from dual;
+
+select to_char (1598, '$9,999') from dual;
+
+-- 'L' shows the local currency symbol
+select to_char (1598, 'L9,999') from dual;
+
+select to_char (1598, '$9G999') from dual;
+----------------------------------------------
