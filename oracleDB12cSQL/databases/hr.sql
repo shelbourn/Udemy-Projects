@@ -900,3 +900,10 @@ select to_char (sysdate, 'fmDDspth "OF" MONTH YYYY') from dual;
 select * from employees
 where to_char (hire_date, 'yyyy') = '2003';
 
+-- List all the employees who were employed in February
+select * from employees
+where to_char (hire_date, 'mm') = '02';
+
+-- Use 'fmDD' if you only want to search for '2' since 'fm' removes all zeroes and spaces
+select * from employees
+where to_char (hire_date, 'fmMM') = '2';
