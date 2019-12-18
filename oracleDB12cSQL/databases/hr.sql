@@ -850,3 +850,24 @@ CONVERSION FUNCTIONS:
 -- Can convert NUMBER or DATE to VARCHAR or CHAR
 
 *** BEST PRACTICE TO USE EXPLICIT DATA TYPE CONVERSION TO ENSURE RELIABILITY OF SQL STATEMENTS ***
+
+-- EXPLICIT DATA TYPE CONVERSION
+-- TO_CHAR (With Dates)
+
+/*
+YYYY = Full year in numbers
+YEAR = YEar spelled out
+MM = Two-Digit value for month
+MONTH = Full name of month
+MON = Three-Letter abbreviation of month
+DY = Three-Letter abbreviation of the day of week
+DAY = Full name of the day of week
+DD = Number day of the month
+
+HH or HH12 = 12 hour time format
+HH24 = 24 hour time format
+MI = Minute
+SS = Second
+SSSSS = Seconds past midnight
+*/
+
