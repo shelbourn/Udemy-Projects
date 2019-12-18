@@ -886,3 +886,17 @@ select to_char(sysdate, 'dd.mm.yyyy hh24:mm:ss AM') from dual;
 select first_name, hire_date, to_char (hire_date, 'dd month yyyy') HIREDATE,
 to_char (hire_date, 'fmdd month yyyy') HIREDATE
 from employees;
+
+select to_char (sysdate, 'FMDD "OF" MONTH YYYY') from dual;
+
+-- 'sp' spells out the date
+select to_char (sysdate, 'FMDDsp "OF" MONTH YYYY') from dual;
+
+-- 'th' adds 'th' to the end of the date
+select to_char (sysdate, 'fmDDspth "OF" MONTH YYYY') from dual;
+
+-- Lists all the employees who were employed in 2003
+-- Converts HIRE_DATE to a year value and only retrieves the year portion of the hire date
+select * from employees
+where to_char (hire_date, 'yyyy') = '2003';
+
