@@ -933,6 +933,7 @@ select to_char (1598, '$9,999') from dual;
 select to_char (1598, 'L9,999') from dual;
 
 -- 'G' and the ',' produce the same result with the thousands separator
+-- 'G' cannot be used with '.'  or ','
 select to_char (1598, '$9G999') from dual;
 ----------------------------------------------
 
@@ -944,7 +945,11 @@ select to_char (1598.87, '9,999.99') from dual;
 
 select to_char (1598.87, '$9,999.99') from dual;
 
+-- The below query will result in an error because you cannot use 'G' or 'D' with '.' or ','
+select to_char (1598.87, '$9G999.99') from dual;
+
 -- 'D' and the '.' produce the same result with the decimal point
+-- 'D' cannot be used with '.' or ','
 select to_char (1598.87, '$9G999D99') from dual;
 
 -- The below query will round the decimal to the tenths place
