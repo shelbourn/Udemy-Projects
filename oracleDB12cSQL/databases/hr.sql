@@ -871,3 +871,10 @@ SS = Second
 SSSSS = Seconds past midnight
 */
 
+select sysdate from dual;
+
+select to_char(sysdate, 'dd.mm.yyyy') from dual;
+
+-- In the query below you can use 'AM' or 'PM' and get the same result.
+select to_char(sysdate, 'dd.mm.yyyy hh:mm:ss AM') from dual;
+
