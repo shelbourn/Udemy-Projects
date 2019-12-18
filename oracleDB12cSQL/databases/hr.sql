@@ -954,3 +954,31 @@ select to_char (1598.87, '$9G999D99') from dual;
 
 -- The below query will round the decimal to the tenths place
 select to_char (1598.87, '9999.9') from dual;
+-------------------------------------------------------
+
+-- The below query will fail because it is asking Oracle to convert a 4-digit number into 2 digits.
+select to_char (1598.87, '99') from dual;
+
+-- The below query will treat '0' like '9'
+select to_char (1598.87, '0000') from dual;
+
+-- The below query will add a leading '0'
+select to_char (1598.87, '00000') from dual;
+
+select to_char (1598.87, '00000000') from dual;
+
+-- The below query will treat the '0' like a '9'
+select to_char (1598.87, '0999') from dual;
+
+-- The 5th '0' will be leading and the 4th '0' will be treated as a '9'
+select to_char (1598.87, '00999') from dual;
+
+select to_char (1598989, '9G999G999') from dual;
+
+select to_char (-1598, '9999') from dual;
+
+select to_char (1598, '9999mi') from dual;
+
+select to_char (1598, '9999PR') from dual;
+
+select to_char (-1598, '9999PR') from dual;
