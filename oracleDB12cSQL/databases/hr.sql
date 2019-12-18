@@ -909,3 +909,14 @@ select * from employees
 where to_char (hire_date, 'fmMM') = '2';
 
 -- Using TO_CHAR with Numbers
+-- Syntax: TO_CHAR(number, 'format_model')
+
+/*
+ADDITIONAL FORMAT ELEMENTS:
+9 = Represents a number
+0 = Forces a zero to be displayed
+$ = Places a floating dollar sign
+L = Uses the floating local currency symbol
+. = Prints a decimal point
+, = Prints a comma as a thousands indicator
+*/
