@@ -1119,3 +1119,7 @@ where TO_DATE is used.
 -- Use '1985' instead of '85'
 select to_char (to_date ('1-1-1985', 'dd-mm-yy'), 'yyyy') from dual;
 */
+---------------------------------------------
+
+-- NVL, NVL2, NULLIF, and COALESCE Functions
+
