@@ -1310,3 +1310,12 @@ select last_name, job_id, salary,
             )          
       REVISED_SALARY -- Alias
 from employees; 
+
+/*
+*** IMPORTANT NOTE ABOUT CASE/DECODE ***
+
+Write the CASE/DECODE statements spanning multiple lines for
+readability.
+
+THIS IS A BEST PRACTICE!
+*/
