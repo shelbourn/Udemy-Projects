@@ -1109,3 +1109,13 @@ select to_date ('1-1-85', 'dd-mm-yy') from dual;
 
 --Shows the CHAR representation of the date, which is '2085'
 select to_char (to_date ('1-1-85', 'dd-mm-yy'), 'yyyy') from dual;
+
+/*
+*** BEST PRACTICE ***
+
+Always use 'YYYY' format and use 4-digit dates in your queries
+where TO_DATE is used.
+
+-- Use '1985' instead of '85'
+select to_char (to_date ('1-1-1985', 'dd-mm-yy'), 'yyyy') from dual;
+*/
