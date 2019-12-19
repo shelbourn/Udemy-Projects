@@ -1200,3 +1200,13 @@ from employees;
 
 -- Conditional Expressions
 -- CASE Function
+
+/*
+Conditional Expressions:
+
+Provide the use of the IF/THEN/ELSE statement within SQL
+Includes CASE and DECODE functions
+
+NOTE: CASE complies with the ANSI SQL standard.
+DECODE is specific to Oracle's syntax.
+*/
