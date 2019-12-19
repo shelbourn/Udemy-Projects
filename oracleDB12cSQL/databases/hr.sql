@@ -1083,3 +1083,29 @@ where hire_date > to_date ('10-11-        2003', 'dd-mm-yyyy');
 -- When using 'fx' the format should match exactly
 select * from employees
 where hire_date > to_date ('10-11- 2003', 'fxdd-mm- yyyy');
+
+-- *** IMPORTANT - Differences between RR and YY formats ***
+
+/*
+RR Format:
+
+In general, if the value is between 50-99 THIS returns 19xx year.
+In general, if the value is between 0-49 THIS returns 20xx year
+*/
+
+select to_date ('1-1-85', 'dd-mm-rr') from dual;
+
+-- Shows the CHAR representation of the date, which is '1985
+select to_char(to_date ('1-1-85', 'dd-mm-rr'), 'yyyy') from dual;
+
+/*
+YY Format:
+
+In general, YY does not do any logical formatting.
+YY assumes that '85' refers to the 85th year of the current century, which will be '2085'
+*/
+
+select to_date ('1-1-85', 'dd-mm-yy') from dual;
+
+--Shows the CHAR representation of the date, which is '2085'
+select to_char (to_date ('1-1-85', 'dd-mm-yy'), 'yyyy') from dual;
