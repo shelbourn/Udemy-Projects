@@ -1258,3 +1258,15 @@ select first_name, job_id, salary,
                   when 'SA_REP' then 1.20 * salary
       end "REVISED_SALARY"
 from employees;      
+
+-- The below statement is not logically corrent
+-- If the first condition is met then it shows the result
+-- regardless of any other conditions
+-- Since the if statements are ordered by ascending salary values
+-- All salaries above 3000 will show 'Salary > 3000'
+select salary,
+      case  when salary > 3000 then 'salary > 3000'
+            when salary > 4000 then 'salary > 4000'
+            when salary > 10000 then 'salary > 10000'
+      end FFF
+from employees;      
