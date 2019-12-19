@@ -1121,5 +1121,25 @@ select to_char (to_date ('1-1-1985', 'dd-mm-yy'), 'yyyy') from dual;
 */
 ---------------------------------------------
 
+-- General Single-Row Functions
 -- NVL, NVL2, NULLIF, and COALESCE Functions
+
+/*
+NVL (expr1, expr2)
+NVL2 (expr1, expr2, expr3)
+NULLIF (expr1, expr2)
+COALESCE (expr1, expr2, ..., exprN)
+
+NVL = Converts a null value to an actual value
+
+NVL2 = If expr1 is not null, NVL2 returns expr2.
+If expr1 is null, NVL2 returns expr3.
+expr1 can have any data type.
+
+NULLIF = Compares two expressions and returns NULL if they are equal.
+Returns the first expression if they are not equal.
+
+COALESCE = Returns the first non-NULL expression in the
+expression list
+*/
 
