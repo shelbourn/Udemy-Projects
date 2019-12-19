@@ -1,3 +1,5 @@
+-----------------------------------------------
+
 -- Select Statement
 SELECT *
 FROM employees;
@@ -19,10 +21,12 @@ FROM employees;
 
 SELECT LAST_NAME, JOB_ID, SALARY, COMMISSION_PCT, COMMISSION_PCT+10
 FROM employees;
+---------------------------------------------------
 
 -- Aliases
 SELECT LAST_NAME, LAST_NAME AS name, LAST_NAME lname, LAST_NAME "LAST name"
 FROM employees;
+---------------------------------------------------
 
 -- Concatenation
 SELECT FIRST_NAME, LAST_NAME, FIRST_NAME||LAST_NAME "full name",
@@ -35,6 +39,7 @@ FROM employees;
 --BEST PRACTICE
 SELECT FIRST_NAME || q'( work's in department )'|| DEPARTMENT_ID "Employee Department"
 FROM employees;
+---------------------------------------------------
 
 -- Distinct Operator (Shows only rows that are unique)
 SELECT DEPARTMENT_ID
@@ -46,12 +51,14 @@ FROM EMPLOYEES;
 -- Distinct Operator with Multiple Columns
 SELECT DISTINCT DEPARTMENT_ID, JOB_ID
 FROM EMPLOYEES;
+----------------------------------------------
 
 -- Describe Operator
 -- Describe displays the structure of a table
 DESCRIBE EMPLOYEES;
 
 DESC EMPLOYEES;
+----------------------------------------------
 
 -- Restricting data retrieval with WHERE clause
 SELECT *
@@ -77,11 +84,13 @@ WHERE FIRST_NAME='Steven';
 SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, JOB_ID
 FROM EMPLOYEES
 WHERE FIRST_NAME='steven';
+-------------------------------------------
 
 -- Using date values in the WHERE clause
 SELECT *
 FROM EMPLOYEES
 WHERE HIRE_DATE='17-OCT-03';
+----------------------------------------------
 
 -- Using Comparison Operators
 SELECT * FROM EMPLOYEES
@@ -107,6 +116,7 @@ ORDER BY FIRST_NAME;
 /* For more information about character strings using comparison operators go to:
 https://docs.oracle.com/cd/B12037_01/server.101/b10759/sql_elements002.htm
 */
+--------------------------------------------------
 
 -- Using the BETWEEN AND Operator
 SELECT * FROM EMPLOYEES
@@ -137,10 +147,12 @@ ORDER BY FIRST_NAME;
 SELECT * FROM EMPLOYEES
 WHERE FIRST_NAME BETWEEN 'A' AND 'D'
 ORDER BY FIRST_NAME;
+-----------------------------------------------
 
 -- Using the IN operator (OR for values)
 SELECT * FROM EMPLOYEES
 WHERE SALARY IN (10000, 25000, 17000); -- The order of the values is not important
+------------------------------------------------
 
 /* Using the LIKE operator. Usually used with _ or %
 _ means one character
@@ -180,6 +192,7 @@ WHERE JOB_ID LIKE 'SA/_%' escape '/'; -- The '/' escapes the character that foll
 SELECT JOB_ID
 FROM JOBS
 WHERE JOB_ID LIKE '%/%%' escape '/'; -- Retrieves all JOB_ID that include the character '%'
+-----------------------------------------------
 
 -- Using the IS NULL operator
 SELECT FIRST_NAME, COMMISSION_PCT
@@ -194,6 +207,7 @@ WHERE COMMISSION_PCT IS NULL;
 SELECT *
 FROM EMPLOYEES
 WHERE COMMISSION_PCT=NULL;
+-------------------------------------------------
 
 -- Using NOT Operater
 -- Can also use NOT IN, NOT LIKE, IS NOT NULL, NOT BETWEEN AND
@@ -209,6 +223,7 @@ WHERE COMMISSION_PCT IS NOT NULL;
 SELECT *
 FROM EMPLOYEES
 WHERE FIRST_NAME NOT LIKE 'S%'; -- All employees who's names do not begin with the letter 'S'
+--------------------------------------------------
 
 -- Using the NOT EQUAL operator
 SELECT *
@@ -219,6 +234,7 @@ WHERE DEPARTMENT_ID <> 50;
 select *
 from employees
 where department_id != 50;
+---------------------------------------------
 
 -- Using logical operators (AND, OR, NOT)
 -- Defining conditions using the logical operators (AND, OR, NOT)
@@ -260,6 +276,7 @@ from employees
 where job_id = 'SA_REP'
 or (job_id = 'AD_PRES' and salary > 15000)
 order by last_name;
+-------------------------------------------
 
 /* RULES OF PRECEDENCE
 
@@ -284,6 +301,7 @@ and salary > 15000 -- Second condition
 order by last_name;
 
 -- BEST PRACTICE IS TO USE PARENS FOR CONDITIONS
+------------------------------------------------
 
 -- Using the ORDER BY clause
 select * from employees
@@ -344,6 +362,7 @@ order by 1; -- refers to the first column named in the SELECT statement (DEPARTM
 select department_id, first_name, salary
 from employees
 order by 1, 3; -- Order by column 1 and then by column 3
+---------------------------------------------------
 
 -- Using the FETCH clause (Used for top-end queries i.e. top 3 sales people)
 -- Using SQL row limition clause in query
@@ -370,6 +389,7 @@ select employee_id, first_name
 from employees
 order by employee_id
 offset 4 rows fetch next 50 percent rows only;
+----------------------------------------------------
 
 -- Using TIES with FETCH
 select employee_id, first_name, salary
@@ -385,6 +405,7 @@ select employee_id, first_name, salary
 from employees
 order by salary desc
 fetch first 2 rows with ties; -- Includes both records that have the same salary
+------------------------------------------------
 
 -- Using substitution variables
 /*
@@ -413,6 +434,7 @@ select employee_id, first_name, last_name, salary, department_id
 from employees
 where first_name = &ename -- With no sing quote marks now you have to include the quotes in the SQL prompt window
 order by 2;
+--------------------------------------------------
 
 -- Specifying Column Name, Expressions, and Text
 -- &column_name = salary :: &condition = salary > 10000 :: &order_column = employee_id
@@ -420,6 +442,7 @@ select employee_id, last_name, job_id, &column_name
 from employees
 where &condition
 order by &order_column;
+-------------------------------------------------
 
 -- DEFINE / UNDEFINE statements
 /*
@@ -435,6 +458,7 @@ from employees
 where employee_id = &employee_num;
 
 undefine employee_num; -- Deletes variable 'employee_num'
+-----------------------------------------------------
 
 -- ACCEPT / PROMPT commands and alteration
 -- You can change the prompt message as follows
@@ -452,6 +476,7 @@ where employee_id between &emp_from and &emp_to;
 
 undefine emp_from
 undefine emp_to
+------------------------------------------------
 
 --Double ampersand / SET VERIFY / SET DEFINE
 -- The double ampersand defines the variable and assigns it at the same time, and it can be re-used.
@@ -486,6 +511,7 @@ set define off; -- Disables the '&' character for indicating a variable
 
 select * from departments
 where department_name like '%&t%';
+-----------------------------------------------
 
 -- Functions
 -- Single-row functions return one result per row
@@ -496,6 +522,7 @@ Character Functions
 1.) Case conversion functions
 2.) Character manipulation functions
 */
+---------------------------------------------
 
 --  Case conversion functions (UPPER, LOWER, INITCAP)
 select employee_id, first_name, upper (first_name), lower (first_name), initcap (first_name)
@@ -511,6 +538,7 @@ select employee_id, first_name, upper (first_name), lower (first_name), initcap 
 from employees
 where upper (first_name) = upper ('patrick')
 order by upper (first_name);
+----------------------------------------------
 
 -- Character Manipulation Functions (CONCAT, SUBSTR, LENGTH)
 -- CONCAT function (Equivalent to concatentation operator [||])
@@ -537,6 +565,7 @@ from employees;
 -- Returns the length of an expression, value, or string
 select first_name, length (first_name)
 from employees;
+-----------------------------------------------
 
 -- Character Manupulation Functions (INSTR)
 -- Takes 3 arguements
@@ -562,6 +591,7 @@ instr (first_name, 'e', 5),
 instr (first_name, 'e', 1, 2)
 from employees
 where first_name = 'Nanette';
+------------------------------------------------
 
 -- Character Manipulation functions (LPAD, RPAD, REPLACE, TRIM)
 -- LPAD & RPAD return an expression left-padded or right-padded to a length of n characters
@@ -575,6 +605,7 @@ to 10 characters if the salary is less than 10 characters.
 With the RPAD, the right side of the salary will be filled with '*'
 to 10 characters if the salary is less than 10 characters.
 */
+-------------------------------------------
 
 -- REPLACE function
 -- Searches a text expression for a character string and, if found,
@@ -585,6 +616,7 @@ from employees;
 /*
 The above query replaces 'a' with '*' and 'en' with '#'
 */
+--------------------------------------------------
 
 -- TRIM function
 -- DUAL is a public table that you can use to view the results from functions and calculations
@@ -615,6 +647,7 @@ select trim (trailing 'k' from 'khaled khudari') V from dual;
 select trim ('  khaled khudari  ') V from dual; -- If no character is specified to be trimmed then spaces will be removed by default.
 
 select trim (leading 'M' from 'Matthew Shelbourn') from dual; -- Characters are CASE SENSITIVE 'm' will not work in this case
+--------------------------------------------------
 
 -- Number Functions (ROUND, TRUNC, MOD)
 -- ROUND: Rounds value to specified decimal place
@@ -645,6 +678,7 @@ select round (570.493, -3) from dual;
 select round (470.493, -3) from dual;
 
 select round (1470.493, -2) from dual;
+-------------------------------------------
 
 -- TRUNC functions
 -- To the left of the decimal place TRUNC turns digits into zeroes
@@ -656,6 +690,7 @@ select trunc (10.6565, 2) from dual; -- Truncates the two decimals after the fir
 select trunc (9998.6565, -2) from dual; -- Truncates (turns to zeroes) the digits two places to the left of the decimal place
 
 select trunc (998.6565, -3) from dual;
+-----------------------------------------
 
 -- MOD Functions
 -- Modulus: Returns the remainder of dividing two numbers
@@ -668,6 +703,7 @@ select mod (15, 3) from dual; -- 15/3 =5 with a remainder of 0
 select mod (100, 2) from dual; -- If MOD returns 0 then the number is even
 
 select mod (101, 2) from dual; -- If MOD returns 1 then the number is odd
+----------------------------------------------
 
 -- Date Functions (SYSDATE)
 -- Default date forat is DD-MM-RR(YEAR)
@@ -715,6 +751,7 @@ select sysdate + 5/24 from dual; -- Adding 5 hours to current server time
 select employee_id, first_name, sysdate - hire_date "Number of Days", round ((sysdate - hire_date) / 7) "Number of Weeks"
 from employees
 where first_name = 'Adam';
+--------------------------------------------------
 
 -- Date Functions (MONTHS_BETWEEN, ADD_MONTHS, NEXT_DAY, LAST_DAY)
 
@@ -771,6 +808,7 @@ select employee_id, first_name, hire_date, add_months (hire_date, 6) "Review Dat
 months_between (sysdate, hire_date) "Months Employed", next_day (hire_date, 'friday')
 from employees
 where months_between (sysdate, hire_date) < 150;
+-------------------------------------------------
 
 -- Date Functions (ROUND, TRUNC)
 
@@ -806,7 +844,7 @@ from employees
 order by hire_date;
 
 -- Nesting Functions
--- Single-row functions can be nester to any level.
+-- Single-row functions can be nested to any level.
 -- Nest functions are evaluated from the deepest level to the
 -- least deep level.
 
@@ -831,6 +869,7 @@ from dual;
 select 'ahmed ali naser' FULL_NAME,
 instr ('ahmed ali naser', ' ', 1, 1) - 1) FIRST_NAME
 from dual;
+-------------------------------------------------
 
 -- Implicit Data Conversion vs Explicit
 /*
@@ -850,6 +889,7 @@ CONVERSION FUNCTIONS:
 -- Can convert NUMBER or DATE to VARCHAR or CHAR
 
 *** BEST PRACTICE TO USE EXPLICIT DATA TYPE CONVERSION TO ENSURE RELIABILITY OF SQL STATEMENTS ***
+---------------------------------------------
 
 -- EXPLICIT DATA TYPE CONVERSION
 -- TO_CHAR (With Dates)
@@ -907,6 +947,7 @@ where to_char (hire_date, 'mm') = '02'; -- '02' is required because 'fmMM' was n
 -- Use 'fmDD' if you only want to search for '2' since 'fm' removes all zeroes and spaces
 select * from employees
 where to_char (hire_date, 'fmMM') = '2';
+----------------------------------------------
 
 -- Using TO_CHAR with Numbers
 -- Syntax: TO_CHAR(number, 'format_model')
@@ -1014,3 +1055,7 @@ select to_char (-7, '9') from dual;
 select length ('-7') from dual;
 
 select length ('7') from dual;
+
+------------------------------------------
+
+-- TO_NUMBER, TO_DATE Functions
