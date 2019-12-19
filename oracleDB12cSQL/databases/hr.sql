@@ -782,7 +782,7 @@ from employees;
 -- 1st parameter: Valid date
 -- 2nd parameter: Valid day of the week
 
-select sysdate, next_day (sysdate, 'sunday') from dual;
+select sysdate, next_day (sysdate, 'friday') from dual;
 -- The above query retrieves the date of the next Friday from the SYSDATE
 
 -- Days can also be referred to by number of the week
@@ -1059,3 +1059,13 @@ select length ('7') from dual;
 ------------------------------------------
 
 -- TO_NUMBER, TO_DATE Functions
+-- To convert CHAR to NUMBER, the CHAR must have a valid NUMBER format
+-- To convert CHAR to DATE, the CHAR must have a valid DATE format
+
+-- Using TO_DATE function
+
+select to_date ('10-11-2015', 'dd-mm-yyyy') from dual;
+
+-- Even though '.' is used, Oracle displays date as DD-MM-YYYY because that is the default format
+select to_date ('10.11.2015', 'dd.mm.yyyy') from dual;
+
