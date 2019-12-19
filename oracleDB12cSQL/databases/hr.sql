@@ -996,7 +996,7 @@ select to_char (1598, '999,999,999') from dual;
 -- Removes the white space from the above query
 select to_char (1598, 'FM999,999,999') from dual;
 
--- *** NOTE ON WHITE SPACES ***
+-- *** IMPORTANT: NOTE ON WHITE SPACES ***
 
 /*
 Where Oracle converts numbers to characters it leaves a white space in front
