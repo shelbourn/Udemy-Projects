@@ -1268,5 +1268,13 @@ select salary,
       case  when salary > 3000 then 'salary > 3000'
             when salary > 4000 then 'salary > 4000'
             when salary > 10000 then 'salary > 10000'
-      end FFF
-from employees;      
+      end FFF -- Alias
+from employees;     
+
+-- The correct logic is as follows:
+select salary,
+      case  when salary > 10000 then 'salary > 10000'
+            when salary > 4000 then 'salary > 4000'
+            when salary > 3000 then 'salary > 3000'
+      end FFF -- Alias
+from employees;
