@@ -1072,3 +1072,14 @@ select to_date ('10.11.2015', 'dd.mm.yyyy') from dual;
 -- Default date format for Oracle is DD-MON-RR (Year)
 -- 'MONTH' is a valid date format for the name of the month spelled out (November)
 select to_date ('10.november.2015', 'dd.month.yyyy') from dual;
+
+select * from employees
+where hire_date > to_date ('10-11-2003', 'dd-mm-yyyy');
+
+-- Oracle with remove white spaces
+select * from employees
+where hire_date > to_date ('10-11-        2003', 'dd-mm-yyyy');
+
+-- When using 'fx' the format should match exactly
+select * from employees
+where hire_date > to_date ('10-11- 2003', 'fxdd-mm- yyyy');
