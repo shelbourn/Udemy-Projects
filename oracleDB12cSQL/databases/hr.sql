@@ -1212,3 +1212,12 @@ DECODE is specific to Oracle's syntax.
 CASE is more flexible and widely-used
 */
 
+/*
+CASE Expression:
+
+CASE expr WHEN comparison_expr1 THEN return_expr1
+[WHEN comparison_expr2 THEN return_expr2
+WHEN comparison_exprN THEN return_exprN
+ELSE else_expr]
+END
+*/
