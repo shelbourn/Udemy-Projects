@@ -1284,6 +1284,7 @@ from employees;
 
 /*
 DECODE Function:
+(CASE expression is more powerful and flexible than DECODE)
 
 Facilitates conditional inquiries by doing the work of a 
 CASE expression or an IF/THEN/ELSE statement
@@ -1292,3 +1293,11 @@ DECODE (column/expression, search1, result1
         [, search2, result2, ...,]
         [, default])
 */
+
+select last_name, job_id, salary,
+      decode (job_id, 'IT_PROG', 1.10 * salary,
+                      'ST_CLERK', 1.15 * salary,
+                      'SA_REP', 1.20 * salary,
+              salary) -- salary is default value if no conditions are met
+      REVISED_SALARY -- Alias
+from employees;      
