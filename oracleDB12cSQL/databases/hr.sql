@@ -1188,3 +1188,11 @@ from employees;
 select first_name, length (first_name), last_name, length (last_name),
 nullif (length (first_name), length (last_name)) Results
 from employees;
+
+-- COALESCE Function
+-- Returns the first non-NULL value in expression list
+
+select employee_id, first_name, commission_pct, manager_id, salary,
+coalesce (commission_pct, manager_id, salary),
+nvl (nvl (commission_pct, manager_id), salary) -- Nested NVL statement equivalent to COALESCE function
+from employees;
