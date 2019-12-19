@@ -1319,3 +1319,17 @@ readability.
 
 THIS IS A BEST PRACTICE!
 */
+
+-- IMPORTANT EXAMPLE
+-- Diplay tax for employees as follows:
+-- If salary < 3000 then tax = 0%
+-- If salary 3000 - 7000 then tax = 10%
+-- If salary > 7000 then tax = 20%
+-- For this you should use CASE and not DECODE because it is more flexible
+
+select employee_id, first_name, salary,
+      case  when salary < 3000 then salary * 0.0
+            when salary between 3000 and 7000 then round (salary * 0.10) -- Rounds to nearest integer
+            when salary > 7000 then round (salary * 0.20)
+      end Tax
+from employees;      
