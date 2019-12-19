@@ -1220,4 +1220,6 @@ CASE expr WHEN comparison_expr1 THEN return_expr1
 WHEN comparison_exprN THEN return_exprN
 ELSE else_expr]
 END
+
+*** ALL KEYWORDS ARE MANDATORY EXCEPT ELSE KEYWORD ***
 */
