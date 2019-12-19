@@ -1169,6 +1169,8 @@ from employees;
 -- Using the NVL2 Function
 -- If expr1 is not NULL, the expr2 is returned
 -- If expr1 is NULL, then expr3 is returned
+-- Expr1, expr2, and expr3 do not need to have the same data types
+-- Expr2 and expr3 MUST HAVE the SAME data type
 
 select employee_id, first_name, commission_pct, nvl2 (commission_pct, commission_pct, 0)
 from employees;
