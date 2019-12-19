@@ -1278,3 +1278,6 @@ select salary,
             when salary > 3000 then 'salary > 3000'
       end FFF -- Alias
 from employees;
+------------------------------------------------
+
+-- Using the DECODE Function
