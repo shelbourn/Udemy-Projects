@@ -1228,6 +1228,7 @@ END
 
 -- CASE expression Method 1
 -- 'IT_PROG', 'ST_CLERK', and 'SA_REP' are case sensitive
+-- Restricted to making comparisons in one column
 select first_name, job_id, salary,
       case job_id when 'IT_PROG' then 1.10 * salary
                   when 'ST_CLERK' then 1.15 * salary
@@ -1239,10 +1240,21 @@ from employees;
 -- CASE expression Method 2
 -- This method is more flexible *** BEST PRACTICE ***
 -- You can make the condition after WHEN
+-- Can include any columns for conditions
 select first_name, job_id, salary,
       case  when job_id = 'IT_PROG' then 1.10 * salary
             when job_id = 'ST_CLERK' then 1.15 * salary
             when job_id = 'SA_REP' then 1.20 * salary
       else salary
+      end "REVISED_SALARY"
+from employees;     
+
+-- If no 'ELSE' statement is used then NULL will appear for unmatched conditions
+-- Any employee without a job title of IT_PROG, ST_CLERK, or SA_REP
+-- Will have a NULL value in the 'REVISED_SALARY' column
+select first_name, job_id, salary,
+      case job_id when 'IT_PROG' then 1.10 * salary
+                  when 'ST_CLERK' then 1.15 * salary
+                  when 'SA_REP' then 1.20 * salary
       end "REVISED_SALARY"
 from employees;      
