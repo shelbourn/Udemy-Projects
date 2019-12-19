@@ -1237,6 +1237,7 @@ select first_name, job_id, salary,
 from employees;      
 
 -- CASE expression Method 2
+-- This method is more flexible *** BEST PRACTICE ***
 -- You can make the condition after WHEN
 select first_name, job_id, salary,
       case  when job_id = 'IT_PROG' then 1.10 * salary
