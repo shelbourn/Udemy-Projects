@@ -1181,8 +1181,10 @@ nvl2 (commission_pct, 'Salary plus Commission', 'Salary Only') Income
 from employees;
 
 -- Using NULLIF Function
--- If expr1 = expr2 then NULL is returns, else it returns expr1
+-- If expr1 = expr2 then NULL is returned, else it returns expr1
 
+-- Returns NULL if length (first_name) = length (last_name)
+-- Returns length (first_name) if length (first_name) != length (last_name)
 select first_name, length (first_name), last_name, length (last_name),
 nullif (length (first_name), length (last_name)) Results
 from employees;
