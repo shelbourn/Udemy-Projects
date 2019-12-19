@@ -1165,3 +1165,15 @@ from employees;
 
 select employee_id, first_name, commission_pct, nvl (to_char(commission_pct), 'No Commission')
 from employees;
+
+-- Using the NVL2 Function
+-- If expr1 is not NULL, the expr2 is returned
+-- If expr1 is NULL, then expr3 is returned
+
+select employee_id, first_name, commission_pct, nvl2 (commission_pct, commission_pct, 0)
+from employees;
+
+-- NVL2 is almost like an IF/ELSE statement for queries
+select employee_id, first_name, commission_pct,
+nvl2 (commission_pct, 'Salary plus Commission', 'Salary Only') Income
+from employees;
