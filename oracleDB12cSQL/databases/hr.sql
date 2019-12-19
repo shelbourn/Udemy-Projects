@@ -1223,3 +1223,12 @@ END
 
 *** ALL KEYWORDS ARE MANDATORY EXCEPT ELSE KEYWORD ***
 */
+
+-- CASE expression Method 1
+select first_name, job_id, salary,
+      case job_id when 'IT_PROG' THEN 1.10 * salary
+                  when 'ST_CLERK' then 1.15 * salary
+                  when 'SA_REP' then 1.20 * salary
+      else salary
+      end "REVISED_SALARY"
+from employees;      
