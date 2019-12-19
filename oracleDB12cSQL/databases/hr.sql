@@ -1209,4 +1209,6 @@ Includes CASE and DECODE functions
 
 NOTE: CASE complies with the ANSI SQL standard.
 DECODE is specific to Oracle's syntax.
+CASE is more flexible and widely-used
 */
+
