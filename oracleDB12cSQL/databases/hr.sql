@@ -1130,7 +1130,9 @@ NVL2 (expr1, expr2, expr3)
 NULLIF (expr1, expr2)
 COALESCE (expr1, expr2, ..., exprN)
 
-NVL = Converts a null value to an actual value
+NVL = Converts a null value to an actual value.
+expression values should have the same data type.
+nvl(COMMISSION_PCT, NUMBER), nvl(HIRE_DATE, DATE)
 
 NVL2 = If expr1 is not null, NVL2 returns expr2.
 If expr1 is null, NVL2 returns expr3.
@@ -1153,4 +1155,13 @@ select employee_id, first_name, job_id, nvl (job_id, 'No Job Yet')
 from employees;
 
 select employee_id, first_name, hire_date, nvl (hire_date, '1-jan-03')
+from employees;
+
+-- IMPORTANT EXAMPLE
+-- Because COMMISSION_PCT is a number, if you are asked to return
+-- 'No Commission' if the employee's commission percentage is NULL
+-- Then you have to first convert the COMMISSION_PCT to a CHAR
+-- Before passing it through the NVL function
+
+select employee_id, first_name, commission_pct, nvl (to_char(commission_pct), 'No Commission')
 from employees;
