@@ -1221,6 +1221,8 @@ WHEN comparison_exprN THEN return_exprN
 ELSE else_expr]
 END
 
+'WHEN'  = 'IF'
+
 *** ALL KEYWORDS ARE MANDATORY EXCEPT ELSE KEYWORD ***
 */
 
