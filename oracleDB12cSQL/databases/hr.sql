@@ -1069,3 +1069,6 @@ select to_date ('10-11-2015', 'dd-mm-yyyy') from dual;
 -- Even though '.' is used, Oracle displays date as DD-MM-YYYY because that is the default format
 select to_date ('10.11.2015', 'dd.mm.yyyy') from dual;
 
+-- Default date format for Oracle is DD-MON-RR (Year)
+-- 'MONTH' is a valid date format for the name of the month spelled out (November)
+select to_date ('10.november.2015', 'dd.month.yyyy') from dual;
