@@ -1226,9 +1226,19 @@ END
 
 -- CASE expression Method 1
 select first_name, job_id, salary,
-      case job_id when 'IT_PROG' THEN 1.10 * salary
+      case job_id when 'IT_PROG' then 1.10 * salary
                   when 'ST_CLERK' then 1.15 * salary
                   when 'SA_REP' then 1.20 * salary
+      else salary
+      end "REVISED_SALARY"
+from employees;      
+
+-- CASE expression Method 2
+-- You can make the condition after WHEN
+select first_name, job_id, salary,
+      case  when job_id = 'IT_PROG' then 1.10 * salary
+            when job_id = 'ST_CLERK' then 1.15 * salary
+            when job_id = 'SA_REP' then 1.20 * salary
       else salary
       end "REVISED_SALARY"
 from employees;      
