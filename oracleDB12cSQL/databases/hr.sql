@@ -1196,5 +1196,7 @@ select employee_id, first_name, commission_pct, manager_id, salary,
 coalesce (commission_pct, manager_id, salary),
 nvl (nvl (commission_pct, manager_id), salary) -- Nested NVL statement equivalent to COALESCE function
 from employees;
+------------------------------------------
 
+-- Conditional Expressions
 -- CASE Function
