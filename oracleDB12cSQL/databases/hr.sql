@@ -1143,3 +1143,14 @@ COALESCE = Returns the first non-NULL expression in the
 expression list
 */
 
+-- NVL Function
+
+-- Tests if COMMISSION_PCT is NULL. If so then it returns second expression (0)
+select employee_id, first_name, commission_pct, nvl(commission_pct, 0)
+from employees;
+
+select employee_id, first_name, job_id, nvl (job_id, 'No Job Yet')
+from employees;
+
+select employee_id, first_name, hire_date, nvl (hire_date, '1-jan-03')
+from employees;
