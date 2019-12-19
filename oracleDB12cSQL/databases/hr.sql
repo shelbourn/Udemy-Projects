@@ -957,6 +957,7 @@ select to_char (1598.87, '9999.9') from dual;
 -------------------------------------------------------
 
 -- The below query will fail because it is asking Oracle to convert a 4-digit number into 2 digits.
+-- Oracle will return '###' when the query fails
 select to_char (1598.87, '99') from dual;
 
 -- The below query will treat '0' like '9'
@@ -977,8 +978,39 @@ select to_char (1598989, '9G999G999') from dual;
 
 select to_char (-1598, '9999') from dual;
 
+-- 'MI' places the minus side on the right side for negative numbers
 select to_char (1598, '9999mi') from dual;
 
+select to_char (-1598, '9999mi') from dual;
+
+-- 'PR' parenthesizes negative numbers
 select to_char (1598, '9999PR') from dual;
 
 select to_char (-1598, '9999PR') from dual;
+
+-- *** BEST PRACTICES ***
+
+-- Use the format below because we do not know the length of the numbers in our tables
+select to_char (1598, '999,999,999') from dual;
+
+-- Removes the white space from the above query
+select to_char (1598, 'FM999,999,999') from dual;
+
+-- *** NOTE ON WHITE SPACES ***
+
+/*
+Where Oracle converts numbers to characters it leaves a white space in front
+of the number returned to save space for a negative sign in case the number is
+negative.
+*/
+
+select to_char (7, '9') from dual;
+
+-- Can use this to remove the white space
+select to_char (7, 'FM9') from dual;
+
+select to_char (-7, '9') from dual;
+
+select length ('-7') from dual;
+
+select length ('7') from dual;
