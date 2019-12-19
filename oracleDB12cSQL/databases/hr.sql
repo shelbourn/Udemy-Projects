@@ -1301,3 +1301,12 @@ select last_name, job_id, salary,
               salary) -- salary is default value if no conditions are met
       REVISED_SALARY -- Alias
 from employees;      
+
+-- If there is no default value for non-matched conditions then NULL will be returned
+select last_name, job_id, salary,
+      decode (job_id, 'IT_PROG', 1.10 * salary,
+                      'ST_CLERK', 1.15 * salary,
+                      'SA_REP', 1.20 * salary
+            )          
+      REVISED_SALARY -- Alias
+from employees; 
