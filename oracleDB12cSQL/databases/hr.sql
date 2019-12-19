@@ -1281,3 +1281,14 @@ from employees;
 ------------------------------------------------
 
 -- Using the DECODE Function
+
+/*
+DECODE Function:
+
+Facilitates conditional inquiries by doing the work of a 
+CASE expression or an IF/THEN/ELSE statement
+
+DECODE (column/expression, search1, result1
+        [, search2, result2, ...,]
+        [, default])
+*/
