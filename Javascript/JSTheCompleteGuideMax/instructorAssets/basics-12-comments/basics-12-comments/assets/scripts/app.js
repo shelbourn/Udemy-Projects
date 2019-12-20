@@ -21,11 +21,14 @@ function createAndWriteOutput(operator, resultBeforeCal, calcNumber) {
 function add() {
 	const enteredNumber = getUserNumberInput()
 	// const calcDescription = `${currentResult} + ${enteredNumber}`
+	// initialResult will not change if currentResult changes afterwards
 	const initialResult = currentResult
 	currentResult += enteredNumber
 	// currentResult = currentResult + enteredNumber
 	createAndWriteOutput('+', initialResult, enteredNumber)
 	// outputResult(currentResult, calcDescription)
+	alert(initialResult)
+	alert(currentResult)
 }
 
 function subtract() {
