@@ -41,47 +41,33 @@ function writeToLog(
 
 function add() {
 	const enteredNumber = getUserNumberInput()
-	// const calcDescription = `${currentResult} + ${enteredNumber}`
-	// initialResult will not change if currentResult changes afterwards
 	const initialResult = currentResult
 	currentResult += enteredNumber
-	// currentResult = currentResult + enteredNumber
 	createAndWriteOutput('+', initialResult, enteredNumber)
-	// outputResult(currentResult, calcDescription)
-	// Stores operation and result in an object
 	writeToLog('ADD', initialResult, enteredNumber, currentResult)
 }
 
 function subtract() {
 	const enteredNumber = getUserNumberInput()
-	// const calcDescription = `${currentResult} - ${enteredNumber}`
 	const initialResult = currentResult
 	currentResult -= enteredNumber
-	// currentResult = currentResult - enteredNumber
 	createAndWriteOutput('-', initialResult, enteredNumber)
-	// outputResult(currentResult, calcDescription)
 	writeToLog('SUBTRACT', initialResult, enteredNumber, currentResult)
 }
 
 function multiply() {
 	const enteredNumber = getUserNumberInput()
-	// const calcDescription = `${currentResult} * ${enteredNumber}`
 	const initialResult = currentResult
 	currentResult *= enteredNumber
-	// currentResult = currentResult * enteredNumber
 	createAndWriteOutput('*', initialResult, enteredNumber)
-	// outputResult(currentResult, calcDescription)
 	writeToLog('MULTIPLY', initialResult, enteredNumber, currentResult)
 }
 
 function divide() {
 	const enteredNumber = getUserNumberInput()
-	// const calcDescription = `${currentResult} / ${enteredNumber}`
 	const initialResult = currentResult
 	currentResult /= enteredNumber
-	// currentResult = currentResult / enteredNumber
 	createAndWriteOutput('/', initialResult, enteredNumber)
-	// outputResult(currentResult, calcDescription)
 	writeToLog('DIVIDE', initialResult, enteredNumber, currentResult)
 }
 
