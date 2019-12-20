@@ -21,8 +21,8 @@ function getUserNumberInput() {
 
 // Generates and writes calculation log
 // Outputs only text
-function createAndWriteOutput(operator, resultBeforeCal, calcNumber) {
-	const calcDescription = `${resultBeforeCal} ${operator} ${calcNumber}`
+function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
+	const calcDescription = `${resultBeforeCalc} ${operator} ${calcNumber}`
 	outputResult(currentResult, calcDescription) // From vendor.js file
 }
 
