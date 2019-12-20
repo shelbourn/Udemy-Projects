@@ -60,14 +60,7 @@ function subtract() {
 	// currentResult = currentResult - enteredNumber
 	createAndWriteOutput('-', initialResult, enteredNumber)
 	// outputResult(currentResult, calcDescription)
-	const logEntry = {
-		operation: 'SUBTRACT',
-		prevResult: initialResult,
-		number: enteredNumber,
-		result: currentResult,
-	}
-	logEntries.push(logEntry) // Pushes logEntry object to logEntries array
-	console.log(logEntries) // Reads array element at index 0
+	writeToLog('SUBTRACT', initialResult, enteredNumber, currentResult)
 }
 
 function multiply() {
@@ -78,14 +71,7 @@ function multiply() {
 	// currentResult = currentResult * enteredNumber
 	createAndWriteOutput('*', initialResult, enteredNumber)
 	// outputResult(currentResult, calcDescription)
-	const logEntry = {
-		operation: 'MULTIPLY',
-		prevResult: initialResult,
-		number: enteredNumber,
-		result: currentResult,
-	}
-	logEntries.push(logEntry) // Pushes logEntry object to logEntries array
-	console.log(logEntries) // Reads array element at index 0
+	writeToLog('MULTIPLY', initialResult, enteredNumber, currentResult)
 }
 
 function divide() {
@@ -96,14 +82,7 @@ function divide() {
 	// currentResult = currentResult / enteredNumber
 	createAndWriteOutput('/', initialResult, enteredNumber)
 	// outputResult(currentResult, calcDescription)
-	const logEntry = {
-		operation: 'DIVIDE',
-		prevResult: initialResult,
-		number: enteredNumber,
-		result: currentResult,
-	}
-	logEntries.push(logEntry) // Pushes logEntry object to logEntries array
-	console.log(logEntries) // Reads array element at index 0
+	writeToLog('DIVIDE', initialResult, enteredNumber, currentResult)
 }
 
 addBtn.addEventListener('click', add)
