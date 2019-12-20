@@ -2,6 +2,8 @@ const defaultResult = 0
 let currentResult = 0
 let logEntries = []
 
+// Arrays have an index that is zero-based (index starts at zero)
+
 // Gets input from input field
 function getUserNumberInput() {
 	return parseInt(usrInput.value) // Converts String (User Input) to number
