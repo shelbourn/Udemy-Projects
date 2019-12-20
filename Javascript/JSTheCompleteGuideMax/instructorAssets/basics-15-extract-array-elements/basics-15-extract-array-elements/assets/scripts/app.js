@@ -29,7 +29,7 @@ function add() {
 	createAndWriteOutput('+', initialResult, enteredNumber)
 	// outputResult(currentResult, calcDescription)
 	logEntries.push(enteredNumber)
-	console.log(logEntries)
+	console.log(logEntries[0]) // Reads array element at index 0
 }
 
 function subtract() {
