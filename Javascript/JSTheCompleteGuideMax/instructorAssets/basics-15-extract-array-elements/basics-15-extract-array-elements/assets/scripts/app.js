@@ -31,7 +31,7 @@ function add() {
 	createAndWriteOutput('+', initialResult, enteredNumber)
 	// outputResult(currentResult, calcDescription)
 	logEntries.push(enteredNumber)
-	console.log(logEntries[0]) // Reads array element at index 0
+	console.log(logEntries) // Reads array element at index 0
 }
 
 function subtract() {
@@ -42,6 +42,8 @@ function subtract() {
 	// currentResult = currentResult - enteredNumber
 	createAndWriteOutput('-', initialResult, enteredNumber)
 	// outputResult(currentResult, calcDescription)
+	logEntries.push(enteredNumber)
+	console.log(logEntries)
 }
 
 function multiply() {
@@ -52,6 +54,8 @@ function multiply() {
 	// currentResult = currentResult * enteredNumber
 	createAndWriteOutput('*', initialResult, enteredNumber)
 	// outputResult(currentResult, calcDescription)
+	logEntries.push(enteredNumber)
+	console.log(logEntries)
 }
 
 function divide() {
@@ -62,6 +66,8 @@ function divide() {
 	// currentResult = currentResult / enteredNumber
 	createAndWriteOutput('/', initialResult, enteredNumber)
 	// outputResult(currentResult, calcDescription)
+	logEntries.push(enteredNumber)
+	console.log(logEntries)
 }
 
 addBtn.addEventListener('click', add)
