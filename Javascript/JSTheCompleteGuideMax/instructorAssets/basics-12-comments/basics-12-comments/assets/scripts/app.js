@@ -13,6 +13,9 @@ function createAndWriteOutput(operator, resultBeforeCal, calcNumber) {
 	outputResult(currentResult, calcDescription) // From vendor.js file
 }
 
+// currentResult++ (adds 1 to number)
+// currentResult-- (subtracts 1 from a number)
+
 function add() {
 	const enteredNumber = getUserNumberInput()
 	// const calcDescription = `${currentResult} + ${enteredNumber}`
