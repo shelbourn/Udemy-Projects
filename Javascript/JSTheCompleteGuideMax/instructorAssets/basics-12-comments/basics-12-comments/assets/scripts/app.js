@@ -1,14 +1,16 @@
 const defaultResult = 0
 let currentResult = 0
 
+// Gets input from input field
 function getUserNumberInput() {
 	return parseInt(usrInput.value) // Converts String (User Input) to number
 }
 
+// Generates and writes calculation log
 // Outputs only text
 function createAndWriteOutput(operator, resultBeforeCal, calcNumber) {
 	const calcDescription = `${resultBeforeCal} ${operator} ${calcNumber}`
-	outputResult(currentResult, calcDescription)
+	outputResult(currentResult, calcDescription) // From vendor.js file
 }
 
 function add() {
