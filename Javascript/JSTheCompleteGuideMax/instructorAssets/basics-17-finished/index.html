@@ -12,14 +12,14 @@
 		<link rel="stylesheet" href="assets/styles/app.css" />
 
 		<!-- Scripts should be placed in the bottom of head section with defer or
-    async attributes-->
+    async attributes. Defer is preferred over async since async allows scripts to execute before parsing is completed.-->
 
 		<!-- async starts downloading scripts without pausing
 		parsing, but parsing is paused as soon as scripts are downloaded for scripts
-    to immediately execute.-->
+    to immediately execute. Async will execute whichever script is downloaded first and therefore does not guarantee order.-->
 
 		<!-- defer starts downloading scripts without pausing
-    html parsing. Scripts are executed once downloaded and html is done parsing. -->
+    html parsing. Scripts are executed once downloaded and html is done parsing. Defer guarantees that scripts will execute in the order that they are written. -->
 
 		<script src="assets/scripts/vendor.js" defer></script>
 		<script src="assets/scripts/app.js" defer></script>
