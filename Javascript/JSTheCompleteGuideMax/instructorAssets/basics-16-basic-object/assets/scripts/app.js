@@ -8,6 +8,9 @@ let logEntries = []
 // Object keys are also known as properties
 
 // To reset variables never use myVar = undefined. Always use myVar = null
+// Null is of type 'object'
+// undefined is of type 'undefined'
+// NaN is of type 'number'
 
 // typeof operator evaluates the type of a variable at runtime
 
