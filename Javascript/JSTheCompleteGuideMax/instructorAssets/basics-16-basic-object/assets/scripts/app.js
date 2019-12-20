@@ -3,6 +3,7 @@ let currentResult = 0
 let logEntries = []
 
 // Arrays have an index that is zero-based (index starts at zero)
+// Arrays are special types of objects
 // Object use key-value pairs. Keys are the identifiers for the properties and those are paired with information/data
 // Object keys are also known as properties
 
