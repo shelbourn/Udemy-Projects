@@ -27,8 +27,6 @@ function add() {
 	// currentResult = currentResult + enteredNumber
 	createAndWriteOutput('+', initialResult, enteredNumber)
 	// outputResult(currentResult, calcDescription)
-	alert(initialResult)
-	alert(currentResult)
 }
 
 function subtract() {
