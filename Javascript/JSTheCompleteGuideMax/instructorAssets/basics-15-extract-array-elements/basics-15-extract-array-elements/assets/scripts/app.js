@@ -1,5 +1,6 @@
 const defaultResult = 0
 let currentResult = 0
+let logEntries = []
 
 // Gets input from input field
 function getUserNumberInput() {
@@ -27,6 +28,8 @@ function add() {
 	// currentResult = currentResult + enteredNumber
 	createAndWriteOutput('+', initialResult, enteredNumber)
 	// outputResult(currentResult, calcDescription)
+	logEntries.push(enteredNumber)
+	console.log(logEntries)
 }
 
 function subtract() {
