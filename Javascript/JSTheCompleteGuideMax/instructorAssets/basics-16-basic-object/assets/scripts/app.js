@@ -18,6 +18,22 @@ function createAndWriteOutput(operator, resultBeforeCal, calcNumber) {
 	outputResult(currentResult, calcDescription) // From vendor.js file
 }
 
+function writeToLog(
+	operationIdentifier,
+	prevResult,
+	operationNumber,
+	newResult
+) {
+	const logEntry = {
+		operation: operationIdentifier,
+		prevResult: prevResult,
+		number: operationNumber,
+		result: newResult,
+	}
+	logEntries.push(logEntry)
+	console.log(logEntries)
+}
+
 // currentResult++ (adds 1 to number) Returns number before 1 is added
 // currentResult-- (subtracts 1 from a number) Returns number before 1 is subtracted
 // ++currentResult (adds 1 to a number) Returns number after 1 is added
