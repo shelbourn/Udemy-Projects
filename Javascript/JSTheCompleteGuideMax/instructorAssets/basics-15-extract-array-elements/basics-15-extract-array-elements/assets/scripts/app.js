@@ -31,8 +31,13 @@ function add() {
 	// currentResult = currentResult + enteredNumber
 	createAndWriteOutput('+', initialResult, enteredNumber)
 	// outputResult(currentResult, calcDescription)
-	const logEntry = {}
-	logEntries.push(enteredNumber)
+	const logEntry = {
+		oepration: 'ADD',
+		prevResult: initialResult,
+		number: enteredNumber,
+		result: currentResult,
+	}
+	logEntries.push(logEntry)
 	console.log(logEntries) // Reads array element at index 0
 }
 
