@@ -6,6 +6,8 @@ let logEntries = []
 // Object use key-value pairs. Keys are the identifiers for the properties and those are paired with information/data
 // Object keys are also known as properties
 
+// To reset variables never use myVar = undefined. Always use myVar = null
+
 // Gets input from input field
 function getUserNumberInput() {
 	return parseInt(usrInput.value) // Converts String (User Input) to number. .value is the contents from a form input field
