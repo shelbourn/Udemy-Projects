@@ -3,6 +3,7 @@ let currentResult = 0
 let logEntries = []
 
 // Arrays have an index that is zero-based (index starts at zero)
+// Object use key-value pairs. Keys are the identifiers for the elements and those are paired with information/data
 
 // Gets input from input field
 function getUserNumberInput() {
@@ -30,6 +31,7 @@ function add() {
 	// currentResult = currentResult + enteredNumber
 	createAndWriteOutput('+', initialResult, enteredNumber)
 	// outputResult(currentResult, calcDescription)
+	const logEntry = {}
 	logEntries.push(enteredNumber)
 	console.log(logEntries) // Reads array element at index 0
 }
