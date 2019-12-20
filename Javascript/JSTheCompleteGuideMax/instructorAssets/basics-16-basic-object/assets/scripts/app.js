@@ -40,7 +40,7 @@ function add() {
 		result: currentResult,
 	}
 	logEntries.push(logEntry) // Pushes logEntry object to logEntries array
-	console.log(logEntry.operation)
+	// console.log(logEntry.operation)
 	console.log(logEntries) // Reads array element at index 0
 }
 
