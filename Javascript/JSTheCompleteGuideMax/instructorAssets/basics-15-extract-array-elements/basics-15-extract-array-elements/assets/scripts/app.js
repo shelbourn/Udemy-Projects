@@ -32,12 +32,13 @@ function add() {
 	createAndWriteOutput('+', initialResult, enteredNumber)
 	// outputResult(currentResult, calcDescription)
 	const logEntry = {
+		// Stores operation and result in an object
 		oepration: 'ADD',
 		prevResult: initialResult,
 		number: enteredNumber,
 		result: currentResult,
 	}
-	logEntries.push(logEntry)
+	logEntries.push(logEntry) // Pushes logEntry object to logEntries array
 	console.log(logEntries) // Reads array element at index 0
 }
 
