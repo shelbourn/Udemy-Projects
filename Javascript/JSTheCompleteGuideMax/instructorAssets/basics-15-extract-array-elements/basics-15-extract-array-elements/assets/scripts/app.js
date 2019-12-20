@@ -31,8 +31,8 @@ function add() {
 	// currentResult = currentResult + enteredNumber
 	createAndWriteOutput('+', initialResult, enteredNumber)
 	// outputResult(currentResult, calcDescription)
+	// Stores operation and result in an object
 	const logEntry = {
-		// Stores operation and result in an object
 		oepration: 'ADD',
 		prevResult: initialResult,
 		number: enteredNumber,
