@@ -17,7 +17,8 @@ function add() {
 	const enteredNumber = getUserNumberInput()
 	// const calcDescription = `${currentResult} + ${enteredNumber}`
 	const initialResult = currentResult
-	currentResult = currentResult + enteredNumber
+	currentResult += enteredNumber
+	// currentResult = currentResult + enteredNumber
 	createAndWriteOutput('+', initialResult, enteredNumber)
 	// outputResult(currentResult, calcDescription)
 }
@@ -26,7 +27,8 @@ function subtract() {
 	const enteredNumber = getUserNumberInput()
 	// const calcDescription = `${currentResult} - ${enteredNumber}`
 	const initialResult = currentResult
-	currentResult = currentResult - enteredNumber
+	currentResult -= enteredNumber
+	// currentResult = currentResult - enteredNumber
 	createAndWriteOutput('-', initialResult, enteredNumber)
 	// outputResult(currentResult, calcDescription)
 }
@@ -35,7 +37,8 @@ function multiply() {
 	const enteredNumber = getUserNumberInput()
 	// const calcDescription = `${currentResult} * ${enteredNumber}`
 	const initialResult = currentResult
-	currentResult = currentResult * enteredNumber
+	currentResult *= enteredNumber
+	// currentResult = currentResult * enteredNumber
 	createAndWriteOutput('*', initialResult, enteredNumber)
 	// outputResult(currentResult, calcDescription)
 }
@@ -44,7 +47,8 @@ function divide() {
 	const enteredNumber = getUserNumberInput()
 	// const calcDescription = `${currentResult} / ${enteredNumber}`
 	const initialResult = currentResult
-	currentResult = currentResult / enteredNumber
+	currentResult /= enteredNumber
+	// currentResult = currentResult / enteredNumber
 	createAndWriteOutput('/', initialResult, enteredNumber)
 	// outputResult(currentResult, calcDescription)
 }
