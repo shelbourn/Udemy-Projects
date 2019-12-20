@@ -8,6 +8,8 @@ let logEntries = []
 
 // To reset variables never use myVar = undefined. Always use myVar = null
 
+// typeof operator evaluates the type of a variable at runtime
+
 // Gets input from input field
 function getUserNumberInput() {
 	return parseInt(usrInput.value) // Converts String (User Input) to number. .value is the contents from a form input field
