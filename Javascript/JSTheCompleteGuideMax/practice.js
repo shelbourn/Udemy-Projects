@@ -1,3 +1,5 @@
+// Simple App that Prompts for user info and then stores that data inside an object within an array
+
 let userArray = []
 let namePrompt = prompt('What is your name?')
 let jobPrompt = prompt('What is your job title?')
