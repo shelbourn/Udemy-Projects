@@ -23,7 +23,7 @@ let logEntries = []
 
 // Gets input from input field
 function getUserNumberInput() {
-	return usrInput.value // Converts String (User Input) to number. .value is the contents from a form input field
+	return parseInt(usrInput.value) // Converts String (User Input) to number. .value is the contents from a form input field
 }
 
 // Generates and writes calculation log
