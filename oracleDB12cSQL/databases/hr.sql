@@ -1423,7 +1423,10 @@ where department_id = 30
 order by first_name;
 
 -- LISTAGG aggregates results into one line
-select listagg(first_name, ', ')
+-- 'WITHIN GROUP' is mandatory
+select listagg(first_name, ', ') -- ', ' is the list separator
           within group (order by first_name) "Emp_List" -- Alias
 from employees
 where department_id = 30;
+---------------------------------------------------------
+
