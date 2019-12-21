@@ -1356,5 +1356,26 @@ from employees;
 -- Group Funciton Syntax: group_function(DISTINCT|ALL0 expr) ALL is default so is not necessary to include
 -- Group Function Data Types: CHAR, VARCHAR2, NUMBER, DATE
 -- All group functions ignore NULL values
+-----------------------------------------------------------------
 
 -- Group Function Examples
+
+-- MAX and MIN Functions
+select salary
+from employees
+order by salary desc;
+
+select max(salary), min(salary)
+from employees;
+
+-- You can use MAX and MIN with VARCHAR
+select max(first_name), min(first_name)
+from employees;
+
+-- You can use MAX and MIN with DATES too
+select max(hire_date), min(hire_date)
+from employees;
+----------------------------------------------------
+
+-- SUM and AVG Functions
+
