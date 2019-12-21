@@ -52,6 +52,8 @@ function add() {
 	const initialResult = currentResult
 	// Console logging code to search for bugs
 	console.log('INPUT', enteredNumber, currentResult)
+	// Log below shows the data types for enteredNumber and currentResult (both should be numbers)
+	console.log('INPUT TYPE', typeof enteredNumber, typeof currentResult)
 	currentResult += enteredNumber
 	createAndWriteOutput('+', initialResult, enteredNumber)
 	writeToLog('ADD', initialResult, enteredNumber, currentResult)
