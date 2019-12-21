@@ -1413,3 +1413,17 @@ select count(nvl(commission_pct, 0)) from employees;
 select count(employee_id)
 from employees
 where department_id=90; -- This counts employees with DEPARTMENT_ID = 90
+-----------------------------------------------------
+
+-- LISTAGG Function
+
+select first_name
+from employees
+where department_id = 30
+order by first_name;
+
+-- LISTAGG aggregates results into one line
+select listagg(first_name, ', ')
+          within group (order by first_name) "Emp_List" -- Alias
+from employees
+where department_id = 30;
