@@ -1445,7 +1445,10 @@ ORA-00937: not a single-group group function
 00937. 00000 -  "not a single-group group function"
 */
 
-
 select department_id, sum(salary)
 from employees;
 
+-- Correct query below
+select department_id, sum(salary)
+from employees
+group by department_id; -- All COLUMNS is SELECT statement should be in the GROUP BY clause
