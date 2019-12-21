@@ -12,6 +12,7 @@ let logEntries = []
 // You can add variables or expressions to the 'Watch' list in the 'Scope' window to see how they change
 // Conditional breakpoints may be added by right clicking the line in Chrome's debugging window
 // Conditional breakpoints can activate only when certain conditions are met
+// Event listener breakpoints will pause code execution whenever a user interraction occurs based on the criteria you set
 
 // Gets input from input field
 function getUserNumberInput() {
