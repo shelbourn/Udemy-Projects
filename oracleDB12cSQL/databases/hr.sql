@@ -1437,6 +1437,15 @@ where department_id = 30;
 
 -- Goal is to return each department and them sum of salaries
 -- The below query will result in an error
+
+-- IMPORTANT *** KNOW ERROR CODE ORA-00937 ***
+
+/*
+ORA-00937: not a single-group group function
+00937. 00000 -  "not a single-group group function"
+*/
+
+
 select department_id, sum(salary)
 from employees;
 
