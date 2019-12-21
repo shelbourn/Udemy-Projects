@@ -4,6 +4,8 @@ let logEntries = []
 
 // Breakpoints allow you to pause code execution at that point
 // Add breakpoints through Chrome Dev tools in the 'Sources' tab and then click on code file
+// Code execution stops before the line where the breakpoint is added
+// Call stack shows the functions that have been called in order
 
 // Gets input from input field
 function getUserNumberInput() {
