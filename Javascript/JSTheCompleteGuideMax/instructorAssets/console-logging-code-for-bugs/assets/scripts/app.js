@@ -50,6 +50,8 @@ function writeToLog(
 function add() {
 	const enteredNumber = getUserNumberInput()
 	const initialResult = currentResult
+	// Console logging code to search for bugs
+	console.log('INPUT', enteredNumber, currentResult)
 	currentResult += enteredNumber
 	createAndWriteOutput('+', initialResult, enteredNumber)
 	writeToLog('ADD', initialResult, enteredNumber, currentResult)
