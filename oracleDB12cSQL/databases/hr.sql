@@ -1352,3 +1352,5 @@ from employees;
 * VARIANCE
 
 */
+
+-- Group Funciton Syntax: group_function(DISTINCT|ALL0 expr) ALL is default so is not necessary to include
