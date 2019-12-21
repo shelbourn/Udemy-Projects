@@ -1340,3 +1340,15 @@ from employees;
 -- Single-Row Functions return one result per row
 -- Multi-Row Functions return one result per set of rows
 
+/* Types of Group Functions
+
+* AVG
+* COUNT
+* MAX
+* MIN
+* SUM
+* LISTAGG
+* STDDEV
+* VARIANCE
+
+*/
