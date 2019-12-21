@@ -6,6 +6,8 @@ let logEntries = []
 // Add breakpoints through Chrome Dev tools in the 'Sources' tab and then click on code file
 // Code execution stops before the line where the breakpoint is added
 // Call stack shows the functions that have been called in order
+// Top function in call stack is function that is running
+// Functions below top function are the functions that are responsible for call the top function
 
 // Gets input from input field
 function getUserNumberInput() {
