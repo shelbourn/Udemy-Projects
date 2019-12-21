@@ -1354,3 +1354,7 @@ from employees;
 */
 
 -- Group Funciton Syntax: group_function(DISTINCT|ALL0 expr) ALL is default so is not necessary to include
+-- Group Function Data Types: CHAR, VARCHAR2, NUMBER, DATE
+-- All group functions ignore NULL values
+
+-- Group Function Examples
