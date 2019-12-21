@@ -1332,4 +1332,11 @@ select employee_id, first_name, salary,
             when salary between 3000 and 7000 then round (salary * 0.10) -- Rounds to nearest integer
             when salary > 7000 then round (salary * 0.20)
       end Tax -- Alias
-from employees;      
+from employees;   
+-------------------------------------------------
+
+-- Introduction to Group Functions / Multi-Row Functions
+
+-- Single-Row Functions return one result per row
+-- Multi-Row Functions return one result per set of rows
+
