@@ -13,6 +13,8 @@ let logEntries = []
 // Conditional breakpoints may be added by right clicking the line in Chrome's debugging window
 // Conditional breakpoints can activate only when certain conditions are met
 // Event listener breakpoints will pause code execution whenever a user interraction occurs based on the criteria you set
+// Changing the code in Chrome's debugger does not alter file on filesystem, only in browser
+// This helps to test fixes before you change your actual files
 
 // Gets input from input field
 function getUserNumberInput() {
