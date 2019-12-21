@@ -1377,5 +1377,11 @@ select max(hire_date), min(hire_date)
 from employees;
 ----------------------------------------------------
 
--- SUM and AVG Functions
+-- SUM and AVG Functions (Works only with NUMBER)
 
+select sum(salary), avg(salary)
+from employees;
+
+-- You can not use SUM and AVG with VARCHAR or DATE
+select sum(first_name), avg(first_name)
+from employees;
