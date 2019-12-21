@@ -1434,3 +1434,9 @@ where department_id = 30;
 -- GROUP BY and HAVING Clause
 
 -- Using GROUP BY Clause
+
+-- Goal is to return each department and them sum of salaries
+-- The below query will result in an error
+select department_id, sum(salary)
+from employees;
+
