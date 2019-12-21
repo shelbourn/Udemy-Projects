@@ -1385,3 +1385,17 @@ from employees;
 -- You can not use SUM and AVG with VARCHAR or DATE
 select sum(first_name), avg(first_name)
 from employees;
+-----------------------------------------------------
+
+--COUNT Function
+
+select * from employees;
+
+-- COUNT(*) returns the number of rows in a table including duplicate rows and includes NULL values
+select count(*) from employees;
+
+select count(1) from employees; -- this is equal to COUNT(*)
+
+-- COUNT(COLUMN) ignores NULL values. NULLs will not be counted.
+select count(commission_pct)
+from employees;
