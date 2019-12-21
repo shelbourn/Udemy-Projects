@@ -1408,3 +1408,8 @@ select count(commission_pct) from employees;
 
 -- You can include NULL values in the count by using NVL
 select count(nvl(commission_pct, 0)) from employees;
+
+-- Using WHERE condition with COUNT function
+select count(employee_id)
+from employees
+where department_id=90; -- This counts employees with DEPARTMENT_ID = 90
