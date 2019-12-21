@@ -8,6 +8,8 @@ let logEntries = []
 // Call stack shows the functions that have been called in order
 // Top function in call stack is function that is running
 // Functions below top function are the functions that are responsible for call the top function
+// Variables can be changed in the 'Scope' window after clicking on a function in the Call Stack
+// You can add variables or expressions to the 'Watch' list in the 'Scope' window to see how they change
 
 // Gets input from input field
 function getUserNumberInput() {
