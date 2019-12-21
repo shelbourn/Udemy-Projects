@@ -10,6 +10,8 @@ let logEntries = []
 // Functions below top function are the functions that are responsible for call the top function
 // Variables can be changed in the 'Scope' window after clicking on a function in the Call Stack
 // You can add variables or expressions to the 'Watch' list in the 'Scope' window to see how they change
+// Conditional breakpoints may be added by right clicking the line in Chrome's debugging window
+// Conditional breakpoints can activate only when certain conditions are met
 
 // Gets input from input field
 function getUserNumberInput() {
