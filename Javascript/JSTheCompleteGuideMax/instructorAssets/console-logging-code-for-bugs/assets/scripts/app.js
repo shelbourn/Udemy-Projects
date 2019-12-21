@@ -2,6 +2,11 @@ const defaultResult = 0
 let currentResult = 0
 let logEntries = []
 
+/**********************************
+ * Debugging with Chrome Dev Tools
+ *
+ */
+
 // Breakpoints allow you to pause code execution at that point
 // Add breakpoints through Chrome Dev tools in the 'Sources' tab and then click on code file
 // Code execution stops before the line where the breakpoint is added
