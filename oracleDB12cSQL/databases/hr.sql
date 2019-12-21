@@ -1399,3 +1399,12 @@ select count(1) from employees; -- this is equal to COUNT(*)
 -- COUNT(COLUMN) ignores NULL values. NULLs will not be counted.
 select count(commission_pct)
 from employees;
+
+select count(department_id) from employees; -- NULLS will not be counted
+
+select count(distinct department_id) from employees;
+
+select count(commission_pct) from employees;
+
+-- You can include NULL values in the count by using NVL
+select count(nvl(commission_pct, 0)) from employees;
