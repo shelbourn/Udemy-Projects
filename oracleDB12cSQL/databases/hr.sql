@@ -1432,3 +1432,5 @@ where department_id = 30;
 
 -- *** IMPORTANT ***
 -- GROUP BY and HAVING Clause
+
+-- Using GROUP BY Clause
