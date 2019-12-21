@@ -2,17 +2,8 @@ const defaultResult = 0
 let currentResult = 0
 let logEntries = []
 
-// Arrays have an index that is zero-based (index starts at zero)
-// Arrays are special types of objects
-// Object use key-value pairs. Keys are the identifiers for the properties and those are paired with information/data
-// Object keys are also known as properties
-
-// To reset variables never use myVar = undefined. Always use myVar = null
-// Null is of type 'object'
-// undefined is of type 'undefined'
-// NaN is of type 'number'
-
-// typeof operator evaluates the type of a variable at runtime
+// Breakpoints allow you to pause code execution at that point
+// Add breakpoints through Chrome Dev tools in the 'Sources' tab and then click on code file
 
 // Gets input from input field
 function getUserNumberInput() {
