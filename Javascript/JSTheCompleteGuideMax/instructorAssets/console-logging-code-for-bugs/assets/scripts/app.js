@@ -7,6 +7,9 @@ let logEntries = []
  *
  */
 
+// Set url in 'launch.json' to address for localhost everytime you want to debug
+// This is the url when you open the index.html file with Live Server
+
 // Gets input from input field
 function getUserNumberInput() {
 	return usrInput.value // Converts String (User Input) to number. .value is the contents from a form input field
