@@ -1819,5 +1819,14 @@ order by employee_id;
 ----------------------------------------
 
 -- 1999 (NEW) JOINS / NATURAL JOINS
+-- Not commonly used
+-- JOINS tables by matching names with same data types in two tables
+-- If columns have the same name but different data types the an error is returned
+
+/*
+select department_id, department_name, location_id, city
+from departments
+natural join locations;
+*/
 
 
