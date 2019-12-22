@@ -1539,7 +1539,11 @@ order by 1;
 -- 2 types of Oracle JOIN syntax -- OLD (not ANSI) and NEW (ANSI and referred to as 1999 syntax)
 -- Each query has one main table that contains the result
 -- Perform the query on the main table to get the results before executing any JOINS.
+-- Foreign Key is the most important component of the JOIN operation
 -------------------------------------------------------
+
+-- Cartesian Product
+
 
 
 
