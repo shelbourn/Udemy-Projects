@@ -1732,6 +1732,17 @@ worker.first_name,
 worker.manager_id,
 manager.first_name Manager
 from
-employees worker,
-employees manager
+employees worker, -- Repeat the table twice to "split" it into two tables
+employees manager -- Repeat the table twice to "split" it into two tables
 where worker.manager_id = manager.employee_id;
+
+-- Place the (+) sign for OUTER JOIN on the table where the data is missing from the JOIN result
+select
+worker.employee_id,
+worker.first_name,
+worker.manager_id,
+manager.first_name Manager
+from
+employees worker, -- Repeat the table twice to "split" it into two tables
+employees manager -- Repeat the table twice to "split" it into two tables
+where worker.manager_id = manager.employee_id(+);
