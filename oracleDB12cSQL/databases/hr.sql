@@ -1659,4 +1659,9 @@ values('F', 25000, 40000);
 
 commit;
 
-select * from job_grades
+select * from job_grades;
+
+-- nonEQUIJOIN Example. Join using another operator other than [ = ]
+select emp.employee_id, emp.first_name, emp.salary, grades.grade_level
+from employees emp, job_grades grades
+where emp.salary between grades.lowest_sal and grades.highest_sal;
