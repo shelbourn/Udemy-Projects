@@ -1507,9 +1507,23 @@ group by department_id
 having sum(salary) > 150000
 order by department_id;
 
+-- *** IMPORTANT ***
 -- You could use HAVING clause before GROUP BY, but it is not recommended
 select department_id, sum(salary)
 from employees
 having sum(salary) > 150000
 group by department_id
 order by department_id;
+
+-- You can make nested group functions
+select department_id, sum(salary)
+from employees
+group by department_id
+order by 1;
+
+-- *** IMPORTANT ***
+-- You can nest ONLY TWO group functions
+select max(sum(salary))
+from employees
+group by department_id
+order by 1;
