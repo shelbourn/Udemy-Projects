@@ -1851,4 +1851,13 @@ where departments.location_id = locations.location_id;
 -- If you try to make a NATURAL JOIN between EMPLOYEES and DEPARTMENTS the results will be wrong
 -- Because it will join 2 columns DEPARTMENT_ID and MANAGER_ID
 
--- Use WHERE for additional conditions and AND if necessary
+-- Use WHERE for additional conditions and then AND if necessary
+-- WHERE comes after NATURAL JOIN statement
+select
+departments.department_id,
+departments.department_name,
+location_id, -- Cannot use a prefix in the matched column
+locations.city
+from departments
+natural join locations
+where departments.department_id > 20; -- Use WHERE and then AND
