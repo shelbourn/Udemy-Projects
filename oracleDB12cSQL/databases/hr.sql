@@ -1575,3 +1575,10 @@ departments.department_id,
 departments.department_name
 from employees, departments
 order by employee_id;
+------------------------------------------------
+
+-- Old JOINS / EQUIJOINS (SIMPLE JOIN / INNER JOIN)
+-- Joins two tables based on FK
+
+
+
