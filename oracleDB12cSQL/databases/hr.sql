@@ -1665,3 +1665,8 @@ select * from job_grades;
 select emp.employee_id, emp.first_name, emp.salary, grades.grade_level
 from employees emp, job_grades grades
 where emp.salary between grades.lowest_sal and grades.highest_sal;
+
+-- Another way to execute the above statement
+select emp.employee_id, emp.first_name, emp.salary, grades.grade_level
+from employees emp, job_grades grades
+where emp.salary >= grades.lowest_sal and emp.salary <= grades.highest_sal;
