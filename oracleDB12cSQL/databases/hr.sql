@@ -1491,9 +1491,24 @@ order by department_id;
 
 -- *** IMPORTANT ***
 -- You can not use WHERE to retrict groups
+-- Can not use ANY GROUP FUNCITONS in WHERE clause
 -- Error Code: ORA-00934 "Group function is not allowed here"
 select department_id, sum(salary)
 from employees
-where sum(salar) > 156400 -- this is not correct, you should use HAVING instead
+where sum(salary) > 156400 -- this is not correct, you should use HAVING instead
+group by department_id
+order by department_id;
+
+-- Using HAVING Clause
+select department_id, sum(salary)
+from employees
+group by department_id
+having sum(salary) > 150000
+order by department_id;
+
+-- You could use HAVING clause before GROUP BY, but it is not recommended
+select department_id, sum(salary)
+from employees
+having sum(salary) > 150000
 group by department_id
 order by department_id;
