@@ -1697,3 +1697,25 @@ departments.department_name
 from employees, departments
 where employees.department_id = departments.department_id
 order by employee_id;
+
+-- OUTER JOIN for above statement (case 1)
+select
+employees.employee_id,
+employees.first_name,
+employees.department_id,
+departments.department_name
+from employees, departments
+where employees.department_id = departments.department_id(+)
+order by employee_id;
+
+-- OUTER JOIN for above statement (case 2)
+select
+employees.employee_id,
+employees.first_name,
+employees.department_id,
+departments.department_name
+from employees, departments
+where employees.department_id(+) = departments.department_id
+order by employee_id;
+
+-- Old JOINS / SELF JOIN
