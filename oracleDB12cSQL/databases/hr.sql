@@ -1624,3 +1624,7 @@ from employees emp, departments dept, locations loc
 where emp.department_id = dept.department_id
 and dept.location_id = loc.location_id
 order by employee_id;
+------------------------------------------------
+
+-- Old JOINS / NONEQUIJOINS
+
