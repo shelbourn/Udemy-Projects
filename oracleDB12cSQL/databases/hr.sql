@@ -1750,8 +1750,22 @@ where worker.manager_id = manager.employee_id(+);
 /*
 *** GOOD EXAMPLE ***
 
-Retriece all the employees (employee_id, first_name, department_id_ who's salary > 2500
+Retrieve all the employees (employee_id, first_name, department_id_ who's salary > 2500
 And display their department name, and department location and department city and country.
 All employees should appear even if they have no department.
 */
 
+select
+emp.employee_id,
+emp.first_name,
+emp.department_id,
+emp.salary,
+dept.department_name,
+dept.location_id,
+loc.city,
+countries.country_name
+from employees emp, departments dept, locations loc, countries
+where emp.department_id = dept.department_id(+)
+and dept.location_id = loc.location_id
+and loc.country_id = countries.country_id
+and emp.salary > 2500;
