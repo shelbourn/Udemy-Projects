@@ -1861,3 +1861,5 @@ locations.city
 from departments
 natural join locations
 where departments.department_id > 20; -- Use WHERE and then AND
+
+-- 1999 (NEW) JOINS / USING Clause
