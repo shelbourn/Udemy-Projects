@@ -1474,3 +1474,9 @@ order by 1, 2; -- All columns in the SELECT statement should be in GROUP BY clau
 select department_id d, sum(salary)
 from employees
 group by d;
+
+-- You can use ORDER BY with aliases
+select department_id d, sum(salary)
+from employees
+group by department_id
+order by d;
