@@ -1544,6 +1544,15 @@ order by 1;
 
 -- Cartesian Product
 
+/*
+Cartesian Product is formed when:
+
+* A JOIN condition is omitted
+* A JOIN condition is invalid
+* All rows in the first table are joined with all rows in the second table
+*/
+
+-- To avoid a Cartesian Product always include a valid JOIN condition in a WHERE clause.
 
 
 
