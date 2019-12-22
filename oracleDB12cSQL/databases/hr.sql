@@ -1540,6 +1540,7 @@ order by 1;
 -- Each query has one main table that contains the result
 -- Perform the query on the main table to get the results before executing any JOINS.
 -- Foreign Key is the most important component of the JOIN operation
+-- JOIN conditions used in the WHERE clause
 -------------------------------------------------------
 
 -- Cartesian Product
