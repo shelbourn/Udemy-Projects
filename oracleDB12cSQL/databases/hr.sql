@@ -1629,6 +1629,7 @@ order by employee_id;
 -- Old JOINS / NONEQUIJOINS (Not commonly used)
 -- JOIN that joins a table with something other than the EQUALITY operator
 -- Does not use the PK/FK relationship (Uses something like SALARY and JOB_GRADE to join)
+-- Not common to use nonEQUIJOIN, instead sub-queries are used instead
 
 -- JOB_GRADES table does not exist in HR database
 create table JOB_GRADES
@@ -1670,3 +1671,11 @@ where emp.salary between grades.lowest_sal and grades.highest_sal;
 select emp.employee_id, emp.first_name, emp.salary, grades.grade_level
 from employees emp, job_grades grades
 where emp.salary >= grades.lowest_sal and emp.salary <= grades.highest_sal;
+---------------------------------------------------
+
+-- *** IMPORTANT ***
+-- Old Joins / OUTER JOIN
+-- With a NATURAL/EQUIJOIN any null values in the table being joined will not appear in the result
+-- In this case, an OUTER JOIN must be used to show the data
+-- OUTER JOIN indicated by [ + ] operator
+-- [ + ] always placed in the JOIN condition with the table that has the missing data
