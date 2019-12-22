@@ -1626,5 +1626,37 @@ and dept.location_id = loc.location_id
 order by employee_id;
 ------------------------------------------------
 
--- Old JOINS / NONEQUIJOINS
+-- Old JOINS / NONEQUIJOINS (Not commonly used)
+-- JOIN that joins a table with something other than the EQUALITY operator
+-- Does not use the PK/FK relationship (Uses something like SALARY and JOB_GRADE to join)
 
+-- JOB_GRADES table does not exist in HR database
+create table JOB_GRADES
+(
+grade_level varchar2(3),
+lowest_sal number,
+highest_sal number
+);
+
+-- Creating records for JOB_GRADES table
+insert into job_grades (grade_level, lowest_sal, highest_sal)
+values('A', 1000, 2999);
+
+insert into job_grades (grade_level, lowest_sal, highest_sal)
+values('B', 3000, 5999);
+
+insert into job_grades (grade_level, lowest_sal, highest_sal)
+values('C', 6000, 9999);
+
+insert into job_grades (grade_level, lowest_sal, highest_sal)
+values('D', 10000, 14999);
+
+insert into job_grades (grade_level, lowest_sal, highest_sal)
+values('E', 15000, 24999);
+
+insert into job_grades (grade_level, lowest_sal, highest_sal)
+values('F', 25000, 40000);
+
+commit;
+
+select * from job_grades
