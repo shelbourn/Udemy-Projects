@@ -1459,9 +1459,12 @@ from employees
 group by department_id, job_id -- All COLUMNS in SELECT must be in GROUP BY
 order by 1, 2; -- Order By 1st column in SELECT statement and then the 2nd
 
+-- *** IMPORTANT ***
+-- Know error code: ORA-00979 "Not a GROUP BY expression"
 -- This will result in error, JOB_ID should also be in GROUP BY clause
 -- The error will be "Not a GROUP BY expression"
 select department_id, job_id, sum(salary)
 from employees
 group by department_id
 order by 1, 2; -- All columns in the SELECT statement should be in GROUP BY clause
+
