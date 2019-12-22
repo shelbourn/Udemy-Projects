@@ -1677,5 +1677,23 @@ where emp.salary >= grades.lowest_sal and emp.salary <= grades.highest_sal;
 -- Old Joins / OUTER JOIN
 -- With a NATURAL/EQUIJOIN any null values in the table being joined will not appear in the result
 -- In this case, an OUTER JOIN must be used to show the data
--- OUTER JOIN indicated by [ + ] operator
--- [ + ] always placed in the JOIN condition with the table that has the missing data
+-- OUTER JOIN indicated by (+) operator
+-- (+) always placed in the JOIN condition with the table that has the missing data
+-- If a FK in TABLE1 has NULL values and it is the main table that you want to display data from
+-- the the OUTER JOIN should be on the TABLE2 side which has the reference from TABLE1
+-- If TABLE1 has NULL values and (+) placed on TABLE2 then all rows from TABLE1 will appear in result
+-- IF TABLE2 has NULL values and (+) placed on TABLE1 then all rows from TABLE2 will appear in result
+-- OUTER JOIN is used to show non-matched rows in results
+
+-- EXAMPLES
+
+-- EQUIJOIN first
+-- One employee will be missing because there is a NULL value in DEPARTMENT_ID
+select
+employees.employee_id,
+employees.first_name,
+employees.department_id,
+departments.department_name
+from employees, departments
+where employees.department_id = departments.department_id
+order by employee_id;
