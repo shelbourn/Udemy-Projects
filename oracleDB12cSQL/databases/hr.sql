@@ -1829,4 +1829,20 @@ from departments
 natural join locations;
 */
 
+-- NATURAL JOIN between DEPARTMENTS and LOCATIONS
+select
+departments.department_id,
+departments.department_name,
+location_id, -- Cannot use a prefix in the matched column
+locations.city
+from departments
+natural join locations;
 
+-- You can made a NATURAL JOIN using old formation as EQUIJOIN
+select
+departments.department_id,
+departments.department_name,
+departments.location_id,
+locations.city
+from departments, locations
+where departments.location_id = locations.location_id;
