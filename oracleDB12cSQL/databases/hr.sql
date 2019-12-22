@@ -1527,3 +1527,8 @@ select max(sum(salary))
 from employees
 group by department_id
 order by 1;
+-------------------------------------------
+-- *** IMPORTANT ***
+-- Displaying data from multiple tables using JOINS
+
+
