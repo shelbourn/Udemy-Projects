@@ -1488,3 +1488,12 @@ from employees
 where department_id > 30
 group by department_id
 order by department_id;
+
+-- *** IMPORTANT ***
+-- You can not use WHERE to retrict groups
+-- Error Code: ORA-00934 "Group function is not allowed here"
+select department_id, sum(salary)
+from employees
+where sum(salar) > 156400 -- this is not correct, you should use HAVING instead
+group by department_id
+order by department_id;
