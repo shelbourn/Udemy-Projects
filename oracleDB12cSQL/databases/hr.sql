@@ -1863,3 +1863,22 @@ natural join locations
 where departments.department_id > 20; -- Use WHERE and then AND
 
 -- 1999 (NEW) JOINS / USING Clause
+select
+employees.employee_id,
+employees.first_name,
+department_id, -- You cannot use a prefix table name in the matched column
+departments.department_name
+from employees join
+departments
+using(department_id) -- You can only use one column with USING clause
+order by employee_id;
+
+-- Below query is the same as above with the OLD sytanx
+select
+employees.employee_id,
+employees.first_name,
+employees.department_id,
+departments.department_name
+from employees, departments
+where employees.department_id = departments.department_id
+order by employee_id;
