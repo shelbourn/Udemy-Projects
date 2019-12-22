@@ -1846,3 +1846,9 @@ departments.location_id,
 locations.city
 from departments, locations
 where departments.location_id = locations.location_id;
+
+-- *** IMPORTANT NOTE ***
+-- If you try to make a NATURAL JOIN between EMPLOYEES and DEPARTMENTS the results will be wrong
+-- Because it will join 2 columns DEPARTMENT_ID and MANAGER_ID
+
+-- Use WHERE for additional conditions and AND if necessary
