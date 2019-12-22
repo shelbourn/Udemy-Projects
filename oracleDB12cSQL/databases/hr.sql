@@ -1551,9 +1551,27 @@ Cartesian Product is formed when:
 * A JOIN condition is omitted
 * A JOIN condition is invalid
 * All rows in the first table are joined with all rows in the second table
+* Resulting table will be number of rows in first table multiplied by number of rows in second table
+* Resulting table will show each row in table one match with every row in table two
 */
 
 -- To avoid a Cartesian Product always include a valid JOIN condition in a WHERE clause.
 
+-- DEPARTMENT_ID is the FK to the DEPARTMENTS table
+select employee_id, first_name, department_id
+from employees;
 
+-- This query shows DEPARTMENT_ID, DEPARTMENT_NAME, from DEPARTMENTS
+select department_id, department_name
+from departments;
 
+-- If you try to display data from multiple tables with the JOIN condition then the result will be the Cartesian Product
+-- Prefix is only necessary if two tables share a common column
+-- Using a prefix is a best practice
+select
+employees.employee_id, -- 'employee' is the prefix telling Oracle that 'employee_id' comes from the 'employees' table
+employees.first_name,
+departments.department_id,
+departments.department_name
+from employees, departments
+order by employee_id;
