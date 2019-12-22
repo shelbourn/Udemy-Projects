@@ -1591,12 +1591,36 @@ where employees.department_id = departments.department_id -- EQUIJOIN clause
 order by employee_id;
 
 -- Examples using additional conditions
+-- Additional conditions should be included after WHERE clause (JOIN condition)
 select
 employees.employee_id,
 employees.first_name,
-employees.department_id,
+employees.department_id, -- Prefix here is required since DEPARTMENT_ID exists in both tables
 departments.department_name
 from employees, departments
 where employees.department_id = departments.department_id -- EQUIJOIN clause
 and employees.department_id > 40
+order by employee_id;
+
+-- Using Table Aliases
+select
+emp.employee_id, -- Using table aliases
+emp.first_name, -- Using table aliases
+emp.department_id, -- Using table aliases
+dept.department_name -- Using table aliases
+from employees emp, departments dept -- Assigning table aliases
+where emp.department_id = dept.department_id
+order by employee_id;
+
+-- Joining more than 2 tables with EQUIJOIN
+select
+emp.employee_id,
+emp.first_name,
+emp.department_id,
+dept.department_name,
+dept.location_id,
+loc.city
+from employees emp, departments dept, locations loc
+where emp.department_id = dept.department_id
+and dept.location_id = loc.location_id
 order by employee_id;
