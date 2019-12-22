@@ -1528,7 +1528,18 @@ from employees
 group by department_id
 order by 1;
 -------------------------------------------
--- *** IMPORTANT ***
+-- *** ONE OF MOST IMPORTANT CHAPTERS ***
 -- Displaying data from multiple tables using JOINS
+
+-- Notes on JOINS
+
+-- Know the Entity Relation Diagram (ERD) before writing JOINS
+-- Must know the table structure before writing JOINS
+-- Know the requirements before choosing which JOIN to use
+-- 2 types of Oracle JOIN syntax -- OLD (not ANSI) and NEW (ANSI and referred to as 1999 syntax)
+-- Each query has one main table that contains the result
+-- Perform the query on the main table to get the results before executing any JOINS.
+-------------------------------------------------------
+
 
 
