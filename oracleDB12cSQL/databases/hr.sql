@@ -1746,3 +1746,12 @@ from
 employees worker, -- Repeat the table twice to "split" it into two tables
 employees manager -- Repeat the table twice to "split" it into two tables
 where worker.manager_id = manager.employee_id(+);
+
+/*
+*** GOOD EXAMPLE ***
+
+Retriece all the employees (employee_id, first_name, department_id_ who's salary > 2500
+And display their department name, and department location and department city and country.
+All employees should appear even if they have no department.
+*/
+
