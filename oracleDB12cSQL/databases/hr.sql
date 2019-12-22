@@ -1768,6 +1768,8 @@ where salary > 2500;
 -- from LOCATIONS we need city and country_id
 -- from COUNTRIES we need country_name
 
+-- The number of rows in the below query is equal to the number of rows in the query below
+
 select
 emp.employee_id,
 emp.first_name,
@@ -1782,3 +1784,40 @@ where emp.department_id = dept.department_id(+) -- Since there are NULL values i
 and dept.location_id = loc.location_id(+)
 and loc.country_id = countries.country_id(+)
 and emp.salary > 2500;
+------------------------------------------------------
+
+-- 1999 (NEW) JOINS / CROSS JOIN (Cartesian Product)
+/*
+select last_name, department_name
+from employees
+cross join departments;
+
+ALL RECORDS IN EMPLOYEES TABLE MATCHED WITH EACH AND EVERY ROW IN DEPARTMENTS TABLE
+*/
+
+-- EXAMPLES
+
+-- 1999 Format
+select
+employees.employee_id,
+employees.first_name,
+departments.department_id,
+departments.department_name
+from employees
+cross join
+departments
+order by employee_id;
+
+-- Old Format
+select
+employees.employee_id,
+employees.first_name,
+departments.department_id,
+departments.department_name
+from employees, departments
+order by employee_id;
+----------------------------------------
+
+-- 1999 (NEW) JOINS / NATURAL JOINS
+
+
