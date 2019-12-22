@@ -1451,9 +1451,11 @@ from employees;
 -- Correct query below
 select department_id, sum(salary)
 from employees
-group by department_id; -- All COLUMNS is SELECT statement should be in the GROUP BY clause
+group by department_id -- All COLUMNS is SELECT statement should be in the GROUP BY clause
+order by department_id;
 
 select department_id, job_id, sum(salary)
 from employees
 group by department_id, job_id -- All COLUMNS in SELECT must be in GROUP BY
-order by 1, 2;
+order by 1, 2; -- Order By 1st column in SELECT statement and then the 2nd
+
