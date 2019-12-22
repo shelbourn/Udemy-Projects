@@ -1580,5 +1580,23 @@ order by employee_id;
 -- Old JOINS / EQUIJOINS (SIMPLE JOIN / INNER JOIN)
 -- Joins two tables based on FK
 
+-- EQUIJOIN, INNER JOIN, SIMPLE JOIN examples
+select
+employees.employee_id,
+employees.first_name,
+employees.department_id,
+departments.department_name
+from employees, departments
+where employees.department_id = departments.department_id -- EQUIJOIN clause
+order by employee_id;
 
-
+-- Examples using additional conditions
+select
+employees.employee_id,
+employees.first_name,
+employees.department_id,
+departments.department_name
+from employees, departments
+where employees.department_id = departments.department_id -- EQUIJOIN clause
+and employees.department_id > 40
+order by employee_id;
