@@ -1468,3 +1468,9 @@ from employees
 group by department_id
 order by 1, 2; -- All columns in the SELECT statement should be in GROUP BY clause
 
+-- *** IMPORTANT ***
+-- You can not use GROUP BY clause with column aliases
+-- Error Code: ORA-00904 "Invalid Identifier"
+select department_id d, sum(salary)
+from employees
+group by d;
