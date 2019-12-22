@@ -1755,6 +1755,19 @@ And display their department name, and department location and department city a
 All employees should appear even if they have no department.
 */
 
+-- Number of records should equal records in the query below
+-- The EMPLOYEES table is the main table
+
+select count(*)
+from employees
+where salary > 2500;
+
+-- Now we need to determine which columns we need
+-- from EMPLOYEES we need employee_id, first_name, department_id
+-- from DEPARTMENTS we need department_name and location_id
+-- from LOCATIONS we need city and country_id
+-- from COUNTRIES we need country_name
+
 select
 emp.employee_id,
 emp.first_name,
@@ -1765,7 +1778,7 @@ dept.location_id,
 loc.city,
 countries.country_name
 from employees emp, departments dept, locations loc, countries
-where emp.department_id = dept.department_id(+)
-and dept.location_id = loc.location_id
-and loc.country_id = countries.country_id
+where emp.department_id = dept.department_id(+) -- Since there are NULL values in the emp.department_id column, you have to add OUTER JOINS to all joined tables otherwise data will be missing
+and dept.location_id = loc.location_id(+)
+and loc.country_id = countries.country_id(+)
 and emp.salary > 2500;
