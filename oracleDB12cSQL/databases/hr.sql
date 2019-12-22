@@ -1480,3 +1480,11 @@ select department_id d, sum(salary)
 from employees
 group by department_id
 order by d;
+
+-- WHERE, GROUP BY, and ORDER BY
+-- WHERE first, then GROUP BY, then ORDER BY
+select department_id, sum(salary)
+from employees
+where department_id > 30
+group by department_id
+order by department_id;
