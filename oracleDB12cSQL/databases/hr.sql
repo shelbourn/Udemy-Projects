@@ -1719,3 +1719,19 @@ where employees.department_id(+) = departments.department_id
 order by employee_id;
 
 -- Old JOINS / SELF JOIN
+-- Joining a table to itself (imagine one table consists of two tables)
+
+--SELF JOIN examples
+select employee_id, first_name, manager_id
+from employees;
+
+-- I was to display the manager's name --> SELF JOIN
+select
+worker.employee_id,
+worker.first_name,
+worker.manager_id,
+manager.first_name Manager
+from
+employees worker,
+employees manager
+where worker.manager_id = manager.employee_id;
