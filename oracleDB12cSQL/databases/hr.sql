@@ -1870,7 +1870,7 @@ department_id, -- You cannot use a prefix table name in the matched column
 departments.department_name
 from employees join
 departments
-using(department_id) -- You can only use one column with USING clause
+using(department_id) -- You can use the USING clause with multiple columns
 order by employee_id;
 
 -- Below query is the same as above with the OLD sytanx
