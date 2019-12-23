@@ -2219,3 +2219,8 @@ where employee_id in (select manager_id from employees); -- Some MANAGER_ID valu
 select employee_id, first_name, last_name, salary
 from employees
 where employee_id not in (select manager_id from employees); -- Some MANAGER_ID values are NULL, this will return no records with NOT IN
+------------------------------------------------------
+
+-- EXISTS and NOT EXISTS
+-- IN and NOT IN used for small sets of values
+-- EXISTS and NOT EXISTS used for large sets of values
