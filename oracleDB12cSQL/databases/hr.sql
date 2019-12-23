@@ -2155,3 +2155,6 @@ having count(employee_id) > (select count(*)
                             where department_id = 90);
                             
 -- If the subquery returns no rows then all SELECT statements will return no rows.
+select employee_id, first_name, last_name, salary
+from employees
+where salary > (select salary from employees where last_name = 'dddd'); -- returns no rows
