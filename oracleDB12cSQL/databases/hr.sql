@@ -2206,5 +2206,16 @@ select * from employees
 where manager_id in (100, 101, NULL);
 
 -- If the subquery returns NULL with the NOT IN operator, then no records will be retrieved
+-- NOT IN is equivalent to <> ALL
 select * from employees
 where manager_id not in (100, 101, NULL);
+
+-- If the subquery set contains one NULL value, then this is okay with IN operator
+select employee_id, first_name, last_name, salary
+from employees
+where employee_id in (select manager_id from employees); -- Some MANAGER_ID values are NULL, but this is okay with IN
+
+-- If the subquery set contains one NULL value, this will return no results with NOT IN operator
+select employee_id, first_name, last_name, salary
+from employees
+where employee_id not in (select manager_id from employees); -- Some MANAGER_ID values are NULL, this will return no records with NOT IN
