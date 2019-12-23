@@ -2015,7 +2015,7 @@ order by employee_id;
 
 /*
 select
-employees_employee_id,
+employees.employee_id,
 employees.first_name,
 employees.department_id,
 departments.department_name
@@ -2030,7 +2030,7 @@ order by employee_id;
 
 /*
 select
-employees_employee_id,
+employees.employee_id,
 employees.first_name,
 employees.department_id,
 departments.department_name
@@ -2039,3 +2039,25 @@ full outer join departments
 on (employees.department_id = departments.department_id)
 order by employee_id;
 */
+
+-- EXAMPLES
+-- Left Outer JOIN / 1999 Format
+select
+employees.employee_id,
+employees.first_name,
+employees.department_id,
+departments.department_name
+from employees
+left outer join departments
+on (employees.department_id = departments.department_id)
+order by employee_id;
+
+-- Left Outer Join / Old Format
+select
+employees.employee_id,
+employees.first_name,
+employees.department_id,
+departments.department_name
+from employees, departments
+where employees.department_id = departments.department_id(+)
+order by employee_id;
