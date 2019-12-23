@@ -1884,5 +1884,20 @@ where employees.department_id = departments.department_id
 order by employee_id;
 ---------------------------------------------------
 
+-- *** IMPORTANT ***
 -- 1999 (New) Format / ON Clause
+-- Equivalent to OLD Format EQUIJOIN
 
+/*
+select
+employees_employee_id,
+employees.first_name,
+departments.department_id, -- Here prefix should be used if column is shared
+departments.department_name
+from employees join
+departments
+on (employees.department_id = departments.department_id)
+order by employee_id;
+*/
+
+-- Examples
