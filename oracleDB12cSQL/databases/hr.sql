@@ -2229,6 +2229,7 @@ where employee_id not in (select manager_id from employees); -- Some MANAGER_ID 
 select * from departments dept
 where department_id in (select department_id from employees emp);
 
+-- Use table aliases when using EXISTS/NOT EXISTS operators
 select * from departments dept
 where exists (select department_id from employees emp where emp.department_id = dept.department_id);
 
