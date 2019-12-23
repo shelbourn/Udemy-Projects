@@ -2192,4 +2192,18 @@ from employees
 where salary >= ALL (select salary from employees where department_id = 90);
 -----------------------------------------------------------
 
+-- *** IMPORTANT ***
 -- NULL Values and subqueries
+
+-- When you want to retrieve the employees who have no manager, we use IS NULL
+select * from employees
+where manager_id is null;
+-- You Cannot use manager_id=NULL
+
+-- If the subquery returns NULL with IN operator then this is okay
+select * from employees
+where manager_id in (100, 101, NULL);
+
+-- If the subquery returns NULL with the NOT IN operator, then no records will be retrieved
+select * from employees
+where manager_id not in (100, 101, NULL);
