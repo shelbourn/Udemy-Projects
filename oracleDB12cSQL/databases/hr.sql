@@ -2224,3 +2224,14 @@ where employee_id not in (select manager_id from employees); -- Some MANAGER_ID 
 -- EXISTS and NOT EXISTS
 -- IN and NOT IN used for small sets of values
 -- EXISTS and NOT EXISTS used for large sets of values
+
+-- Retrieve all the departments that have employees
+select * from departments dept
+where department_id in (select department_id from employees emp);
+
+select * from departments dept
+where exists (select department_id from employees emp where emp.department_id = dept.department_id);
+
+-- Retrieve all the departments that have no employees
+select * from departments dept
+where not exists (select department_id from employees emp where emp.department_id = dept.department_id);
