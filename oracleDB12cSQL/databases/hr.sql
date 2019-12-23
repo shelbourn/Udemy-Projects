@@ -1958,3 +1958,32 @@ from
 employees worker,
 employees manager
 where worker.manager_id = manager.employee_id;
+
+-- Joining 3 Tables using ON clause
+-- 1999 (NEW) Format
+select
+emp.employee_id,
+emp.first_name,
+emp.department_id,
+dept.department_name,
+dept.location_id,
+loc.city
+from employees emp
+join departments dept
+on (emp.department_id = dept.department_id)
+join locations loc
+on (dept.location_id = loc.location_id)
+order by employee_id;
+
+-- OLD Format
+select
+emp.employee_id,
+emp.first_name,
+emp.department_id,
+dept.department_name,
+dept.location_id,
+loc.city
+from employees emp, departments dept, locations loc
+where emp.department_id = dept.department_id
+and dept.location_id = loc.location_id
+order by employee_id;
