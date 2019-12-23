@@ -1987,3 +1987,55 @@ from employees emp, departments dept, locations loc
 where emp.department_id = dept.department_id
 and dept.location_id = loc.location_id
 order by employee_id;
+-----------------------------------------------------
+
+-- 1999 (NEW) Format / Left - Right - Full Outer JOIN
+
+-- Left Outer JOIN
+-- Equivalent to 'WHERE employees.department_id = departments.department_id(+)'
+-- Left table is MAIN TABLE
+-- All rows from left table will show in the results, even if they do not match the conditions
+
+/*
+select
+employees_employee_id,
+employees.first_name,
+employees.department_id,
+departments.department_name
+from employees
+left outer join departments
+on (employees.department_id = departments.department_id)
+order by employee_id;
+*/
+
+-- Right Outer JOIN
+-- Equivalent to 'WHERE employees.department_id(+) = departments.department_id'
+-- Right table is MAIN TABLE
+-- All rows from right table will show in the results, even if they do not match the conditions
+
+/*
+select
+employees_employee_id,
+employees.first_name,
+employees.department_id,
+departments.department_name
+from employees
+right outer join departments
+on (employees.department_id = departments.department_id)
+order by employee_id;
+*/
+
+-- Full Outer JOIN
+-- Displays all rows from all tables that are joined
+
+/*
+select
+employees_employee_id,
+employees.first_name,
+employees.department_id,
+departments.department_name
+from employees
+full outer join departments
+on (employees.department_id = departments.department_id)
+order by employee_id;
+*/
