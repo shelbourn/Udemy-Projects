@@ -2095,6 +2095,19 @@ on (employees.department_id = departments.department_id)
 order by employee_id;
 ----------------------------------------------------
 
+-- *** IMPORTANT ***
 -- Using Subqueries to Solve Queries
+-- Inner Query executes before Outer Query
+-- Result of subquery is used by main query
+
+/*
+Subquery Syntax:
+
+SELECT select_list
+FROM table
+WHERE expr operator
+      (SELECT select_list
+      FROM table);
+*/
 
 -- Single Row Subqueries
