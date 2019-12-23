@@ -2224,6 +2224,7 @@ where employee_id not in (select manager_id from employees); -- Some MANAGER_ID 
 -- EXISTS and NOT EXISTS
 -- IN and NOT IN used for small sets of values
 -- EXISTS and NOT EXISTS used for large sets of values
+-- Use EXISTS/NOT EXISTS over IN/NOT IN
 
 -- Retrieve all the departments that have employees
 select * from departments dept
