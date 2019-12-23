@@ -2158,3 +2158,6 @@ having count(employee_id) > (select count(*)
 select employee_id, first_name, last_name, salary
 from employees
 where salary > (select salary from employees where last_name = 'dddd'); -- returns no rows
+------------------------------------------------
+
+-- Multiple Row Subqueries
