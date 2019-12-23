@@ -2177,3 +2177,9 @@ select employee_id, first_name, last_name, salary
 from employees
 where salary in (select salary from employees where department_id = 90);
 -- Can also be queried like this: IN (24000, 17000)
+
+-- Using ANY
+-- Returns all values that meet the conditions of the subquery
+select employee_id, first_name, last_name, salary
+from employees
+where salary >= any (select salary from employees where department_id = 90);
