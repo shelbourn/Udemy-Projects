@@ -2111,3 +2111,22 @@ WHERE expr operator
 */
 
 -- Single Row Subqueries
+-- Who has salary > Abel's salary (assume Abel is the LAST_NAME)
+-- You need to know Abel's salary
+select salary from employees where last_name = 'Abel';
+
+-- Full query using subquery
+select employee_id, first_name, last_name, salary
+from employees
+where salary > (select salary from employees where last_name = 'Abel');
+
+-- Can put subquery on the left side, but THIS IS NOT RECOMMENDED
+select employee_id, first_name, last_name, salary
+from employees
+where (select salary from employees where last_name = 'Abel') < salary;
+
+-- *** IMPORTANT NOTE ***
+-- When using single-row operator, then the subquery should also return a single row
+-- Single-row operators: =, >, <, >=, <=, <>, !=
+select * from employees
+where job_id = (select job_id from employees where last_name = 'Abel');
