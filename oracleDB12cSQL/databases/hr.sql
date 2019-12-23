@@ -1922,3 +1922,39 @@ from employees join departments
 on (employees.department_id = departments.department_id)
 where employee_id = 100 -- Use WHERE for additional conditions after ON clause
 order by employee_id;
+
+-- Can also use ON with NONEQUIJOIN
+-- 1999 (NEW) Format
+select emp.employee_id, emp.first_name, emp.salary, grades.grade_level
+from employees emp join
+job_grades grades
+on emp.salary between grades.lowest_sal and grades.highest_sal;
+
+-- Old Format
+select emp.employee_id, emp.first_name, emp.salary, grades.grade_level
+from employees emp,
+job_grades grades
+where emp.salary between grades.lowest_sal and grades.highest_sal;
+
+-- Using ON with SELF JOIN
+-- 1999 (NEW) Format
+select
+worker.employee_id,
+worker.first_name,
+worker.manager_id,
+manager.first_name
+from
+employees worker join
+employees manager
+on (worker.manager_id = manager.employee_id);
+
+-- OLD Format
+select
+worker.employee_id,
+worker.first_name,
+worker.manager_id,
+manager.first_name
+from
+employees worker,
+employees manager
+where worker.manager_id = manager.employee_id;
