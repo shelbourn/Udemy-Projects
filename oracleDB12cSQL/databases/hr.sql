@@ -2145,3 +2145,13 @@ select * from employees
 where salary = (select max(salary) from employees);
 
 --Subquery using HAVING
+-- HAVING is like the WHERE clause but with GROUP BY conditions
+-- This query retrieves all departments grouped by department_id where the department has more employees than department 90
+select department_id, count(employee_id)
+from employees
+group by department_id
+having count(employee_id) > (select count(*)
+                            from employees
+                            where department_id = 90);
+                            
+-- If the subquery returns no rows then all SELECT statements will return no rows.
