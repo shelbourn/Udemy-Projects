@@ -2230,9 +2230,10 @@ select * from departments dept
 where department_id in (select department_id from employees emp);
 
 -- Use table aliases when using EXISTS/NOT EXISTS operators
+-- Use DISTINCT modifier to make the data more useful
 select * from departments dept
-where exists (select department_id from employees emp where emp.department_id = dept.department_id);
+where exists (select distinct department_id from employees emp where emp.department_id = dept.department_id);
 
 -- Retrieve all the departments that have no employees
 select * from departments dept
-where not exists (select department_id from employees emp where emp.department_id = dept.department_id);
+where not exists (select distinct department_id from employees emp where emp.department_id = dept.department_id);
