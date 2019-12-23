@@ -2095,3 +2095,6 @@ on (employees.department_id = departments.department_id)
 order by employee_id;
 ----------------------------------------------------
 
+-- Using Subqueries to Solve Queries
+
+-- Single Row Subqueries
