@@ -2141,3 +2141,7 @@ select salary from employees where department_id = 30;
 
 -- Using group functions in subquery
 -- We want the employee who has the highest salary
+select * from employees
+where salary = (select max(salary) from employees);
+
+--Subquery using HAVING
