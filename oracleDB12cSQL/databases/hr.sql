@@ -2180,6 +2180,7 @@ where salary in (select salary from employees where department_id = 90);
 
 -- Using ANY
 -- Returns all values that meet ANY of the conditions of the subquery
+-- = ANY is equivalent to IN
 select employee_id, first_name, last_name, salary
 from employees
 where salary >= any (select salary from employees where department_id = 90);
@@ -2189,3 +2190,6 @@ where salary >= any (select salary from employees where department_id = 90);
 select employee_id, first_name, last_name, salary
 from employees
 where salary >= ALL (select salary from employees where department_id = 90);
+-----------------------------------------------------------
+
+-- NULL Values and subqueries
