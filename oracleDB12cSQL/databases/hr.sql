@@ -2131,7 +2131,9 @@ where (select salary from employees where last_name = 'Abel') < salary;
 select * from employees
 where job_id = (select job_id from employees where last_name = 'Abel');
 
+-- *** IMPORTANT ***
 -- This SELECT statement will give error "single-row subquery returns more than one row"
+-- Error Code: ORA-01427 'Single-Row subquery returns more than one row'
 select * from employees
 where salary > (select salary from employees where department_id = 30); -- Many employees work in DEPARTMENT_ID 30
 
