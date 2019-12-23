@@ -2082,3 +2082,16 @@ departments.department_name
 from employees, departments
 where employees.department_id(+) = departments.department_id
 order by employee_id;
+
+-- Full Outer Join / 1999 Format
+select
+employees.employee_id,
+employees.first_name,
+employees.department_id,
+departments.department_name
+from employees
+full outer join departments
+on (employees.department_id = departments.department_id)
+order by employee_id;
+----------------------------------------------------
+
