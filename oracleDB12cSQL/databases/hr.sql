@@ -2161,3 +2161,12 @@ where salary > (select salary from employees where last_name = 'dddd'); -- retur
 ------------------------------------------------
 
 -- Multiple Row Subqueries
+-- Return more than one row
+-- Use multiple row operators
+-- Multiple Row operators: IN, ANY, ALL
+-- ANY must be preceded by =, !=, >, <, <=, >=
+-- ALL must be preceded by =, !=, >, <, <=, >=
+
+-- EXAMPLES
+
+
