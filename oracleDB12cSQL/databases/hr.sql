@@ -2169,4 +2169,11 @@ where salary > (select salary from employees where last_name = 'dddd'); -- retur
 
 -- EXAMPLES
 
+select salary from employees where department_id = 90;
 
+-- Using IN
+-- Returns values that match any value in a list of values
+select employee_id, first_name, last_name, salary
+from employees
+where salary in (select salary from employees where department_id = 90);
+-- Can also be queried like this: IN (24000, 17000)
