@@ -2201,6 +2201,7 @@ where manager_id is null;
 -- You Cannot use manager_id=NULL
 
 -- If the subquery returns NULL with IN operator then this is okay
+-- IN is equivalent to =ANY
 select * from employees
 where manager_id in (100, 101, NULL);
 
