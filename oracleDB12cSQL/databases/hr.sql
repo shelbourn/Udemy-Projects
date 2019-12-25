@@ -2303,4 +2303,14 @@ where employee_id = 176;
    4.) The query order is ASC for ALL columns
 */
 
+select employee_id, job_id from employees
+where employee_id = 176
+union
+select employee_id, job_id from job_history
+where employee_id = 176;
 
+select employee_id, job_id
+from employees
+union
+select employee_id, job_id
+from job_history;
