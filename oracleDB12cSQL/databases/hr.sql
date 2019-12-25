@@ -2255,7 +2255,7 @@ INTERSECT: Returns rows that are common to both queries.
 MINUS: Returns rows in the first query that are not present in the second query.
 */
 
-/*
+/******** IMPORTANT *********
 UNION:
 
 * Number of columns being selected must be the same
@@ -2263,6 +2263,8 @@ UNION:
   (numeric or character)
 * NULL values are not ignored
 * By default, the output is sorted in ascending order of the columns in the select clause
+* Column names do not need to be identical
+* UNION operates over all columns being selected
 
 UNION ALL:
 
@@ -2283,5 +2285,9 @@ MINUS
 * Number of columns used in the SELECT statements must be the same
 * Data types of columns in the SELECT statements must be of the same data type group
 */
+
+-- Examples
+
+-- UNION operator
 
 
