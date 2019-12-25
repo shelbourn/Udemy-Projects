@@ -2403,6 +2403,8 @@ select employee_id, job_id, 0 salary -- salary is an alias
 from job_history
 order by employee_id;
 
+-- *** IMPORTANT ***
+-- ORDER BY clause must come last after all SELECT statements and only once
 select employee_id, job_id, phone_number
 from employees
 union
