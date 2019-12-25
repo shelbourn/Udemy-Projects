@@ -2340,3 +2340,13 @@ union
 select employee_id emno, job_id jobid
 from job_history
 order by emp_id; -- ORDER BY must also use column alias from first query
+
+-- INTERSECT
+-- Retrieves rows shared by both SELECT statements
+
+select employee_id, job_id
+from employees
+intersect
+select employee_id, job_id
+from job_history
+order by employee_id;
