@@ -2331,3 +2331,12 @@ union all
 select employee_id, job_id
 from job_history
 order by employee_id;
+
+-- The column name from the first SELECT statement will display in the results
+-- In this example emp_id and job will appear as column headings
+select employee_id emp_id, job_id job -- Aliases
+from employees
+union
+select employee_id emno, job_id jobid
+from job_history
+order by emp_id; -- ORDER BY must also use column alias from first query
