@@ -2367,3 +2367,9 @@ intersect
 select employee_id, job_id, department_id
 from job_history
 order by employee_id;
+
+-- MINUS Operator
+-- Returns the employees who have not changed their jobs.
+-- Records exist in the EMPLOYEES table, but not in the JOB_HISTORY table
+-- JOB_HISTORY table only stores information for employees who have changed jobs.
+
