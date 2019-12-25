@@ -2373,3 +2373,9 @@ order by employee_id;
 -- Records exist in the EMPLOYEES table, but not in the JOB_HISTORY table
 -- JOB_HISTORY table only stores information for employees who have changed jobs.
 
+select employee_id, job_id
+from employees
+minus
+select employee_id, job_id
+from job_history
+order by employee_id;
