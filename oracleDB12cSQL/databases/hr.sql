@@ -2416,7 +2416,16 @@ order by employee_id;
 -- ORDER BY can only see column names used in the first SELECT statement
 select employee_id emp_id, job_id, salary
 from employees
-intersect
+union
 select employee_id empno, job_id, 0 salary
 from job_history
 order by emp_id; -- If you try to use empno it will return an error.
+
+-- *** IMPORTANT ***
+-- You can use column number to solve the issue of definining column name
+select employee_id emp_id, job_id, salary
+from employees
+union
+select employee_id empno, job_id, 0 salary
+from job_history
+order by 1;
