@@ -2238,3 +2238,7 @@ where exists (select distinct department_id from employees emp where emp.departm
 -- Retrieve all the departments that have no employees
 select * from departments dept
 where not exists (select distinct department_id from employees emp where emp.department_id = dept.department_id);
+------------------------------------------------------
+
+-- Using Set Operators
+
