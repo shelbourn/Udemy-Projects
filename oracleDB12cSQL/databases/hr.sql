@@ -2391,3 +2391,12 @@ union
 select employee_id, job_id, to_char(null) email -- to_char because EMAIL is CHARACTER data type
 from job_history
 order by employee_id;
+
+-- SALARY exists in EMPLOYEES table, but not in JOB_HISTORY table.
+-- SALARY is data type number
+select employee_id, job_id, salary
+from employees
+intersect
+select employee_id, job_id, 0 salary
+from job_history
+order by employee_id;
