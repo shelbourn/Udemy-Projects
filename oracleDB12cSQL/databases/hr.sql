@@ -2262,7 +2262,7 @@ UNION:
 * Data types of columns being selected must be in the same data type group
   (numeric or character)
 * NULL values are not ignored
-* By default, the output is sorted in ascending order of the columns in the select clause
+* *** IMPORTANT *** By default, the output is sorted in ascending order of the columns in the select clause
 * Column names do not need to be identical
 * UNION operates over all columns being selected
 
@@ -2288,6 +2288,19 @@ MINUS
 
 -- Examples
 
--- UNION operator
+-- UNION Operator
+
+select * from employees
+where employee_id = 176; -- His JOB_ID now is SA_REP
+
+select * from job_history
+where employee_id = 176;
+
+-- The UNION between EMPLOYEES and JOB_HISTORY
+/* 1.) The number of columns should match
+   2.) The data type should match
+   3.) Duplicates will be eliminated
+   4.) The query order is ASC for ALL columns
+*/
 
 
