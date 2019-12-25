@@ -2411,3 +2411,12 @@ union
 select employee_id, job_id, to_char(null) phone_number
 from job_history
 order by employee_id;
+
+-- *** IMPORTANT ***
+-- ORDER BY can only see column names used in the first SELECT statement
+select employee_id emp_id, job_id, salary
+from employees
+intersect
+select employee_id empno, job_id, 0 salary
+from job_history
+order by emp_id; -- If you try to use empno it will return an error.
