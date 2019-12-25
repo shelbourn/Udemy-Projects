@@ -2309,8 +2309,19 @@ union
 select employee_id, job_id from job_history
 where employee_id = 176;
 
+-- Both columns in the result are sorted by ASC
 select employee_id, job_id
 from employees
 union
 select employee_id, job_id
 from job_history;
+
+-- UNION ALL
+
+-- The UNION ALL between EMPLOYEES and JOB_HISTORY
+/*  1.) The number of columns should match
+    2.) The data type should match
+    3.) Duplicates will not be eliminated
+    4.) The results will not be sorted by default
+*/
+
