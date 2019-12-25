@@ -2350,3 +2350,20 @@ intersect
 select employee_id, job_id
 from job_history
 order by employee_id;
+
+select * from employees
+where employee_id = 176;
+
+select * from job_history
+where employee_id = 176;
+
+-- *** IMPORTANT ***
+-- Adding the DEPARTMENT_ID column with return only one result because
+-- there is only one record where the data is matched in EMPLOYEE_ID, JOB_ID, and DEPARTMENT_ID
+-- In the EMPLOYEES table employee 176 is a SA_REP
+select employee_id, job_id, department_id
+from employees
+intersect
+select employee_id, job_id, department_id
+from job_history
+order by employee_id;
