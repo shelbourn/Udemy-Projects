@@ -2369,6 +2369,7 @@ from job_history
 order by employee_id;
 
 -- MINUS Operator
+-- Returns rows found in Query 1 and not in Query 2
 -- Returns the employees who have not changed their jobs.
 -- Records exist in the EMPLOYEES table, but not in the JOB_HISTORY table
 -- JOB_HISTORY table only stores information for employees who have changed jobs.
@@ -2377,5 +2378,16 @@ select employee_id, job_id
 from employees
 minus
 select employee_id, job_id
+from job_history
+order by employee_id;
+
+-- *** IMPORTANT ***
+-- Matching Dummy Columns
+
+-- EMAIL exists in EMPLOYEE table, but not in JOB_HISTORY table
+select employee_id, job_id, email
+from employees
+union
+select employee_id, job_id, to_char(null) email -- to_char because EMAIL is CHARACTER data type
 from job_history
 order by employee_id;
