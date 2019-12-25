@@ -2383,6 +2383,8 @@ order by employee_id;
 
 -- *** IMPORTANT ***
 -- Matching Dummy Columns
+-- For Dummy column you basically want to make the dummy column set to a value of 0
+-- TO_CHAR(NULL) for character data types and 0 for NUMBER data types.
 
 -- EMAIL exists in EMPLOYEE table, but not in JOB_HISTORY table
 select employee_id, job_id, email
@@ -2396,7 +2398,14 @@ order by employee_id;
 -- SALARY is data type number
 select employee_id, job_id, salary
 from employees
-intersect
-select employee_id, job_id, 0 salary
+union
+select employee_id, job_id, 0 salary -- salary is an alias
+from job_history
+order by employee_id;
+
+select employee_id, job_id, phone_number
+from employees
+union
+select employee_id, job_id, to_char(null) phone_number
 from job_history
 order by employee_id;
