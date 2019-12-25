@@ -2244,7 +2244,7 @@ where not exists (select distinct department_id from employees emp where emp.dep
 
 /*
 Set Operators combine the results of two or more queries into one result.
-Queries containing set operators are called compound queries.
+Queries containing set operators are also called 'compound queries'.
 
 UNION: Returns rows from both queries after eliminating duplicates.
 
@@ -2255,5 +2255,33 @@ INTERSECT: Returns rows that are common to both queries.
 MINUS: Returns rows in the first query that are not present in the second query.
 */
 
+/*
+UNION:
+
+* Number of columns being selected must be the same
+* Data types of columns being selected must be in the same data type group
+  (numeric or character)
+* NULL values are not ignored
+* By default, the output is sorted in ascending order of the columns in the select clause
+
+UNION ALL:
+
+* Same as UNION except:
+* Duplicate rows are not eliminated
+* Output is not sorted by default
+
+INTERSECT:
+
+* Number of columns and the data types of the columns being selected by the 
+  SELECT statements in the queries must be identical in all the SELECT
+  statements
+* Reversing the order of the intersect tables does not alter the result
+* Does not ignore NULL values
+
+MINUS
+
+* Number of columns used in the SELECT statements must be the same
+* Data types of columns in the SELECT statements must be of the same data type group
+*/
 
 
