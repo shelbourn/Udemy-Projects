@@ -2240,5 +2240,20 @@ select * from departments dept
 where not exists (select distinct department_id from employees emp where emp.department_id = dept.department_id);
 ------------------------------------------------------
 
--- Using Set Operators
+-- Using Set Operators (UNION, UNION ALL, INTERSECT, MINUS)
+
+/*
+Set Operators combine the results of two or more queries into one result.
+Queries containing set operators are called compound queries.
+
+UNION: Returns rows from both queries after eliminating duplicates.
+
+UNION ALL Returns rows from both queries, including all duplicates.
+
+INTERSECT: Returns rows that are common to both queries.
+
+MINUS: Returns rows in the first query that are not present in the second query.
+*/
+
+
 
