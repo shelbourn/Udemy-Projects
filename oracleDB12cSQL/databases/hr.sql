@@ -2325,3 +2325,9 @@ from job_history;
     4.) The results will not be sorted by default
 */
 
+select employee_id, job_id
+from employees
+union all
+select employee_id, job_id
+from job_history
+order by employee_id;
