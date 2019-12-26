@@ -29,7 +29,15 @@
  * if (!isLoggedIn) {
  * This code will NOT execute because isLoggedIn is true but ! inverts it (in this check)
  * } else {
- * This would execute because isLoggedIn is true and hence !== true yields false
+ * This would execute because !isLoggedIn yields false --> else block executes
+ * }
+ *
+ * THE ABOVE IS EQUIVALENT TO
+ * const isloggedIn = true;
+ * if (isLoggedIn !== true) {
+ * This code will NOT execute.
+ * } else {
+ * This would execute because.
  * }
  */
 
