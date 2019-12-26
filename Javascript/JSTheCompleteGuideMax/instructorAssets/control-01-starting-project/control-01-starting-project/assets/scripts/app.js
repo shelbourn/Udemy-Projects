@@ -3,6 +3,7 @@ let currentResult = defaultResult
 let logEntries = []
 
 // Gets input from input field
+// Return is used here because it will be assigned to const/var later
 function getUserNumberInput() {
 	return parseInt(usrInput.value)
 }
@@ -29,7 +30,6 @@ function writeToLog(
 	console.log(logEntries)
 }
 
-// Use the equality operator (===) ALWAYS when possible
 function calculateResult(calculationType) {
 	const enteredNumber = getUserNumberInput()
 	const initialResult = currentResult
