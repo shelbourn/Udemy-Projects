@@ -1,3 +1,14 @@
+/**********************
+ * FALSY and TRUTHY Values
+ *
+ * JS tries to coerce values to a Boolean value if a Boolean value is required.
+ * const nameInput ='Matt'
+ * if(nameInput === 'Matt'){...} --> returns true
+ *
+ * const nameInput = 'Matt'
+ * if(nameInput){...} --> Also works because this is 'Truthy'
+ */
+
 const defaultResult = 0
 let currentResult = defaultResult
 let logEntries = []
