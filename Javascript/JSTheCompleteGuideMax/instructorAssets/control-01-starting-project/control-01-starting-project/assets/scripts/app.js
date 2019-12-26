@@ -29,6 +29,7 @@ function writeToLog(
 	console.log(logEntries)
 }
 
+// Use the equality operator (===) ALWAYS when possible
 function calculateResult(calculationType) {
 	const enteredNumber = getUserNumberInput()
 	const initialResult = currentResult
