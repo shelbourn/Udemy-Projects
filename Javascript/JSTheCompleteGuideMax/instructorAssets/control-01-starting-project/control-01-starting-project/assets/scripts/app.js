@@ -1,10 +1,10 @@
 /****************************
- * Boolean Operators
+ * Boolean Operators --> Return True or False
  *
- * == (equality operator) --> Check for value equality (a == b)
+ * == (equality operator) --> Check for value equality (a == b) (2 == "2")
  * != (inequality operator) --> Check for value inequality (a != b)
- * === and !== (Stict equality/inequality) --> Check for value AND type (in)equality (a === b)
- *
+ * === and !== (Stict equality/inequality) --> Check for value AND type (in)equality (a === b) (2 !== "2")
+ * === and !== is PREFERRED over == or 1=
  *
  */
 
