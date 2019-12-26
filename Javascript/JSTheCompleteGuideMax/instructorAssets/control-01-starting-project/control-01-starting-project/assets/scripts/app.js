@@ -1,7 +1,8 @@
 /*********************
  * Logical AND and OR Operators
  *
- *
+ * AND (&&)
+ * OR (||)
  */
 
 const defaultResult = 0
