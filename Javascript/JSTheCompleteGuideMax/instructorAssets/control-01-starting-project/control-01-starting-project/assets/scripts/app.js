@@ -1,10 +1,3 @@
-/*********************
- * Logical AND and OR Operators
- *
- * AND (&&)
- * OR (||)
- */
-
 const defaultResult = 0
 let currentResult = defaultResult
 let logEntries = []
