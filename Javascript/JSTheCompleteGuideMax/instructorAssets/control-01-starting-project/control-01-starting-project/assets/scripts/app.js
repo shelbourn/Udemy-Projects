@@ -7,6 +7,12 @@
  * === and !== is PREFERRED over == or 1=
  * > & < (Less than/Greater than operator) --> Can check numbers and strings
  * >= & <= (Greater/Less than or equal to) -- Can check numbers and strings
+ * ! (Negate Boolean) --> Negates following value. Used to check if something is not true. (!a)
+ * If a variable already stores a Boolean you do not need to use an operator
+ * const isLoggedIn = true;
+ * if (isLoggedIn) {
+ * This code will execute because isLoggedIn is true => A valid condition
+ * }
  */
 
 const defaultResult = 0
