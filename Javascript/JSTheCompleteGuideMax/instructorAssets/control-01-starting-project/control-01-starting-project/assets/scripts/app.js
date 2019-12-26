@@ -29,6 +29,7 @@ function writeToLog(
 	console.log(logEntries)
 }
 
+// Else-if statements
 function calculateResult(calculationType) {
 	const enteredNumber = getUserNumberInput()
 	const initialResult = currentResult
