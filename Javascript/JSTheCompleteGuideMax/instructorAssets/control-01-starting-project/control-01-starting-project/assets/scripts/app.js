@@ -1,3 +1,13 @@
+/***************
+ * IMPORTANT NOTE
+ *
+ * Two identical objects or arrays stored in two different variables
+ * will never return true when compared using Boolean operators
+ * const person1 = {name: 'Matt}
+ * const person2 = {name: 'Matt}
+ * person1 == (or ===) person2 --> will ALWAYS return false
+ */
+
 const defaultResult = 0
 let currentResult = defaultResult
 let logEntries = []
