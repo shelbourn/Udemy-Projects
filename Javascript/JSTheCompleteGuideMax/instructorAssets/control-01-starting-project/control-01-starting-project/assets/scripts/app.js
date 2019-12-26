@@ -6,6 +6,8 @@
  * const person1 = {name: 'Matt}
  * const person2 = {name: 'Matt}
  * person1 == (or ===) person2 --> will ALWAYS return false
+ * const person3 = person1
+ * person1 == (or ===) person3
  */
 
 const defaultResult = 0
