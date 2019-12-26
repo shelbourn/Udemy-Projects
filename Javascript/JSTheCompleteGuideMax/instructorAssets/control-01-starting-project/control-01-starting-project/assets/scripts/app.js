@@ -47,6 +47,13 @@ function calculateResult(calculationType) {
 		return
 	}
 
+	// CAN USE THIS METHOD ALSO, BUT THE ABOVE METHOD IS PREFERRED
+	// if (
+	// 	calculationType === 'ADD' ||
+	// 	calculationType === 'SUBTRACT' ||
+	// 	calculationType === 'MULTIPLY' ||
+	// 	calculationType === 'DIVIDE'
+	// )
 	const enteredNumber = getUserNumberInput()
 	const initialResult = currentResult
 	let mathOperator
