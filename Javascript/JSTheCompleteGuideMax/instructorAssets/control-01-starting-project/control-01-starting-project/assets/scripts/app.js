@@ -8,6 +8,7 @@
  * person1 == (or ===) person2 --> will ALWAYS return false
  * const person3 = person1
  * person1 == (or ===) person3
+ * person1.name === person2.name [provides access to object elements which are equal]
  */
 
 const defaultResult = 0
