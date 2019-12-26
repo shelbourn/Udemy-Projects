@@ -7,6 +7,14 @@
  *
  * const nameInput = 'Matt'
  * if(nameInput){...} --> Also works because this is 'Truthy'
+ *
+ * 0 is treated as False or Falsey
+ * Any other number (including negative numbers) is treated as True or Truthy
+ *
+ * Truthy and Falsey values eliminate the need for using explicit comparisons
+ * eg enteredNumber === 0 (0 is False)
+ * Instead you can just use...
+ * !enteredNumber (0 means not false, any other number means not true)
  */
 
 const defaultResult = 0
