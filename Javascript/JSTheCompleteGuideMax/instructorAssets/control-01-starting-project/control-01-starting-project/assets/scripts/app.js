@@ -5,7 +5,8 @@
  * != (inequality operator) --> Check for value inequality (a != b)
  * === and !== (Stict equality/inequality) --> Check for value AND type (in)equality (a === b) (2 !== "2")
  * === and !== is PREFERRED over == or 1=
- *
+ * > & < (Less than/Greater than operator) --> Can check numbers and strings
+ * >= & <= (Greater/Less than or equal to) -- Can check numbers and strings
  */
 
 const defaultResult = 0
