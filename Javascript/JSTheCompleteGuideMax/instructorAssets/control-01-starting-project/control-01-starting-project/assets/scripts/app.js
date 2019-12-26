@@ -15,6 +15,24 @@
  * }
  */
 
+/*
+ THIS IS REDUNDANT
+ const isLoggedIn = true;
+ if (isLoggedIn ===true) {
+   ...
+ }
+ */
+
+/**
+ * USING THE ! OPERATOR
+ * const isloggedIn = true;
+ * if (!isLoggedIn) {
+ * This code will NOT execute because isLoggedIn is true but ! inverts it (in this check)
+ * } else {
+ * This would execute because isLoggedIn is true and hence !== true yields false
+ * }
+ */
+
 const defaultResult = 0
 let currentResult = defaultResult
 let logEntries = []
