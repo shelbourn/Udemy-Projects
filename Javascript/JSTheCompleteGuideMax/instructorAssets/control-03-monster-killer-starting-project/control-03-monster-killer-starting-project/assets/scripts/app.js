@@ -12,38 +12,30 @@ function attackMonster(mode) {
 	let maxDamage
 	if (mode === 'ATTACK') {
 		maxDamage = ATTACK_VALUE
-	} else {
+	} else if (mode === 'STRONG_ATTACK') {
 		maxDamage = STRONG_ATTACK_VALUE
+	}
+
+	const damage = dealMonsterDamage(maxDamage)
+	currentMonsterHealth -= damage
+	const playerDamage = dealPlayerDamage(MONSTER_ATTACK_VALUE)
+	currentPlayerHealth -= playerDamage
+	if (currentMonsterHealth <= 0 && currentPlayerHealth > 0) {
+		alert('You won!')
+	} else if (currentPlayerHealth <= 0 && currentMonsterHealth > 0) {
+		alert('You lost!')
+	} else if (currentPlayerHealth <= 0 && currentMonsterHealth <= 0) {
+		alert('You have a draw!')
 	}
 }
 
 // Naming convention of function refers to what the function does and what it is connected to
 function attackHandler() {
-	const damage = dealMonsterDamage(ATTACK_VALUE)
-	currentMonsterHealth -= damage
-	const playerDamage = dealPlayerDamage(MONSTER_ATTACK_VALUE)
-	currentPlayerHealth -= playerDamage
-	if (currentMonsterHealth <= 0 && currentPlayerHealth > 0) {
-		alert('You won!')
-	} else if (currentPlayerHealth <= 0 && currentMonsterHealth > 0) {
-		alert('You lost!')
-	} else if (currentPlayerHealth <= 0 && currentMonsterHealth <= 0) {
-		alert('You have a draw!')
-	}
+	attackMonster('ATTACK')
 }
 
 function strongAttackHandler() {
-	const damage = dealMonsterDamage(STRONG_ATTACK_VALUE)
-	currentMonsterHealth -= damage
-	const playerDamage = dealPlayerDamage(MONSTER_ATTACK_VALUE)
-	currentPlayerHealth -= playerDamage
-	if (currentMonsterHealth <= 0 && currentPlayerHealth > 0) {
-		alert('You won!')
-	} else if (currentPlayerHealth <= 0 && currentMonsterHealth > 0) {
-		alert('You lost!')
-	} else if (currentPlayerHealth <= 0 && currentMonsterHealth <= 0) {
-		alert('You have a draw!')
-	}
+	attackMonster('STRONG_ATTACK')
 }
 
 function healHandler() {}
