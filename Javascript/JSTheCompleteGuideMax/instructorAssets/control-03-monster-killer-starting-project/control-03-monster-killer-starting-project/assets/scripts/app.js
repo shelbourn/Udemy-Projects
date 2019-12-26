@@ -8,6 +8,15 @@ let currentPlayerHealth = chosenMaxLife
 
 adjustHealthBars(chosenMaxLife)
 
+function attackMonster(mode) {
+	let maxDamage
+	if (mode === 'ATTACK') {
+		maxDamage = ATTACK_VALUE
+	} else {
+		maxDamage = STRONG_ATTACK_VALUE
+	}
+}
+
 // Naming convention of function refers to what the function does and what it is connected to
 function attackHandler() {
 	const damage = dealMonsterDamage(ATTACK_VALUE)
@@ -37,5 +46,8 @@ function strongAttackHandler() {
 	}
 }
 
+function healHandler() {}
+
 attackBtn.addEventListener('click', attackHandler)
 strongAttackBtn.addEventListener('click', strongAttackHandler)
+healBtn.addEventListener('click', healHandler)
