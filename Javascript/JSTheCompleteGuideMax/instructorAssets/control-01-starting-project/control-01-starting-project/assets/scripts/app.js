@@ -1,14 +1,7 @@
-/***************
- * IMPORTANT NOTE
+/*********************
+ * Logical AND and OR Operators
  *
- * Two identical objects or arrays stored in two different variables
- * will never return true when compared using Boolean operators
- * const person1 = {name: 'Matt}
- * const person2 = {name: 'Matt}
- * person1 == (or ===) person2 --> will ALWAYS return false
- * const person3 = person1
- * person1 == (or ===) person3
- * person1.name === person2.name [provides access to object elements which are equal]
+ *
  */
 
 const defaultResult = 0
