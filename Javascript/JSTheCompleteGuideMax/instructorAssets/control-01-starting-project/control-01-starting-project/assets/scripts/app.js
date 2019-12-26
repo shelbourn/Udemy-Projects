@@ -15,6 +15,13 @@
  * eg enteredNumber === 0 (0 is False)
  * Instead you can just use...
  * !enteredNumber (0 means not false, any other number means not true)
+ *
+ * "" (empty string) treated as False
+ * Any other string (including "false") treated as true
+ *
+ * Objects and Arrays are ALWAYS treated as True (even empty ones)
+ *
+ * NULL, UNDEFINED, NaN are ALWAYS treated as False.
  */
 
 const defaultResult = 0
