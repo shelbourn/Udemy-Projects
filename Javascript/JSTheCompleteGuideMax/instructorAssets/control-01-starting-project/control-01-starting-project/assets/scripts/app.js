@@ -54,6 +54,7 @@ function calculateResult(calculationType) {
 	// 	calculationType === 'MULTIPLY' ||
 	// 	calculationType === 'DIVIDE'
 	// )
+
 	const enteredNumber = getUserNumberInput()
 	const initialResult = currentResult
 	let mathOperator
