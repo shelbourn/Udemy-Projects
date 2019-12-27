@@ -100,6 +100,12 @@ function endRound() {
 	const initialPlayerHealth = currentPlayerHealth
 	const playerDamage = dealPlayerDamage(MONSTER_ATTACK_VALUE)
 	currentPlayerHealth -= playerDamage
+	writeToLog(
+		LOG_EVENT_MONSTER_ATTACK,
+		playerDamage,
+		currentMonsterHealth,
+		currentPlayerHealth
+	)
 
 	// Bonus life code
 	if (currentPlayerHealth <= 0 && hasBonusLife) {
@@ -111,10 +117,28 @@ function endRound() {
 	}
 	if (currentMonsterHealth <= 0 && currentPlayerHealth > 0) {
 		alert('You won!')
+		writeToLog(
+			LOG_EVENT_GAME_OVER,
+			'PLAYER WON',
+			currentMonsterHealth,
+			currentPlayerHealth
+		)
 	} else if (currentPlayerHealth <= 0 && currentMonsterHealth > 0) {
 		alert('You lost!')
+		writeToLog(
+			LOG_EVENT_GAME_OVER,
+			'MONSTER WON',
+			currentMonsterHealth,
+			currentPlayerHealth
+		)
 	} else if (currentPlayerHealth <= 0 && currentMonsterHealth <= 0) {
 		alert('You have a draw!')
+		writeToLog(
+			LOG_EVENT_GAME_OVER,
+			'THERE IS A DRAW',
+			currentMonsterHealth,
+			currentPlayerHealth
+		)
 	}
 
 	// Reset Game function
@@ -160,6 +184,11 @@ function healPlayerHandler() {
 	endRound()
 }
 
+function printLogHandler() {
+	console.log(battleLog)
+}
+
 attackBtn.addEventListener('click', attackHandler)
 strongAttackBtn.addEventListener('click', strongAttackHandler)
 healBtn.addEventListener('click', healPlayerHandler)
+logBtn.addEventListener('click', printLogHandler)
