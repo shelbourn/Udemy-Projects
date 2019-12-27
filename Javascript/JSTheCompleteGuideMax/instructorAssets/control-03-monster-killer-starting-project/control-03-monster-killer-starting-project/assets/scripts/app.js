@@ -11,6 +11,7 @@ const enteredValue = prompt('Maximum life for you and the monster', '100')
 
 // Prompts user to enter health
 let chosenMaxLife = parseInt(enteredValue) // Or +enteredValue
+let battleLog = []
 
 if (isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
 	chosenMaxLife = 100
@@ -21,6 +22,8 @@ let currentPlayerHealth = chosenMaxLife
 let hasBonusLife = true
 
 adjustHealthBars(chosenMaxLife)
+
+function writeToLog() {}
 
 // Resetting game after finished
 function reset() {
