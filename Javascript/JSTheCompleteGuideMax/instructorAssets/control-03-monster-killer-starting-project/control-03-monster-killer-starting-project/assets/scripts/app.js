@@ -5,6 +5,11 @@
  * isLogin = condition you want to check
  * 'Max' = value you want to assign if condition is true/truthy
  * null = Else value - Value if condition is false/falsey
+ *
+ * Short, non-complex if statements can be replaced with ternary operator
+ *
+ * Ternary operators can have nested conditions
+ * const damage = mode === MODE_ATTACK ? 5 == 5 ? 'nested value' : 'nested alternative' :
  */
 
 const ATTACK_VALUE = 10 // Global value. Uppercase characters separated by underscore for hard-coded values related to gameplay
