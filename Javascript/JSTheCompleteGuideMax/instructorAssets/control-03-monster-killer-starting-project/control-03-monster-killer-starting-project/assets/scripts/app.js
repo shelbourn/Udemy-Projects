@@ -3,6 +3,7 @@ const STRONG_ATTACK_VALUE = 17
 const MONSTER_ATTACK_VALUE = 14
 const HEAL_VALUE = 20
 
+// 'ATTACK' and 'STRONG_ATTACK' are just identifiers, it doesn't matter whether a string or number is stored in them.
 const MODE_ATTACK = 'ATTACK' // MODE_ATTACK = 0
 const MODE_STRONG_ATTACK = 'STRONG_ATTACK' // MODE_STRONG_ATTACK = 0
 
