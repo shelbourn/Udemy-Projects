@@ -150,14 +150,18 @@ function endRound() {
 //Player attack
 function attackMonster(mode) {
 	let maxDamage
+	let logEvent
 	if (mode === MODE_ATTACK) {
 		maxDamage = ATTACK_VALUE
+		logEvent = LOG_EVENT_PLAYER_ATTACK
 	} else if (mode === MODE_STRONG_ATTACK) {
 		maxDamage = STRONG_ATTACK_VALUE
+		logEvent = LOG_EVENT_PLAYER_STRONG_ATTACK
 	}
 
 	const damage = dealMonsterDamage(maxDamage)
 	currentMonsterHealth -= damage
+	writeToLog(logEvent, damage, currentMonsterHealth, currentPlayerHealth)
 	endRound()
 }
 
@@ -181,6 +185,12 @@ function healPlayerHandler() {
 	}
 	increasePlayerHealth(healValue)
 	currentPlayerHealth += healValue
+	writeToLog(
+		LOG_EVENT_PLAYER_HEAL,
+		healValue,
+		currentMonsterHealth,
+		currentPlayerHealth
+	)
 	endRound()
 }
 
