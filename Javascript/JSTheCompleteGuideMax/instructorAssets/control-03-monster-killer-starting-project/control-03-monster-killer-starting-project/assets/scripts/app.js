@@ -1,3 +1,12 @@
+/********************
+ * Ternary Operator
+ *
+ * const userName = isLogin ? 'Max': null
+ * isLogin = condition you want to check
+ * 'Max' = value you want to assign if condition is true/truthy
+ * null = Else value - Value if condition is false/falsey
+ */
+
 const ATTACK_VALUE = 10 // Global value. Uppercase characters separated by underscore for hard-coded values related to gameplay
 const STRONG_ATTACK_VALUE = 17
 const MONSTER_ATTACK_VALUE = 14
