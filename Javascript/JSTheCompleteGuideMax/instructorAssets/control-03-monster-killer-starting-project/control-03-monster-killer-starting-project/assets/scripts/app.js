@@ -4,7 +4,7 @@ const MONSTER_ATTACK_VALUE = 14
 const HEAL_VALUE = 20
 
 // Prompts user to enter health
-let chosenMaxLife = +prompt('What would you like your health to be?') // For player and monster
+let chosenMaxLife = 100
 let currentMonsterHealth = chosenMaxLife
 let currentPlayerHealth = chosenMaxLife
 let hasBonusLife = true
@@ -15,7 +15,7 @@ adjustHealthBars(chosenMaxLife)
 function reset() {
 	currentMonsterHealth = chosenMaxLife
 	currentPlayerHealth = chosenMaxLife
-	resetGame()
+	resetGame(chosenMaxLife)
 }
 
 // endRound function checks win condition after each round
@@ -30,19 +30,21 @@ function endRound() {
 		hasBonusLife = false
 		removeBonusLife()
 		currentPlayerHealth = initialPlayerHealth
-		alert('You would be dead, but the bonus life saved you!')
 		setPlayerHealth(initialPlayerHealth)
+		alert('You would be dead, but the bonus life saved you!')
 	}
 	if (currentMonsterHealth <= 0 && currentPlayerHealth > 0) {
 		alert('You won!')
-		reset()
 	} else if (currentPlayerHealth <= 0 && currentMonsterHealth > 0) {
 		alert('You lost!')
-		reset()
 	} else if (currentPlayerHealth <= 0 && currentMonsterHealth <= 0) {
 		alert('You have a draw!')
-		reset()
 	}
+}
+
+// Reset Game function
+if (currentMonsterHealth <= 0 || currentPlayerHealth <= 0) {
+	reset()
 }
 
 //Player attack
