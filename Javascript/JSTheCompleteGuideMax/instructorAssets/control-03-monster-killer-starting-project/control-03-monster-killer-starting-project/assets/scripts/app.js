@@ -9,7 +9,13 @@
  * Short, non-complex if statements can be replaced with ternary operator
  *
  * Ternary operators can have nested conditions
- * const damage = mode === MODE_ATTACK ? 5 == 5 ? 'nested value' : 'nested alternative' :
+ * let isStudent = false;
+ * let isSenior = true;
+ * let price = isStudent ? 8 : isSenior ? 6 : 10
+ *
+ * 8 is returned if isStudent === true
+ * 6 is returned if isStudent === false and isSenior === true
+ * 10 is returned is isStudent && isSenion === false
  */
 
 const ATTACK_VALUE = 10 // Global value. Uppercase characters separated by underscore for hard-coded values related to gameplay
