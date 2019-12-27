@@ -4,18 +4,28 @@ const MONSTER_ATTACK_VALUE = 14
 const HEAL_VALUE = 20
 
 // Prompts user to enter health
-// + operator converts input to a number
-// parseInt does the same thing as +
 let chosenMaxLife = +prompt('What would you like your health to be?') // For player and monster
 let currentMonsterHealth = chosenMaxLife
 let currentPlayerHealth = chosenMaxLife
+let hasBonusLife = true
+
 adjustHealthBars(chosenMaxLife)
 
 // endRound function checks win condition after each round
 // Monster attack
 function endRound() {
+	const initialPlayerHealth = currentPlayerHealth
 	const playerDamage = dealPlayerDamage(MONSTER_ATTACK_VALUE)
 	currentPlayerHealth -= playerDamage
+
+	// Bonus life code
+	if (currentPlayerHealth <= 0 && hasBonusLife) {
+		hasBonusLife = false
+		removeBonusLife()
+		currentPlayerHealth = initialPlayerHealth
+		alert('You would be dead, but the bonus life saved you!')
+		setPlayerHealth(initialPlayerHealth)
+	}
 	if (currentMonsterHealth <= 0 && currentPlayerHealth > 0) {
 		alert('You won!')
 	} else if (currentPlayerHealth <= 0 && currentMonsterHealth > 0) {
