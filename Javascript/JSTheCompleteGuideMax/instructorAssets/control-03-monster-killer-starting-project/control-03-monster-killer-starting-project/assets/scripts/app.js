@@ -47,7 +47,6 @@ function writeToLog(ev, val, monsterHealth, playerHealth) {
 			finalMonsterHealth: monsterHealth,
 			finalPlayerHealth: playerHealth,
 		}
-		battleLog.push(logEntry)
 	} else if (ev === LOG_EVENT_MONSTER_ATTACK) {
 		logEntry = {
 			event: ev,
@@ -56,7 +55,6 @@ function writeToLog(ev, val, monsterHealth, playerHealth) {
 			finalMonsterHealth: monsterHealth,
 			finalPlayerHealth: playerHealth,
 		}
-		battleLog.push(logEntry)
 	} else if (ev === LOG_EVENT_PLAYER_HEAL) {
 		logEntry = {
 			event: ev,
@@ -65,7 +63,6 @@ function writeToLog(ev, val, monsterHealth, playerHealth) {
 			finalMonsterHealth: monsterHealth,
 			finalPlayerHealth: playerHealth,
 		}
-		battleLog.push(logEntry)
 	} else if (ev === LOG_EVENT_GAME_OVER) {
 		logEntry = {
 			event: ev,
@@ -73,8 +70,8 @@ function writeToLog(ev, val, monsterHealth, playerHealth) {
 			finalMonsterHealth: monsterHealth,
 			finalPlayerHealth: playerHealth,
 		}
-		battleLog.push(logEntry)
 	}
+	battleLog.push(logEntry)
 }
 
 // Resetting game after finished
