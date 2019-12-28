@@ -233,6 +233,7 @@ function healPlayerHandler() {
 	endRound()
 }
 
+// Attaches values from writeToLog function to Log Button
 function printLogHandler() {
 	console.log(battleLog)
 }
