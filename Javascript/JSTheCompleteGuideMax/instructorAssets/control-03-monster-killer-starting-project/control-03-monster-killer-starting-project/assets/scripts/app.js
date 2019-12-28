@@ -1,23 +1,3 @@
-/********************
- * Ternary Operator
- *
- * const userName = isLogin ? 'Max': null
- * isLogin = condition you want to check
- * 'Max' = value you want to assign if condition is true/truthy
- * null = Else value - Value if condition is false/falsey
- *
- * Short, non-complex if statements can be replaced with ternary operator
- *
- * Ternary operators can have nested conditions
- * let isStudent = false;
- * let isSenior = true;
- * let price = isStudent ? 8 : isSenior ? 6 : 10
- *
- * 8 is returned if isStudent === true
- * 6 is returned if isStudent === false and isSenior === true
- * 10 is returned is isStudent && isSenion === false
- */
-
 const ATTACK_VALUE = 10 // Global value. Uppercase characters separated by underscore for hard-coded values related to gameplay
 const STRONG_ATTACK_VALUE = 17
 const MONSTER_ATTACK_VALUE = 14
