@@ -198,18 +198,32 @@ function healPlayerHandler() {
 
 // Attaches values from writeToLog function to Log Button
 function printLogHandler() {
-	// while(true) = infinite loop
-	// runs until j = 2
-	// while loops are good for situation where you don't know how many times you want the loop to iterate
-
-	// do while executes code before the condition is checked
+	for (let i = 0; i < 3; i++) {
+		console.log('------------')
+	}
 	let j = 3
 	do {
 		console.log(j)
 		j++
 	} while (j < 3)
+	// for (let i = 10; i > 0;) {
+	//   i--;
+	//   console.log(i);
+	// }
+	// for (let i = 0; i < battleLog.length; i++) {
+	//   console.log(battleLog[i]);
+	// }
+	let i = 0
+	for (const logEntry of battleLog) {
+		console.log(`#${i}`)
+		for (const key in logEntry) {
+			console.log(`${key} => ${logEntry[key]}`)
+		}
+		i++
+	}
+}
 
-	// Use case for while loop
+// Use case for while loop
 	let randomNumbers = []
 	let finished = false
 	while (!finished) {
@@ -219,8 +233,6 @@ function printLogHandler() {
 			finished = true
 			console.log(randomNumbers)
 		}
-	}
-}
 
 attackBtn.addEventListener('click', attackHandler)
 strongAttackBtn.addEventListener('click', strongAttackHandler)
