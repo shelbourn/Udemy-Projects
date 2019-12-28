@@ -1,49 +1,30 @@
-/*************************
- * Boolean Tricks
- *
- * ! (single bang operator) converts a truthy value into a real false (boolean) value
- * 11 (double bang operator) converts a truthy value into a real true (boolean) value
- * !!"" === false (not falsey)
- * !!1 === true (not truthy)
- *
- * Default value assignment via OR operator
- *
- * const name = someInput || 'Max'
- * if someInput is empty (unassigned) then it is falsey
- * 'Max' is a non-empty string so it is truthy
- * OR (||) returns the first truthy value without returning a true Boolean
- *
- * Use value if condition is true via AND operator
- *
- * const name = isLoggedIn && 'Max'
- * if isLoggedIn is true (truthy) then name is set to 'Max'
- * Otherwise name is set to whatever is stored in isLoggedIn (false, null, etc)
- * && returns the last value in the expression
- *
- * EXAMPLES
- *
- * ~~ !! (double bang) operator ~~
- * const userInput = ''
- * const isValidInput = !!userInput
- * isValidInput returns false because userInput is a falsey statement
- * !userInput returns true because userInput is falsey and ! operator negates the value
- *
- * Default value using the || (OR) operator
- *
- * userInput = ''
- * const userName = userInput || 'Max'
- * returns value in userInput if truthy or 'Max' if userInput is falsey
- * Can use multiple || operators
- *
- * && Operator
- *
- * const isLoggedIn = true
- * const shoppingCart = isLoggedIn && ['Books']
- * shoppingCart returns ['Books'] because isLoggedIn = true
- * Arrays [] are always treated as truthy even if they are empty
- * With && operator if the first value is true it always returns the second value
- * If the first value is false it always returns the first value
- *
+/*****************************
+ * Logical Operators - A Quick Summary
+ * 
+ * As a reference which you can come back to (or print out), here's a quick summary of how logical operators and comparison operators behave in JavaScript:
+
+const userName = 'Max';
+const altName = '';
+console.log(userName === 'Max'); // generates and prints a boolean => true
+console.log(userName); // wasn't touched, still is a string => 'Max'
+ 
+console.log(userName || null); // userName is truthy and therefore returned by || => 'Max'
+console.log(altName || 'Max'); // altName is falsy (empty string), hence 'Max' is returned => 'Max'
+console.log(altName || ''); // both altName and '' are falsy but if the first operand is falsy, the second one is always returned => ''
+console.log(altName || null || 'Anna'); // altName and null are falsy, 'Anna' is returned => 'Anna'
+ 
+console.log(userName && 'Anna'); // userName is truthy, hence second (!) value is returned => 'Anna'
+console.log(altName && 'Anna'); // altName is falsy, hence first value is returned => ''
+console.log(userName && ''); // userName is truthy, hence second value is returned => ''
+Always keep in mind: NO operator (neither ===, > etc. nor && or ||) changes the variable you might be using in the comparison. In the above examples, the values stored in userName and altName are NEVER changed.
+
+===, > etc. just generate new boolean values which are used in the comparison. || and && generate NO booleans, they just treat the values before and after them as conditions (which therefore need to yield boolean values and are coerced to booleans if required).
+
+Because of the above-described behaviors, you often use || in JavaScript to assign default/ fallback values to variables/ constants:
+
+const enteredValue = ''; // let's assume this is set based on some input provided by the user, therefore it might be an empty string
+ 
+const userName = enteredValue || 'PLACEHOLDER'; // will assign 'PLACEHOLDER' if enteredValue is an empty string
  */
 
 const ATTACK_VALUE = 10 // Global value. Uppercase characters separated by underscore for hard-coded values related to gameplay
