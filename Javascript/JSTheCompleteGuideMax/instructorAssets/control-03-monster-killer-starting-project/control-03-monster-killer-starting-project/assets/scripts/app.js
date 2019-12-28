@@ -198,11 +198,12 @@ function healPlayerHandler() {
 
 // Attaches values from writeToLog function to Log Button
 function printLogHandler() {
-	let j = 3
 	// while(true) = infinite loop
 	// runs until j = 2
+	// while loops are good for situation where you don't know how many times you want the loop to iterate
 
 	// do while executes code before the condition is checked
+	let j = 3
 	do {
 		console.log(j)
 		j++
