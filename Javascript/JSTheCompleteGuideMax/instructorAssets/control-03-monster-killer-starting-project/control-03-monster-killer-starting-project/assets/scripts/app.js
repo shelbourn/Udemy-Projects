@@ -1,3 +1,4 @@
+// Establishing global variables
 const ATTACK_VALUE = 10 // Global value. Uppercase characters separated by underscore for hard-coded values related to gameplay
 const STRONG_ATTACK_VALUE = 17
 const MONSTER_ATTACK_VALUE = 14
@@ -28,12 +29,8 @@ let hasBonusLife = true
 
 adjustHealthBars(chosenMaxLife)
 
+// Write round details to console
 function writeToLog(ev, val, monsterHealth, playerHealth) {
-	// Switch -Case Statement
-	// Looks for equality
-	// Switch always uses === to compare values
-	// Breaks keyword ends Switch-Case statement from progressing after condition is met
-	// If break keyword is not included and a condition is met then the code in the second case will execute even if conditions aren't met.
 	let logEntry = {
 		event: ev,
 		value: val,
