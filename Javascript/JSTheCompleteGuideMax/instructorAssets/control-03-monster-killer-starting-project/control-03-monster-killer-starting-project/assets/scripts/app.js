@@ -198,8 +198,11 @@ function healPlayerHandler() {
 
 // Attaches values from writeToLog function to Log Button
 function printLogHandler() {
-  // i should be initialized with let since it will change in every iteration
-  for (let i = 0; )
+	// i should be initialized with let since it will change in every iteration
+	// for (;;) = infinite loop
+	for (let i = 0; i < 3; i++) {
+		console.log('-------------------')
+	}
 	console.log(battleLog)
 }
 
