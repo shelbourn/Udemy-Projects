@@ -41,6 +41,9 @@
  * const shoppingCart = isLoggedIn && ['Books']
  * shoppingCart returns ['Books'] because isLoggedIn = true
  * Arrays [] are always treated as truthy even if they are empty
+ * With && operator if the first value is true it always returns the second value
+ * If the first value is false it always returns the first value
+ *
  */
 
 const ATTACK_VALUE = 10 // Global value. Uppercase characters separated by underscore for hard-coded values related to gameplay
