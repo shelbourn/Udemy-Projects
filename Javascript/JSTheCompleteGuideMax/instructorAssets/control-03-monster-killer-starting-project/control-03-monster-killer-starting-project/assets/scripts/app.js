@@ -204,13 +204,19 @@ function printLogHandler() {
 	// Can have nested loops
 	// Can have if statements inside of loops
 	// Can have loops inside of if statements
-	// Nested loops execute inner loop for each iteration of outer loop
+	// Nested loops execute entire inner loop for each iteration of outer loop
 	let i = 0
 	for (const logEntry of battleLog) {
 		console.log(`#${i}`)
 		// key = key (left side of equals sign of object element)
-		// logEntry = element value (right side of equals sign of object element)
+		// logEntry = element property (right side of equals sign of object element)
 		for (const key in logEntry) {
+			// key is just a named constant for the key (name of the property)
+			// prints the name of the key (property)
+			console.log(key)
+			// prints the key (property) value
+			// logEntry[key] will access the property value of each key in the object
+			console.log(logEntry[key])
 		}
 	}
 }
