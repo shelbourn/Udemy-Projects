@@ -36,6 +36,14 @@ function writeToLog(ev, val, monsterHealth, playerHealth) {
 		finalMonsterHealth: monsterHealth,
 		finalPlayerHealth: playerHealth,
 	}
+
+	// Switch -Case Statement
+	// Looks for equality
+	// Switch always uses === to compare values
+	switch (ev) {
+		case LOG_EVENT_PLAYER_ATTACK:
+	}
+
 	if (ev === LOG_EVENT_PLAYER_ATTACK) {
 		logEntry.target = 'MONSTER'
 
