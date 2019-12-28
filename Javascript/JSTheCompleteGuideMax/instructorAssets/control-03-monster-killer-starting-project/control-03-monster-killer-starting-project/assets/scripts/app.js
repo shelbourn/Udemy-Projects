@@ -17,9 +17,30 @@
  *
  * const name = isLoggedIn && 'Max'
  * if isLoggedIn is true (truthy) then name is set to 'Max'
- * Otherwise name is set to false
+ * Otherwise name is set to whatever is stored in isLoggedIn (false, null, etc)
  * && returns the last value in the expression
  *
+ * EXAMPLES
+ *
+ * ~~ !! (double bang) operator ~~
+ * const userInput = ''
+ * const isValidInput = !!userInput
+ * isValidInput returns false because userInput is a falsey statement
+ * !userInput returns true because userInput is falsey and ! operator negates the value
+ *
+ * Default value using the || (OR) operator
+ *
+ * userInput = ''
+ * const userName = userInput || 'Max'
+ * returns value in userInput if truthy or 'Max' if userInput is falsey
+ * Can use multiple || operators
+ *
+ * && Operator
+ *
+ * const isLoggedIn = true
+ * const shoppingCart = isLoggedIn && ['Books']
+ * shoppingCart returns ['Books'] because isLoggedIn = true
+ * Arrays [] are always treated as truthy even if they are empty
  */
 
 const ATTACK_VALUE = 10 // Global value. Uppercase characters separated by underscore for hard-coded values related to gameplay
