@@ -198,9 +198,25 @@ function healPlayerHandler() {
 
 // Attaches values from writeToLog function to Log Button
 function printLogHandler() {
-let j = 0
-// while(true) = infinite loop
-while (){}
+	let j = 0
+	// while(true) = infinite loop
+	// runs until j = 2
+	while (j < 3) {
+		console.log('------------------')
+		j++
+	}
+
+	// Use case for while loop
+	let randomNumbers = []
+	let finished = false
+	while (!finished) {
+		const rndNumber = Math.random()
+		randomNumbers.push(rndNumber)
+		if (rndNumber > 0.5) {
+			finished = true
+			console.log(randomNumbers)
+		}
+	}
 }
 
 attackBtn.addEventListener('click', attackHandler)
