@@ -12,6 +12,14 @@
  * if someInput is empty (unassigned) then it is falsey
  * 'Max' is a non-empty string so it is truthy
  * OR (||) returns the first truthy value without returning a true Boolean
+ *
+ * Use value if condition is true via AND operator
+ *
+ * const name = isLoggedIn && 'Max'
+ * if isLoggedIn is true (truthy) then name is set to 'Max'
+ * Otherwise name is set to false
+ * && returns the last value in the expression
+ *
  */
 
 const ATTACK_VALUE = 10 // Global value. Uppercase characters separated by underscore for hard-coded values related to gameplay
@@ -119,6 +127,7 @@ function endRound() {
 		setPlayerHealth(initialPlayerHealth)
 		alert('You would be dead, but the bonus life saved you!')
 	}
+	// End Game Code
 	if (currentMonsterHealth <= 0 && currentPlayerHealth > 0) {
 		alert('You won!')
 		writeToLog(
