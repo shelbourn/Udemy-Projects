@@ -1,3 +1,10 @@
+/*************************
+ * Boolean Tricks
+ *
+ * ! (single bang operator) converts a truthy value into a real false (boolean) value
+ * 11 (double bang operator) converts a truthy value into a real true (boolean) value
+ */
+
 const ATTACK_VALUE = 10 // Global value. Uppercase characters separated by underscore for hard-coded values related to gameplay
 const STRONG_ATTACK_VALUE = 17
 const MONSTER_ATTACK_VALUE = 14
