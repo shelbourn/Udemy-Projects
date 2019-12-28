@@ -202,6 +202,17 @@ function printLogHandler() {
 		console.log('--------------')
 	}
 	// Can have nested loops
+	// Can have if statements inside of loops
+	// Can have loops inside of if statements
+	// Nested loops execute inner loop for each iteration of outer loop
+	let i = 0
+	for (const logEntry of battleLog) {
+		console.log(`#${i}`)
+		// key = key (left side of equals sign of object element)
+		// logEntry = element value (right side of equals sign of object element)
+		for (const key in logEntry) {
+		}
+	}
 }
 
 attackBtn.addEventListener('click', attackHandler)
