@@ -202,8 +202,17 @@ function printLogHandler() {
 		console.log('--------------')
 	}
 	// console logs the battlelog entry at the ith element
-	for (let i = 0; i < battleLog.length; i++) {
-		console.log(battleLog[i])
+	// for (let i = 0; i < battleLog.length; i++) {
+	// 	console.log(battleLog[i])
+	// }
+
+	// Use const for for of loops
+	// logEntry = element (can be named anything)
+	// battleLog = array to be looped through
+	// for of can only be used on arrays and strings
+	// const logEntry exists for the lifetime of each iteration and is then dumped before next iteration
+	for (const logEntry of battleLog) {
+		console.log(logEntry)
 	}
 }
 
