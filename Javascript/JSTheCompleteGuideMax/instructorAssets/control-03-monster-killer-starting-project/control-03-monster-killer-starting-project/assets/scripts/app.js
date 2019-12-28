@@ -198,9 +198,9 @@ function healPlayerHandler() {
 
 // Attaches values from writeToLog function to Log Button
 function printLogHandler() {
-	for (let i = 0; i < 3; i++) {
-		console.log('--------------')
-	}
+let j = 0
+// while(true) = infinite loop
+while (){}
 }
 
 attackBtn.addEventListener('click', attackHandler)
