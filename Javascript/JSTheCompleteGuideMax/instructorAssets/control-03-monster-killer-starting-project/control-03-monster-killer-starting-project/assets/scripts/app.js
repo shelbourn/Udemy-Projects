@@ -198,23 +198,12 @@ function healPlayerHandler() {
 
 // Attaches values from writeToLog function to Log Button
 function printLogHandler() {
-	// i should be initialized with let since it will change in every iteration
-	// for (;;) = infinite loop
 	for (let i = 0; i < 3; i++) {
-		console.log('-------------------')
+		console.log('--------------')
 	}
-	for (let i = 10; i > 0; i--) {
-		console.log(i)
-	}
-	// Can do this too which decrements i right before code block executes.
-	for (let i = 11; i > 0; ) {
-		i--
-		console.log(i)
-	}
-	// Check array.length
-	for (let i = 11; i < battleLog.length; ) {
-		i--
-		console.log(i)
+	// console logs the battlelog entry at the ith element
+	for (let i = 0; i < battleLog.length; i++) {
+		console.log(battleLog[i])
 	}
 	console.log(battleLog)
 }
