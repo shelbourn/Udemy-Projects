@@ -13,16 +13,18 @@ const LOG_EVENT_MONSTER_ATTACK = 'MONSTER_ATTACK'
 const LOG_EVENT_PLAYER_HEAL = 'PLAYER_HEAL'
 const LOG_EVENT_GAME_OVER = 'GAME_OVER'
 
+// User prompt to enter player/monster health
 const enteredValue = prompt('Maximum life for you and the monster', '100')
 
-// Prompts user to enter health
 let chosenMaxLife = parseInt(enteredValue) // Or +enteredValue
 let battleLog = []
 
+// Sets default health if user-entered value is not applicable
 if (isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
 	chosenMaxLife = 100
 }
 
+// Setting player/monster health to user-entered value
 let currentMonsterHealth = chosenMaxLife
 let currentPlayerHealth = chosenMaxLife
 let hasBonusLife = true
