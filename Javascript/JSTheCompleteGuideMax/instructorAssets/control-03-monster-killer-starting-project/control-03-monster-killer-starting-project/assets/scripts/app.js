@@ -3,6 +3,15 @@
  *
  * ! (single bang operator) converts a truthy value into a real false (boolean) value
  * 11 (double bang operator) converts a truthy value into a real true (boolean) value
+ * !!"" === false (not falsey)
+ * !!1 === true (not truthy)
+ *
+ * Default value assignment via OR operator
+ *
+ * const name = someInput || 'Max'
+ * if someInput is empty (unassigned) then it is falsey
+ * 'Max' is a non-empty string so it is truthy
+ * OR (||) returns the first truthy value without returning a true Boolean
  */
 
 const ATTACK_VALUE = 10 // Global value. Uppercase characters separated by underscore for hard-coded values related to gameplay
