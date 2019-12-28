@@ -1,3 +1,15 @@
+/********************
+ * Statements vs. Expressions
+ *
+ * Expressions are values that can be stored and used elsewhere
+ * Const = xxx | Var = xxx are statements
+ * All expressions are statements
+ * If statements are just statements because they don't return any values
+ * Expressions are found on the right side of a single equals (=) sign
+ * Statements are everything on the left and right side of a single equals (=) sign combined
+ * Loops are also statements
+ */
+
 const ATTACK_VALUE = 10 // Global value. Uppercase characters separated by underscore for hard-coded values related to gameplay
 const STRONG_ATTACK_VALUE = 17
 const MONSTER_ATTACK_VALUE = 14
