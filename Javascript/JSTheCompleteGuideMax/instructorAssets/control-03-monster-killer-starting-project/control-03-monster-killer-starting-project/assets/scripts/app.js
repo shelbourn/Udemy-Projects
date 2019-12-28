@@ -211,6 +211,11 @@ function printLogHandler() {
 		i--
 		console.log(i)
 	}
+	// Check array.length
+	for (let i = 11; i < battleLog.length; ) {
+		i--
+		console.log(i)
+	}
 	console.log(battleLog)
 }
 
