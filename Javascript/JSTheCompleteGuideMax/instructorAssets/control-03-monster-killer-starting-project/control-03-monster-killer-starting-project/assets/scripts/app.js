@@ -215,20 +215,28 @@ function printLogHandler() {
 	//   console.log(battleLog[i]);
 	// }
 
-	// Break keyword stops loop's execution for the loop where it is called
-	// Break works for ALL loops
 	let i = 0
 	for (const logEntry of battleLog) {
-		if (!lastLoggedEntry || lastLoggedEntry === i) {
+		if ((!lastLoggedEntry && lastLoggedEntry !== 0) || lastLoggedEntry < i) {
 			console.log(`#${i}`)
 			for (const key in logEntry) {
 				console.log(`${key} => ${logEntry[key]}`)
 			}
 			lastLoggedEntry = i
+			break
 		}
 		i++
-		break
 	}
+}
+
+// Example of continue keyword
+// continue breaks loop for one iteration where conditions are met and then continues with next iteration
+
+for (let i = 0; i < 5; i++) {
+	if (i === 3) {
+		continue
+	}
+	console.log(i)
 }
 
 attackBtn.addEventListener('click', attackHandler)
