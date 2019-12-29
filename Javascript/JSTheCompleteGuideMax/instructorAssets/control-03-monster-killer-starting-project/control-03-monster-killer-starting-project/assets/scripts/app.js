@@ -18,6 +18,19 @@ const LOG_EVENT_GAME_OVER = 'GAME_OVER'
 let battleLog = []
 let lastLoggedEntry
 
+// Try/Catch method for error handling
+let chosenMaxLife
+
+try {
+	chosenMaxLife = getMaxLifeValues()
+} catch (error) {
+	// if	chosenMaxLife = getMaxLifeValues() fails
+	// then below code is executed as a fallback
+	console.log(error)
+	chosenMaxLife = 100
+	alert('You entered an error, a default health value of 100 was used.')
+}
+
 function getMaxLifeValues() {
 	const enteredValue = prompt('Maximum life for you and the monster', '100')
 	let parsedValue = parseInt(enteredValue) // Or +enteredValue
@@ -26,8 +39,6 @@ function getMaxLifeValues() {
 	}
 	return parsedValue
 }
-
-let chosenMaxLife = getMaxLifeValues()
 
 // Sets default health if user-entered value is not applicable
 
