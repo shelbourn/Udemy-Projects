@@ -212,14 +212,18 @@ function printLogHandler() {
 	// }
 	// for (let i = 0; i < battleLog.length; i++) {
 	//   console.log(battleLog[i]);
-	// }
+  // }
+
+  // Break keyword stops loop's execution for the loop where it is placed
+  // Break works for ALL loops
 	let i = 0
 	for (const logEntry of battleLog) {
 		console.log(`#${i}`)
 		for (const key in logEntry) {
 			console.log(`${key} => ${logEntry[key]}`)
 		}
-		i++
+    i++
+    break
 	}
 }
 
