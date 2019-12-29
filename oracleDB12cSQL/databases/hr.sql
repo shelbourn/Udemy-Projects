@@ -2448,5 +2448,10 @@ A transaction consists of a collection of DML statements that form a logical uni
 *** KNOW THE TABLE STRUCTURE BEFORE YOU USE ANY DML STATEMENTS ***
 *** KNOW THE CONSTRAINTS ON A TABLE BEFORE USING ANY DML STATEMENTS ***
 */
+-------------------------------------------
+
+-- INSERT Statement
+
+
 
 
