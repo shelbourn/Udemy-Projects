@@ -27,7 +27,7 @@ while (counter < myArray.length) {
 }
 
 // Task 3
-for (let j = myArray.length - 1; j > 0; j--) {
+for (let j = myArray.length - 1; j >= 0; j--) {
 	console.log(myArray[j])
 }
 
