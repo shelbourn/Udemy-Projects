@@ -2459,15 +2459,34 @@ desc departments;
 --      Go to the table from the tree on the left of SQL Developer, select the table, and then go to the 'Constraints' tab
 
 -- 3.)  List the columns in the same table order, the put related values (this is a BEST PRACTICE
--- First (RECOMMENDED) Syntax
+-- First Syntax (RECOMMENDED)
 insert into departments (department_id, department_name, manager_id, location_id)
 values                  (71, 'Development 1', 100, 1700);
 commit; -- Use the COMMIT command to save changes (Separate Statement)
 
--- Second Syntax
+-- Second Syntax (NOT RECOMMENDED)
 -- Can INSERT without putting the column names
 -- But the order in values should be the same as the columns are ordered in the table
 -- This method requires that you insert values for ALL columns in the table
 insert into departments
 values (72, 'Development 2', 100, 1700);
 commit;
+
+-- Yo ucan change the order as you see fit when you list the column names
+-- But you should always map the values correctly to the order of the columns
+insert into departments (department_name, manager_id, location_id, department_id)
+values                  ('Development 3', 100, 1700, 73);
+commit;
+
+-- Inserting rows with NULL values
+-- The Implicit method: don't put the column in the list, make sure the column can have a NULL value
+-- the Oracle server automatically makes it a NULL value
+-- The MANAGER_ID and LOCATION_ID will be NULL in the following INSERT statement
+insert into departments (department_id, department_name)
+values                  (74, 'Development 4');
+
+-- the explicit method, done by the user by specifying the NULL keyword
+insert into departments (department_id, department_name, manager_id, location_id)
+values                  (75, 'Development 5', null, null);
+commit;
+
