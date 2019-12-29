@@ -2429,3 +2429,7 @@ union
 select employee_id empno, job_id, 0 salary
 from job_history
 order by 1;
+------------------------------------------------
+
+-- INTRODUCTION TO DML
+
