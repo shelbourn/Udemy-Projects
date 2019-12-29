@@ -19,16 +19,26 @@ let battleLog = []
 let lastLoggedEntry
 
 // Try/Catch method for error handling
+// Can have try without catch
+// Finally statement will execute whether there was an error or not
+// Finally statement is often used if there is no available fallback code
+// Finally is used to perform cleanup work (reset variables, delete data, etc)
 let chosenMaxLife
 
+// Tries code to see if it works
 try {
 	chosenMaxLife = getMaxLifeValues()
+	// React upon an error that is thrown
+	// error is generally used in catch syntax (not necessary though)
+	// In this case error refers to function expression above
 } catch (error) {
 	// if	chosenMaxLife = getMaxLifeValues() fails
 	// then below code is executed as a fallback
 	console.log(error)
 	chosenMaxLife = 100
 	alert('You entered an error, a default health value of 100 was used.')
+	// throw error
+} finally {
 }
 
 function getMaxLifeValues() {
