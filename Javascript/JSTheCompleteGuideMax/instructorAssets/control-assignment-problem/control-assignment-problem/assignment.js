@@ -44,3 +44,14 @@ if (randomNumber > 0.7 && randomNumber2 > 0.7) {
 	)
 	alert('One of the two random numbers is not greater than 0.2')
 }
+
+// Alternate solution to task 4
+if (
+	(randomNumber > 0.7 && randomNumber2 > 0.7) ||
+	randomNumber <= 0.2 ||
+	randomNumber2 <= 0.2
+) {
+	alert(
+		'Both randomNumber & randomNumber2 are greater than 0.7 or either randomNumber or randomNumber2 are less than 0.2.'
+	)
+}
