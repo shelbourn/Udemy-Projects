@@ -18,6 +18,7 @@ const enteredValue = prompt('Maximum life for you and the monster', '100')
 
 let chosenMaxLife = parseInt(enteredValue) // Or +enteredValue
 let battleLog = []
+let lastLoggedEntry
 
 // Sets default health if user-entered value is not applicable
 if (isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
@@ -212,31 +213,34 @@ function printLogHandler() {
 	// }
 	// for (let i = 0; i < battleLog.length; i++) {
 	//   console.log(battleLog[i]);
-  // }
+	// }
 
-  // Break keyword stops loop's execution for the loop where it is placed
-  // Break works for ALL loops
+	// Break keyword stops loop's execution for the loop where it is called
+	// Break works for ALL loops
 	let i = 0
 	for (const logEntry of battleLog) {
-		console.log(`#${i}`)
-		for (const key in logEntry) {
-			console.log(`${key} => ${logEntry[key]}`)
+		if (!lastLoggedEntry || lastLoggedEntry === i) {
+			console.log(`#${i}`)
+			for (const key in logEntry) {
+				console.log(`${key} => ${logEntry[key]}`)
+			}
+			lastLoggedEntry = i
 		}
-    i++
-    break
+		i++
+		break
 	}
 }
 
 // Use case for while loop
-	let randomNumbers = []
-	let finished = false
-	while (!finished) {
-		const rndNumber = Math.random()
-		randomNumbers.push(rndNumber)
-		if (rndNumber > 0.5) {
-			finished = true
-			console.log(randomNumbers)
-		}
+// let randomNumbers = []
+// let finished = false
+// while (!finished) {
+// 	const rndNumber = Math.random()
+// 	randomNumbers.push(rndNumber)
+// 	if (rndNumber > 0.5) {
+// 		finished = true
+// 		console.log(randomNumbers)
+// 	}
 
 attackBtn.addEventListener('click', attackHandler)
 strongAttackBtn.addEventListener('click', strongAttackHandler)
