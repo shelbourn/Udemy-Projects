@@ -19,6 +19,13 @@ for (const element of myArray) {
 	console.log(element)
 }
 
+// Loop 3 (manually recreating for loop with while loop)
+let counter = 0
+while (counter < myArray.length) {
+	console.log(myArray[counter])
+	counter++
+}
+
 // Task 3
 for (let j = myArray.length - 1; j > 0; j--) {
 	console.log(myArray[j])
