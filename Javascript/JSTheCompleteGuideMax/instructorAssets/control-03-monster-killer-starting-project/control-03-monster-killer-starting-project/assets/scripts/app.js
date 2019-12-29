@@ -231,17 +231,6 @@ function printLogHandler() {
 	}
 }
 
-// Use case for while loop
-// let randomNumbers = []
-// let finished = false
-// while (!finished) {
-// 	const rndNumber = Math.random()
-// 	randomNumbers.push(rndNumber)
-// 	if (rndNumber > 0.5) {
-// 		finished = true
-// 		console.log(randomNumbers)
-// 	}
-
 attackBtn.addEventListener('click', attackHandler)
 strongAttackBtn.addEventListener('click', strongAttackHandler)
 healBtn.addEventListener('click', healPlayerHandler)
