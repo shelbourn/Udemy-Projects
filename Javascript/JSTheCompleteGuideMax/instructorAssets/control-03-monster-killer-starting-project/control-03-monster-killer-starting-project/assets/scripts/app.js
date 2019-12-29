@@ -203,13 +203,15 @@ function printLogHandler() {
 		console.log('------------')
 	}
 
-	// For do/while loops the condition is checked after the code block is executed.
-	// If the conditions are not met then the next iteration will not execute
-	let j = 3
+	// Label Statements
+	let j = 0
 	do {
-		console.log(j)
+		console.log('Outer', j)
+		for (let k = 0; k < 5; k++) {
+			console.log('Inner', k)
+		}
 		j++
-	} while (j < 2)
+	} while (j < 3)
 	// for (let i = 10; i > 0;) {
 	//   i--;
 	//   console.log(i);
