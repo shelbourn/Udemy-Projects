@@ -2479,13 +2479,15 @@ values                  ('Development 3', 100, 1700, 73);
 commit;
 
 -- Inserting rows with NULL values
--- The Implicit method: don't put the column in the list, make sure the column can have a NULL value
+-- The IMPLICIT METHOD: don't put the column in the list, make sure the column can have a NULL value
 -- the Oracle server automatically makes it a NULL value
 -- The MANAGER_ID and LOCATION_ID will be NULL in the following INSERT statement
+-- MANAGER_ID and LOCATION_ID can be left out of the INSERT statement because they can have NULL values
+-- The other two columns are required
 insert into departments (department_id, department_name)
 values                  (74, 'Development 4');
 
--- the explicit method, done by the user by specifying the NULL keyword
+-- the EXPLICIT METHOD (PREFERRED), done by the user by specifying the NULL keyword
 insert into departments (department_id, department_name, manager_id, location_id)
 values                  (75, 'Development 5', null, null);
 commit;
