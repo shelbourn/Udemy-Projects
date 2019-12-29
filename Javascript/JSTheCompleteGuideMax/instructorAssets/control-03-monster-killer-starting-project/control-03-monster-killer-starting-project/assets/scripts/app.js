@@ -202,11 +202,14 @@ function printLogHandler() {
 	for (let i = 0; i < 3; i++) {
 		console.log('------------')
 	}
+
+	// For do/while loops the condition is checked after the code block is executed.
+	// If the conditions are not met then the next iteration will not execute
 	let j = 3
 	do {
 		console.log(j)
 		j++
-	} while (j < 3)
+	} while (j < 2)
 	// for (let i = 10; i > 0;) {
 	//   i--;
 	//   console.log(i);
@@ -227,16 +230,6 @@ function printLogHandler() {
 		}
 		i++
 	}
-}
-
-// Example of continue keyword
-// continue breaks loop for one iteration where conditions are met and then continues with next iteration
-
-for (let i = 0; i < 5; i++) {
-	if (i === 3) {
-		continue
-	}
-	console.log(i)
 }
 
 attackBtn.addEventListener('click', attackHandler)
