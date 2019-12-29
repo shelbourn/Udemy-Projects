@@ -204,10 +204,18 @@ function printLogHandler() {
 	}
 
 	// Label Statements
+	// Label Statements can be applied to any type of loop
+	// Labels the loop with a name
+	// Allows for breaking a loop other than the one the code is currently in
+	// Label Statements can also be called from outside of the loop where the statement is made
+	// Label statements can be used with the continue keyword as well
 	let j = 0
-	do {
+	outerWhile: do {
 		console.log('Outer', j)
-		for (let k = 0; k < 5; k++) {
+		innerFor: for (let k = 0; k < 5; k++) {
+			if (k === 3) {
+				break outerWhile
+			}
 			console.log('Inner', k)
 		}
 		j++
