@@ -2452,6 +2452,22 @@ A transaction consists of a collection of DML statements that form a logical uni
 
 -- INSERT Statement
 
+-- 1.) Always describe (DESC) the table before using the INSERT statement to know the table's structure
+desc departments;
 
+-- 2.)  Try to determine the constraints of the table
+--      Go to the table from the tree on the left of SQL Developer, select the table, and then go to the 'Constraints' tab
 
+-- 3.)  List the columns in the same table order, the put related values (this is a BEST PRACTICE
+-- First (RECOMMENDED) Syntax
+insert into departments (department_id, department_name, manager_id, location_id)
+values                  (71, 'Development 1', 100, 1700);
+commit; -- Use the COMMIT command to save changes (Separate Statement)
 
+-- Second Syntax
+-- Can INSERT without putting the column names
+-- But the order in values should be the same as the columns are ordered in the table
+-- This method requires that you insert values for ALL columns in the table
+insert into departments
+values (72, 'Development 2', 100, 1700);
+commit;
