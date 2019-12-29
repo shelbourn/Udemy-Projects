@@ -2431,5 +2431,22 @@ from job_history
 order by 1;
 ------------------------------------------------
 
--- INTRODUCTION TO DML
+-- *** IMPORTANT! ***
+-- INTRODUCTION TO DML (DATA MANIPULATION LANGUAGE)
+
+/*
+DML Statements:
+
+1.) SELECT
+2.) INSERT: Add new rows to a table
+3.) UPDATE: Modify existing rows in a table
+4.) DELETE/TRUNCATE (TRUNCATE is DDL): Remove existing rows from a table
+5.) MERGE
+
+A transaction consists of a collection of DML statements that form a logical unit of work.
+
+*** KNOW THE TABLE STRUCTURE BEFORE YOU USE ANY DML STATEMENTS ***
+*** KNOW THE CONSTRAINTS ON A TABLE BEFORE USING ANY DML STATEMENTS ***
+*/
+
 
