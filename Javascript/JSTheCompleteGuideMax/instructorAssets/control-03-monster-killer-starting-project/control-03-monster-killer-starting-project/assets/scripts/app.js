@@ -23,6 +23,8 @@ let lastLoggedEntry
 // Finally statement will execute whether there was an error or not
 // Finally statement is often used if there is no available fallback code
 // Finally is used to perform cleanup work (reset variables, delete data, etc)
+// Try/Catch/Finally are generally used for errors that we can't control
+// We SHOULD NOT use Try/Catch/Finally statements for ALL CODE
 let chosenMaxLife
 
 // Tries code to see if it works
