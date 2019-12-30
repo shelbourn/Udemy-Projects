@@ -2707,12 +2707,16 @@ where not exists (select 1 from employees emp where emp.department_id = dept.dep
 
 rollback;
 
--- In this example you can not delete because there is a child record found
+-- In this example you can not delete (ERROR thrown) because there is a child record found
 -- But how will you remove this department which has employees???
+-- In order to remove DEPARTMENT_ID = 90 you have to remove all employees in that department first
 delete from departments
 where department_id = 90;
 
--- 9.) TRUNCATE
+-- 9.) TRUNCATE (DDL Statement)
+-- Removes all rows from table
+-- No ROLLBACK allowed
+-- DELETE allows ROLLBACK
 truncate table dept_copy; -- No ROLLBACK allowed
 
 select * from dept_copy; -- the table is empty
