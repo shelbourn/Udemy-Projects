@@ -2555,6 +2555,7 @@ values                  (5, 'The Development and Research Department', 100, 1700
 -- In general, use the PK column in the WHERE clause to identify a single row for UPDATE
 
 -- 1.) It is logical to UPDATE always based on the PK for the table
+-- Without the WHERE clause every employee in the EMPLOYEES table would be updated
 select * from employees
 where employee_id = 100;
 
@@ -2574,3 +2575,82 @@ commit;
 
 select * from employees
 where first_name = 'Steven';
+
+-- 3.) For more practice, lets create a table called COPY_EMP
+-- This table is a copy of the EMPLOYEES table, we don't want to make changes to the original table
+
+create table COPY_EMP
+as
+select * from employees;
+
+select * from copy_emp;
+
+update employees
+set first_name = 'MATTHEW'
+where first_name = 'Matthew';
+
+commit;
+
+select * from employees
+where first_name = 'MATTHEW';
+
+update employees
+set last_name = 'SHELBOURN'
+where last_name = 'Shelbourn';
+
+commit;
+
+-- 4.) You can update more than one column at the same time
+update copy_emp
+set salary = 24100, department_id=10
+where employee_id = 100;
+commit;
+
+select * from copy_emp;
+
+-- 5.) If there is no WHERE clause then then the UPDATE statement will update all rows
+update copy_emp
+set phone_number = '515.123.4567';
+
+commit;
+
+select * from copy_emp;
+
+-- 6.) In UPDATE, you can set the column values to NULL
+update copy_emp
+set department_id = null
+where employee_id = 100;
+
+commit;
+
+select * from copy_emp
+where employee_id = 100;
+
+-- 7.) Using subqueries with UPDATE
+-- Make the salary for employee 100 like the salary for employee 200
+select * from copy_emp
+where employee_id in (100, 200);
+
+update copy_emp
+set salary = (select salary from copy_emp where employee_id = 200)
+where employee_id = 100;
+commit;
+
+select * from copy_emp
+where employee_id in (100, 200);
+
+-- Another example
+-- Set the salary and department id for employee 105 like the salary and department id for employee 108
+select * from copy_emp
+where employee_id in (105, 108);
+
+-- METHOD 1 (PREFERRED METHOD)
+update copy_emp
+set (salary, department_id) = (select salary, department_id from copy_emp where employee_id = 108)
+where employee_id = 105;
+
+-- METHOD 2
+update copy_emp
+set salary        = (select salary from copy_emp where employee_id = 108),
+    department_id = (select department_id from copy_emp where employee_id = 108)
+where employee_id = 105;    
