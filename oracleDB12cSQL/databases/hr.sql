@@ -2728,3 +2728,7 @@ TRUNCATE: DDL Statement, No ROLLBACK, Not fired with triggers, no WHERE clause, 
 
 DELETE: DML Statement, ROLLBACK, Fired with triggers, Can have WHERE clause, Does not recover space
 */
+
+-------------------------------------------
+
+-- Database Transactions
