@@ -2472,13 +2472,13 @@ insert into departments
 values (72, 'Development 2', 100, 1700);
 commit;
 
--- Yo ucan change the order as you see fit when you list the column names
+-- You can change the order as you see fit when you list the column names
 -- But you should always map the values correctly to the order of the columns
 insert into departments (department_name, manager_id, location_id, department_id)
 values                  ('Development 3', 100, 1700, 73);
 commit;
 
--- Inserting rows with NULL values
+-- 4.) Inserting rows with NULL values
 -- The IMPLICIT METHOD: don't put the column in the list, make sure the column can have a NULL value
 -- the Oracle server automatically makes it a NULL value
 -- The MANAGER_ID and LOCATION_ID will be NULL in the following INSERT statement
@@ -2492,3 +2492,34 @@ insert into departments (department_id, department_name, manager_id, location_id
 values                  (75, 'Development 5', null, null);
 commit;
 
+-- 5.) Inserting special values like SYSDATE, or other functions
+-- Here, JOB_ID value must match available values
+insert into employees (employee_id, first_name, last_name, email, hire_date, job_id)
+values                (1, 'Matthew', 'Shelbourn', 'mattshelbourn@gmail.com', sysdate, 'IT_PROG');
+
+-- When using TO_DATE, best practice is to use 'YYYY' for year format
+insert into employees (employee_id, first_name, last_name, email, hire_date, job_id)
+values                (2, 'Samer', 'Ali', 'samer@gmail.com', to_date('20-07-2015', 'dd-mm-yyyy'), 'IT_PROG');
+
+-- 6.) Using the '&' character with INSERT
+-- & character creates a prompt window for entering values into the columns
+insert into departments (department_id, department_name)
+values                  (&dept_id, '&dname');
+
+commit;
+
+-- 7.) You can use INSERT with subqueries
+create table XX_EMP
+(EMPNO number,
+FNAME varchar2 (100),
+SALARY number);
+
+select * from xx_emp;
+
+-- INSERT into XX_EMP using SELECT statment
+-- Below query inserts EMPLOYEE_ID, FIRST_NAME, and SALARY from EMPLOYEES tables into XX_EMP table
+insert into xx_emp (empno, fname, salary)
+select employee_id, first_name, salary
+from employees;
+
+select * from xx_emp;
