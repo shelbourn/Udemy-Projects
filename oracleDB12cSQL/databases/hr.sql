@@ -2553,3 +2553,24 @@ values                  (5, 'The Development and Research Department', 100, 1700
 -- UPDATE Statement
 -- UPDATE has to refer to a unique value if only updating one row
 -- In general, use the PK column in the WHERE clause to identify a single row for UPDATE
+
+-- 1.) It is logical to UPDATE always based on the PK for the table
+select * from employees
+where employee_id = 100;
+
+update employees
+set salary = 24100
+where employee_id = 100;
+commit;
+
+select * from employees
+where employee_id = 100;
+
+-- 2.) Making an UPDATE on another condition (not using the PK) can be dangerous because multiple rows may be updated
+update employees
+set salary = 24000
+where first_name = 'Steven'; -- More than one employee could have the first name 'Steven'
+commit;
+
+select * from employees
+where first_name = 'Steven';
