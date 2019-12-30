@@ -2720,3 +2720,11 @@ where department_id = 90;
 truncate table dept_copy; -- No ROLLBACK allowed
 
 select * from dept_copy; -- the table is empty
+
+/*
+TRUNCATE vs DELETE
+
+TRUNCATE: DDL Statement, No ROLLBACK, Not fired with triggers, no WHERE clause, recovers space
+
+DELETE: DML Statement, ROLLBACK, Fired with triggers, Can have WHERE clause, Does not recover space
+*/
