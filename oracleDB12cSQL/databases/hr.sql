@@ -2693,3 +2693,26 @@ delete from dept_copy;
 rollback;
 
 select * from dept_copy;
+
+-- 6.) DELETE based on subquery
+delete from dept_copy
+where department_id in (select department_id from dept_copy where department_name like '%Public%');
+
+rollback;
+
+-- 7.) DELETE based on another table
+-- Query below deletes all departments from DEPT_COPY that don't have employees assigned to them
+delete from dept_copy dept
+where not exists (select 1 from employees emp where emp.department_id = dept.department_id);
+
+rollback;
+
+-- In this example you can not delete because there is a child record found
+-- But how will you remove this department which has employees???
+delete from departments
+where department_id = 90;
+
+-- 9.) TRUNCATE
+truncate table dept_copy; -- No ROLLBACK allowed
+
+select * from dept_copy; -- the table is empty
