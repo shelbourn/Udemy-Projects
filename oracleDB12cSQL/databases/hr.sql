@@ -2653,4 +2653,6 @@ where employee_id = 105;
 update copy_emp
 set salary        = (select salary from copy_emp where employee_id = 108),
     department_id = (select department_id from copy_emp where employee_id = 108)
-where employee_id = 105;    
+where employee_id = 105;  
+
+commit;
