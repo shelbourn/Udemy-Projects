@@ -2529,17 +2529,27 @@ commit;
 
 -- Common errors with INSERT Statements
 
--- 1.) Inserting existing values, and this value is a FK
+-- 1.) Inserting existing values, and this value is a FK (SHOULD BE UNIQUE VALUE)
 -- DEPARTMENT_ID = 10
 insert into departments (department_id, department_name, manager_id, location_id)
 values                  (10, 'Development 1', 100, 1700);
 
--- 2.) Inserting FK value that doesn't exist in the reference table
+-- 2.) Inserting FK value that doesn't exist in the reference table (FK table)
 -- LOCATION_ID = 1
 insert into departments (department_id, department_name, manager_id, location_id)
 values                  (5, 'Development 1', 100, 1);
 
--- 3.) Inserting mismatched data type
+-- 3.) Inserting mismatched data type (Expecting number and received string)
 -- LOCATION_ID = 'D1'
 insert into departments (department_id, department_name, manager_id, location_id)
 values                  (5, 'Development 1', 100, 'D1');
+
+-- 4.) Inserting a value that is too long
+-- DEPARTMENT_NAME = 'The development and research department'
+insert into departments (department_id, department_name, manager_id, location_id)
+values                  (5, 'The Development and Research Department', 100, 1700);
+----------------------------------------------------------
+
+-- UPDATE Statement
+-- UPDATE has to refer to a unique value if only updating one row
+-- In general, use the PK column in the WHERE clause to identify a single row for UPDATE
