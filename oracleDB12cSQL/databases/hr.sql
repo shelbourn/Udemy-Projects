@@ -2661,3 +2661,35 @@ commit;
 -- DELETE Statement
 -- Removes records from a table
 -- Without a WHERE condition all results would be deleted from a table
+
+-- 1.) Let's create a DEPARTMENTS table copy so that we can mess with it
+create table dept_copy
+as select * from departments;
+
+select * from dept_copy;
+
+desc dept_copy;
+
+-- 2.)
+SELECT* FROM DEPT_copy
+where department_id = 10;
+
+delete from dept_copy
+where department_id = 10;
+commit;
+
+select * from dept_copy
+where department_id = 10;
+
+-- 3.) The keyword FROM is optional in DELETE statements
+delete dept_copy
+where department_id = 10;
+commit;
+
+-- 4.) If there is no WHERE condition then all rows in the table will be deleted
+delete from dept_copy;
+
+-- 5.) You can ROLLBACK the DELETE
+rollback;
+
+select * from dept_copy;
