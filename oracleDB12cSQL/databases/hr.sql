@@ -2656,3 +2656,8 @@ set salary        = (select salary from copy_emp where employee_id = 108),
 where employee_id = 105;  
 
 commit;
+----------------------------------------------------
+
+-- DELETE Statement
+-- Removes records from a table
+-- Without a WHERE condition all results would be deleted from a table
