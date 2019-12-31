@@ -2736,8 +2736,13 @@ DELETE: DML Statement, ROLLBACK, Fired with triggers, Can have WHERE clause, Doe
 /*
 DATABASE TRANSACTIONS INCLUDE ONE OF THE FOLLOWING:
 
-* DML statements that constitute one consistent change to the data
+* DML statements that constitute one consistent change to the data (can be multiple statements)
+    * One DML statement may trigger another DML statement, but they are both technically linked to one statement
 * One DDL statement
 * One data control language (DCL) statement
 */
+---------------------------------------------
+
+--COMMIT and ROLLBACK statements
+
 
