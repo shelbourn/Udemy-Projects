@@ -2758,7 +2758,29 @@ Advantages of COMMIT and ROLLBACK Statements
 
 * Ensure data consistency
 * Preview data changes before making changes permanent
-* Group logically related operations
+* Group logically related operations (with one COMMIT statement at the end)
 */
 
+/*
+Explicit Transaction Control Statements:
+
+* COMMIT: ends the current transaction by making all pending data changes permanent
+* SAVEPOINT: Makes a save point within the current transaction
+* ROLLBACK: Ends the current transactions by discarding all pending data changes
+* ROLLBACK TO SAVEPOINT: Rolls back the current transaction to a specified save point. Discards all changes and save points made after the save point being rolled back to
+*/
+
+/*
+*** IMPORTANT***
+
+Implicit Transaction Processing
+
+An automatic COMMIT occurs in the following circumstances:
+
+* A DDL statement is issued
+* a DCL statement is issued
+* Normal exit from SQL Developer or SQL Plus without explicitly issuing COMMIT or ROLLBACK statements
+
+An automatic ROLLBACK occurs when there is an abnormal termination of SQL Developer or SQL Plus or a system failure
+*/
 
