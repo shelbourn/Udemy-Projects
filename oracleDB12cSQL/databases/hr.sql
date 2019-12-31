@@ -2780,7 +2780,12 @@ An automatic COMMIT occurs in the following circumstances:
 * A DDL statement is issued
 * a DCL statement is issued
 * Normal exit from SQL Developer or SQL Plus without explicitly issuing COMMIT or ROLLBACK statements
+* Auto COMMIT in SQL Developer only happens upon normal exit when Auto-Commit is enabled
 
 An automatic ROLLBACK occurs when there is an abnormal termination of SQL Developer or SQL Plus or a system failure
 */
+-----------------------------------------------
+
+-- COMMIT and ROLLBACK Practice
+
 
