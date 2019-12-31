@@ -2743,6 +2743,12 @@ DATABASE TRANSACTIONS INCLUDE ONE OF THE FOLLOWING:
 */
 ---------------------------------------------
 
+-- *** IMPORTANT ***
 --COMMIT and ROLLBACK statements
 
-
+-- Database Transactions start when the 1st DML statement is executed
+-- Database Transactions end with one of the following events:
+    -- A COMMIT or ROLLBACK statement is issued
+    -- A DDL or DCL statement executes (auto commit)
+    -- THe user exits SQL Developer or SQL Plus
+    -- The system crashes
