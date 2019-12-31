@@ -2752,3 +2752,13 @@ DATABASE TRANSACTIONS INCLUDE ONE OF THE FOLLOWING:
     -- A DDL or DCL statement executes (auto commit)
     -- THe user exits SQL Developer or SQL Plus
     -- The system crashes
+    
+/*
+Advantages of COMMIT and ROLLBACK Statements
+
+* Ensure data consistency
+* Preview data changes before making changes permanent
+* Group logically related operations
+*/
+
+
