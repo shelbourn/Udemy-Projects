@@ -2788,4 +2788,40 @@ An automatic ROLLBACK occurs when there is an abnormal termination of SQL Develo
 
 -- COMMIT and ROLLBACK Practice
 
+/* Notes about COMMIT and ROLLBACK
 
+* The prepvious state of the data can be recovered
+* The current session can review the results of the DML operations by using the SELECT statement
+* Other sessions CANNOT view the results of the DML statements issued by the current session
+* The affected rows are LOCKED. Other sessions CANNOT change the data in the affected rows.
+*/
+
+-- Issuing a DML statement then issuing COMMIT
+select * from employees
+where employee_id in (200, 201);
+
+select * from departments
+where department_id = 1;
+
+-- 1.)
+update employees
+set salary = salary + 100
+where employee_id = 200;
+
+-- 2.)
+update employees
+set salary = salary + 50
+where employee_id = 201;
+
+-- 3.)
+insert into departments  (department_id, department_name, manager_id, location_id)
+values                  (1, 'ADMINISTRATION 2', 200, 1700);
+
+-- 4.) When COMMIT is issued then queries 1, 2, 3 will be committed
+commit;
+
+select * from employees
+where employee_id in (200, 201);
+
+select * from departments
+where department_id = 1;
