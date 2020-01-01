@@ -3049,3 +3049,17 @@ commit;
  -- Now try to open another session and issue the same query
  -- It will lock all the rows in table EMPLOYEES for DEPARTMENT_ID = 10
  -- It will also lock the row DEPARTMENT_ID = 10 in the DEPARTMENTS table
+ ---------------------------------------------
+ 
+ -- FOR UPDATE OF (COLUMN NAME)
+ 
+ /* Locks all rows that have the column lised in the FOR UPDATE OF clause
+    Queries in other sessions will work as long as they don't include rows that have
+    the column listed in the FOR UPDATE OF clause
+*/
+
+ select employee_id, first_name, emp.department_id, department_name
+ from employees emp, departments dept
+ where emp.department_id = dept.department_id
+ and emp.department_id = 10
+ for update of salary;
