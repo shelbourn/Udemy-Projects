@@ -3099,5 +3099,45 @@ DDL COMMANDS
   * Contain only A-Z, a-z, 0-9, _, $, and #
   * Not duplicate the name of another object owned by the same user
   * Not be an Oracle server-reserved word
+  
+  NOTES:
+  
+  * Use descriptive names for tables and other database objects
+  * Names are not case-sensitive
+  * Can use quoted identifiers (surrounded by " ")
+  * Quoted identifiers are case-sensitive
 */
+----------------------------------------------
+
+-- Naming Rules Examples
+
+-- 1.) -- The object (table) should start with a letter
+create table 2emp
+(empno number); -- results in error
+
+-- *** IMPORTANT ***
+-- 2.) -- The table name should be 30 characters or less
+-- Oracle 12c 12.1 allows table names of 30 characters or less
+-- Oracle 12c 12.2 allows table names of 128 character or less
+-- Therefore, the below query will work in 12.2, but not in 12.1
+create table employees_and_hr_information_table
+(empno number); -- This is allowed in Oracle 12c 12.2
+
+-- 3.) -- Table name should only contain A-Z, a-z, 0-9, _, $, #
+create table emp-t
+(empno number); -- returns an error ( - ) not allowed
+
+-- 4.) -- Table name should not be a duplicate of another object owned by the same user
+create table employees
+(empno number); -- returns an error
+
+-- 5.) -- Names should not be an Oracle reserved word (SELECT, FROM, WHERE, TABLE, etc)
+create table select
+(empno number);
+
+create table "select"
+(empno number);
+
+drop table "select";
+----------------------------------------------------
 
