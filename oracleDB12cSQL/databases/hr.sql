@@ -2863,8 +2863,38 @@ delete from employees
 where employee_id = 106;
 
 -- 9.)
-delete from departments;
+delete from departments; -- statement-level ROLLBACK for this statement due to integrity constraints
 
 -- 10.)
 delete from employees
 where employee_id = 107;
+
+-- So the DML 9 will not be executed, Oracle issues a ROLLBACK only for this statement (statement-level ROLLBACK)
+-- Other statements require an explicit COMMIT or ROLLBACK
+rollback;
+
+select * from employees
+where employee_id in (106, 107);
+------------------------------------------
+
+-- Case 4 -- Issuing DML statements then doing one DDL/DCL statement
+-- This issues an automatic COMMIT
+
+-- 11.)
+insert into departments (department_id, department_name, manager_id, location_id)
+values                  (1000, 'dept1', 200, 1700);
+
+-- 12.)
+insert into departments (department_id, department_name, manager_id, location_id)
+values                  (1001, 'dept2', 200, 1700);
+
+-- 13.) -- DDL Statement (COMMIT automatically issued)
+create table test_table
+( EMP_ID number,
+  NAME varchar2(100)
+);
+
+rollback;
+
+select * from departments
+where department_id in (1000, 1001);
