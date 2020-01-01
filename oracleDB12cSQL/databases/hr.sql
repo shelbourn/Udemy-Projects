@@ -3226,11 +3226,23 @@ select * from test2;
   * ROWID: Base 64 string representing the unique address of a row and its table.
     Primarily for values returned by the ROWID pseudocolumn
     
-  GUIDELINES;
+  *** IMPORTANT ***
+  
+  GUIDELINES:
   
   * A LONG column is not copied when a table is created using a subquery
   * A LONG column cannot be included in a GROUP BY or an ORDER BY clause
   * Only one LONG column can be used per table
-  * No constraints can be defined on a LONG column
+  * No constraints can be defined on a LONG column (No PK, FK, etc)
   * You might want to use a CLOB column rather than a LONG column
+*/    
+
+/*
+  Date/Time Data Types
+  
+  * TIMESTAMP: Date with fractional seconds
+  * INTERVAL YEAR TO MONTH: Stored as an interval of years and months
+    Represents the difference in two different dates/times
+  * INTERVAL DAY TO SECOND: Stored as an interval of days, hours, minutes, and seconds
+    Represents the difference in two different dates/times
 */    
