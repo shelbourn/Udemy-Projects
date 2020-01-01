@@ -3246,3 +3246,6 @@ select * from test2;
   * INTERVAL DAY TO SECOND: Stored as an interval of days, hours, minutes, and seconds
     Represents the difference in two different dates/times
 */    
+----------------------------------------------------------
+
+-- Creating Tables without Constraints
