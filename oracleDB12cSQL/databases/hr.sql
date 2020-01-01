@@ -3300,3 +3300,23 @@ where owner = 'HR'; -- ALL_TABLES displays all tables in DB for any owner
 -------------------------------------------
 
 -- Types of Constraints and Why We Use Them
+
+/*
+  Use constraints to do the following:
+  
+  * Enforce rulse on the data in the table whenever a row is inserted, updated, or deleted.
+  * Prevent the dropping of a table if there are dependencies from other tables
+  * Provide rules for Oracle tools, such as Oracle Developer
+*/
+
+/*
+  Constraint Commands
+  
+  * NOT NULL: Column cannot contain a NULL value
+  * UNIQUE: Column or combination of columns whose values must be unique for all rows in that table
+  * PRIMARY KEY: Uniquely identifies each row of the table
+  * FOREIGN KEY: Establishes and enforces a referential integrity between the column
+    and a column of the referenced table such that the values in one table must
+    match the values in another table
+  * CHECK: Specifies a condition that must be true
+*/
