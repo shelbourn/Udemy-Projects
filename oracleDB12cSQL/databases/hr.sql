@@ -3063,3 +3063,6 @@ commit;
  where emp.department_id = dept.department_id
  and emp.department_id = 10
  for update of salary;
+--------------------------------------------
+
+-- DDL & Naming Rules
