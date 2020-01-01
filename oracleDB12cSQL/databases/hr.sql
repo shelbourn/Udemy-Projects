@@ -2932,10 +2932,34 @@ where employee_id = 108;
 select * from employees
 where employee_id = 108;
 
-rollback to savepoint a;
+rollback to savepoint a; -- Can ROLLBACK again to original values
 
 select * from employees
 where employee_id = 108;
 
 -- Now you can issue a COMMIT or ROLLBACK
+commit;
+
+select * from employees
+where employee_id = 108;
+-------------------------------------------------
+
+-- Case 6 -- Using ROW LOCK
+select * from employees
+where employee_id = 109;
+
+update employees
+set salary = salary + 20
+where employee_id = 109;
+
+select * from employees
+where employee_id = 109;
+
+-- Now go to another session and try to update the same record
+/*
+update employees
+set department_id = 10
+where employee_id = 109;
+*/
+
 commit;
