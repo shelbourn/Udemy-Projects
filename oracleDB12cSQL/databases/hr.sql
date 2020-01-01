@@ -3331,6 +3331,29 @@ where owner = 'HR'; -- ALL_TABLES displays all tables in DB for any owner
   * Create a constraint at either of the following times:
     * At the same time as the creation of the table
     * After the creation of the table
-  * Define a constraint at the column or table level
+  * Define a constraint at the column or table level (table level constraints are more powerful & flexible)
   * View a constraint in the data dictionary
+*/  
+-------------------------------------------
+
+-- Creating Tables with Column Level Constraints)
+create table xx_emp_col_const
+  ( emp_id number constraint xx_emp_col_const_pk primary key,
+    ename varchar2 (100) constraint xx_emp_col_const_uk1 unique,
+    salary number not null,
+    gender char (1) constraint xx_emp_col_const_chq check (gender in ('M', 'F')),
+    dept_id number constraint xx_emp_col_const_fk1 references departments (department_id) -- Foreign Key
+  );  
+
+
+select * from user_constraints -- Data Dictionary table storing all user constraints
+where table_name = 'XX_EMP_COL_CONST'; -- Case sensitive
+
+/*
+  Oracle Constraint Abbreviations
+  
+  * P: Primary Key
+  * R: Foreign Key (Referenced Key)
+  * U: Unique Key
+  * C: Check
 */  
