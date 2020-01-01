@@ -3314,9 +3314,23 @@ where owner = 'HR'; -- ALL_TABLES displays all tables in DB for any owner
   
   * NOT NULL: Column cannot contain a NULL value
   * UNIQUE: Column or combination of columns whose values must be unique for all rows in that table
+    Can be NULL
   * PRIMARY KEY: Uniquely identifies each row of the table
+    Cannot be NULL
   * FOREIGN KEY: Establishes and enforces a referential integrity between the column
     and a column of the referenced table such that the values in one table must
     match the values in another table
   * CHECK: Specifies a condition that must be true
 */
+
+/*
+  Constraint Guidelines
+  
+  * You can name a constraint or the Oracle server generates a name by usingthe SYS_Cn format
+    'n' in SYS_Cn is a number
+  * Create a constraint at either of the following times:
+    * At the same time as the creation of the table
+    * After the creation of the table
+  * Define a constraint at the column or table level
+  * View a constraint in the data dictionary
+*/  
