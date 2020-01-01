@@ -3266,7 +3266,7 @@ create table XX_emp_test
 select * from xx_emp_test;
 
 -- 2.) -- Creating table/columns using double quotations (" ") - NOT RECOMMENDED BY ORACLE
-create table "XX_eMP_dOUBLE"
+create table "XX_eMP_dOUBLE" -- case sensitive
 ( emp_id number,
   "Ename" varchar2 (100)
 );  
