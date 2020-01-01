@@ -3252,11 +3252,11 @@ select * from test2;
 
 -- In order to use CREATE TABLE you MUST have 1.) CREATE TABLE privaleges and 2.) Data storage space
 
--- 1.) -- Create table without any constraints
+-- 1.) -- Creating a table without any constraints
 create table XX_emp_test
 ( emp_id number,
-  ename varchar2(100),
-  salary number(8, 2),
+  ename varchar2 (100),
+  salary number (8, 2),
   start_date date,
   commission number (2, 2),
   emp_pic blob,
@@ -3265,4 +3265,14 @@ create table XX_emp_test
 
 select * from xx_emp_test;
 
--- 2.) -- Creating table/columns using double quotations (" ") - NOT RECOMMENDED
+-- 2.) -- Creating table/columns using double quotations (" ") - NOT RECOMMENDED BY ORACLE
+create table "XX_eMP_dOUBLE"
+( emp_id number,
+  "Ename" varchar2 (100)
+);  
+
+select * from "XX_eMP_dOUBLE"; -- You MUST use the (" ") when querying the table
+
+select emp_id, "Ename"
+from "XX_eMP_dOUBLE"; -- Because "Ename" was created using (" ") you MUST use (" ") when querying
+
