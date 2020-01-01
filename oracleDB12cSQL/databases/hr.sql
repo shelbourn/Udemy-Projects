@@ -3293,7 +3293,10 @@ commit;
 select * from xx_emp_test1;
 
 -- 4.) -- You can query the table you created by using the dictionary tables (user_tables)
-select table_name from user_tables;
+select table_name from user_tables; -- USER_TABLES stores all tables that you have created
 
-select owner, table_name from all_tables
+select owner, table_name from all_tables -- ALL_TABLES displays all tables that you own and all that you have privaleges to
 where owner = 'HR'; -- ALL_TABLES displays all tables in DB for any owner
+-------------------------------------------
+
+-- Types of Constraints and Why We Use Them
