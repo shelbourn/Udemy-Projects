@@ -2877,6 +2877,7 @@ select * from employees
 where employee_id in (106, 107);
 ------------------------------------------
 
+-- *** IMPORTANT ***
 -- Case 4 -- Issuing DML statements then doing one DDL/DCL statement
 -- This issues an automatic COMMIT
 
