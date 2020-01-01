@@ -3011,3 +3011,41 @@ where department_id = 10;
 select * from employees
 where department_id = 10
 for update nowait;
+
+commit;
+----------------------------------------------------
+
+ -- FOR UPDATE WAIT (TIME SPECIFICATION)
+ 
+ /*
+ If a user in another session locks rows with a query that modifies rows
+ FOR UPDATE WAIT (TIME) in the first session will issue a query and wait a specified amount of time
+ for the second session to release the lock before retrieving an error.
+ This allows for the user in session 1 to wait a specified amount of time for the rows to be
+ unlocked instead of waiting indefinitely or retrieving an error immediately.
+ */
+ 
+ /*
+ Session 2 Query
+ 
+ update employees
+ set salary = 4400
+ where department_id = 10;
+ */
+ 
+ -- Session 1 Query
+ select * from employees
+ where department_id = 10
+ for update wait 10;
+ 
+ commit;
+ -------------------------------------------
+ select employee_id, first_name, emp.department_id, department_name
+ from employees emp, departments dept
+ where emp.department_id = dept.department_id
+ and emp.department_id = 10
+ for update;
+ 
+ -- Now try to open another session and issue the same query
+ -- It will lock all the rows in table EMPLOYEES for DEPARTMENT_ID = 10
+ -- It will also lock the row DEPARTMENT_ID = 10 in the DEPARTMENTS table
