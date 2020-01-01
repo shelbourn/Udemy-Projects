@@ -3213,3 +3213,16 @@ select * from test2;
 
 -- CREATE TABLE Examples
 
+/*
+  Additional Data Types
+  
+  * LONG: Variable-length character data (up to 2 GB)
+  * CLOB: Character large object. Max size: 4 GB
+  * NCLOB: Character large object containing Unicode characters. Max size: 4 GB
+  * RAW(size): Raw binary data of length (size) bytes. Must specify size.
+  * LONG RAW: Raw binary data of variable length of up to 2 GB
+  * BLOB: Binary large object. Max size: 4 GB
+  * BFILE: Binary data stored in a external file. Max size: 4 GB
+  * ROWID: Base 64 string representing the unique address of a row and its table.
+    Primarily for values returned by the ROWID pseudocolumn
+*/    
