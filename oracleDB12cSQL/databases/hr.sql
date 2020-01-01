@@ -2956,6 +2956,9 @@ select * from employees
 where employee_id = 109;
 
 -- Now go to another session and try to update the same record
+-- The second session will not be able to modify the rows active in the first session
+-- The data available to the second session will be the data as it was before any modifications in the first session
+-- First session must be unlocked with COMMIT or ROLLBACK
 /*
 update employees
 set department_id = 10
@@ -2963,3 +2966,22 @@ where employee_id = 109;
 */
 
 commit;
+-------------------------------------------
+
+-- Case 7 -- FOR UPDATE Clause
+
+-- FOR UPDATE locks the rows in use for any other uses or sessions
+-- The other sessions will not be able to modify the data being used by the first session until a COMMIT or ROLLBACK is issued
+-- When a session issues a statement on a locked row/rows SQL Developer will just have a blank processing screen
+select * from employees
+where department_id = 10
+for update; -- Locks records for employees with DEPARTMENT_ID = 10
+
+/*
+If this query is issued in a second session after a FOR UPDATE is placed then the records will be locked
+and the query will not be able to be executed
+
+update employees
+set salary = 4400
+where department_id = 10;
+*/
