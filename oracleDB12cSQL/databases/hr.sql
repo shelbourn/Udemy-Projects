@@ -2844,6 +2844,10 @@ where department_id = 1;
 -- 6.)
 delete from employees
 where employee_id = 1;
+------------------------------------
+
+-- Using SAVEPOINT
+
 
 -- Now when you run a query you will not find the records
 select * from departments
