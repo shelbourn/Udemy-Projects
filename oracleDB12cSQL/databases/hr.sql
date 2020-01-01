@@ -3066,3 +3066,24 @@ commit;
 --------------------------------------------
 
 -- DDL & Naming Rules
+
+/*
+DDL COMMANDS
+
+* CREATE
+* ALTER
+* DROP
+* RENAME
+* TRUNCATE
+*/
+
+/*
+  Oracle Table Structures
+  
+  * Tables can be created at any time, even when users are using the DB
+  * You don't need to specify the size of the table.
+    Size will be defined by the amount of space a table will use over time.
+    It is important, however, to estimate how much space a table will use over time
+  * Table structure can be modified online
+*/
+
