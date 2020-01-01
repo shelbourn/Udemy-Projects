@@ -3225,4 +3225,12 @@ select * from test2;
   * BFILE: Binary data stored in a external file. Max size: 4 GB
   * ROWID: Base 64 string representing the unique address of a row and its table.
     Primarily for values returned by the ROWID pseudocolumn
+    
+  GUIDELINES;
+  
+  * A LONG column is not copied when a table is created using a subquery
+  * A LONG column cannot be included in a GROUP BY or an ORDER BY clause
+  * Only one LONG column can be used per table
+  * No constraints can be defined on a LONG column
+  * You might want to use a CLOB column rather than a LONG column
 */    
