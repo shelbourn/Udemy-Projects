@@ -3276,3 +3276,24 @@ select * from "XX_eMP_dOUBLE"; -- You MUST use the (" ") when querying the table
 select emp_id, "Ename"
 from "XX_eMP_dOUBLE"; -- Because "Ename" was created using (" ") you MUST use (" ") when querying
 
+-- 3.) -- Using the default values
+create table xx_emp_test1
+( emp_id number,
+  ename varchar2 (100),
+  salary number (8, 2),
+  start_date date default sysdate, -- default can be any valid date and will be used if the user does not specify a date
+  commission number (2, 2)
+);
+
+insert into xx_emp_test1  (emp_id, ename)
+values                    (1, 'matthew');
+
+commit;
+
+select * from xx_emp_test1;
+
+-- 4.) -- You can query the table you created by using the dictionary tables (user_tables)
+select table_name from user_tables;
+
+select owner, table_name from all_tables
+where owner = 'HR'; -- ALL_TABLES displays all tables in DB for any owner
