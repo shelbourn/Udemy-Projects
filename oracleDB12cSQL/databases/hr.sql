@@ -3148,6 +3148,8 @@ drop table "select";
   
   * VARCHAR2(size): Variable-length character data (max size must be specified)
     Minimum size is 1
+    Max Size (MAX_SWL_STRING_SIZE = EXTENDED) = 32,767 bytes
+    MAX Size (MAX_SQL_STRING_SIZE = LEGACY) = 4,000 bytes
     
   * CHAR(size): Fixed-length character data of length size (bytes)
     Default and minimum size is 1, max size is 2,000
@@ -3158,4 +3160,12 @@ drop table "select";
     
   * DATE: Date and time values to the nearest second
     Range from January 1, 4712 B.C. and December 31, 9999 A.D.
+    
+    NOTE:
+    
+    Difference between VARCHAR2 and CHAR:
+    
+    * VARCHAR2(20) and only 2 bytes are used then the remaining 18 bytes will be released from memory
+    * CHAR(20) and only 2 bytes are used then the remaining 18 bytes will NOT be released from memory
 */    
+
