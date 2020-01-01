@@ -2844,10 +2844,6 @@ where department_id = 1;
 -- 6.)
 delete from employees
 where employee_id = 1;
-------------------------------------
-
--- Using SAVEPOINT
-
 
 -- Now when you run a query you will not find the records
 select * from departments
@@ -2917,3 +2913,29 @@ where department_id in (1000, 1001);
 ------------------------------------------------------
 
 -- Case 5 -- Using SAVEPOINT
+select * from employees
+where employee_id = 108;
+
+update employees
+set salary = salary + 10
+where employee_id = 108;
+
+savepoint A;
+
+select * from employees
+where employee_id = 108;
+
+update employees
+set salary = salary + 20
+where employee_id = 108;
+
+select * from employees
+where employee_id = 108;
+
+rollback to savepoint a;
+
+select * from employees
+where employee_id = 108;
+
+-- Now you can issue a COMMIT or ROLLBACK
+commit;
