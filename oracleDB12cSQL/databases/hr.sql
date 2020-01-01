@@ -3087,3 +3087,17 @@ DDL COMMANDS
   * Table structure can be modified online
 */
 
+/*
+  *** IMPORTANT ***
+  
+  Naming Rules
+  
+  Table names and column names must:
+  
+  * Begin with a letter
+  * Be 1-30 characters long
+  * Contain only A-Z, a-z, 0-9, _, $, and #
+  * Not duplicate the name of another object owned by the same user
+  * Not be an Oracle server-reserved word
+*/
+
