@@ -3155,8 +3155,11 @@ drop table "select";
     Default and minimum size is 1, max size is 2,000
     
   * NUMBER(p, s): Number have precision (p) and scale (s)
-    Precision is the number of decimal digits. (Range from 1-38)
+    Precision is the total number of decimal digits. (Range from 1-38)
     Scale is the number of digits to the right of the decimal point (Range from -84-127)
+    
+    NOTE: Having a negative SCALE value will round the number (-1 rounds to the 10s, -2 rounds to the 100s, etc)
+          Without specifying the P and S values you are able to enter whatever number you'd like
     
   * DATE: Date and time values to the nearest second
     Range from January 1, 4712 B.C. and December 31, 9999 A.D.
@@ -3169,3 +3172,38 @@ drop table "select";
     * CHAR(20) and only 2 bytes are used then the remaining 18 bytes will NOT be released from memory
 */    
 
+-- Practice with NUMBER data type
+
+create table test
+(n1 number,
+n2 number (5, 3)
+);
+
+insert into test values (1655.66, 1.34); -- Valid entry
+
+insert into test values (20.25, 23.347); -- Valid entry
+
+insert into test values (444.25, 23.3493666); -- Second number will be truncated after a scale of 3
+
+insert into test values (444.25, 233.3493666); -- Returns an error because PRECISION is exceeded
+
+insert into test values (444.25, 500); -- Returns an error because PRECISION is exceeded
+
+insert into test values (444.25, 23.3493666);
+
+select * from test;
+
+create table test2
+(n3 number (3, -2));
+
+insert into test2 values (335); -- Rounds to 100s place
+
+select * from test2;
+
+insert into test2 values (335.09);
+
+select * from test2;
+
+insert into test2 values (355);
+
+select * from test2;
