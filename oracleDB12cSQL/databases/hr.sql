@@ -2828,3 +2828,21 @@ where department_id = 1;
 --------------------------------------
 
 -- Case 2 -- Issuing DML statements and then issuing a ROLLBACK
+-- 5.)
+delete from departments
+where department_id = 1;
+
+-- 6.)
+delete from employees
+where employee_id = 1;
+
+-- Now when you run a query you will not find the records
+select * from departments
+where department_id = 1;
+
+select * from employees
+where employee_id = 1;
+
+-- 7.) When you do a ROLLBACK the data will be restored to a state before queries 5 and 6
+rollback;
+
