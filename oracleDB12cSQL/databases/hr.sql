@@ -2985,3 +2985,29 @@ update employees
 set salary = 4400
 where department_id = 10;
 */
+
+-- Rows are released when user in session 1 issues a COMMIT or ROLLBACK
+commit;
+-------------------------------------------
+
+-- FOR UPDATE NOWAIT
+
+/*
+If a user in session 2 locks rows by issuing a statement that modifies rows
+User in session 1 can use the FOR UPDATE NOWAIT clause with a query to retrieve an error immediately
+if the rows are locked by another session instead of the query hanging and waiting
+for the lock to be released by the other session
+*/
+
+/*
+Session 2 Query:
+
+update employees
+set salary = 4400
+where department_id = 10;
+*/
+
+-- Session 1 Query
+select * from employees
+where department_id = 10
+for update nowait;
