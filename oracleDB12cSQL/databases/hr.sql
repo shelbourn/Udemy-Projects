@@ -3183,7 +3183,7 @@ insert into test values (1655.66, 1.34); -- Valid entry
 
 insert into test values (20.25, 23.347); -- Valid entry
 
-insert into test values (444.25, 23.3493666); -- Second number will be truncated after a scale of 3
+insert into test values (444.25, 23.3493666); -- Second number will be rounded after a scale of 3
 
 insert into test values (444.25, 233.3493666); -- Returns an error because PRECISION is exceeded
 
@@ -3207,3 +3207,9 @@ select * from test2;
 insert into test2 values (355);
 
 select * from test2;
+---------------------------------------------------
+
+-- Data Types (Part 2)
+
+-- CREATE TABLE Examples
+
