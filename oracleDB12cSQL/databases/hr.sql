@@ -2846,3 +2846,25 @@ where employee_id = 1;
 -- 7.) When you do a ROLLBACK the data will be restored to a state before queries 5 and 6
 rollback;
 
+select * from departments
+where department_id = 1;
+
+select * from employees
+where employee_id = 1;
+----------------------------------------------
+
+-- *** IMPORTANT ***
+-- Case 3 -- Statement-Level ROLLBACK
+select * from employees
+where employee_id in (106, 107);
+
+-- 8.)
+delete from employees
+where employee_id = 106;
+
+-- 9.)
+delete from departments;
+
+-- 10.)
+delete from employees
+where employee_id = 107;
