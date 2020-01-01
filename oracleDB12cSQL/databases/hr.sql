@@ -3141,3 +3141,21 @@ create table "select"
 drop table "select";
 ----------------------------------------------------
 
+-- Data Types (Part 1)
+
+/*
+  Oracle Data Types
+  
+  * VARCHAR2(size): Variable-length character data (max size must be specified)
+    Minimum size is 1
+    
+  * CHAR(size): Fixed-length character data of length size (bytes)
+    Default and minimum size is 1, max size is 2,000
+    
+  * NUMBER(p, s): Number have precision (p) and scale (s)
+    Precision is the number of decimal digits. (Range from 1-38)
+    Scale is the number of digits to the right of the decimal point (Range from -84-127)
+    
+  * DATE: Date and time values to the nearest second
+    Range from January 1, 4712 B.C. and December 31, 9999 A.D.
+*/    
