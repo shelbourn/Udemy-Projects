@@ -2786,14 +2786,23 @@ An automatic ROLLBACK occurs when there is an abnormal termination of SQL Develo
 */
 -----------------------------------------------
 
+-- *** IMPORTANT ***
 -- COMMIT and ROLLBACK Practice
 
-/* Notes about COMMIT and ROLLBACK
+/* Notes about COMMIT and ROLLBACK (Before Commit)
 
 * The prepvious state of the data can be recovered
 * The current session can review the results of the DML operations by using the SELECT statement
 * Other sessions CANNOT view the results of the DML statements issued by the current session
 * The affected rows are LOCKED. Other sessions CANNOT change the data in the affected rows.
+
+  Notes about COMIT and ROLLBACK (After COMMIT)
+  
+  * Data changes are saved in the database
+  * The previous state of data is overwritten
+  * All sessions can view the results
+  * Locks on the affected rows are released. Those rows are available for other sessions to manipulate
+  * All SAVEPOINTs are erased
 */
 
 -- Case 1 -- Issuing a DML statement then issuing COMMIT
@@ -2899,3 +2908,8 @@ rollback;
 
 select * from departments
 where department_id in (1000, 1001);
+
+-- Now even if you issued a ROLLBACK DML 11 and 12 would have already been committed implicitly by Oracle due to the DDL statement
+------------------------------------------------------
+
+-- Case 5 -- Using SAVEPOINT
