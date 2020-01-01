@@ -2796,7 +2796,7 @@ An automatic ROLLBACK occurs when there is an abnormal termination of SQL Develo
 * The affected rows are LOCKED. Other sessions CANNOT change the data in the affected rows.
 */
 
--- Issuing a DML statement then issuing COMMIT
+-- Case 1 -- Issuing a DML statement then issuing COMMIT
 select * from employees
 where employee_id in (200, 201);
 
@@ -2825,3 +2825,6 @@ where employee_id in (200, 201);
 
 select * from departments
 where department_id = 1;
+--------------------------------------
+
+-- Case 2 -- Issuing DML statements and then issuing a ROLLBACK
