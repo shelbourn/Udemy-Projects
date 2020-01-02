@@ -3486,3 +3486,16 @@ select * from dept1;
 -----------------------------------
 
 -- ON DELETE SET NULL
+/*
+  * ON DELETE SET NULL is added to the child table
+  * If data is deleted from the master table then the corresponding data in the child
+    table will be set to NULL
+*/
+
+create table dept2
+  ( deptno number,
+    dname varchar2 (100),
+    constraint dept2_pk primary key (deptno)
+  );
+  
+  
