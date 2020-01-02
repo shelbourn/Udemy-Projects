@@ -3390,6 +3390,8 @@ create table xx_emp_col_const1
     constraint xx_emp_col_const1_chq check (gender in ('M', 'F')), -- Can have many CHECK constraints per table
     constraint xx_emp_col_const1_fk1 foreign key (dept_id) references departments (department_id) -- Can have many FOREIGN KEY constraints per table
   );  
-  
--- ON DELETE CASCADE
+---------------------------------------------
+
+-- Constraint Guidelines
+
 
