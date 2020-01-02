@@ -3396,7 +3396,7 @@ create table xx_emp_col_const1
 -- Constraint Guidelines
 
 /*
-  NOT NULL
+  NOT NULL Constraint
   
   * Ensures that the column contains no NULL values
   * Columns without the NOT NULL constraint can have NULL values by default
@@ -3405,4 +3405,17 @@ create table xx_emp_col_const1
 */
 
 desc xx_emp_col_const1; -- Shows the PKs as being NOT NULL
+
+/*
+  UNIQUE Constraint
+  
+  * Can have composite UNIQUE constraints
+  * Oracle automatically creates a unique index for UNIQUE and PRIMARY KEY constraints
+  * With composite UNIQUE constraints:
+    * Inserting NULL values into both column is allowed
+    * Multiple rows can have both columns with NULL values
+    * Inserting one identical NOT NULL value and one NULL value into multiple rows is not allowed
+      because the values would not be unique
+*/      
+      
 
