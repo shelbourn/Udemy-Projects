@@ -3438,7 +3438,7 @@ desc xx_emp_col_const1; -- Shows the PKs as being NOT NULL
 /*
   * ON DELETE CASCADE is added to a child table
   * If data is deleted from the master table then then corresponding data will also
-    be deleted from the chil table
+    be deleted from the child table
 */    
 
 delete from departments; -- Error returned because this is a master table and has dependencies
@@ -3477,7 +3477,12 @@ commit;
 
 select * from emp1;
 
-delete from dept1
+delete from dept1 -- will delete DEPTNO = 1 from DEPT1 and all employees from EMP1 who are in DEPTNO = 1
 where deptno = 1;
 
 select * from emp1;
+
+select * from dept1;
+-----------------------------------
+
+-- ON DELETE SET NULL
