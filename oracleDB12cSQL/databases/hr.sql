@@ -3586,3 +3586,9 @@ where department_id = 90;
 
 desc e_emp2;
 
+select * from e_emp2;
+
+desc employees;
+-----------------------------------------------
+
+-- ALTER TABLE / ADD COLUMNS
