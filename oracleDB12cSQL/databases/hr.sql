@@ -3536,6 +3536,13 @@ select * from dept2;
 -- Creating Tables Using Subqueries
 
 /*
+  * Create a table and insert rows by combining the CREATE TABLE statement and
+    the AS subquery option
+  * Match the number of specified columns to the number of subquery columns
+  * Define columns with column names and default values
+*/  
+
+/*
   Guidelines for Creating Tables using Subqueries
   
   * The table is created with the specified column names, and the rows retrieved
