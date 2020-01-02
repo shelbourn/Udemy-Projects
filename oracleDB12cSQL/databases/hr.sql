@@ -3418,4 +3418,15 @@ desc xx_emp_col_const1; -- Shows the PKs as being NOT NULL
       because the values would not be unique
 */      
       
+/*
+  PRIMARY KEY Constraint
+  
+  * Only one PRIMARY KEY constraint can be designated for each table
+  * PRIMARY KEY can be composite (multiple columns) or single
+  * Oracle automatically creates a PRIMARY KEY index when a PK is established
+*/
+
+/*
+  
+  
 
