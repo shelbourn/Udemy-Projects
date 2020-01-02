@@ -3564,6 +3564,10 @@ select * from dept2;
 -- CREATE TABLE AS subquery Practice
 
 -- 1.)
+
+-- *** IMPORTANT ***
+-- The only constraint copied from the old table to the new table is the
+-- NOT NULL constraint. PK, FK, UNIQUE, etc will not be copied
 create table e_emp
 as select employee_id, first_name, last_name, salary, department_id -- Column names in new table
 from employees
@@ -3572,3 +3576,13 @@ where department_id = 90; -- Results of this query will be inserted into new tab
 desc e_emp;
 
 select * from e_emp;
+
+-- 2.) -- Creating table without useing original column names
+create table e_emp2(emp_id, fname, lname, sal default 0, dept_id) -- New column names
+as
+select              employee_id, first_name, last_name, salary, department_id
+from employees
+where department_id = 90;
+
+desc e_emp2;
+
