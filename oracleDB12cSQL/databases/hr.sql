@@ -3382,7 +3382,7 @@ create table xx_emp_col_const1
   ( emp_id1 number,
     emp_id2 number,
     ename varchar2 (100),
-    salary number not null,
+    salary number not null, -- *** IMPORTANT *** NOT NULL is the only constraint that cannot be at the table level
     gender char (1),
     dept_id number,
     constraint xx_emp_col_const1_pk primary key (emp_id1, emp_id2),
