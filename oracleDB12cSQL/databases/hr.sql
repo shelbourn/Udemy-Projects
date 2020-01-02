@@ -3622,3 +3622,30 @@ ADD COLUMN
 * You can add a NOT NULL column to an empty table without the default values
 */
 
+-- Using ALTER to add column
+select * from e_emp;
+
+alter table e_emp
+add (gender char(1));
+
+select * from e_emp;
+
+alter table e_emp
+add (commission number default 0 not null);
+
+select * from e_emp;
+
+alter table e_emp
+add (commission1 number default 0);
+
+select * from e_emp;
+
+alter table e_emp
+add (commission2 number not null); -- Will not work. Will only work if the table is empty or by using default values
+
+select * from e_emp;
+
+alter table e_emp
+add (created_date date default sysdate, created_by varchar2(100) default user);
+
+select * from e_emp;
