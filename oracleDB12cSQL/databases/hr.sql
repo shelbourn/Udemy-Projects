@@ -3410,7 +3410,7 @@ desc xx_emp_col_const1; -- Shows the PKs as being NOT NULL
   UNIQUE Constraint
   
   * Can have composite UNIQUE constraints
-  * Oracle automatically creates a unique index for UNIQUE and PRIMARY KEY constraints
+  * *** IMPORTANT *** Oracle automatically creates a unique index for UNIQUE and PRIMARY KEY constraints
   * With composite UNIQUE constraints:
     * Inserting NULL values into both column is allowed
     * Multiple rows can have both columns with NULL values
