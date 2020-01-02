@@ -3370,3 +3370,26 @@ select * from xx_emp_col_const;
 -- Testing the UNIQUE constraints
 insert into xx_emp_col_const  (emp_id, ename, salary, gender, dept_id)
 values                        (2, 'matthew', 500, NULL, NULL); -- 'matthew' is a duplicate entry so this returns an error
+--------------------------------------------
+
+-- *** IMPORTANT ***
+-- Creating Tables with Table Level Constraints (Best Practice)
+
+-- You can make more than one column a PK
+-- Using this method forces you to name the constraints
+-- Constraints will appear at the end of the table
+create table xx_emp_col_const1
+  ( emp_id1 number,
+    emp_id2 number,
+    ename varchar2 (100),
+    salary number not null,
+    gender char (1),
+    dept_id number,
+    constraint xx_emp_col_const1_pk primary key (emp_id1, emp_id2),
+    constraint xx_emp_col_const1_uk1 unique (ename),
+    constraint xx_emp_col_const1_chq check (gender in ('M', 'F')),
+    constraint xx_emp_col_const1_fk1 foreign key (dept_id) references departments (department_id)
+  );  
+  
+-- ON DELETE CASCADE
+
