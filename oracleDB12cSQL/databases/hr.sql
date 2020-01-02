@@ -3557,4 +3557,9 @@ select * from dept2;
     The PRIMARY KEY column will not pass the NOT NULL feature to the new column.
     Any other constraint rule are not passed to the new table. However, you can add
     constraints in the column definition.
+  * Sometimes you are required to use table aliases because you cannot have columns
+    named 'SALARY * 12' for instance
 */      
+
+-- CREATE TABLE AS subquery Practice
+
