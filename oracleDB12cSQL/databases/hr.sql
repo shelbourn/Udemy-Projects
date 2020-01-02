@@ -3427,6 +3427,9 @@ desc xx_emp_col_const1; -- Shows the PKs as being NOT NULL
 */
 
 /*
+  FOREIGN KEY Constraint
   
-  
+  * *** IMPORTANT *** Value in FOREIGN KEY column must match the PRIMARY KEY value in the parent table
+    column OR be NULL
+*/  
 
