@@ -3563,3 +3563,12 @@ select * from dept2;
 
 -- CREATE TABLE AS subquery Practice
 
+-- 1.)
+create table e_emp
+as select employee_id, first_name, last_name, salary, department_id -- Column names in new table
+from employees
+where department_id = 90; -- Results of this query will be inserted into new table
+
+desc e_emp;
+
+select * from e_emp;
