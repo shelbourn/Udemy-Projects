@@ -3531,3 +3531,6 @@ where deptno = 1;
 select * from emp2;
 
 select * from dept2;
+----------------------------------------
+
+-- Creating Tables Using Subqueries
