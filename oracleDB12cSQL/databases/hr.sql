@@ -3385,10 +3385,10 @@ create table xx_emp_col_const1
     salary number not null, -- *** IMPORTANT *** NOT NULL is the only constraint that cannot be at the table level
     gender char (1),
     dept_id number,
-    constraint xx_emp_col_const1_pk primary key (emp_id1, emp_id2),
-    constraint xx_emp_col_const1_uk1 unique (ename),
-    constraint xx_emp_col_const1_chq check (gender in ('M', 'F')),
-    constraint xx_emp_col_const1_fk1 foreign key (dept_id) references departments (department_id)
+    constraint xx_emp_col_const1_pk primary key (emp_id1, emp_id2), -- Can have only one PRIMARY KEY constraint per table
+    constraint xx_emp_col_const1_uk1 unique (ename), -- Can have many UNIQUE constraints per table
+    constraint xx_emp_col_const1_chq check (gender in ('M', 'F')), -- Can have many CHECK constraints per table
+    constraint xx_emp_col_const1_fk1 foreign key (dept_id) references departments (department_id) -- Can have many FOREIGN KEY constraints per table
   );  
   
 -- ON DELETE CASCADE
