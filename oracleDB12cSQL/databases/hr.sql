@@ -3435,6 +3435,11 @@ desc xx_emp_col_const1; -- Shows the PKs as being NOT NULL
 ---------------------------------------------
 
 -- ON DELETE CASCADE
+/*
+  * ON DELETE CASCADE is added to a child table
+  * If data is deleted from the master table then then corresponding data will also
+    be deleted from the chil table
+*/    
 
 delete from departments; -- Error returned because this is a master table and has dependencies
 -- dependencies must be deleted first before a master table can be deleted
