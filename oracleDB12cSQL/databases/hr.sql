@@ -3608,3 +3608,17 @@ desc employees;
   * Disable a constraint in the table
   * Drop a constraint from the table
 */  
+
+/*
+
+ADD COLUMN
+
+* You cannot specify where an added column appears in the table
+* By default it will be the last column in the table
+* If the table already contains rows when a column is added, the new column is
+  initially NULL or takes the default value for all the rows
+* You can add a mandatory NOT NULL column to a table that contains data in the 
+  other columns only if you specify a default value
+* You can add a NOT NULL column to an empty table without the default values
+*/
+
