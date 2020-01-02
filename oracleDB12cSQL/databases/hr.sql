@@ -3353,7 +3353,20 @@ where table_name = 'XX_EMP_COL_CONST'; -- Case sensitive
   Oracle Constraint Abbreviations
   
   * P: Primary Key
-  * R: Foreign Key (Referenced Key)
+  * R: Foreign Key (Referenced Tbale)
   * U: Unique Key
   * C: Check
 */  
+
+-- Testing the CHECK constraint
+insert into xx_emp_col_const  (emp_id, ename, salary, gender, dept_id)
+values                        (1, 'matthew', 500, 'D', NULL); -- D is not a valid gender
+
+insert into xx_emp_col_const  (emp_id, ename, salary, gender, dept_id)
+values                        (1, 'matthew', 500, NULL, NULL); -- valid entry
+
+select * from xx_emp_col_const;
+
+-- Testing the UNIQUE constraints
+insert into xx_emp_col_const  (emp_id, ename, salary, gender, dept_id)
+values                        (2, 'matthew', 500, NULL, NULL); -- 'matthew' is a duplicate entry so this returns an error
