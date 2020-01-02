@@ -3432,4 +3432,6 @@ desc xx_emp_col_const1; -- Shows the PKs as being NOT NULL
   * *** IMPORTANT *** Value in FOREIGN KEY column must match the PRIMARY KEY value in the parent table
     column OR be NULL
 */  
+---------------------------------------------
 
+-- ON DELETE CASCADE
