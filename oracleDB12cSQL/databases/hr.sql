@@ -3392,6 +3392,17 @@ create table xx_emp_col_const1
   );  
 ---------------------------------------------
 
+-- *** IMPORTANT ***
 -- Constraint Guidelines
 
+/*
+  NOT NULL
+  
+  * Ensures that the column contains no NULL values
+  * Columns without the NOT NULL constraint can have NULL values by default
+  * NOT NULL constraints must be defined at the column level. CANNOT BE DEFINED AT THE TABLE LEVEL
+  * PRIMARY KEYs inherit a NOT NULL constraint because PKs must hold a value
+*/
+
+desc xx_emp_col_const1; -- Shows the PKs as being NOT NULL
 
