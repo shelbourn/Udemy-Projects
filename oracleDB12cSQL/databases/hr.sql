@@ -3660,6 +3660,7 @@ select * from e_emp;
   * Can change a column's data type
   * Can change a column's size
   * Can change a column's default value
+  * A change to the default value affects only subsequent insertions to the table
   
   Guidelines:
   
@@ -3675,3 +3676,45 @@ select * from e_emp;
     only if the column constains NULL values or if you do not change the size
   * A change to the default value of a column affects only subsequent insertions to the table
 */
+
+-- Using ALTER TABLE to modify a table examples
+select * from e_emp;
+
+alter table e_emp
+modify (created_by varchar2(200));
+
+alter table e_emp
+modify (created_by varchar2(50));
+
+alter table e_emp
+modify (created_by varchar2(1)); -- Values in this column are too big for this query to execute
+
+select * from e_emp;
+
+desc e_emp;
+
+alter table e_emp
+modify (created_by not null);
+
+update e_emp
+set gender = 'M';
+
+select * from e_emp;
+
+alter table e_emp
+modify (gender number); -- Error returned because there is data already in this column
+
+alter table e_emp
+modify (gender varchar2(11));
+
+-- All 10 bytes will be used and not released for CHAR(10)
+-- This means that you cannot shrink the column anymore
+alter table e_emp
+modify (gender char(10));
+
+alter table e_emp
+modify (gender char(10)); -- Will return an error
+
+alter table e_emp
+modify (gender varchar2(9)); -- Returns an error because CHAR(10) does not release unused memory
+
