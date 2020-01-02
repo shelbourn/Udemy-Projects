@@ -3591,4 +3591,20 @@ select * from e_emp2;
 desc employees;
 -----------------------------------------------
 
+-- *** IMPORTANT ***
+
 -- ALTER TABLE / ADD COLUMNS
+
+/*
+  Use the ALTER TABLE statement to:
+  
+  * Add a new column
+  * Modify an existing column definition
+  * Define a default value for the new column
+  * Drop a column
+  * Rename a column
+  * Change table to read-only status
+  * Add new constraint to the table
+  * Disable a constraint in the table
+  * Drop a constraint from the table
+*/  
