@@ -3631,12 +3631,12 @@ add (gender char(1));
 select * from e_emp;
 
 alter table e_emp
-add (commission number default 0 not null);
+add (commission number default 0 not null); -- Cannot have NULL values
 
 select * from e_emp;
 
 alter table e_emp
-add (commission1 number default 0);
+add (commission1 number default 0); -- Can have NULL values
 
 select * from e_emp;
 
@@ -3645,7 +3645,33 @@ add (commission2 number not null); -- Will not work. Will only work if the table
 
 select * from e_emp;
 
+-- Add two columns at the same time
 alter table e_emp
-add (created_date date default sysdate, created_by varchar2(100) default user);
+add (created_date date default sysdate, created_by varchar2(100) default user); -- USER retrieves the name of the current connection
 
 select * from e_emp;
+--------------------------------------
+
+-- ALTER TABLE / MODIFY COLUMNS
+
+/*
+  Modifying a Column
+  
+  * Can change a column's data type
+  * Can change a column's size
+  * Can change a column's default value
+  
+  Guidelines:
+  
+  * Can increate the width or precision of a numeric column
+  * Can increase the width of character columns
+  * Can decrease the width of a column if:
+    * The column contains only NULL values
+    * The table has no rows
+    * The decrease in column width is not less than the existing values in that column
+  * Can change the date type if the column contains only NULL values
+    CAN CHANGE VARCHAR2 columns to CHAR columns with data in them
+  * Can convert CHAT column to VARCHAR2 data type or convert a VARCHAR2 column to the CHAR data type
+    only if the column constains NULL values or if you do not change the size
+  * A change to the default value of a column affects only subsequent insertions to the table
+*/
