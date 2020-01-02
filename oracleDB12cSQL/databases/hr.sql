@@ -3707,7 +3707,7 @@ modify (gender number); -- Error returned because there is data already in this 
 alter table e_emp
 modify (gender varchar2(11));
 
--- All 10 bytes will be used and not released for CHAR(10)
+-- All 10 bytes will be used and not released for CHAR(10) (CHAR is fixed length)
 -- This means that you cannot shrink the column anymore
 alter table e_emp
 modify (gender char(10));
@@ -3718,3 +3718,26 @@ modify (gender char(10)); -- Will return an error
 alter table e_emp
 modify (gender varchar2(9)); -- Returns an error because CHAR(10) does not release unused memory
 
+alter table e_emp
+modify (gender varchar2(10)); -- Will work because going from CHAR(10) to VARCHAR2(10)
+
+update e_emp
+set gender = NULL;
+commit;
+
+-- When the column is empty you can issue whatever MODIFY commands you want
+alter table e_emp
+modify (gender varchar2(9)); -- Will work because values are all NULL
+
+alter table e_emp
+modify (gender varchar2(5)); -- Will work because values are all NULL
+
+alter table e_emp
+modify (gender varchar2(1)); -- Will work because values are all NULL
+
+alter table e_emp
+modify (gender char(2)); -- Will work because values are all NULL
+
+alter table e_emp
+modify (gender varchar2(1)); -- Will work because values are all NULL
+-----------------------------------------
