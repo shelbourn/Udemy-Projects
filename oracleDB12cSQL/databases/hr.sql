@@ -3534,3 +3534,20 @@ select * from dept2;
 ----------------------------------------
 
 -- Creating Tables Using Subqueries
+
+/*
+  Guidelines for Creating Tables using Subqueries
+  
+  * The table is created with the specified column names, and the rows retrieved
+    by the SELECT statement are inserted into the table
+  * The column definition can contain only the column name and default value
+  * If column specifications are given, the number of columns must equal the 
+    number of columns in the subquery SELECT list
+  * If no column specifications are given, the column names of the table are
+    the same as the column names in the subquery
+  * The column data type definitions and the NOT NULL constraint are passed to the new
+    table. Note that only the explicit NOT NULL constraint will be inherited.
+    The PRIMARY KEY column will not pass the NOT NULL feature to the new column.
+    Any other constraint rule are not passed to the new table. However, you can add
+    constraints in the column definition.
+*/      
