@@ -3793,3 +3793,6 @@ select * from e_emp;
 alter table e_emp drop (gender, created_date);
 
 select * from e_emp;
+------------------------------------------------------
+
+-- ALTER TABLE / SET UNUSED
