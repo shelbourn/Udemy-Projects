@@ -3753,7 +3753,8 @@ Dropping a Column
 Guidelines:
 
 * The column may or may not contain data
-* Using the ALTER TABLE DROP COLUMN statement, only one column can be dropped at a time
+* Using the ALTER TABLE DROP COLUMN (old syntax) statement, only one column can be dropped at a time
+* The table must have at least one column remaining in it after it is altered
 * After a column is dropped, it cannot be recovered
 * A primary key that is referended by another column cannot be dropped, unless the
   cascade option is added
@@ -3765,3 +3766,30 @@ Guidelines:
   partitioning key of a partitioned table or column that form part of the PRIMARY KEY
   of an index-organized table.
 */
+
+-- ALTER TABLE / DROP COLUMN Examples
+
+-- Try to drop column DEPARTMENT_ID from DEPARTMENTS table, it will return an error
+-- Can drop columns using the wizard in SQL Developer too through the Actions drop down
+select * from e_emp;
+
+alter table e_emp
+drop column department_id;
+
+alter table e_emp
+drop column created_by; -- Only one column can be dropped at a time using old syntax
+
+alter table e_emp
+add department_id number(4);
+
+select * from e_emp;
+
+update e_emp
+set department_id = 90;
+
+select * from e_emp;
+
+-- New syntax. Allows for dropping multiple columns
+alter table e_emp drop (gender, created_date);
+
+select * from e_emp;
