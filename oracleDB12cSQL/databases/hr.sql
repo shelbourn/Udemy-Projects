@@ -3805,13 +3805,14 @@ SET UNUSED Option
 * You use the DROP unused COLUMNS option to remove to column that are marked as unused
 * You can specify the ONLINE keyword to indicate that DML operations on the table
   will be allowed wile marking the column or column UNUSED
+* 2 Steps: 1 - SET COLUMN UNUSED, 2 - DROP UNUSED COLUMNS  
 */
 
 -- SET UNUSED Examples
 select * from e_emp2;
 
 alter table e_emp2
-set unused (sal);
+set unused (sal); -- Can now create a new column with the name 'SAL'
 
 select * from e_emp2;
 
@@ -3830,4 +3831,7 @@ select * from e_emp2;
 update e_emp2
 set fname = 'xx';
 
-select * from user_unused_col_tabs;
+select * from user_unused_col_tabs; -- Queries the dictionary table where unused columns are displayed
+
+alter table e_emp2
+drop unused columns; -- Deletes the columns marked UNUSED from the table
