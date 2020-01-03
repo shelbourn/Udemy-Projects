@@ -3796,3 +3796,38 @@ select * from e_emp;
 ------------------------------------------------------
 
 -- ALTER TABLE / SET UNUSED
+
+/*
+
+SET UNUSED Option
+
+* You use the SET UNUSED option to mark one or more columns as unused
+* You use the DROP unused COLUMNS option to remove to column that are marked as unused
+* You can specify the ONLINE keyword to indicate that DML operations on the table
+  will be allowed wile marking the column or column UNUSED
+*/
+
+-- SET UNUSED Examples
+select * from e_emp2;
+
+alter table e_emp2
+set unused (sal);
+
+select * from e_emp2;
+
+select * from user_unused_col_tabs; -- Shows USER-defined columns marked as UNUSED
+
+update e_emp2
+set sal = 100; -- Returns an error because the ONLINE option was not added to UNUSED
+
+select * from e_emp2;
+
+alter table e_emp2
+set unused (fname) online; -- This allows DML operations while the column is marked as UNUSED
+
+select * from e_emp2;
+
+update e_emp2
+set fname = 'xx';
+
+select * from user_unused_col_tabs;
