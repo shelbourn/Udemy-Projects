@@ -3741,3 +3741,27 @@ modify (gender char(2)); -- Will work because values are all NULL
 alter table e_emp
 modify (gender varchar2(1)); -- Will work because values are all NULL
 -----------------------------------------
+
+-- ALTER TABLE / DROP COLUMNS
+
+/*
+
+Dropping a Column
+
+* Use the DROP COLUMN clause to drop columns that you no longer need from the table
+
+Guidelines:
+
+* The column may or may not contain data
+* Using the ALTER TABLE DROP COLUMN statement, only one column can be dropped at a time
+* After a column is dropped, it cannot be recovered
+* A primary key that is referended by another column cannot be dropped, unless the
+  cascade option is added
+* Dropping a column can take a while if the column has a large number of values. In this
+  case, it may be btter to set it to be unused and drop it when there are fewer users on
+  the system to avoid extended lockouts.
+  
+  NOTE: Certain columns can never be dropped, such as columns that form part of the
+  partitioning key of a partitioned table or column that form part of the PRIMARY KEY
+  of an index-organized table.
+*/
