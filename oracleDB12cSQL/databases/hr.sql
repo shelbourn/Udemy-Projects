@@ -3917,7 +3917,10 @@ rename column dname to dept_name;
 
 select * from xx_dept_table;
 
--- RENAME OBJECT (TABLE)
+-- RENAME OBJECT (TABLE, VIEW, etc)
+-- *** IMPORTANT ***
+-- ONLY RENAME TABLES IN THE DESIGN PHASE
+-- NEVER RENAME TABLES WHEN THEY ARE IN PRODUCTION
 rename xx_dept_table to xx_dept_t;
 
 select * from xx_dept_t;
