@@ -3869,3 +3869,14 @@ select * from e_emp2;
 
 -- DROP TABLE
 
+/* Dropping a Table
+
+* Moves a table to the recycle bin
+* Removes the table and all its data entirely and permanently if the purge clause is specified
+* Invalidates dependent objects and removes object privaledges on the table
+* All data is deleted from the table
+* Any views and synonyms remain, but are invalid
+* Any pending transactions are committed
+* Only the creator of the table or a user with the DROP ANY TABLE privaledge can remove a table
+* Use the FLASHBACK TABLE statement to restore a dropped table from the recycle bin
+*/
