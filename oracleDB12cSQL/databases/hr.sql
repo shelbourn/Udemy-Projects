@@ -3835,3 +3835,6 @@ select * from user_unused_col_tabs; -- Queries the dictionary table where unused
 
 alter table e_emp2
 drop unused columns; -- Deletes the columns marked UNUSED from the table
+-------------------------------------------
+
+-- ALTER TABLE / READ ONLY / READ WRITE
