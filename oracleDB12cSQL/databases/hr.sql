@@ -3926,3 +3926,7 @@ rename xx_dept_table to xx_dept_t;
 select * from xx_dept_t;
 
 select * from xx_dept_table; -- Table no longer exists
+
+-- *** IMPORTANT TIPS FOR EXAM ***
+
+-- DISTINCT clause is used only once and in the beginning of a statement
