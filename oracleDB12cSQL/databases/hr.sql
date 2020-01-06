@@ -3879,4 +3879,24 @@ select * from e_emp2;
 * Any pending transactions are committed
 * Only the creator of the table or a user with the DROP ANY TABLE privaledge can remove a table
 * Use the FLASHBACK TABLE statement to restore a dropped table from the recycle bin
+* Cannot DROP a master table where dependent tables do not have a ON DELETE CASCADE option set
 */
+
+-- DROP TABLE Examples
+select * from e_emp2;
+
+drop table e_emp2;
+select * from e_emp2;
+
+select * from user_recyclebin -- Data Dictionary table where dropped tables are stored before purge
+where original_name = 'E_EMP2';
+
+create table x_test
+as select * from jobs;
+
+select * from x_test;
+
+drop table x_test purge; -- Permanently deletes table
+
+select * from user_recyclebin
+where original_name = 'X_TEST'; -- Table does not exist in 'USER_RECYCLEBIN' because the 'PURGE' clause was added
