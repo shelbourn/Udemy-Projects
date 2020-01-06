@@ -3840,8 +3840,29 @@ drop unused columns; -- Deletes the columns marked UNUSED from the table
 -- ALTER TABLE / READ ONLY / READ WRITE
 
 /*
-Read-Only Mode
+Read-Only Mode (Maintenance Mode)
 
 * Put table in read-only mode, which prevents DDL or DML changes during table maintenance
 * Put the table back into Read/Write mode
+* DDL statements are allowed in READ ONLY mode as long as they do not modify data
 */
+
+-- READ ONLY / READ WRITE Examples
+select * from e_emp2;
+
+alter table e_emp2 read only;
+
+delete from e_emp2; -- Not allowed
+
+alter table e_emp2
+add (created_by varchar2(100)); -- This is allowed because it does not change any data
+
+alter table e_emp2
+drop (created_by); -- Not allowed because this statement will change data
+
+alter table e_emp2 read write; -- Exits maintenance mode
+
+delete from e_emp2;
+
+select * from e_emp2;
+
