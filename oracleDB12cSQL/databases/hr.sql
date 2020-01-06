@@ -3900,3 +3900,26 @@ drop table x_test purge; -- Permanently deletes table
 
 select * from user_recyclebin
 where original_name = 'X_TEST'; -- Table does not exist in 'USER_RECYCLEBIN' because the 'PURGE' clause was added
+--------------------------------------
+
+-- RENAME COLUMN / RENAME TABLE
+
+-- RENAME COLUMN
+create table xx_dept_table
+( deptno number,
+  dname varchar2(100)
+);
+
+select * from xx_dept_table;
+
+alter table xx_dept_table
+rename column dname to dept_name;
+
+select * from xx_dept_table;
+
+-- RENAME OBJECT (TABLE)
+rename xx_dept_table to xx_dept_t;
+
+select * from xx_dept_t;
+
+select * from xx_dept_table; -- Table no longer exists
