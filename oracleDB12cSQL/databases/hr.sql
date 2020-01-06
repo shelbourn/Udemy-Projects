@@ -3838,3 +3838,10 @@ drop unused columns; -- Deletes the columns marked UNUSED from the table
 -------------------------------------------
 
 -- ALTER TABLE / READ ONLY / READ WRITE
+
+/*
+Read-Only Mode
+
+* Put table in read-only mode, which prevents DDL or DML changes during table maintenance
+* Put the table back into Read/Write mode
+*/
