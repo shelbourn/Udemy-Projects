@@ -3865,4 +3865,7 @@ alter table e_emp2 read write; -- Exits maintenance mode
 delete from e_emp2;
 
 select * from e_emp2;
+-------------------------------------
+
+-- DROP TABLE
 
