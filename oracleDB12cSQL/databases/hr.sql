@@ -3989,3 +3989,17 @@ order by test;
 select employee_id || ' ' || last_name "Test" -- Case-sensitive
 from employees
 order by "Test";
+--------------------------------------
+
+-- REPLACE
+
+select replace ('khaled', 'al', 'xx') from dual; -- replaces 'al' with 'xx'
+
+select replace ('khaled', 'al') from dual; -- replaces 'al' with '' (empty character)
+
+-- TRIM
+select trim (' khal ed                      ') t from dual; -- removes spaces from beginning and end of string
+
+select trim ('k' from 'kkkhakkek') t from dual; -- removes the 'k' from beginning and end of string
+
+select trim ('kh' from 'khakkek') t from dual; -- Error returned. Can only trim one character
