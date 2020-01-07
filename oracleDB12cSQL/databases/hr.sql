@@ -3927,6 +3927,8 @@ select * from xx_dept_t;
 
 select * from xx_dept_table; -- Table no longer exists
 ---------------------------------------
+---------------------------------------
+--***********************************--
 
 -- *** IMPORTANT TIPS FOR EXAM ***
 
@@ -4004,3 +4006,67 @@ select trim (' khal ed                      ') t from dual; -- removes spaces fr
 select trim ('k' from 'kkkhakkek') t from dual; -- removes the 'k' from beginning and end of string
 
 select trim ('kh' from 'khakkek') t from dual; -- Error returned. Can only trim one character
+-----------------------------------------
+
+-- Using various methods to return the same results
+select avg(salary)
+from employees
+where department_id = 90;
+
+-- same results as above
+-- return SALARY if the DEPARTMENT_ID = 90 and then calculate the average salary, if not then return NULL
+select avg (decode(department_id, 90, salary, null))
+from employees;
+
+-- same results as previous two queries
+select avg (
+            case when department_id = 90 then salary
+            else null end
+           )
+from employees;           
+---------------------------------------
+
+-- You cannot use constraints with LONG columns, ORDER BY, or GROUP BY 
+drop table emp_2;
+
+create table emp_2
+( empid number primary key,
+  notes long unique -- returns an error because you cannot use constraints with LONG column
+);  
+
+create table emp_2
+( empid number primary key,
+  notes long not null -- works fine, can make LONG column NOT NULL
+);
+
+select * from emp_2
+order by notes; -- will return error
+
+select empid, count(notes)
+from emp_2
+group by notes; -- will return error
+---------------------------------------
+
+-- GROUP BY
+-- GROUP BY clause MUST CONTAIN all columns in the SELECT statement
+-- Unless the SELECT statement only contains a GROUP function (COUNT, etc)
+select to_char (hire_date, 'yyyy'), count (employee_id)
+from employees
+group by to_char (hire_date, 'yyyy');
+
+select to_char (hire_date, 'yyyy'), count (employee_id)
+from employees
+group by to_char (hire_date, 'rr'); -- returns error
+
+select count (employee_id)
+from employees
+group by department_id;
+
+select count (employee_id)
+from employees
+group by (salary-commission_pct);
+
+select salary-commission_pct, count(employee_id)
+from employees
+group by (salary-commission_pct);
+---------------------------------------
