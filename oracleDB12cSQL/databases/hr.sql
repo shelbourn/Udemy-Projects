@@ -3926,7 +3926,66 @@ rename xx_dept_table to xx_dept_t;
 select * from xx_dept_t;
 
 select * from xx_dept_table; -- Table no longer exists
+---------------------------------------
 
 -- *** IMPORTANT TIPS FOR EXAM ***
 
 -- DISTINCT clause is used only once and in the beginning of a statement
+-- DISTINCT clause applies to ALL columns in the SELECT statement
+select distinct department_id, salary
+from employees;
+
+select department_id, distinct salary -- Returns an error
+from employees;
+
+select distinct salary, department_id
+from employees;
+--------------------------------------
+
+-- You can create CHAR data type without size, it will take the default size of 1 byte
+-- VARCHAR2 requires a size specification
+drop table emp_1;
+
+create table emp_1
+( empid number,
+  first_name varchar2(100),
+  last_name char -- Default size of CHAR is 1 byte
+);    
+
+insert into emp_1 values (1, 'Matthew', 'Shelbourn'); -- Returns an error because CHAR (default) can only hold 1 byte
+
+insert into emp_1 values (1, 'Matthew', 'S'); -- 'S' is only 1 byte so this is allowed
+--------------------------------------------
+
+-- NULL comes last in ASCENDING (ASC) order
+
+-- 1.)
+select * from employees
+order by commission_pct;
+
+-- 2.)
+select * from employees
+order by commission_pct nulls last; -- Same as ORDER BY default (ascending)
+
+-- 3.)
+select * from employees
+order by commission_pct nulls first; -- Same as ORDER BY (descending)
+
+-- 4.)
+select * from employees
+order by commission_pct desc;
+------------------------------------------
+
+-- ORDER BY
+-- Not best practice to ORDER BY with expression or column not is SELECT statement
+select employee_id, last_name
+from employees
+order by salary+100;
+
+select employee_id || ' ' || last_name test -- 'test' is the alias for the entire concatenation
+from employees
+order by test;
+
+select employee_id || ' ' || last_name "Test" -- Case-sensitive
+from employees
+order by "Test";
