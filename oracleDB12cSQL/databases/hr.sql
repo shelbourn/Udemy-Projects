@@ -3998,6 +3998,7 @@ select replace ('khaled', 'al', 'xx') from dual; -- replaces 'al' with 'xx'
 select replace ('khaled', 'al') from dual; -- replaces 'al' with '' (empty character)
 
 -- TRIM
+-- 't' will be the alias of the column for the results in the DUAL table
 select trim (' khal ed                      ') t from dual; -- removes spaces from beginning and end of string
 
 select trim ('k' from 'kkkhakkek') t from dual; -- removes the 'k' from beginning and end of string
