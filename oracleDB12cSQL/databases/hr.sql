@@ -4142,3 +4142,63 @@ decode (department_id, 10, to_char(salary+10), 20, to_char(salary+20), 'n/a') ra
 from employees
 order by department_id;
 --------------------------------------------
+
+-- Implicit Conversions for dates
+-- Oracle will implicitly convert date as long as the:
+-- Day is a valid NUMBER, month is a valid CHAR, and year is a valid NUMBER
+select * from employees
+where hire_date = '17-JUN-03'; -- This is the default date format DD-MON-RR
+
+-- Month is not case sensitive
+select * from employees
+where hire_date = '17-jun-03';
+
+select * from employees
+where hire_date = '17-JUN-2003';
+
+-- Full words for the month also work
+select * from employees
+where hire_date = '17-june-2003';
+
+select * from employees
+where hire_date = '17-06-2003'; -- Will return error because 06 is not a valid CHAR
+-------------------------------
+
+-- Create an empty table as a copy
+drop table xx_emp_zz;
+
+-- Creating an empty table as a copy
+-- WHERE condition can be any untrue statement (1=2, a=b, 3=5, etc)
+create table xx_emp_zz
+as select * from employees
+where 1=2; -- This condition will never be true so the SELECT statement part of the table copy will return no results
+
+select * from xx_emp_zz;
+-----------------------------------
+
+-- FETCH
+-- ROWS can be used with or without the 'S'
+-- FETCH FIRST 5 ROW ONLY will work just fine
+select * from employees
+where salary is not null
+order by salary desc
+fetch first 5 rows only; -- You can also use (fetch next 5 rows only)
+
+-- NULLS for this statement will appear first since NULLS are ordered first in descending
+select * from employees
+order by salary desc
+fetch first 5 rows only;
+
+-- WITH TIES retrieves the next value (6th in this case) if the salary of the 6th record is the same
+select * from employees
+order by salary desc
+fetch first 5 rows with ties; -- FETCH FIRST 5 ROWS ONLY WITH TIES is not valid syntax
+
+select * from employees
+order by salary desc
+fetch first 4 percent rows only;
+
+select * from employees
+order by salary desc
+fetch first 4 percent rows with ties; -- FETCH FIRST 4 PERCENT ROWS ONLY WITH TIES is not valid syntax
+--------------------------------------
