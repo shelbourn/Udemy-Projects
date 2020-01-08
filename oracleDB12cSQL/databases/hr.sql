@@ -4070,3 +4070,75 @@ select salary-commission_pct, count(employee_id)
 from employees
 group by (salary-commission_pct);
 ---------------------------------------
+
+-- TO_CHAR
+-- The next 5 statements give the same results
+-- Can use 0 or 9 as a number placeholder
+-- 'G' is the thousands comma separator
+select to_char(1005.50, '9,999.99') from dual;
+select to_char(1005.50, '0,000.00') from dual;
+select to_char(1005.50, '0G000D00') from dual;
+select to_char(1005.50, '9G999D99') from dual;
+select to_char(1005.50, '0G909D99') from dual;
+
+-- Extra 0's will display as 0's (zeros can be number placeholders or zeros)
+-- Extra 9's will display as white spaces
+select to_char(1005.50, '000G909D99') from dual; -- forces 2 zeros to be displayed
+select to_char(1005.50, 'fm000G909D99') from dual; -- formats (removes) white space
+
+-- If you use G or D, then you cannot use . or ,
+select to_char(1005.50, '9G999.99') from dual; -- If you use G or D, then you cannot use . or ,
+
+select to_char(1005.50, '9,99D99') from dual; -- If you use G or D, then you cannot use . or ,
+-------------------------------------------
+
+-- All of the following statements return the same results
+
+select first_name || ' works in \ ' || department_id
+from employees;
+
+select first_name || q'[ works in \ ]' || department_id
+from employees;
+
+select first_name || q'( works in \ )' || department_id
+from employees;
+
+select first_name || q'/ works in \ /' || department_id
+from employees;
+
+select first_name || q'{ works in \ }' || department_id
+from employees;
+
+select first_name || q'' works in \ '' || department_id
+from employees;
+------------------------------------------------
+
+-- Matching the Data Type
+-- Data types of NVL statements must match
+select employee_id, nvl(commission_pct, 0)
+from employees;
+
+select employee_id, nvl(commission_pct, '0') -- Will not return an error because Oracle will do the implicit conversion
+from employees;
+
+select employee_id, nvl(commission_pct, 'no comm') -- Returns an error because data types do not match
+from employees;
+
+select employee_id, nvl(to_char(commission_pct), 'no comm') -- Works because COMMISSION_PCT is converted to CHAR
+from employees;
+
+-- With DECODE the IF/ELSE parts should be of the same Data Type, but Oracle will do implicit conversions
+select employee_id, department_id,
+decode (department_id, 10, 'dept 10', 20, 'dept 20', department_id) -- Works because Oracle will do the implicit conversion on DEPARTMENT_ID and convert it to CHAR
+from employees;
+
+-- In this example, salary+10, salary+20, and 'n/a' should be the same Data Type
+select employee_id, department_id, salary,
+decode (department_id, 10, salary+10, 20, salary+20, 'n/a') raise_sal -- Returns an error because 'n/a' is not a valid number and cannot be implicitly converted
+from employees;
+
+select employee_id, department_id, salary,
+decode (department_id, 10, to_char(salary+10), 20, to_char(salary+20), 'n/a') raise_sal -- Works because we converted SALARY to CHAR
+from employees
+order by department_id;
+--------------------------------------------
