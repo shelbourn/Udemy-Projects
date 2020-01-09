@@ -4353,4 +4353,5 @@ where table_name = 'EMPLOYEES'
 order by table_name, column_id;
 -------------------------------------------
 
+-- *** IMPORTANT ***
 -- USER_CONSTRAINTS / USER_CONS_COLUMNS (Part 1)
