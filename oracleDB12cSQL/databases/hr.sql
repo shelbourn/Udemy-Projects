@@ -4428,4 +4428,14 @@ select * from user_cons_columns
 where table_name = 'EMPLOYEES';
 
 select * from user_cons_columns
-where table_name = 'XX_EMP_COL_CONST1'
+where table_name = 'XX_EMP_COL_CONST1';
+
+select m.owner, m.table_name, m.constraint_name, m.constraint_type
+from user_constraints m
+where table_name = 'EMPLOYEES';
+
+select m.owner, m.table_name, m.constraint_name, m.constraint_type, d.column_name, d.position
+from user_constraints m,
+user_cons_columns d
+where m.constraint_name = d.constraint_name
+and m.table_name = 'EMPLOYEES';
