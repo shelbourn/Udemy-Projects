@@ -4287,4 +4287,6 @@ ALL_OBJECTS
 
 * Query ALL_OBJECTS to see all the objects to which you have access
 */
+----------------------------------------------
 
+-- USER_OBJECTS / ALL_OBJECTS Examples
