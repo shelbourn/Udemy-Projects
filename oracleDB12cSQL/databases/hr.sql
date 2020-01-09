@@ -4427,9 +4427,11 @@ select * from user_constraints
 where table_name = 'EMPLOYEES'; -- EMP_EMP_ID_PK
 
 -- This query displays the column names of constraints
+-- POSITION indicates the position of PK if it is a composite PK
 select * from user_cons_columns
 where table_name = 'EMPLOYEES';
 
+-- Shows composite PK with positions 1 and 2
 select * from user_cons_columns
 where table_name = 'XX_EMP_COL_CONST1';
 
@@ -4437,9 +4439,39 @@ select m.owner, m.table_name, m.constraint_name, m.constraint_type
 from user_constraints m
 where table_name = 'EMPLOYEES';
 
--- JOIN for USER_CONSTRAINTS and USER_CONS_COLUMNS
+-- JOIN for USER_CONSTRAINTS and USER_CONS_COLUMNS (Old Syntax)
 select m.owner, m.table_name, m.constraint_name, m.constraint_type, d.column_name, d.position
 from user_constraints m,
 user_cons_columns d
 where m.constraint_name = d.constraint_name
 and m.table_name = 'EMPLOYEES';
+
+-- JOIN for USER_CONSTRAINTS and USER_CONS_COLUMNS (New Syntax)
+select m.owner, m.table_name, m.constraint_name, m.constraint_type, d.column_name, d.position
+from user_constraints m join
+user_cons_columns d
+on (m.constraint_name = d.constraint_name)
+where m.table_name = 'EMPLOYEES';
+
+-- This query counts all the constraints at once
+select count(1) from user_cons_columns;
+--------------------------------------------------
+
+-- *** IMPORTANT EXAMPLE TO PRACTICE ***
+
+-- This query displays all the constraints at once
+
+----------------------------------------------------
+select m.owner, m.table_name, m.constraint_name, r_m.column_name,
+m.constraint_type, m.search_condition, m.status, d.constraint_name, d.table_name,
+r_d.column_name, r_d.position
+from user_constraints m,
+user_constraints d,
+user_cons_columns r_m,
+user_cons_columns r_d
+where m.r_constraint_name = d.constraint_name(+)
+and m.constraint_name = r_m.constraint_name
+and d.constraint_name = r_d.constraint_name(+)
+and m.table_name = 'EMPLOYEES'
+order by m.owner, m.table_name, r_d.position;
+----------------------------------------------------
