@@ -4401,8 +4401,17 @@ select * from user_constraints
 where constraint_name = 'DEPT_ID_PK';
 
 -- SELF JOIN (Old Syntax)
+-- (+) is added to D.CONSTRAINT_NAME because we want all results from the M table to show
+-- We want to display all results even if the TABLE_NAME is NULL
 select m.owner, m.table_name, m.constraint_name, m.constraint_type, m.r_constraint_name, d.table_name
 from user_constraints m,
 user_constraints d
 where m.r_constraint_name = d.constraint_name(+)
 and m.table_name = 'EMPLOYEES';
+
+-- SELF JOIN (New Syntax)
+select m.owner, m.table_name, m.constraint_name, m.constraint_type, m.r_constraint_name, d.table_name
+from user_constraints m left outer join -- same as putting the (+) on D.CONSTRAINT_NAME
+user_constraints d
+on (m.r_constraint_name = d.constraint_name)
+where m.table_name = 'EMPLOYEES';
