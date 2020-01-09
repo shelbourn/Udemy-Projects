@@ -4355,3 +4355,35 @@ order by table_name, column_id;
 
 -- *** IMPORTANT ***
 -- USER_CONSTRAINTS / USER_CONS_COLUMNS (Part 1)
+
+/*
+Constraint Information:
+
+* USER_CONSTRAINTS describes the constraint definitions on your tables
+* USER_CONS_COLUMNS describes columns that are owned by you and that are specified in constraints
+
+CONSTRAINT Types:
+
+* C (check constraint on a table, or NOT NULL)
+* P (primary key)
+* U (unique key)
+* R (referential integrity [foreign key])
+* V (with cehck option, on a view)
+* O (with read-only, on a view)
+
+The DELETE_RULE can be:
+* CASCADE: If the parent record is deleted, the child records are deleted also
+* SET NULL: If the parent record is deleted, this changes the respective child records to NULL
+* NO ACTION: A parent record can be deleted only if no child record exists
+
+The STATUS can be:
+
+* ENABLED: Constraints are active
+* DISABLED: Constraints are made inactive
+
+USER_CONS_COLUMNS
+
+* A constraint can apply to more than one column
+* You can also write a join between USER_CONSTRAINTS and USER_CONS_COLUMNS to
+  create customized output from both tables
+  */
