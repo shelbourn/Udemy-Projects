@@ -4453,8 +4453,7 @@ user_cons_columns d
 on (m.constraint_name = d.constraint_name)
 where m.table_name = 'EMPLOYEES';
 
--- This query counts all the constraints at once
-select count(1) from user_cons_columns;
+
 --------------------------------------------------
 
 -- *** IMPORTANT EXAMPLE TO PRACTICE ***
@@ -4462,6 +4461,12 @@ select count(1) from user_cons_columns;
 -- This query displays all the constraints at once
 
 ----------------------------------------------------
+
+-- This query counts all the constraints at once
+-- MAIN QUERY
+select count(1) from user_cons_columns;
+
+-- RESULTS FROM THIS QUERY SHOULD HAVE THE SAME COUNT AS QUERY ABOVE
 select m.owner, m.table_name, m.constraint_name, r_m.column_name,
 m.constraint_type, m.search_condition, m.status, d.constraint_name, d.table_name,
 r_d.column_name, r_d.position
@@ -4472,6 +4477,8 @@ user_cons_columns r_d
 where m.r_constraint_name = d.constraint_name(+)
 and m.constraint_name = r_m.constraint_name
 and d.constraint_name = r_d.constraint_name(+)
-and m.table_name = 'EMPLOYEES'
+-- and m.table_name = 'EMPLOYEES'
 order by m.owner, m.table_name, r_d.position;
 ----------------------------------------------------
+
+-- COMMENTS ON TABLE / COLUMN
