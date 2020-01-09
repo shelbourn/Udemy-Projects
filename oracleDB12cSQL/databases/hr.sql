@@ -4208,6 +4208,8 @@ Data Dictionary Views
 
 * Created by Oracle Server
 * User can only have READ access
+* Consists of base tables and user-accessible views (both only accessible by SYS user)
+* All Data Dictionary Views belong to the SYS user
 
 * DICTIONARY
 * USER_OBJECTS
@@ -4215,4 +4217,28 @@ Data Dictionary Views
 * USER_TAB_COLUMNS
 * ETC
 */
+
+/*
+You can query the dictionary views that are based on the dictionary tables to
+find information such as:
+
+* Definitions of all schema objects in the DB (tables, views, indexes, synonyms,
+  sequences, procedures, functions, packages, triggers, etc
+* Default values for columns
+* Integrity constraint information
+* Names of Oracle users
+* Privaleges and roles that each user has been granted
+* Other general DB information
+*/
+
+/*
+View Naming Conventions (Prefixes for Data Dictionary query statements)
+
+* USER: User's view (what's in your schema; what you own)
+* ALL: Expanded user's view (what you can access)
+* DBA: Database administrator's view (what is in everyone's schemas)
+* V$: Performance-related data
+*/
+--------------------------------------
+
 
