@@ -4474,11 +4474,18 @@ from user_constraints m,
 user_constraints d,
 user_cons_columns r_m,
 user_cons_columns r_d
+-- (+) is put on D.CONSTRAINT_NAME because it has more rows than M.R_CONSTRAINT_NAME
 where m.r_constraint_name = d.constraint_name(+)
 and m.constraint_name = r_m.constraint_name
+-- (+) is put on R_M.CONSTRAINT_NAME because it has more rows than D.CONSTRAINT_NAME
 and d.constraint_name = r_d.constraint_name(+)
 and m.table_name = 'EMPLOYEES'
 order by m.owner, m.table_name, r_d.position;
+
+
+select constraint_name from user_constraints;
+
+select constraint_name from user_cons_columns;
 ----------------------------------------------------
 
 -- COMMENTS ON TABLE / COLUMN
