@@ -4337,4 +4337,18 @@ Contains Additional Information such as:
 */
 --------------------------------------
 
--- USER_TABLES / USER_TAB_COLUMNS Examples
+-- USER_TABLES Examples
+select * from user_tables;
+
+select owner, table_name
+from all_tables;
+
+-- TABS is a synonym of USER_TABLES
+select table_name from tabs;
+--------------------------------
+
+-- USER_TAB_COLUMNS Examples
+select * from user_tab_columns
+where table_name = 'EMPLOYEES'
+order by table_name, column_id;
+-------------------------------------------
