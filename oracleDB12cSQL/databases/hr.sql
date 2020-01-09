@@ -4202,3 +4202,17 @@ select * from employees
 order by salary desc
 fetch first 4 percent rows with ties; -- FETCH FIRST 4 PERCENT ROWS ONLY WITH TIES is not valid syntax
 --------------------------------------
+
+/*
+Data Dictionary Views
+
+* Created by Oracle Server
+* User can only have READ access
+
+* DICTIONARY
+* USER_OBJECTS
+* USER_TABLES
+* USER_TAB_COLUMNS
+* ETC
+*/
+
