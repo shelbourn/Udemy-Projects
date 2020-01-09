@@ -4389,4 +4389,20 @@ USER_CONS_COLUMNS
   */
   ------------------------------------
   
-  --USER_CONSTRAINTS / USER_CONS_COLUMNS (Part 2)
+-- USER_CONSTRAINTS / USER_CONS_COLUMNS (Part 2)
+  
+-- USER_CONSTRAINTS
+select * from user_constraints
+where table_name ='EMPLOYEES'; -- DEPT_ID_FK
+
+-- For referential integrity constraints, there is a relationship between the FK in one table
+-- and the PK in another table
+select * from user_constraints
+where constraint_name = 'DEPT_ID_PK';
+
+-- SELF JOIN (Old Syntax)
+select m.owner, m.table_name, m.constraint_name, m.constraint_type, m.r_constraint_name, d.table_name
+from user_constraints m,
+user_constraints d
+where m.r_constraint_name = d.constraint_name(+)
+and m.table_name = 'EMPLOYEES';
