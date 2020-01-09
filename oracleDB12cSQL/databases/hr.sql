@@ -4421,9 +4421,12 @@ where m.table_name = 'EMPLOYEES';
 -----------------------------------------
 
 -- USER_CONS_COLUMNS
+
+-- This query does not display the column names for constraints
 select * from user_constraints
 where table_name = 'EMPLOYEES'; -- EMP_EMP_ID_PK
 
+-- This query displays the column names of constraints
 select * from user_cons_columns
 where table_name = 'EMPLOYEES';
 
@@ -4434,6 +4437,7 @@ select m.owner, m.table_name, m.constraint_name, m.constraint_type
 from user_constraints m
 where table_name = 'EMPLOYEES';
 
+-- JOIN for USER_CONSTRAINTS and USER_CONS_COLUMNS
 select m.owner, m.table_name, m.constraint_name, m.constraint_type, d.column_name, d.position
 from user_constraints m,
 user_cons_columns d
