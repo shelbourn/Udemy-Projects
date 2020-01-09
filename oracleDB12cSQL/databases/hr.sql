@@ -4352,3 +4352,5 @@ select * from user_tab_columns
 where table_name = 'EMPLOYEES'
 order by table_name, column_id;
 -------------------------------------------
+
+-- USER_CONSTRAINTS / USER_CONS_COLUMNS (Part 1)
