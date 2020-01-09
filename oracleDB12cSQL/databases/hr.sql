@@ -4242,5 +4242,49 @@ View Naming Conventions (Prefixes for Data Dictionary query statements)
 --------------------------------------
 
 -- DICTIONARY: Contains the names and descriptions of the dictionary tables and views.
+-- Name in the data dictionary are in UPPERCASE
 
+-- This query displays all dictionary views stored in DICTIONARY
+select * from dictionary
+order by 1;
+
+select * from dictionary
+where table_name like '%COL%'; -- Must be UPPERCASE
+----------------------------------------------------
+
+/*
+USER OBJECTS
+
+* Query USER_OBJECTS to see all the objects that you own
+* Using USER_OBJECTS, you can obtain a listing of all object names and types in
+  your schema, plus the following information:
+    * Date created
+    * Date of last modification
+    * Status (valid or invalid)
+    * Whether the object name was system-generated or not (GENERATED)
+    * Type of object
+    * Dictionary object number of the object (OBJECT_ID)
+    
+USER_OBJECTS Columns
+
+* ONJECT_NAME
+* OBJECT_ID
+* OBJECT_TYPE
+* CREATED
+* LAST_DDL_TIME (Last modified date and time)
+* STATUS (Tables are always valid. Views, procedures, functions, packages, and triggers may not be valid)
+* GENERATED
+
+CAT VIEW (Synonym for USER_CATALOG)
+
+* View that lists tables, views, synonyms, and sequences owned by the user
+* Use for a simplified query and output
+* Contains only two columns: TABLE_NAME and TABLE_TYPE
+* Provides names of all your INDEX, TABLE, CLUSTER, VIEW, SYNONYM, SEQUENCE, or
+  UNDEFINED objects
+
+ALL_OBJECTS
+
+* Query ALL_OBJECTS to see all the objects to which you have access
+*/
 
