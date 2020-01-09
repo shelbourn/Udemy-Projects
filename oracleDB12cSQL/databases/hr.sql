@@ -4489,3 +4489,20 @@ select constraint_name from user_cons_columns;
 ----------------------------------------------------
 
 -- COMMENTS ON TABLE / COLUMN
+comment on table employees
+is 'This table contains employee data';
+
+select * from user_tab_comments -- ALL_TAB_COMMENTS for all users
+where table_name = 'EMPLOYEES';
+---------------------------
+
+comment on column employees.salary
+is 'This column contains employee salary information :)';
+
+select * from user_col_comments -- ALL_COL_COMMENTS for all users
+where table_name = 'EMPLOYEES';
+
+select * from user_col_comments
+where table_name = 'EMPLOYEES'
+and column_name = 'SALARY';
+-----------------------------------------------
