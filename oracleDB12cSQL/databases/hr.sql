@@ -4387,3 +4387,6 @@ USER_CONS_COLUMNS
 * You can also write a join between USER_CONSTRAINTS and USER_CONS_COLUMNS to
   create customized output from both tables
   */
+  ------------------------------------
+  
+  --USER_CONSTRAINTS / USER_CONS_COLUMNS (Part 2)
