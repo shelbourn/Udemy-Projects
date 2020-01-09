@@ -4320,3 +4320,18 @@ USER_TABLES
 * Contains detailed informaiton about storage
 * TABS view is a synonym of the USER_TABLES view
 */
+
+/*
+USER_TAB_COLUMNS
+
+* Contains detailed information about the columns in your tables
+
+Contains Additional Information such as:
+
+* Column Names
+* Column data types
+* Length of data types
+* Precision and scale for NUMBER columns
+* Whether NULLS are allowed (Is there a NOT NULL constraint on the column?)
+* Default value
+*/
