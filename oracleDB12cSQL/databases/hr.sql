@@ -4290,3 +4290,25 @@ ALL_OBJECTS
 ----------------------------------------------
 
 -- USER_OBJECTS / ALL_OBJECTS Examples
+desc user_objects;
+
+select object_name, object_id, object_type, created, last_ddl_time, status, generated
+from user_objects;
+
+select object_name, object_id, object_type, created, last_ddl_time, status, generated
+from user_objects
+where object_name = 'EMPLOYEES';
+
+-- OWNER column is only found in the ALL_OBJECTS view
+select OWNER, object_name, object_id, object_type, created, last_ddl_time, status, generated
+from all_objects
+where object_name = 'EMPLOYEES';
+
+-- USER_CATALOG is a DICTIONARY view containing only TABLE_NAME and TABLE_TYPE
+-- Only contains table types: TABLE, VIEW, INDEX, SYNONYM, SEQUENCE
+select * from user_catalog;
+
+-- CAT is a synonym for USER_CATALOG
+select * from cat;
+--------------------------------------
+
