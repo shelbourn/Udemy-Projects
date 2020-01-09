@@ -4399,6 +4399,9 @@ where table_name ='EMPLOYEES'; -- DEPT_ID_FK
 -- and the PK in another table
 select * from user_constraints
 where constraint_name = 'DEPT_ID_PK';
+-------------------------------------
+
+-- *** IMPORTANT - PRACTICE THESE EXAMPLES ***
 
 -- SELF JOIN (Old Syntax)
 -- (+) is added to D.CONSTRAINT_NAME because we want all results from the M table to show
@@ -4415,3 +4418,14 @@ from user_constraints m left outer join -- same as putting the (+) on D.CONSTRAI
 user_constraints d
 on (m.r_constraint_name = d.constraint_name)
 where m.table_name = 'EMPLOYEES';
+-----------------------------------------
+
+-- USER_CONS_COLUMNS
+select * from user_constraints
+where table_name = 'EMPLOYEES'; -- EMP_EMP_ID_PK
+
+select * from user_cons_columns
+where table_name = 'EMPLOYEES';
+
+select * from user_cons_columns
+where table_name = 'XX_EMP_COL_CONST1'
