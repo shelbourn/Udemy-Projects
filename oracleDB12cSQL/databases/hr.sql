@@ -4335,3 +4335,6 @@ Contains Additional Information such as:
 * Whether NULLS are allowed (Is there a NOT NULL constraint on the column?)
 * Default value
 */
+--------------------------------------
+
+-- USER_TABLES / USER_TAB_COLUMNS Examples
