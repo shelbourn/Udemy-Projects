@@ -4506,3 +4506,5 @@ select * from user_col_comments
 where table_name = 'EMPLOYEES'
 and column_name = 'SALARY';
 -----------------------------------------------
+
+-- SEQUENCES (Part 1)
