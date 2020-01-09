@@ -4312,3 +4312,11 @@ select * from user_catalog;
 select * from cat;
 --------------------------------------
 
+/*
+USER_TABLES
+
+* Contains the names of your tables
+* Contains information about your tables
+* Contains detailed informaiton about storage
+* TABS view is a synonym of the USER_TABLES view
+*/
