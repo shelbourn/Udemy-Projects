@@ -4477,7 +4477,7 @@ user_cons_columns r_d
 where m.r_constraint_name = d.constraint_name(+)
 and m.constraint_name = r_m.constraint_name
 and d.constraint_name = r_d.constraint_name(+)
--- and m.table_name = 'EMPLOYEES'
+and m.table_name = 'EMPLOYEES'
 order by m.owner, m.table_name, r_d.position;
 ----------------------------------------------------
 
