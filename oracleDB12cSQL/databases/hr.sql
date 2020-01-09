@@ -4241,4 +4241,6 @@ View Naming Conventions (Prefixes for Data Dictionary query statements)
 */
 --------------------------------------
 
+-- DICTIONARY: Contains the names and descriptions of the dictionary tables and views.
+
 
