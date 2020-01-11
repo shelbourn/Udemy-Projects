@@ -4580,3 +4580,6 @@ values (dept_s.nextval, 'IT');
 select * from dept_test_s;
 
 select dept_s.currval from dual;
+--------------------------------------------------
+
+-- SEQUENCES (Part 3)
