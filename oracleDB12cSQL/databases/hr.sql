@@ -4583,3 +4583,21 @@ select dept_s.currval from dual;
 --------------------------------------------------
 
 -- SEQUENCES (Part 3)
+drop sequence dept_s1;
+
+create sequence dept_s1
+start with 10
+increment by 20;
+
+select * from user_sequences
+where sequence_name = 'DEPT_S1';
+
+delete from dept_test_s;
+
+insert into dept_test_s (depno, dname)
+values (dept_s1.nextval, 'Marketing');
+
+insert into dept_test_s (depno, dname)
+values (dept_s1.nextval, 'Help Desk');
+
+select * from dept_test_s;
