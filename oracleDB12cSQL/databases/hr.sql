@@ -4523,4 +4523,26 @@ SEQUENCES
 * Often used to create primary key values because they must be unique
 * Sequence numbers are stored and generated independent of tables. Therefore,
   the same sequences can be used for multiple tables
+* It is best to create sequences using the Oracle DB defaults  
 */  
+
+-- *** IMPORTANT ***
+-- Know the PDF slides for this sections for the exam
+-----------------------------------------------------
+
+-- SEQUENCES (Part 2)
+
+-- Creating basic sequences
+create sequence dept_s;
+
+select * from user_sequences
+where sequence_name = 'DEPT_S';
+
+-- select length('9999999999999999999999999999999') from dual;
+
+drop table dept_test_s;
+
+create table dept_test_s
+( depno number primary key,
+  dname varchar2(100)
+);  
