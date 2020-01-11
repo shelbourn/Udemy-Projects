@@ -4590,7 +4590,7 @@ start with 10
 increment by 20;
 
 select * from user_sequences
-where sequence_name = 'DEPT_S1';
+where sequence_name = 'DEPT_S1'; -- will display values from DICTIONARY table
 
 delete from dept_test_s;
 
@@ -4601,3 +4601,7 @@ insert into dept_test_s (depno, dname)
 values (dept_s1.nextval, 'Help Desk');
 
 select * from dept_test_s;
+
+select * from user_sequences
+where sequence_name = 'DEPT_S';
+---------------------------------------------------
