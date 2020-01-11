@@ -4508,3 +4508,19 @@ and column_name = 'SALARY';
 -----------------------------------------------
 
 -- SEQUENCES (Part 1)
+
+-- Sequence: Database object that create numbered sequences
+
+/*
+SEQUENCES
+
+* Can automatically generate unique numbers
+* Is a shareable object
+* Can be used to create a primary key value
+* Replaces applicaiton code
+* Speeds up the efficiency of accessing sequence values when cached in memory
+* Sequences are auto-generated and incremented or decremented integers
+* Often used to create primary key values because they must be unique
+* Sequence numbers are stored and generated independent of tables. Therefore,
+  the same sequences can be used for multiple tables
+*/  
