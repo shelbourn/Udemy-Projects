@@ -4651,3 +4651,28 @@ select * from em;
 ------------------------------------------------
 
 -- SEQUENCES (Part 4)
+delete from dept_test_s;
+delete from em;
+drop sequence dept_s;
+
+create sequence dept_s;
+
+-- Using CURRVAL and NEXTVAL in inserting scripts
+-- Insert department called 'Seupport' in table DEPT_TEST_S using the sequence DEPT_S
+-- Then insert 3 employees into EM table that work in the SUPPORT department
+
+insert into dept_test_s (depno, dname)
+values (dept_s.nextval, 'Support');
+
+insert into em (name, depno) values ('Al', dept_s.currval);
+insert into em (name, depno) values ('Ahmed', dept_s.currval);
+insert into em (name, depno) values ('Samer', dept_s.currval);
+
+select * from dept_test_s;
+
+select * from em;
+
+-- Join the two tables
+select e.empid, e.name, e.depno, d.dname
+from em e, dept_test_s d
+where e.depno = d.depno;
