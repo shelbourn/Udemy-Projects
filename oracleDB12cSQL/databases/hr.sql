@@ -4733,7 +4733,7 @@ NOTES ON SEQUENCES
 * NEXTVAL must be issued for that sequence before CURRVAL contains a value
 * NEXTVAL and CURRVAL are Pseudocolumns
 
-Rules for Using NEXTVAL and CURRVAL
+Rules for Using NEXTVAL and CURRVAL | *** IMPORTANT FOR EXAM ***
 
 You can use NEXTVAL and CURRVAL in the following contexts:
 
@@ -4748,3 +4748,20 @@ You CANNOT use NEXTVAL and CURRVAL in the following contexts:
 * A SELECT statement with the DISTINCT keyword
 * A SELECT statement with GROUP BY, HAVING, or ORDER BY clauses
 * A subquery in a SELECT, DELETE, or UPDATE statement
+
+-- Caching sequence values in memory gives faster access to those values
+
+Gaps in a sequence can occur when:
+
+* A ROLLBACK occurs
+* The system crashes
+* A sequence is used in another table
+
+Guidelines for altering a SEQUENCE | *** IMPORTANT FOR EXAM ***
+
+* You must be the owner or have the ALTER privalege for the sequence
+* Only future sequence numbers are affected
+* The sequences must be dropped and re-created to restart the sequence at a different number
+* Some validation is performed
+* To remove a sequence, use the DROP statement
+*/
