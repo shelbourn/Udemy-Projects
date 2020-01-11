@@ -4718,9 +4718,33 @@ maxvalue 5
 nocache
 cycle;
 
-select s_cycle.nextval from dual;
+select s_cycle.nextval from dual; -- SEQUENCE value is taken when using NEXTVAL in a SELECT statement
 select s_cycle.nextval from dual;
 select s_cycle.nextval from dual;
 select s_cycle.nextval from dual;
 select s_cycle.nextval from dual;
 select s_cycle.nextval from dual; -- SEQUENCE value resets when it reaches 5
+
+/*
+NOTES ON SEQUENCES
+
+* Don't use the CYCLE option if a SEQUENCE is used to create a PK value
+* NEXTVAL returns a new SEQUENCE value each time it is used, even for different users
+* NEXTVAL must be issued for that sequence before CURRVAL contains a value
+* NEXTVAL and CURRVAL are Pseudocolumns
+
+Rules for Using NEXTVAL and CURRVAL
+
+You can use NEXTVAL and CURRVAL in the following contexts:
+
+* The SELECT list of a SELECT statement that is not part of a subquery
+* The SELECT list of a subquery in an INSERT statement
+* The VALUES clause of an INSERT statement
+* The SET clause of an UPDATE statement
+
+You CANNOT use NEXTVAL and CURRVAL in the following contexts:
+
+* The SELECT list of a VIEW
+* A SELECT statement with the DISTINCT keyword
+* A SELECT statement with GROUP BY, HAVING, or ORDER BY clauses
+* A subquery in a SELECT, DELETE, or UPDATE statement
