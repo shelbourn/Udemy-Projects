@@ -4568,3 +4568,15 @@ values (dept_s.nextval, 'Operation');
 select * from dept_test_s; -- DEPNO values are assigned by SEQUENCE DEPT_S
 
 select dept_s.currval from dual; -- Returns the current value of sequence used
+
+-- The following query USES a sequence value, so sequence value 3 will be used by this statement
+-- Anytime you use NEXTVAL with a select statement the next sequence value will be taken
+-- Anytime you assign a sequence value using NEXTVAL and then issue a ROLLBACK, the sequence values will be taken
+select dept_s.nextval from dual; -- Returns the next value that will be used in sequence
+
+insert into dept_test_s (depno, dname)
+values (dept_s.nextval, 'IT');
+
+select * from dept_test_s;
+
+select dept_s.currval from dual;
