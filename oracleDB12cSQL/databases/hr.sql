@@ -4648,3 +4648,6 @@ insert into em (name) values ('JAMES');
 insert into em (name) values ('MARK');
 
 select * from em;
+------------------------------------------------
+
+-- SEQUENCES (Part 4)
