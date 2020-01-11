@@ -4604,4 +4604,47 @@ select * from dept_test_s;
 
 select * from user_sequences
 where sequence_name = 'DEPT_S';
+
+commit;
 ---------------------------------------------------
+
+delete from dept_test_s;
+
+drop sequence dept_s2;
+
+create sequence dept_s2
+increment by -5;
+
+select * from user_sequences
+where sequence_name = 'DEPT_S2';
+
+insert into dept_test_s (depno, dname)
+values (dept_s2.nextval, 'Marketing');
+
+insert into dept_test_s (depno, dname)
+values (dept_s2.nextval, 'Help Desk');
+
+select * from dept_test_s;
+--------------------------------------------
+
+update dept_test_s
+set depno = dept_s2.nextval;
+
+select * from dept_test_s
+order by 1; -- Orders by first column in ascending order
+-----------------------------------------------
+
+-- You can create a default value as a sequence while creating a table
+create sequence emp_s;
+
+create table em
+( empid number default emp_s.nextval primary key,
+  name varchar2(100),
+  depno number
+);
+
+insert into em (name) values ('JAMES');
+
+insert into em (name) values ('MARK');
+
+select * from em;
