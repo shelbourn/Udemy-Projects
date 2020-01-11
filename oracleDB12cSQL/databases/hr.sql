@@ -4658,21 +4658,53 @@ drop sequence dept_s;
 create sequence dept_s;
 
 -- Using CURRVAL and NEXTVAL in inserting scripts
--- Insert department called 'Seupport' in table DEPT_TEST_S using the sequence DEPT_S
+-- Insert department called 'Support' in table DEPT_TEST_S using the sequence DEPT_S
 -- Then insert 3 employees into EM table that work in the SUPPORT department
 
 insert into dept_test_s (depno, dname)
-values (dept_s.nextval, 'Support');
+values (dept_s.nextval, 'Support'); -- Always use NEXTVAL for Master Table
 
+-- Always use CURRVAL for Detail Table that links to Master Table
 insert into em (name, depno) values ('Al', dept_s.currval);
 insert into em (name, depno) values ('Ahmed', dept_s.currval);
 insert into em (name, depno) values ('Samer', dept_s.currval);
 
 select * from dept_test_s;
 
+-- EMPID is using the sequence EMP_S which still has two values assigned and
+-- therefore has a CURRVAL of 3
 select * from em;
 
 -- Join the two tables
 select e.empid, e.name, e.depno, d.dname
 from em e, dept_test_s d
 where e.depno = d.depno;
+------------------------------------------
+
+-- Altering SEQUENCES
+select * from user_sequences
+where sequence_name = 'DEPT_S';
+
+alter sequence dept_s
+increment by 100;
+
+select * from user_sequences
+where sequence_name = 'DEPT_S';
+
+alter sequence dept_s
+cache 30;
+
+select * from user_sequences
+where sequence_name = 'DEPT_S';
+
+alter sequence dept_s
+maxvalue 9999;
+
+select * from user_sequences
+where sequence_name = 'DEPT_S';
+
+-- *** IMPORTANT FOR EXAM ***
+-- You cannot ALTER the START WITH
+alter sequence dept_s
+start with 170; -- Returns an error
+-----------------------------------
