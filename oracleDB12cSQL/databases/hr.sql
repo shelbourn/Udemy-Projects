@@ -4708,3 +4708,19 @@ where sequence_name = 'DEPT_S';
 alter sequence dept_s
 start with 170; -- Returns an error
 -----------------------------------
+
+drop sequence s_cycle;
+
+create sequence s_cycle
+start with 1 -- Can use START WITH when creating a SEQUENCE, but START WITH cannot be altered
+increment by 1
+maxvalue 5
+nocache
+cycle;
+
+select s_cycle.nextval from dual;
+select s_cycle.nextval from dual;
+select s_cycle.nextval from dual;
+select s_cycle.nextval from dual;
+select s_cycle.nextval from dual;
+select s_cycle.nextval from dual; -- SEQUENCE value resets when it reaches 5
