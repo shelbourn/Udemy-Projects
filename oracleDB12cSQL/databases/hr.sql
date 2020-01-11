@@ -4538,6 +4538,18 @@ create sequence dept_s;
 select * from user_sequences
 where sequence_name = 'DEPT_S';
 
+/*
+KNOW THE FOLLOWING COLUMNS:
+
+* SEQUENCE_NAME
+* MIN_VALUE
+* MAX_VALUE
+* INCREMENT_BY
+* CYCLE_FLAG
+* ORDER_FLAG
+* CACHE_SIZE
+*/
+
 -- select length('9999999999999999999999999999999') from dual;
 
 drop table dept_test_s;
@@ -4546,3 +4558,13 @@ create table dept_test_s
 ( depno number primary key,
   dname varchar2(100)
 );  
+
+insert into dept_test_s (depno, dname)
+values (dept_s.nextval, 'Sales'); -- dept_s.NEXTVAL = name of SEQUENCE and assigns the next available value
+
+insert into dept_test_s (depno, dname)
+values (dept_s.nextval, 'Operation');
+
+select * from dept_test_s; -- DEPNO values are assigned by SEQUENCE DEPT_S
+
+select dept_s.currval from dual; -- Returns the current value of sequence used
