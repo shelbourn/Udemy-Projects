@@ -4822,3 +4822,32 @@ INDEXES
 * Created Manually: You can create unique or nonunique indexes on columns to speed up acces to the rows
   WITH THIS METHOD, THE USER WILL PROVIDE THE NAME OF THE INDEX
 */  
+-------------------------------------------------
+
+-- INDEX Examples
+drop table emp_ind;
+
+create table emp_ind
+( empno number constraint emp_ind_pk primary key,
+  ename varchar2(100) unique,
+  nickname varchar2(100),
+  email varchar2(100)
+);  
+
+insert into emp_ind (empno, ename, nickname, email)
+values ('1', 'Ahmed Samer', 'Ahmed.Samer', 'ahmed.samer@gmail.com');
+
+insert into emp_ind (empno, ename, nickname, email)
+values ('2', 'Rami Nader', 'Rami.Nader', 'rami.nader@hotmail.com');
+
+insert into emp_ind (empno, ename, nickname, email)
+values ('3', 'Khaled Ali', 'Khaled.Ali', 'khaled.ali@hotmail.com');
+
+insert into emp_ind (empno, ename, nickname, email)
+values ('4', 'Hassan Nabil', 'Hassan.Nabil', 'hassan.nabil@yahoo.com');
+
+commit;
+
+delete from emp_ind;
+
+select * from emp_ind;
