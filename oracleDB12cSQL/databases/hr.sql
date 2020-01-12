@@ -5233,3 +5233,48 @@ where view_name = 'FORCE_V';
 -----------------------------------------------------
 
 -- Adding Constraints / Dropping Constraints
+
+-- Adding Constraints to tables
+-- Create 2 tables: EMP2 and DEPT2 (identical to EMPLOYEES and DEPARTMENTS)
+
+drop table emp2;
+
+-- No constraints are copied from EMPLOYEES except NOT NULL constraint
+create table emp2
+as select * from employees;
+
+desc emp2;
+
+select * from emp2;
+
+drop table dept2;
+
+-- No constraints are copied from DEPARTMENTS except NOT NULL constraint
+create table dept2
+as select * from departments;
+
+desc dept2;
+
+select * from dept2;
+
+-- There are many methods of adding constraints to a table
+
+-- Method 1.) Adding a PK
+-- Here the constraint name will be sys_cn%
+
+-- Makes EMPLOYEE_ID a PK
+alter table emp2
+modify employee_id primary key;
+
+select * from user_constraints
+where table_name = 'EMP2';
+
+select * from user_cons_columns
+where table_name = 'EMP2';
+
+-- '&' = substitution variable (pushes a modal popup for entering a value)
+alter table emp2
+drop constraint &constraint; -- 'constraint' does not have to be fully spelled out, can enter 'cons' as long as there are no other columns containing 'cons'
+
+select * from user_constraints
+where table_name = 'EMP2';
