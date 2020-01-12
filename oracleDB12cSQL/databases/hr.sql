@@ -5127,11 +5127,12 @@ from employees;
 
 -- Creating COMPLEX VIEWS examples
 
+-- No DML operations allowed on this VIEW because it contains GROUP functions and a GROUP BY clause
 drop view emp_dept_analysis;
 
 create view emp_dept_analysis
 as
-select department_id, count(employee_id) emp_count,
+select department_id, count(employee_id) emp_count, -- Must use ALIAS because we can't name column COUNT(EMPLOYEE_ID)
 max(salary) max_sal,
 min(salary) low_sal
 from employees
@@ -5151,4 +5152,17 @@ avg(salary) avg_sal
 from employees
 group by department_id;
 
-select * from emp_dept_analysis;
+select * from emp_dept_analysis;  
+
+select * from user_views;
+---------------------------------------------------
+
+-- Creating a COMPLEX VIEW that has data from multiple tables
+create or replace view emp_dept_v
+as
+select employee_id, first_name ||' '|| last_name name,
+salary, nvl(department_name, 'no dept') department_name
+from employees e left outer join departments d
+on (e.department_id = d.department_id);
+
+select * from emp_dept_v;
