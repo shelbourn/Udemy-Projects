@@ -5169,3 +5169,20 @@ select * from emp_dept_v;
 -------------------------------------------------------
 
 -- With READ ONLY / With CHECK option / FORCE VIEW
+
+-- Creating VIEW with READ ONLY
+create or replace view emp_v_read
+as
+select employee_id, first_name, last_name, email, hire_date, job_id
+from employees
+where department_id = 90
+with read only;
+
+select * from emp_v_read;
+
+-- No DML operations allowed on READ-ONLY VIEW
+-- Queries are allowed only
+delete from emp_v_read;
+
+select * from user_constraints
+where table_name = 'EMP_V_READ';
