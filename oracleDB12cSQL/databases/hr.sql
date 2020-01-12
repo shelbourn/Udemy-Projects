@@ -5313,3 +5313,10 @@ add constraint emp2_fk_dept foreign key(department_id) references dept2(departme
 
 select * from user_constraints
 where table_name = 'EMP2';
+--------------------------------------------------
+
+-- 3.) Adding NOT NULL Constraint
+-- Will work only if the table is empty or the column has a value for every ROW
+
+alter table emp2
+modify first_name not null;
