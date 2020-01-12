@@ -4895,3 +4895,11 @@ values ('10', 'Karem Samer', 'Ahmed.Samer', 'ahmed.samer@gmail.com'); -- Returns
 -- You can also create an additional index for ENAME using a function-based INDEX -- UPPER(ENAME)
 select * from emp_ind
 where upper(ename) = 'AHMED SAMER';
+
+create index emp_ind_up_ename on emp_ind (upper(ename));
+
+select * from user_indexes
+where table_name = 'EMP_IND';
+
+select * from user_ind_columns
+where table_name = 'EMP_IND';
