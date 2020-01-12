@@ -5184,5 +5184,33 @@ select * from emp_v_read;
 -- Queries are allowed only
 delete from emp_v_read;
 
+-- Oracle creates a constraint for READ ONLY VIEWS/TABLES
+-- 'O' signified READ ONLY constraint
 select * from user_constraints
 where table_name = 'EMP_V_READ';
+--------------------------------------------------------
+
+-- Creating a VIEW with CHECK OPTIONS
+-- CHECK OPTION allows DML operations only within the scope of the VIEW
+-- In this case, DML operations are only allowed on records in DEPARTMENT 90
+create or replace view emp_v_chq_const
+as
+select employee_id, first_name, last_name, email, hire_date, job_id, department_id
+from employees
+where department_id = 90
+with check option;
+
+select * from emp_v_chq_const;
+
+select * from user_constraints
+where table_name = 'EMP_V_CHQ_CONST';
+
+-- You can ONLY use DML operations with the VIEW range, which is DEPARTMENT 90
+insert into emp_v_chq_const (employee_id, first_name, last_name, email, hire_date, job_id, department_id)
+values (444, 'FADI', 'ALI', 'FALI', sysdate, 'IT_PROG', 90);
+
+select * from emp_v_chq_const;
+
+-- Any DML operations out of the VIEW's range will return an error (VIEW WITH CHECK OPTION WHERE clause violation)
+insert into emp_v_chq_const (employee_id, first_name, last_name, email, hire_date, job_id, department_id)
+values (446, 'SAED', 'ALI', 'SALI', sysdate, 'IT_PROG', 10); -- Returns an error
