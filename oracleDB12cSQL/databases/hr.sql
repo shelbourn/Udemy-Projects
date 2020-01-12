@@ -5692,3 +5692,6 @@ select * from emp_load;
 -- If you change some row values to be incorrect data types, then the log will
 -- Show how many errors there were and with which rows
 -- I have changed one row that should be a number to a character data type
+-- The row with a value of incorrect data type will not be loaded because it results in an error
+
+-- File emp.bad will list all the rows that were not imported due to errors

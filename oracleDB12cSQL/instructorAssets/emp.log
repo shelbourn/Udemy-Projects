@@ -1,5 +1,5 @@
 
-SQL*Loader: Release 12.2.0.1.0 - Production on Sun Jan 12 14:39:44 2020
+SQL*Loader: Release 12.2.0.1.0 - Production on Sun Jan 12 14:46:47 2020
 
 Copyright (c) 1982, 2017, Oracle and/or its affiliates.  All rights reserved.
 
@@ -26,10 +26,13 @@ EMPNO                               FIRST     *   ,       CHARACTER
 FNAME                                NEXT     *   ,       CHARACTER            
 LNAME                                NEXT     *   ,       CHARACTER            
 
+Record 8: Rejected - Error on table EMP_LOAD, column EMPNO.
+ORA-01722: invalid number
+
 
 Table EMP_LOAD:
-  16125 Rows successfully loaded.
-  0 Rows not loaded due to data errors.
+  16124 Rows successfully loaded.
+  1 Row not loaded due to data errors.
   0 Rows not loaded because all WHEN clauses were failed.
   0 Rows not loaded because all fields were null.
 
@@ -39,11 +42,11 @@ Read   buffer bytes: 1048576
 
 Total logical records skipped:          0
 Total logical records read:         16125
-Total logical records rejected:         0
+Total logical records rejected:         1
 Total logical records discarded:        0
 
-Run began on Sun Jan 12 14:39:44 2020
-Run ended on Sun Jan 12 14:40:17 2020
+Run began on Sun Jan 12 14:46:47 2020
+Run ended on Sun Jan 12 14:46:57 2020
 
-Elapsed time was:     00:00:33.30
-CPU time was:         00:00:00.47
+Elapsed time was:     00:00:09.29
+CPU time was:         00:00:00.56
