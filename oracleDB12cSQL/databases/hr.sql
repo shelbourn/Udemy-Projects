@@ -4765,3 +4765,6 @@ Guidelines for altering a SEQUENCE | *** IMPORTANT FOR EXAM ***
 * Some validation is performed
 * To remove a sequence, use the DROP statement
 */
+----------------------------------------------
+
+-- SYNONYMS
