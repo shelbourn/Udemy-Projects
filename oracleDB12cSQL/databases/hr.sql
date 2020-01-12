@@ -4891,3 +4891,7 @@ create unique index emp_ind_email on emp_ind (email);
 -- Now is you try to insert an existing email address then you will receive an error
 insert into emp_ind (empno, ename, nickname, email)
 values ('10', 'Karem Samer', 'Ahmed.Samer', 'ahmed.samer@gmail.com'); -- Returns an error
+
+-- You can also create an additional index for ENAME using a function-based INDEX -- UPPER(ENAME)
+select * from emp_ind
+where upper(ename) = 'AHMED SAMER';
