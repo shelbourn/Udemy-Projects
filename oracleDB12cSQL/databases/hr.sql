@@ -5087,6 +5087,7 @@ from employees;
 select * from emp_v3;
 -------------------------------------------------------
 
+-- *** IMPORTANT FOR EXAM ***
 -- Creating COMPLEX VIEWS
 
 /*
@@ -5098,6 +5099,21 @@ Rules for Performing DML Operations on a VIEW
   * a GROUP BY clause
   * The DISTINCT keyword
   * The pseudocolumn ROWNUM keyword
+  
+You cannot modify data in a VIEW if it contains (No UPDATE statement):
+* Group functions
+* A GROUP BY clause
+* The DISTINCT keyword
+* The pseudocolumn ROWNUM keyword
+* Columns defined by expressions (e.g. SALARY*12)
+
+You cannot add data through a VIEW if the VIEW includes (No INSERT statement):
+* Group functions
+* A GROUP BY clause
+* The DISTINCT keyword
+* The pseudocolumn ROWNUM keyword
+* Columns defined by expressions
+* NOT NULL columns without default value in the base tables that are not selected by the VIEW
 */
 
 -- ROWNUM (Sidenote)
@@ -5107,3 +5123,4 @@ from employees;
 -- ROWNUM is a pseudocolumn that displays the number of the corresponding ROW
 select rownum, first_name
 from employees;
+-----------------------------------------------
