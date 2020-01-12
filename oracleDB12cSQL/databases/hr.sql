@@ -5166,3 +5166,6 @@ from employees e left outer join departments d
 on (e.department_id = d.department_id); -- DEPARTMENT_ID = FK of EMPLOYEES table and PK of DEPARTMENTS table
 
 select * from emp_dept_v;
+-------------------------------------------------------
+
+-- With READ ONLY / With CHECK option / FORCE VIEW
