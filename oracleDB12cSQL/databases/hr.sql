@@ -4801,4 +4801,24 @@ create public synonym employees for hr.employees;
 -- Can just use SELECT * FROM EMPLOYEES
 -----------------------------------------------------
 
+-- *** IMPORTANT ***
 -- INDEXES (Part 1)
+
+/*
+INDEXES
+
+* Is a schema object
+* Can be used by the Oracle Server to speed up the retrieval of rows by using a pointer
+* Can reduce disk input/output (I/O) by using a rapid path access method to locate data quickly
+* Is dependent on the table that it indexes (indexes are tied to specific tables, unlike sequences)
+* Is used and maintained automatically by the Oracle Server
+* When you drop a table, the corresponding indexes are dropped
+* Are logically and physically independent of the data in the object with which they are associated
+  This means that they can be created or dropped at any time, and have no effect on the base
+  tables or other indexes
+* Created Automatically: A unique index is created automatically when you define a PRIMARY KEY or
+  UNIQUE constraint in the table definition.
+  THE NAME OF THE INDEX WILL BE THE SAME AS THE CONSTRAINT NAME
+* Created Manually: You can create unique or nonunique indexes on columns to speed up acces to the rows
+  WITH THIS METHOD, THE USER WILL PROVIDE THE NAME OF THE INDEX
+*/  
