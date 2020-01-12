@@ -5019,4 +5019,21 @@ COMPLEX VIEWS
 */
 --------------------------------------------------------
 
--- Creating a simple VIEW
+-- Creating a simple VIEW EMP_V1
+-- One table, no functions, no groups, DML operations allowed
+
+drop view emp_v1;
+
+-- Create VIEW EMP_V1 containing EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, HIRE_DATE, JOB_ID
+create view emp_v1
+as
+select employee_id, first_name, last_name, email, hire_date, job_id
+from employees;
+
+-- No I can SELECT from the view the same as I SELECT from a table
+select * from emp_v1;
+
+select * from user_views
+where view_name = 'EMP_V1';
+
+desc emp_v1;
