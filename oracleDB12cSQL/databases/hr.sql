@@ -5696,3 +5696,5 @@ select * from emp_load;
 
 -- File emp.bad will list all the rows that were not imported due to errors
 -----------------------------------------------
+
+-- External Tables (Part 1)
