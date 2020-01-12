@@ -5124,3 +5124,5 @@ from employees;
 select rownum, first_name
 from employees;
 -----------------------------------------------
+
+-- Creating COMPLEX VIEWS examples
