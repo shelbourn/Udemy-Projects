@@ -5531,9 +5531,11 @@ drop constraint sal_ck;
 alter table emp_sal
 drop constraint bonus_ck;
 
+-- INITALLY DEFERRED = Constraint check deferred until COMMIT
 alter table emp_sal
 add constraint sal_ck check (sal > 100) deferrable initially deferred;
 
+-- INITIALLY IMMEDIATE = Constraint check not deferred and will be immediate, won't wait until COMMIT
 alter table emp_sal
 add constraint bonus_ck check (bonus > 0) deferrable initially immediate;
 
