@@ -5018,3 +5018,5 @@ COMPLEX VIEWS
 * DML operations not always allowed through a VIEW
 */
 --------------------------------------------------------
+
+-- Creating a simple VIEW
