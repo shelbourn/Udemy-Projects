@@ -4939,3 +4939,18 @@ Do not create and Index when:
 -----------------------------------------
 
 -- More INDEX Examples
+
+-- Naming the INDEX while creating a table
+drop table emp_ind1;
+
+create table emp_ind1
+( empno number constraint emp_ind1_pk primary key using index
+    (create index emp_ind1_ind on emp_ind1 (empno)),
+  fname varchar2(100),
+  lname varchar2(100),
+  email varchar2(100),
+  gender char(1)
+);
+
+-- You can create INDEXES of composite columns
+create index emp_ind1_comp on emp_ind1 (fname, lname);
