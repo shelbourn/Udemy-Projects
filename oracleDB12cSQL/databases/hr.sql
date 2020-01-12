@@ -5634,6 +5634,10 @@ insert into cart2 values (2, 13);
 insert into cart2 values (3, 1);
 
 -- Rows are preserved because we used the ON COMMIT PRESERVE ROWS clause when we created the table
+-- Data is deleted when session is terminated (closing SQL Developer, etc)
 commit;
 
 select * from cart2;
+-------------------------------------------
+
+-- About SQL * Loader
