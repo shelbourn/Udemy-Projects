@@ -5382,3 +5382,24 @@ select * from emp2;
 -----------------------------------------------
 
 -- RENAME COLUMN / RENAME CONSTRAINT
+
+-- Renaming Columns
+
+select * from emp2;
+
+select * from user_cons_columns
+where table_name = 'EMP2';
+
+-- Also changes the related column name in the USER_CONSTRAINTS table
+alter table emp2
+rename column first_name to fname;
+
+select * from emp2;
+
+select * from user_cons_columns
+where table_name = 'EMP2';
+
+select * from user_constraints
+where table_name in ('EMP2', 'DEPT2')
+and constraint_type in ('P', 'R')
+order by table_name;
