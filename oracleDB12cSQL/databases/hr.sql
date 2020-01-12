@@ -5640,4 +5640,25 @@ commit;
 select * from cart2;
 -------------------------------------------
 
--- About SQL * Loader
+-- About SQL*Loader
+
+-- The SQL*Loader is a bulk loader utility used to moving data from external files
+-- into the Oracle Database
+-- Used to work with external files
+-- Used a CSV delimited file to load data
+
+drop table emp_load;
+
+-- Create a table with the same structure as the CSV file
+create table emp_load
+( empno number,
+  fname varchar2(100),
+  lname varchar2(100)
+);
+
+select * from emp_load;
+
+-- We will use the file emp.csv
+-- We want to move the data from this file to the table EMP_LOAD
+-- We will use SQL*Loader
+-- We need to first create a control file called [file].ctl (example: emp.ctl)
