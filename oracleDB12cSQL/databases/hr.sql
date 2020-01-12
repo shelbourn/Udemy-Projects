@@ -5662,3 +5662,17 @@ select * from emp_load;
 -- We want to move the data from this file to the table EMP_LOAD
 -- We will use SQL*Loader
 -- We need to first create a control file called [file].ctl (example: emp.ctl)
+
+/*
+Code to be placed in emp.ctl file
+
+Load Data
+INFILE 'C:\Users\matts\Projects\Udemy-Projects\oracleDB12cSQL\instructorAssets\emp.csv'
+APPEND
+INTO Table emp_load
+FIELDS TERMINATED BY ','
+(empno,
+fname,
+lname
+)
+*/
