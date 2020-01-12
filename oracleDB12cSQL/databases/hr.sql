@@ -5562,10 +5562,32 @@ insert into emp_sal (emp_id, sal, bonus)
 values (1, 200, -1); -- Returns an error immediately because the BONUS_CK constraint is violated
 
 -- Can change between INITIALLY IMMEDIATE and INITIALLY DEFERRED
--- Setting will be chaged for this session only
+-- Setting will be chaged for THIS SESSION ONLY
 set constraint sal_ck immediate;
 
 -- Change will not show in data dictionary table
 -- Original setting will show in data dictionary table
 select * from user_constraints
 where table_name = 'EMP_SAL';
+
+-- Now the violation error will not be deferred until COMMIT
+insert into emp_sal (emp_id, sal, bonus)
+values (1, 90, 5);
+-------------------------------------------
+
+-- *** IMPORTANT FOR EXAM ***
+
+drop table emp_sal;
+
+create table emp_sal
+( emp_id number,
+  sal number,
+  bonus number,
+  constraint sal_ck check (sal > 100),
+  constraint bonus_ck check (bonus > 0)
+);  
+
+-- Now you will not be able to change the constraint to IMMEDIATE / DEFERRED
+-- Because the constraints were created without "DEFERRABLE INITIALLY DEFERRED / IMMEDIATE"
+set constraint sal_ck immediate;
+set constraint sal_ck deferred;
