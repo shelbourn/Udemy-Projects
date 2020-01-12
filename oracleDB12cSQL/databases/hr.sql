@@ -5163,6 +5163,6 @@ as
 select employee_id, first_name ||' '|| last_name name,
 salary, nvl(department_name, 'no dept') department_name
 from employees e left outer join departments d
-on (e.department_id = d.department_id);
+on (e.department_id = d.department_id); -- DEPARTMENT_ID = FK of EMPLOYEES table and PK of DEPARTMENTS table
 
 select * from emp_dept_v;
