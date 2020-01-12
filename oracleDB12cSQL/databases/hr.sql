@@ -5497,3 +5497,51 @@ order by table_name;
 -- until a COMMIT is issued
 
 -- DEFFERABLE Constraints Examples
+-- Two Types of DEFERRABLE constraints
+-- 1.) DEFERRABLE INITIALLY DEFERRED
+-- 2.) DEFERRABLE INITIALLY IMMEDIATE
+
+drop table emp_sal;
+
+create table emp_sal
+( emp_id number,
+  sal number,
+  bonus number,
+  constraint sal_ck check (sal > 100), -- Salary must be greater than 100
+  constraint bonus_ck check (bonus > 0) -- Bonus must be greater than 0
+);
+
+select * from emp_sal;
+
+-- Look at the columns that are DEFERRABLE and DEFERRED
+select * from user_constraints
+where table_name = 'EMP_SAL';
+
+-- Any DML operation that does not meet the constraint condition will return an error immediately
+insert into emp_sal (emp_id, sal, bonus)
+values (1, 90, 5); -- Returns and error due to salary constraint
+
+insert into emp_sal (emp_id, sal, bonus)
+values (1, 100, -2); -- Returns an error due to bonus constraint
+
+-- Let's drop the constraint and re-create them with new options
+alter table emp_sal
+drop constraint sal_ck;
+
+alter table emp_sal
+drop constraint bonus_ck;
+
+alter table emp_sal
+add constraint sal_ck check (sal > 100) deferrable initially deferred;
+
+alter table emp_sal
+add constraint bonus_ck check (bonus > 0) deferrable initially immediate;
+
+alter table emp_sal
+disable constraint sal_ck;
+
+alter table emp_sal
+enable constraint sal_ck;
+
+select * from user_constraints
+where table_name = 'EMP_SAL';
