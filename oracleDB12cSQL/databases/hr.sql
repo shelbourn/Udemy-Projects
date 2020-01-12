@@ -5695,3 +5695,4 @@ select * from emp_load;
 -- The row with a value of incorrect data type will not be loaded because it results in an error
 
 -- File emp.bad will list all the rows that were not imported due to errors
+-----------------------------------------------
