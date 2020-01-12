@@ -4912,3 +4912,6 @@ where table_name = 'EMP_IND';
 
 select * from emp_ind
 where upper(ename) = 'AHMED SAMER';
+----------------------------------------
+
+-- INDEXES (Part 2)
