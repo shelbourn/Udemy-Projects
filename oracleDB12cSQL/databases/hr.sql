@@ -5088,3 +5088,22 @@ select * from emp_v3;
 -------------------------------------------------------
 
 -- Creating COMPLEX VIEWS
+
+/*
+Rules for Performing DML Operations on a VIEW
+
+* You can usually perform DML operations on SIMPLE VIEWS
+* You cannot remove a row if the VIEW contains the following:
+  * Group Functions
+  * a GROUP BY clause
+  * The DISTINCT keyword
+  * The pseudocolumn ROWNUM keyword
+*/
+
+-- ROWNUM (Sidenote)
+select first_name
+from employees;
+
+-- ROWNUM is a pseudocolumn that displays the number of the corresponding ROW
+select rownum, first_name
+from employees;
