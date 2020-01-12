@@ -4954,3 +4954,17 @@ create table emp_ind1
 
 -- You can create INDEXES of composite columns
 create index emp_ind1_comp on emp_ind1 (fname, lname);
+
+select * from user_indexes
+where table_name = 'EMP_IND1';
+
+select * from user_ind_columns
+where table_name = 'EMP_IND1';
+
+/*
+BITMAP INDEXES
+
+* Specify BITMAP to indicate that the index is to be created with a bitmap for each
+  distinct key, rather than indexing each row separately.
+* Bitmap indexes store the ROWIDS associated with a key value as a bitmap
+*/
