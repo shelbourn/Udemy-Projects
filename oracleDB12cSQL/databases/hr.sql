@@ -4896,10 +4896,19 @@ values ('10', 'Karem Samer', 'Ahmed.Samer', 'ahmed.samer@gmail.com'); -- Returns
 select * from emp_ind
 where upper(ename) = 'AHMED SAMER';
 
+-- Creates an INDEX on the expression UPPER(ENAME) -- makes a system column for it
 create index emp_ind_up_ename on emp_ind (upper(ename));
 
 select * from user_indexes
 where table_name = 'EMP_IND';
 
+-- This INDEX is tied to an expression, not a column
 select * from user_ind_columns
 where table_name = 'EMP_IND';
+
+-- Displays the expression that the index is tied to
+select * from user_ind_expressions
+where table_name = 'EMP_IND';
+
+select * from emp_ind
+where upper(ename) = 'AHMED SAMER';
