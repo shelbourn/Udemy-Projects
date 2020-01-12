@@ -5610,14 +5610,30 @@ drop table cart;
 
 create global temporary table cart
 ( item_no number, qty number)
-on commit delete rows;
+on commit delete rows; -- Rows are deleted automatically when COMMIT is issued
 
 insert into cart values (1, 10);
 insert into cart values (2, 4);
 
+-- Other users will not see these records when they query this table
 select * from cart;
 
 -- COMMIT deletes rows because we used ON COMMIT DELETE ROWS when the table was created
 commit;
 
 select * from cart;
+
+drop table cart2;
+
+create global temporary table cart2
+( item_no number, qty number)
+on commit preserve rows;
+
+insert into cart2 values (1, 10);
+insert into cart2 values (2, 13);
+insert into cart2 values (3, 1);
+
+-- Rows are preserved because we used the ON COMMIT PRESERVE ROWS clause when we created the table
+commit;
+
+select * from cart2;
