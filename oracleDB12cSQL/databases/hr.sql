@@ -5085,3 +5085,6 @@ select employee_id, first_name, last_name, email, hire_date, job_id
 from employees;
 
 select * from emp_v3;
+-------------------------------------------------------
+
+-- Creating COMPLEX VIEWS
