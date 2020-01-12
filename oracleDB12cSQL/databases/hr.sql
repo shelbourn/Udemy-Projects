@@ -5490,4 +5490,5 @@ and constraint_type in ('P', 'R')
 order by table_name;
 --------------------------------------
 
+-- *** IMPORTANT FOR EXAM ***
 -- DEFERRABLE Constraints
