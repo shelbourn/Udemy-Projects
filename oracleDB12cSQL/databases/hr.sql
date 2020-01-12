@@ -5033,7 +5033,42 @@ from employees;
 -- No I can SELECT from the view the same as I SELECT from a table
 select * from emp_v1;
 
-select * from user_views
+select * from user_views -- USER_VIEWS and ALL_VIEWS are the data dictionary tables that store VIEWS
 where view_name = 'EMP_V1';
 
 desc emp_v1;
+
+-- You can execute DML operations just like you can with a table
+insert into emp_v1 (employee_id, first_name, last_name, email, hire_date, job_id)
+values (333, 'David', 'King' ,'DKing', sysdate, 'IT_PROG');
+
+-- See the new record in the VIEW
+select * from emp_v1
+where employee_id = 333;
+
+-- See the new record in the original tabel
+select * from employees
+where employee_id = 333;
+-----------------------------------------------------
+
+-- Creating SIMPLE VIEW EMP_V2
+-- But here we will give the columns another name as alias
+
+drop view emp_v2;
+
+create view emp_v2
+as
+select employee_id emp_id, first_name fname, last_name lname, email, hire_date, job_id
+from employees;
+
+select * from emp_v2;
+
+-- So now you can run DML operations but using the new column aliases from the VIEW
+insert into emp_v2 (emp_id, fname, lname, email, hire_date, job_id)
+values (334, 'Lara', 'Croft', 'Lara', sysdate, 'IT_PROG');
+
+select * from emp_v2
+where emp_id = 334;
+
+select * from employees
+where employee_id = 334;
