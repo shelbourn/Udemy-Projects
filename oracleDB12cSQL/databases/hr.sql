@@ -5561,3 +5561,11 @@ commit;
 insert into emp_sal (emp_id, sal, bonus)
 values (1, 200, -1); -- Returns an error immediately because the BONUS_CK constraint is violated
 
+-- Can change between INITIALLY IMMEDIATE and INITIALLY DEFERRED
+-- Setting will be chaged for this session only
+set constraint sal_ck immediate;
+
+-- Change will not show in data dictionary table
+-- Original setting will show in data dictionary table
+select * from user_constraints
+where table_name = 'EMP_SAL';
