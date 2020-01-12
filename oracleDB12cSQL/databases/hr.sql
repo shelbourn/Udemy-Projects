@@ -5714,3 +5714,15 @@ give you this connection: SQLPLUS - SYS AS SYSDBA
 alter session set container=orclpdb;
 grant create any DIRECTORY to HR;
 */
+
+-- in SQL PLUS connected as: SYS AS SYSDBA
+-- alter session set container=orclpdb;
+-- grant create any DIRECTORY to hr;
+-- Execute these before trying to create any directories
+create or replace directory emp_dir
+as 'C:\Users\matts\Projects\Udemy-Projects\oracleDB12cSQL\instructorAssets\emp.ctl';
+
+select * from all_directories
+where directory_name = 'EMP_DIR';
+
+drop table emp_load_ext;
