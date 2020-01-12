@@ -5596,3 +5596,6 @@ create table emp_sal
 -- with DEFERRABLE INITIALLY DEFERRED / IMMEDIATE
 set constraint sal_ck immediate;
 set constraint sal_ck deferred;
+--------------------------
+
+-- GLOBAL TEMPORARY TABLE
