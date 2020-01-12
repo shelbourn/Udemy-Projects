@@ -5681,3 +5681,14 @@ lname
 -- sqlldr control=C:\Users\matts\Projects\Udemy-Projects\oracleDB12cSQL\instructorAssets\emp.ctl log=C:\Users\matts\Projects\Udemy-Projects\oracleDB12cSQL\instructorAssets\emp.log
 -- Connect as user: hr/hr@orclpdb
 -- emp.log file shows the results/details for the load transaction
+
+select * from emp_load;
+
+-- Removes all rows from table
+truncate table emp_load;
+
+select * from emp_load;
+
+-- If you change some row values to be incorrect data types, then the log will
+-- Show how many errors there were and with which rows
+-- I have changed one row that should be a number to a character data type
