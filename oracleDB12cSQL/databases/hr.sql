@@ -4824,12 +4824,12 @@ INDEXES
 */  
 -------------------------------------------------
 
--- INDEX Examples
+-- INDEX Examples (Autmomatically created indexes)
 drop table emp_ind;
 
 create table emp_ind
-( empno number constraint emp_ind_pk primary key,
-  ename varchar2(100) unique,
+( empno number constraint emp_ind_pk primary key, -- automatically indexed
+  ename varchar2(100) unique, -- automatically indexed (no constraint name so Oracle will automaticall name it)
   nickname varchar2(100),
   email varchar2(100)
 );  
@@ -4851,3 +4851,33 @@ commit;
 delete from emp_ind;
 
 select * from emp_ind;
+
+-- Oracle Server will create implicit UNIQUE indexes for the PK and Unique Key (UK)
+-- The name for the index will be the same as the constraint name
+
+select * from user_indexes
+where table_name = 'EMP_IND';
+
+select * from user_ind_columns
+where table_name = 'EMP_IND';
+
+-- Now Oracle will use the index in the WHERE clause to speed up the query
+select * from emp_ind
+where empno = 1; -- You can see that Oracle uses the index in the 'Explain Plan' section of ORacle SQL Developer
+
+select * from emp_ind
+where ename = 'Ahmed Samer'; -- You can see that Oracle uses the index in the 'Explain Plan' section of ORacle SQL Developer
+-----------------------------------------------
+
+-- Creating Manual INDEXES
+select * from emp_ind
+where nickname = 'Ahmed.Samer'; -- There is no index on NICKNAME so Oracle will make a full scan of the table
+
+create index emp_ind_nickname on emp_ind (nickname);
+
+select * from user_indexes
+where table_name = 'EMP_IND';
+
+-- Now the server will user the index for NICKNAME in the WHERE clause
+select * from emp_ind
+where nickname = 'Ahmed.Samer';
