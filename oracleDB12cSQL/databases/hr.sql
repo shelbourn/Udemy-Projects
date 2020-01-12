@@ -4799,3 +4799,6 @@ create public synonym employees for hr.employees;
 -- The above statement allows other user to access EMPLOYEES table without having to use HR.EMPLOYEES
 -- No need to use SELECT * FROM HR.EMPLOYEES
 -- Can just use SELECT * FROM EMPLOYEES
+-----------------------------------------------------
+
+-- INDEXES (Part 1)
