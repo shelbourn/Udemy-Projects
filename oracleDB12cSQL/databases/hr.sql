@@ -5126,3 +5126,29 @@ from employees;
 -----------------------------------------------
 
 -- Creating COMPLEX VIEWS examples
+
+drop view emp_dept_analysis;
+
+create view emp_dept_analysis
+as
+select department_id, count(employee_id) emp_count,
+max(salary) max_sal,
+min(salary) low_sal
+from employees
+group by department_id;
+
+select * from emp_dept_analysis;
+
+-- We want to add the Average Salary also to the VIEW EMP_DEPT_ANALYSIS
+-- So we have to recreate the VIEW again by using (OR REPLACE)
+
+create or replace view emp_dept_analysis
+as
+select department_id, count(employee_id) emp_count,
+max(salary) max_sal,
+min(salary) min_sal,
+avg(salary) avg_sal
+from employees
+group by department_id;
+
+select * from emp_dept_analysis;
