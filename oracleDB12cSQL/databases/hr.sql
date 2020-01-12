@@ -5553,6 +5553,11 @@ where table_name = 'EMP_SAL';
 insert into emp_sal (emp_id, sal, bonus)
 values (1, 90, 5);
 
+-- Error will be returned now because SAL_CK is violated
+-- ROLLBACK is issued automatically
+commit;
+
 -- DEFARRABLE INITIALLY IMMEDIATE will be violated immediately (acts as a normal constraint)
 insert into emp_sal (emp_id, sal, bonus)
 values (1, 200, -1); -- Returns an error immediately because the BONUS_CK constraint is violated
+
