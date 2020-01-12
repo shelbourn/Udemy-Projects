@@ -4914,4 +4914,28 @@ select * from emp_ind
 where upper(ename) = 'AHMED SAMER';
 ----------------------------------------
 
+-- *** IMPORTANT FOR EXAM ***
 -- INDEXES (Part 2)
+
+/*
+Index Creation Guidelines
+
+Create an Index when:
+
+* A column contains a wide range of values
+* A column contains a large number of null values
+* One or more columns are frequently used together in a WHERE clause or a join condition
+* The table is large and most queries are expected to retriece less than 2% to 4%
+  of the rows in the table
+  
+Do not create and Index when:
+
+* The columns are not often used as a condition in the query (columns that are not frequently used in statements)
+* The table is small or most queries are expected to retriece more than 2% to
+  4% of the rows in the table
+* The table is updated frequently
+* The indexed columns are referenced as part of an expression
+*/
+-----------------------------------------
+
+-- More INDEX Examples
