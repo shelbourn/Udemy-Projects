@@ -5492,3 +5492,8 @@ order by table_name;
 
 -- *** IMPORTANT FOR EXAM ***
 -- DEFERRABLE Constraints
+
+-- Deferrable constraints do not return an error if the constraint has been violated
+-- until a COMMIT is issued
+
+-- DEFFERABLE Constraints Examples
