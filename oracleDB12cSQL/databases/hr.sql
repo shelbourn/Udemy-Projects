@@ -5493,6 +5493,8 @@ order by table_name;
 -- *** IMPORTANT FOR EXAM ***
 -- DEFERRABLE Constraints
 
+-- DEFERRABLE INITALLY DEFERRED / IMMEDIATE CAN ONLY BE CHANGED FOR SESSION, NOT PERMANENTLY!!!
+
 -- Deferrable constraints do not return an error if the constraint has been violated
 -- until a COMMIT is issued
 
