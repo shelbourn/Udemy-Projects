@@ -5461,3 +5461,30 @@ order by table_name;
 -- When the PK constraint is disabled, it also drops the index for it
 select * from user_indexes
 where table_name = 'EMP2';
+
+alter table emp2
+enable constraint emp2_pk;
+
+-- Re-enabling the PK constraint also recreates the INDEX for it
+select * from user_indexes
+where table_name = 'EMP2';
+----------------------------------
+
+-- *** IMPORTANT ***
+-- Trying to disable a master table constraint that has references to it from other tables
+-- will return an error
+
+-- DEPT2_PK is a FK in the EMP2 table so the constraint cannot be disabled like this
+alter table dept2
+disable constraint dept2_pk;
+
+-- Must disable the constraint using CASCADE option
+-- This will also disable the related FKs in other tables
+alter table dept2
+disable constraint dept2_pk cascade;
+
+-- DEPT2_PK and EMP2_FK_DEPT have both been disabled
+select * from user_constraints
+where table_name in ('EMP2', 'DEPT2')
+and constraint_type in ('P', 'R')
+order by table_name;
