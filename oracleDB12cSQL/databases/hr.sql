@@ -5185,7 +5185,7 @@ select * from emp_v_read;
 delete from emp_v_read;
 
 -- Oracle creates a constraint for READ ONLY VIEWS/TABLES
--- 'O' signified READ ONLY constraint
+-- Constraint type 'O' = READ ONLY
 select * from user_constraints
 where table_name = 'EMP_V_READ';
 --------------------------------------------------------
@@ -5200,6 +5200,7 @@ from employees
 where department_id = 90
 with check option;
 
+-- Constraint type 'V' = VIEW with CHECK OPTION
 select * from emp_v_chq_const;
 
 select * from user_constraints
@@ -5214,3 +5215,18 @@ select * from emp_v_chq_const;
 -- Any DML operations out of the VIEW's range will return an error (VIEW WITH CHECK OPTION WHERE clause violation)
 insert into emp_v_chq_const (employee_id, first_name, last_name, email, hire_date, job_id, department_id)
 values (446, 'SAED', 'ALI', 'SALI', sysdate, 'IT_PROG', 10); -- Returns an error
+--------------------------------------------------
+
+-- FORCE VIEW
+-- Forces a VIEWS creation even if the DB objects don' yet exist
+-- The below statement creates a VIEW on the table JRX even though JRX doesn't exist
+
+drop view force_v;
+
+create or replace force view force_v
+as
+select eno, ename
+from jrx;
+
+select * from user_views
+where view_name = 'FORCE_V';
