@@ -5698,3 +5698,19 @@ select * from emp_load;
 -----------------------------------------------
 
 -- External Tables (Part 1)
+
+-- External Tables rely on SQL*Loader
+-- External tables are read only tables whose metadata is stored in the DB
+-- Data is stored outside the DB
+-- DML Operations are not allowed
+-- No indexes can be created on external tables
+-- You can access the data with 2 methods (Oracle_Loader and Oracle_Datapump)
+-- To read external data, you first need to create a directory in the DB
+
+/*
+To create a directory you need to create any DIRECTORY privalege, the DBA should
+give you this connection: SQLPLUS - SYS AS SYSDBA
+
+alter session set container=orclpdb;
+grant create any DIRECTORY to HR;
+*/
