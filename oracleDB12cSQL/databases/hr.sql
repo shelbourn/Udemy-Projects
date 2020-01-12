@@ -4988,3 +4988,33 @@ drop index emp_ind1_comp;
 select * from user_indexes
 where table_name = 'EMP_IND1';
 ------------------------------------------
+
+/*
+VIEWS
+
+* Essentially a stored SELECT statement that has a name
+* VIEWS are logical subsets or combinations of data
+* VIEWS are schema objects
+* A VIEW contains no data of its own
+* The tables on which a VIEW is based are called BASE TABLES
+* VIEWS restrict access to the data because they display selected columns
+* VIEWS can be used to make simple queries to retrieve the results of complicated queries
+* VIEWS provide data independence for ad hoc users and application programs.
+* One VIEW can be used to retrieve data from several tables
+* VIEWS provide groups of users access to data according to their particular criteria
+
+SIMPLE VIEWS
+
+* One table
+* No functions
+* No groups of data
+* DML operations allowed through a VIEW
+
+COMPLEX VIEWS
+
+* One or more tables
+* Contain functions
+* Contain groups of data
+* DML operations not always allowed through a VIEW
+*/
+--------------------------------------------------------
