@@ -4943,6 +4943,7 @@ Do not create and Index when:
 -- Naming the INDEX while creating a table
 drop table emp_ind1;
 
+-- Even though a NONUNIQUE INDEX is created, the values must be unique because it is a PK
 create table emp_ind1
 ( empno number constraint emp_ind1_pk primary key using index
     (create index emp_ind1_ind on emp_ind1 (empno)),
@@ -4951,6 +4952,12 @@ create table emp_ind1
   email varchar2(100),
   gender char(1)
 );
+
+insert into emp_ind1 (empno, fname, lname, email, gender)
+values (1, 'M', 'S', 'm@me.com', 'M');
+
+insert into emp_ind1 (empno, fname, lname, email, gender)
+values (1, 'N', 'B', 'n@me.com', 'F');
 
 -- You can create INDEXES of composite columns
 create index emp_ind1_comp on emp_ind1 (fname, lname);
@@ -4967,4 +4974,17 @@ BITMAP INDEXES
 * Specify BITMAP to indicate that the index is to be created with a bitmap for each
   distinct key, rather than indexing each row separately.
 * Bitmap indexes store the ROWIDS associated with a key value as a bitmap
+* Normal INDEXES point to 1 row, BITMAP INDEXES point to groups of rows
+* Useful where a column contains many rows that have very few distinct values, such as Male or Female
+* Pointer will point to distinct values, not on specific rows
 */
+
+-- Creating BITMAP INDEX
+creaet bitmap index emp_ind_b on emp_ind1 (gender); -- This feature is only in the Enterprise Edition
+
+-- Dropping an index
+drop index emp_ind1_comp;
+
+select * from user_indexes
+where table_name = 'EMP_IND1';
+------------------------------------------
