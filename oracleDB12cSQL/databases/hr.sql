@@ -5547,3 +5547,12 @@ enable constraint sal_ck;
 
 select * from user_constraints
 where table_name = 'EMP_SAL';
+
+-- DEFERRABLE INITIALLY DEFERRED, constraint will be violated when COMMIT is issued
+-- INSERT allowed even though the constraint SAL_CK is violated
+insert into emp_sal (emp_id, sal, bonus)
+values (1, 90, 5);
+
+-- DEFARRABLE INITIALLY IMMEDIATE will be violated immediately (acts as a normal constraint)
+insert into emp_sal (emp_id, sal, bonus)
+values (1, 200, -1); -- Returns an error immediately because the BONUS_CK constraint is violated
