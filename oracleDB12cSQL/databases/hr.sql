@@ -4768,3 +4768,34 @@ Guidelines for altering a SEQUENCE | *** IMPORTANT FOR EXAM ***
 ----------------------------------------------
 
 -- SYNONYMS
+
+/*
+SYNONYM (Nickname)
+
+* A database object
+* Can be created to give an alternative name to a table or to another database object
+* Requires no storage other than its definition in the data dictionary
+* Is useful for hiding the identity and location of an underlying schema object
+*/
+
+-- Creating Private SYNONYM E for EMPLOYEES table
+drop synonym e;
+
+create synonym e
+for employees;
+
+-- Now you can use the SYNONYM to call the table
+select * from e;
+
+-- The info for SYNONYMS is stored in the dictionary view under USER_SYNONYMS / ALL_SYNONYMS
+select * from user_synonyms;
+
+-- You can drop the SYNONYM using the DROP statement
+drop synonym e;
+
+-- You need CREATE PUBLIC SYNONYM privaleges in order to create PUBLIC SYNONYMS
+create public synonym employees for hr.employees;
+
+-- The above statement allows other user to access EMPLOYEES table without having to use HR.EMPLOYEES
+-- No need to use SELECT * FROM HR.EMPLOYEES
+-- Can just use SELECT * FROM EMPLOYEES
