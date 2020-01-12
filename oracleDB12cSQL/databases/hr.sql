@@ -5278,3 +5278,14 @@ drop constraint &constraint; -- 'constraint' does not have to be fully spelled o
 
 select * from user_constraints
 where table_name = 'EMP2';
+
+-- Method 2.) Adding PK with a unique name
+
+alter table emp2
+add constraint emp2_pk primary key(employee_id);
+
+select * from user_constraints
+where table_name = 'EMP2';
+
+alter table dept2
+add constraint dept2_pk primary key(department_id);
