@@ -5599,3 +5599,25 @@ set constraint sal_ck deferred;
 --------------------------
 
 -- GLOBAL TEMPORARY TABLE
+
+-- The GLOBAL TEMPORARY TABLE is a table that holds data that exists for the duration
+-- of the transaction (session) only
+-- Each session can see and modify its data only (will not exist in a new session)
+-- Useful for situations where it is not practical to create an actual table
+-- Useful for storing data related to things like website shopping carts
+
+drop table cart;
+
+create global temporary table cart
+( item_no number, qty number)
+on commit delete rows;
+
+insert into cart values (1, 10);
+insert into cart values (2, 4);
+
+select * from cart;
+
+-- COMMIT deletes rows because we used ON COMMIT DELETE ROWS when the table was created
+commit;
+
+select * from cart;
