@@ -5488,3 +5488,6 @@ select * from user_constraints
 where table_name in ('EMP2', 'DEPT2')
 and constraint_type in ('P', 'R')
 order by table_name;
+--------------------------------------
+
+-- DEFERRABLE Constraints
