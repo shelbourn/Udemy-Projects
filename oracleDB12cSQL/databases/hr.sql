@@ -5374,6 +5374,8 @@ select * from user_constraints
 where table_name in ('EMP2', 'DEPT2')
 and constraint_type in ('P', 'R');
 
+-- Will show DEPARTMENT_ID has been dropped
 select * from dept2;
 
+-- DEPARTMENT_ID will still be in table, but will no longer be a FK
 select * from emp2;
