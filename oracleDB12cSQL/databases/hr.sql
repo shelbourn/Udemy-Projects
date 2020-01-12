@@ -5589,5 +5589,8 @@ create table emp_sal
 
 -- Now you will not be able to change the constraint to IMMEDIATE / DEFERRED
 -- Because the constraints were created without "DEFERRABLE INITIALLY DEFERRED / IMMEDIATE"
+-- Cannot change DEFERRED / IMMEDIATE without the DEFERRABLE option when the constraint is created
+-- In order to use DEFERRED / IMMEDIATE you must now drop the constraints and recreate them
+-- with DEFERRABLE INITIALLY DEFERRED / IMMEDIATE
 set constraint sal_ck immediate;
 set constraint sal_ck deferred;
