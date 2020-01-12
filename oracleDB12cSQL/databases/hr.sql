@@ -4824,7 +4824,7 @@ INDEXES
 */  
 -------------------------------------------------
 
--- INDEX Examples (Autmomatically created indexes)
+-- Creating INDEXES Automatically
 drop table emp_ind;
 
 create table emp_ind
@@ -4869,10 +4869,12 @@ select * from emp_ind
 where ename = 'Ahmed Samer'; -- You can see that Oracle uses the index in the 'Explain Plan' section of ORacle SQL Developer
 -----------------------------------------------
 
--- Creating Manual INDEXES
+-- Creating INDEXES Manually
 select * from emp_ind
 where nickname = 'Ahmed.Samer'; -- There is no index on NICKNAME so Oracle will make a full scan of the table
 
+-- Must have CREATE INDEX privaleges to create INDEXES
+-- This is a NONUNIQUE INDEX (May contain duplicate index values)
 create index emp_ind_nickname on emp_ind (nickname);
 
 select * from user_indexes
@@ -4881,3 +4883,11 @@ where table_name = 'EMP_IND';
 -- Now the server will user the index for NICKNAME in the WHERE clause
 select * from emp_ind
 where nickname = 'Ahmed.Samer';
+
+-- Now you can create a UNIQUE INDEX for email, but it is better to add a UNIQUE CONSTRAINT
+-- UNIQUE INDEX acts like a UNIQUE CONSTRAINT
+create unique index emp_ind_email on emp_ind (email);
+
+-- Now is you try to insert an existing email address then you will receive an error
+insert into emp_ind (empno, ename, nickname, email)
+values ('10', 'Karem Samer', 'Ahmed.Samer', 'ahmed.samer@gmail.com'); -- Returns an error
