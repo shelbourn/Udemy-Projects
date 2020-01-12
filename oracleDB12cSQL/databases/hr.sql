@@ -5676,3 +5676,7 @@ fname,
 lname
 )
 */
+
+-- Then after this we execute this command: sqlldr control=C:\Users\matts\Projects\Udemy-Projects\oracleDB12cSQL\instructorAssets\emp.ctl log=C:\Users\matts\Projects\Udemy-Projects\oracleDB12cSQL\instructorAssets\emp.log from CMD windows command prompt
+-- sqlldr control=C:\Users\matts\Projects\Udemy-Projects\oracleDB12cSQL\instructorAssets\emp.ctl log=C:\Users\matts\Projects\Udemy-Projects\oracleDB12cSQL\instructorAssets\emp.log
+-- Connect as user: hr/hr@orclpdb
