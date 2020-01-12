@@ -5072,3 +5072,16 @@ where emp_id = 334;
 
 select * from employees
 where employee_id = 334;
+----------------------------------------------------------
+
+-- Creating SIMPLE VIEW EMP_V3
+-- Here we will give the columns another name inside the VIEW definition
+
+drop view emp_v3;
+
+create view emp_v3 (empid, fname, lname, mail, hiredate, jobs) -- aliases get mapped to columns in SELECT statement below
+as
+select employee_id, first_name, last_name, email, hire_date, job_id
+from employees;
+
+select * from emp_v3;
