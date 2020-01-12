@@ -5416,3 +5416,41 @@ order by table_name;
 ------------------------------------------
 
 -- Enable / Disable Constraints
+-- When constraints are created they are enabled by default
+-- Disabling constraints may be useful for large data migrations
+
+drop table emp2;
+
+-- Child table always has columns that refer to PKs in other tables
+create table emp2
+as select * from employees;
+
+drop table dept2;
+
+-- Master table always has FKs in other tables referring to it
+create table dept2
+as select * from departments;
+
+alter table dept2
+add constraint dept2_pk primary key (department_id);
+
+alter table emp2
+add constraint emp2_pk primary key (employee_id);
+
+alter table emp2
+add constraint emp2_fk_dept foreign key (department_id) references dept2 (department_id);
+
+select * from user_constraints
+where table_name in ('EMP2', 'DEPT2')
+and constraint_type in ('P', 'R')
+order by table_name;
+
+select * from user_indexes
+where table_name = 'EMP2';
+
+-- Disables PK constraint
+alter table emp2
+disable constraint emp2_pk;
+
+select * from user_constraints
+where table_name = 'EMP2';
