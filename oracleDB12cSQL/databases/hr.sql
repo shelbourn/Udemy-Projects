@@ -5229,4 +5229,7 @@ select eno, ename
 from jrx;
 
 select * from user_views
-where view_name = 'FORCE_V';
+where view_name = 'FORCE_V';  
+-----------------------------------------------------
+
+-- Adding Constraints / Dropping Constraints
