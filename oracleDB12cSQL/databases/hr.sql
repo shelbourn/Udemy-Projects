@@ -5709,7 +5709,7 @@ select * from emp_load;
 
 /*
 To create a directory you need to create any DIRECTORY privalege, the DBA should
-give you this connection: SQLPLUS - SYS AS SYSDBA
+give you this - connect to SQLPLUS - SYS AS SYSDBA
 
 alter session set container=orclpdb;
 grant create any DIRECTORY to HR;
@@ -5720,9 +5720,31 @@ grant create any DIRECTORY to HR;
 -- grant create any DIRECTORY to hr;
 -- Execute these before trying to create any directories
 create or replace directory emp_dir
-as 'C:\Users\matts\Projects\Udemy-Projects\oracleDB12cSQL\instructorAssets\emp.ctl';
+as 'C:\Users\matts\Desktop';
 
-select * from all_directories
+-- Directory owner will always be SYS
+select * from all_directories -- ALL_DIRECTORIES is a data dictionary  table showing all directories
 where directory_name = 'EMP_DIR';
 
 drop table emp_load_ext;
+
+create table emp_load_ext
+    ( employee_number number,
+      fname varchar2(100),
+      lname varchar2(100)
+    )
+  organization external
+    ( type oracle_loader
+      default directory emp_dir
+      access parameters
+        ( records delimited by newline
+          fields terminated by ','
+        )
+      location ('old_emp_data.csv')
+    )
+    reject limit unlimited;
+    
+    select * from emp_load_ext;
+    
+-- DML Operations are not supported on external tables
+-- If you want to change the data you must go to the original external file itself
