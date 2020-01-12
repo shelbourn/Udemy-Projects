@@ -5379,3 +5379,6 @@ select * from dept2;
 
 -- DEPARTMENT_ID will still be in table, but will no longer be a FK
 select * from emp2;
+-----------------------------------------------
+
+-- RENAME COLUMN / RENAME CONSTRAINT
