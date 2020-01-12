@@ -5403,3 +5403,13 @@ select * from user_constraints
 where table_name in ('EMP2', 'DEPT2')
 and constraint_type in ('P', 'R')
 order by table_name;
+
+-- Changing the constraint name
+alter table emp2
+rename constraint emp2_pk to new_emp2_pk;
+
+-- Will show the new constraint name
+select * from user_constraints
+where table_name in ('EMP2', 'DEPT2')
+and constraint_type in ('P', 'R')
+order by table_name;
