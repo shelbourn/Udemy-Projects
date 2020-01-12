@@ -5259,7 +5259,9 @@ select * from dept2;
 
 -- There are many methods of adding constraints to a table
 
--- Method 1.) Adding a PK
+-- 1.) Adding Primary Key (PK)
+
+-- Method 1.) Adding a PK without unique name (not preferred or commonly used)
 -- Here the constraint name will be sys_cn%
 
 -- Makes EMPLOYEE_ID a PK
@@ -5279,7 +5281,7 @@ drop constraint &constraint; -- 'constraint' does not have to be fully spelled o
 select * from user_constraints
 where table_name = 'EMP2';
 
--- Method 2.) Adding PK with a unique name
+-- Method 2.) Adding PK with a unique name (preferred method)
 
 alter table emp2
 add constraint emp2_pk primary key(employee_id);
@@ -5289,3 +5291,25 @@ where table_name = 'EMP2';
 
 alter table dept2
 add constraint dept2_pk primary key(department_id);
+--------------------------------------
+
+-- 2.) Adding a Foreign Key (FK)
+
+-- Method 1.) Adding a FK without a unique name (not preferred or commonly used)
+
+alter table emp2
+modify department_id references dept2(department_id);
+
+select * from user_constraints
+where table_name = 'EMP2';
+
+alter table emp2
+drop constraint &con_name;
+
+-- Method 2.) Adding a FK with a unique name (preferred and commonly used)
+
+alter table emp2
+add constraint emp2_fk_dept foreign key(department_id) references dept2(department_id);
+
+select * from user_constraints
+where table_name = 'EMP2';
