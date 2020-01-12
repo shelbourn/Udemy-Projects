@@ -5343,3 +5343,37 @@ select * from user_constraints
 where table_name in ('EMP2', 'DEPT2')
 and constraint_type in ('P', 'R')
 order by table_name;
+---------------------------------------------------
+
+-- Adding PK back to DEPT2
+alter table dept2
+add constraint dept2_pk primary key (department_id);
+
+-- Adding FK back to EMP2
+alter table emp2
+add constraint emp2_fk_dept foreign key(department_id) references dept2 (department_id);
+
+select * from user_constraints
+where table_name in ('EMP2', 'DEPT2')
+and constraint_type in ('P', 'R')
+order by table_name;
+----------------------------------------------------
+
+-- Dropping a column with constraints
+
+-- We want to drop column DEPARTMENT_ID from DEPT2 (PK with child records)
+alter table dept2
+drop column department_id; -- returns an error due to child records
+
+-- Drops the column and all related constraints
+alter table dept2
+drop column department_id cascade constraints;
+
+-- Shows that PK from DEPT2 and FK from EMP2 have been deleted
+select * from user_constraints
+where table_name in ('EMP2', 'DEPT2')
+and constraint_type in ('P', 'R');
+
+select * from dept2;
+
+select * from emp2;
