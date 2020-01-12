@@ -5453,4 +5453,11 @@ alter table emp2
 disable constraint emp2_pk;
 
 select * from user_constraints
+where table_name in ('EMP2', 'DEPT2')
+and constraint_type in ('P', 'R')
+order by table_name;
+
+-- *** IMPORTANT FOR EXAM ***
+-- When the PK constraint is disabled, it also drops the index for it
+select * from user_indexes
 where table_name = 'EMP2';
