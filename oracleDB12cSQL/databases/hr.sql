@@ -5320,3 +5320,26 @@ where table_name = 'EMP2';
 
 alter table emp2
 modify first_name not null;
+------------------------------------------------
+
+delete from dept2; -- Returns an error because DEPT2 has child records in another table (EMP2 - DEPARTMENT_ID)
+
+select * from user_constraints
+where table_name in ('EMP2', 'DEPT2')
+and constraint_type in ('P', 'R')
+order by table_name;
+
+-- Referenced column constraints must be removed before this query will work
+alter table dept2
+drop primary key; -- Can also be done by ALTER TABLE DEPT2 DROP CONSTRAINT DEPT2_PK;
+
+-- When you do this, it will drop all related constraints
+-- Drops the PK and all related FKs
+alter table dept2
+drop primary key cascade;
+
+-- Shows that PK of DEPT2 and FK of EMP2 have been deleted
+select * from user_constraints
+where table_name in ('EMP2', 'DEPT2')
+and constraint_type in ('P', 'R')
+order by table_name;
