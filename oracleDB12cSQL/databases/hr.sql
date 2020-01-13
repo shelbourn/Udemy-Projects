@@ -5720,7 +5720,7 @@ grant create any DIRECTORY to HR;
 -- grant create any DIRECTORY to hr;
 -- Execute these before trying to create any directories
 create or replace directory emp_dir
-as 'C:\Users\matts\Desktop';
+as 'C:\Users\matts\Projects\Udemy-Projects\oracleDB12cSQL\instructorAssets\';
 
 -- Directory owner will always be SYS
 select * from all_directories -- ALL_DIRECTORIES is a data dictionary  table showing all directories
@@ -5748,3 +5748,6 @@ create table emp_load_ext
     
 -- DML Operations are not supported on external tables
 -- If you want to change the data you must go to the original external file itself
+----------------------------------------
+
+-- External Tables (Part 2)
