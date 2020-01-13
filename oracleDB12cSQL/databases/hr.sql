@@ -5983,6 +5983,23 @@ select employee_id, first_name, last_name, department_id, salary,
   from employees e
   where salary > (select round(avg(salary)) from employees c where c.department_id = e.department_id)
   order by department_id;
-  ------------------------------------------------
+------------------------------------------------
   
-  -- Refresher on EXISTS / NOT EXISTS
+-- Refresher on EXISTS / NOT EXISTS
+-- Always use table name aliases with EXISTS and NOT EXISTS
+  
+-- Display all the departments that have employees
+select * from departments d
+where exists (select 1 from employees e where e.department_id = d.department_id);
+  
+-- Alternate method of returning the same results as above (Not Preferred)
+select * from departments d
+where department_id in (select department_id from employees e);
+  
+-- Display all the departments that have no employees
+select * from departments d
+where not exists (select 1 from employees e where e.department_id = d.department_id);
+  
+-- When there are NULL values, the NOT IN operator will return zero values
+select * from departments d
+where department_id not in (select department_id from employees e);
