@@ -5868,3 +5868,6 @@ from student_major a
 where term = (select max(term) from student_major b where b.student_id = a.student_id)
 ) st_major -- ST_MAJOR = alias for subquery
 where st.student_id = st_major.student_id;
+----------------------------------------------
+
+-- Pairwise / Non Pairwise Subqueries
