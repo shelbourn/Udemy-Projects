@@ -5856,6 +5856,9 @@ where term = (select max(term) from student_major b where b.student_id = a.stude
 
 -- So now we can join this SELECT statement with the student table to get the name
 
+-- *** IMPORTANT FOR EXAM ***
+-- Using a subquery as a source
+
 -- This query used the entire SELECT statement above as a source for the JOIN
 select st.student_id, st.student_name, st_major.major
 from student st,
@@ -5863,5 +5866,5 @@ from student st,
 select student_id, term, major
 from student_major a
 where term = (select max(term) from student_major b where b.student_id = a.student_id)
-) st_major
+) st_major -- ST_MAJOR = alias for subquery
 where st.student_id = st_major.student_id;
