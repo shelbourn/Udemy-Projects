@@ -6005,3 +6005,7 @@ where not exists (select 1 from employees e where e.department_id = d.department
 -- When there are NULL values, the NOT IN operator will return zero values
 select * from departments d
 where department_id not in (select department_id from employees e);
+-------------------------------------------
+
+-- WITH Clause
+
