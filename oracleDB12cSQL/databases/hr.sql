@@ -5696,6 +5696,8 @@ select * from emp_load;
 
 -- File emp.bad will list all the rows that were not imported due to errors
 -----------------------------------------------
+-- *** I couldn't get any of these to work for me ***
+
 
 -- External Tables (Part 1)
 
@@ -5720,7 +5722,7 @@ grant create any DIRECTORY to HR;
 -- grant create any DIRECTORY to hr;
 -- Execute these before trying to create any directories
 create or replace directory emp_dir
-as 'C:\Users\matts\Projects\Udemy-Projects\oracleDB12cSQL\instructorAssets\';
+as 'C:\Users\matts\Projects\Udemy-Projects\oracleDB12cSQL\instructorAssets';
 
 -- Directory owner will always be SYS
 select * from all_directories -- ALL_DIRECTORIES is a data dictionary  table showing all directories
@@ -5756,8 +5758,12 @@ create table emp_load_ext
 
 -- The select statement creates the records that are stored in EMP.dmp
 -- EMP.dmp creates the EMP_PUMP table
+
+drop table emp_pump;
+
+-- Creating an external .dmp file using a SELECT statement to create a table
 create table emp_pump
-    ( employee_number,
+    ( employee_number, -- These are the columns in the new table
       fname,
       lname
     )
@@ -5769,3 +5775,19 @@ create table emp_pump
     as
     select employee_id, first_name, last_name
     from employees;
+    
+select * from emp_pump;
+
+-- Reading an external .dmp file to create an external table
+create table emp_pump_read
+      ( employee_number number,
+        fname varchar2(100),
+        lname varchar2 (100)
+      )
+    organization external
+      ( type ORACLE_DATAPUMP
+        default directory emp_dir
+        location ('EMP.dmp')
+      );
+      
+select * from emp_pump_read;      
