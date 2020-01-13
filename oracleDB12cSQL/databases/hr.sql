@@ -5897,7 +5897,37 @@ and first_name <> 'John';
 -- This is an alternate method of executing the query above
 -- This is called a Pairwise Comparison Subquery
 
+-- The column in WHERE clause match the columns in IN clause (Pairwise)
 select * from employees
-where (manager_id, department_id) in (select manager_id, department_id
+where (manager_id, department_id) in (select manager_id, department_id -- Both columns need to match
                                       from employees where first_name = 'John')
 and first_name <> 'John';
+-------------------------------------
+
+select * from employees
+where first_name = 'John';
+
+/*
+Display the details of the employees who are managed by the same manager as
+the employees with the first name 'John' and work in the same department as
+the employees with the first name 'John'
+*/
+
+select * from employees
+where manager_id in (108, 100, 123)
+and department_id in (100, 80, 50)
+and first_name <> 'John';
+
+-- This query will return the same results as the above query
+-- This is called a Non Pairwise Subquery
+
+-- The columns do not need to match (Non Pairwise)
+select * from employees
+where manager_id in ( select manager_id -- Only one column needs to match
+                      from employees where first_name = 'John'
+                    )
+and department_id in (  select department_id -- Only one column needs to match
+                        from employees where first_name = 'John'
+                     )
+and first_name <> 'John';
+------------------------------------------
