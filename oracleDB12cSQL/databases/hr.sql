@@ -5932,13 +5932,15 @@ and department_id in (  select department_id -- Only one column needs to match
 and first_name <> 'John';
 ------------------------------------------
 
+-- *** IMPORTANT - STUDY THIS ***
+
 -- Scalar Subquery / Correlated Subquery
 
 -- Scalar Subquery
 -- Subquery that returns exactly one column value from one row
 
 select employee_id, first_name, last_name, salary,
-(select max(salary) from employees) max_sal
+(select max(salary) from employees) max_sal -- Scalar subquery
 from employees;
 
 -- We want to display the department name also in the query using a subquery
@@ -5946,10 +5948,38 @@ from employees;
 -- It is called a correlated subquery at the same time
 -- Correlated Subquery: A subquery that reference a column in the parent query
 
+-- With this subquery, all rows from EMPLOYEES table will be returned without
+-- having to do a LEFT OUTER JOIN
 select employee_id, first_name, last_name, department_id,
-(select department_name from departments b where b.department_id = e.department_id) dept_name
+(select department_name from departments b where b.department_id = e.department_id) dept_name -- Correlated subquery
 from employees e;
 
 select employee_id, first_name, last_name, department_id,
 nvl( (select department_name from departments b where b.department_id = e.department_id), 'no dept') dept_name
 from employees e;
+
+-- Another Correlated Subquery example
+-- Find the employees who earn more than the average salary in their departments
+
+select department_id, avg (salary)
+from employees
+group by department_id;
+
+select * from employees
+where department_id = 100
+and salary > 8609;
+
+-- This query combines the above two queries
+-- DEPARTMENT_ID in the subquery must be set equal to DEPARTMENT_ID in parent query
+select employee_id, first_name, last_name, department_id, salary
+from employees e
+where salary > (select round(avg(salary)) from employees c where c.department_id = e.department_id)
+order by department_id;
+
+-- More readable version of the query above
+-- DEPARTMENT_ID in the subquery must be set equal to DEPARTMENT_ID in parent query
+select employee_id, first_name, last_name, department_id, salary,
+  (select round(avg(salary)) from employees r where r.department_id = e.department_id) avg_sal
+  from employees e
+  where salary > (select round(avg(salary)) from employees c where c.department_id = e.department_id)
+  order by department_id;
