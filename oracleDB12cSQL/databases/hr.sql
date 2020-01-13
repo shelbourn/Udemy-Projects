@@ -5870,4 +5870,34 @@ where term = (select max(term) from student_major b where b.student_id = a.stude
 where st.student_id = st_major.student_id;
 ----------------------------------------------
 
+-- Multiple Column Subqueries
+
 -- Pairwise / Non Pairwise Subqueries
+
+select * from employees
+where first_name = 'John';
+
+/*
+Display the details for the employees who are managed by the same manager and
+who work in the same department as the employees who have the first name 'John'
+*/
+
+select * from employees
+where manager_id = 108 and department_id = 100
+and first_name <> 'John'
+union all
+select * from employees
+where manager_id = 100 and department_id = 80
+and first_name <> 'John'
+union all
+select * from employees
+where manager_id = 123 and department_id = 50
+and first_name <> 'John';
+
+-- This is an alternate method of executing the query above
+-- This is called a Pairwise Comparison Subquery
+
+select * from employees
+where (manager_id, department_id) in (select manager_id, department_id
+                                      from employees where first_name = 'John')
+and first_name <> 'John';
