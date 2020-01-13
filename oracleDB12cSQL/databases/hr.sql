@@ -5934,3 +5934,22 @@ and first_name <> 'John';
 
 -- Scalar Subquery / Correlated Subquery
 
+-- Scalar Subquery
+-- Subquery that returns exactly one column value from one row
+
+select employee_id, first_name, last_name, salary,
+(select max(salary) from employees) max_sal
+from employees;
+
+-- We want to display the department name also in the query using a subquery
+-- We will use a scalar subquery to do this
+-- It is called a correlated subquery at the same time
+-- Correlated Subquery: A subquery that reference a column in the parent query
+
+select employee_id, first_name, last_name, department_id,
+(select department_name from departments b where b.department_id = e.department_id) dept_name
+from employees e;
+
+select employee_id, first_name, last_name, department_id,
+nvl( (select department_name from departments b where b.department_id = e.department_id), 'no dept') dept_name
+from employees e;
