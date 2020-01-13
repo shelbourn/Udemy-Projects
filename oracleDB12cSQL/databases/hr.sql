@@ -5794,3 +5794,36 @@ select * from emp_pump_read;
 --------------------------------
 
 -- Using the subquery as a source table
+
+select location_id, city
+from locations;
+
+select department_id, department_name, location_id
+from departments;
+
+-- Joins DEPARTMENTS with LOCATIONS using subquery from LOCATIONS as a source (table sort of)
+select dept.department_id, dept.department_name, loc.city
+from departments dept,
+(select location_id, city from locations) loc -- we name the subquery using inline view
+where dept.location_id = loc.location_id;
+
+-- Let's create a real-world example to understand why we use the inline view
+
+drop table student;
+
+create table student
+( student_id number primary key,
+  student_name varchar2(100)
+);
+
+insert into student values (1, 'ahmed ali');
+insert into student values (2, 'ammer jamal');
+insert into student values (3, 'sara nayef');
+
+commit;
+
+select * from student;
+
+drop table student_major;
+
+create table student_major
