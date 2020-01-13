@@ -5790,4 +5790,7 @@ create table emp_pump_read
         location ('EMP.dmp')
       );
       
-select * from emp_pump_read;      
+select * from emp_pump_read;   
+--------------------------------
+
+-- Using the subquery as a source table
