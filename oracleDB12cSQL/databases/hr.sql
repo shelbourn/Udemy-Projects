@@ -5751,3 +5751,21 @@ create table emp_load_ext
 ----------------------------------------
 
 -- External Tables (Part 2)
+
+-- Using External Tables with Oracle Data Pump
+
+-- The select statement creates the records that are stored in EMP.dmp
+-- EMP.dmp creates the EMP_PUMP table
+create table emp_pump
+    ( employee_number,
+      fname,
+      lname
+    )
+  organization external
+    ( type ORACLE_DATAPUMP
+      default directory emp_dir
+      location ('EMP.dmp')
+    )
+    as
+    select employee_id, first_name, last_name
+    from employees;
