@@ -5983,3 +5983,6 @@ select employee_id, first_name, last_name, department_id, salary,
   from employees e
   where salary > (select round(avg(salary)) from employees c where c.department_id = e.department_id)
   order by department_id;
+  ------------------------------------------------
+  
+  -- Refresher on EXISTS / NOT EXISTS
