@@ -5827,3 +5827,41 @@ select * from student;
 drop table student_major;
 
 create table student_major
+( term varchar2(6),
+  student_id number,
+  major varchar2(100),
+  constraint student_major_pk primary key (term, student_id),
+  constraint student_major_fk1 foreign key (student_id) references student (student_id)
+);
+
+insert into student_major values (201401, 1, 'IT');
+insert into student_major values (201402, 1, 'Computer Science');
+insert into student_major values (201401, 2, 'Accounting');
+insert into student_major values (201402, 2, 'Accounting');
+insert into student_major values (201401, 3, 'Marketing');
+insert into student_major values (201402, 3, 'Marketing');
+insert into student_major values (201403, 3, 'Administration');
+commit;
+
+select student_id, term, major
+from student_major
+order by 1, 2;
+
+-- Now we need a report to show each student along with their major
+-- The logic is that the current major should appear in the report
+
+select student_id, term, major
+from student_major a
+where term = (select max(term) from student_major b where b.student_id = a.student_id);
+
+-- So now we can join this SELECT statement with the student table to get the name
+
+-- This query used the entire SELECT statement above as a source for the JOIN
+select st.student_id, st.student_name, st_major.major
+from student st,
+(
+select student_id, term, major
+from student_major a
+where term = (select max(term) from student_major b where b.student_id = a.student_id)
+) st_major
+where st.student_id = st_major.student_id;
