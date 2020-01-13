@@ -5931,3 +5931,6 @@ and department_id in (  select department_id -- Only one column needs to match
                      )
 and first_name <> 'John';
 ------------------------------------------
+
+-- Scalar Subquery / Correlated Subquery
+
