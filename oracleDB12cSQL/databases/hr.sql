@@ -5987,6 +5987,8 @@ select employee_id, first_name, last_name, department_id, salary,
   
 -- Refresher on EXISTS / NOT EXISTS
 -- Always use table name aliases with EXISTS and NOT EXISTS
+-- Always use EXISTS / NOT EXISTS when possible instead of IN / NOT IN
+-- EXISTS / NOT EXISTS have better performance
   
 -- Display all the departments that have employees
 select * from departments d
