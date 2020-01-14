@@ -6084,3 +6084,46 @@ departments d
 on (e.department_id = d.department_id)
 group by department_name
 );
+
+-- Answering the question without WITH clause
+select department_name, sum(salary) tot_salaries
+from employees e
+join
+departments d
+on (e.department_id = d.department_id)
+group by department_name
+having sum(salary) > (select sum (tot_salaries)/count(*)
+                      from
+                          (
+                          select department_name, sum(salary) tot_salaries
+                          from
+                          employees e
+                          join
+                          departments d
+                          on (e.department_id = d.department_id)
+                          group by department_name
+                          )
+                      );
+                      
+-- Answering the question using the WITH clause
+with
+dept_costs as
+(
+select department_name, sum(salary) sum_sal
+from
+employees e
+join
+departments d
+on (e.department_id = d.department_id)
+group by department_name
+),
+
+avg_cost as
+(
+select sum(sum_sal)/count(*) dept_avg
+from dept_costs
+)
+select * from dept_costs
+where sum_sal > (select dept_avg from avg_cost);
+
+-- http://www.experts-exchange.com/articles/2375/Subquery-Factoring-WITH-Oracle.html
