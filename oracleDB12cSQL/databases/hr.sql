@@ -6009,3 +6009,30 @@ where department_id not in (select department_id from employees e);
 
 -- WITH Clause
 
+-- Helps with complicated queries
+-- Stores statements in memory
+-- Helps to retrieve data faster
+
+-- WITH stores a query in a variable/alias for use later
+with emp -- EMP is alias and is required using WITH clause
+as
+(
+select employee_id, first_name from employees
+)
+select first_name
+from emp;
+----------------------------
+
+with emp -- 1st Variable / Alias
+as
+(
+select employee_id, first_name, department_id, salary from employees
+),
+dept_sum_sal -- 2nd Variable / Alias
+as
+(
+select department_id, sum(salary) sum_sal
+from emp
+group by department_id
+)
+select * from dept_sum_sal;
