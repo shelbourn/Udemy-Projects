@@ -6036,3 +6036,51 @@ from emp
 group by department_id
 )
 select * from dept_sum_sal;
+
+-- Display each DEPARTMENT_NAME, and COUNT of EMPLOYEES
+select department_id, count (1) -- 1 = * (COUNT all rows)
+from employees
+group by department_id;
+
+select department_name, cnt
+from departments dept,
+      (select department_id, count(1) cnt
+      from employees
+      group by department_id) dept_count
+where dept.department_id = dept_count.department_id;
+
+-- This query is the same as above, but will be faster because it is stored in memory
+with dept_count
+as
+        (select department_id, count(1) cnt
+        from employees
+        group by department_id)
+select department_name, cnt
+from departments, dept_count
+where departments.department_id = dept_count.department_id;
+
+-- *** GOOD EXAMPLE FOR EXAM ***
+
+/*
+Write a query to display the department name and total salaries for the departments
+but only for those departments that have total salaries greater that the average
+salary across all departments.
+*/
+
+-- Shows the sum of salaries for each department
+select department_name, sum(salary) sum_sal
+from employees e
+join departments d
+on (e.department_id = d.department_id)
+group by department_name;
+
+select sum (tot_salaries)/count(*)
+from
+(
+select department_name, sum(salary) tot_salaries
+from employees e
+join
+departments d
+on (e.department_id = d.department_id)
+group by department_name
+);
