@@ -6139,6 +6139,8 @@ order by employee_id;
 -- Manipulating Data Using Subqueries
 
 -- Inserting / Updating / Deleting Using a Subquery as a target
+-- When you use INSERT/UPDATE/DELETE with a subquery as a target, the SELECT statement
+-- is treated like a VIEW by Oracle, but it is not stored in memory
 
 -- Inserting by Using a Subquery as a Target
 desc departments;
@@ -6152,9 +6154,9 @@ insert into
 (
 select department_id, department_name -- Oracle deals with this SELECT statement like a VIEW
 from departments
-where department_id = 10
+where department_id = 90
 )
-values (106, 'Test D');
+values (107, 'Test D');
 
 select * from departments
 where department_id = 106;
@@ -6165,6 +6167,49 @@ insert into
 select department_id, department_name
 from departments
 where department_name like 'Test%'
-with check option
+with check option -- Check that new DEPARTMENT_NAME has 'Test%' in it
 )
-values (107, 'OP');
+values (107, 'OP'); -- Returns an error because the DEPARTMENT_NAME does not have 'Test%' in it
+
+insert into
+(
+select department_id, department_name
+from departments
+where department_name like 'Test%'
+with check option -- Check that new DEPARTMENT_NAME has 'Test%' in it
+)
+values (108, 'Test D');
+
+insert into
+(
+select department_id, department_name
+from departments
+where department_name like 'Test%'
+)
+values (109, 'OP');
+
+select * from departments;
+
+-- Updating using a Subquery as a Target
+select employee_id, first_name, salary
+from employees
+where department_id = 20;
+
+update
+(
+select employee_id, first_name, salary
+from employees
+where department_id = 20
+)
+set salary = salary +100;
+
+select employee_id, first_name, salary
+from employees
+where department_id = 20;
+
+-- Deleting using a Subquery as a Target
+delete
+(
+select * from departments
+where department_id = 106
+);
