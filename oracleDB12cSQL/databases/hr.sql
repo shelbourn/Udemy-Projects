@@ -6107,7 +6107,7 @@ having sum(salary) > (select sum (tot_salaries)/count(*)
                       
 -- Answering the question using the WITH clause
 with
-dept_costs as
+dept_costs as --1st Variable / Alias
 (
 select department_name, sum(salary) sum_sal
 from
@@ -6118,7 +6118,7 @@ on (e.department_id = d.department_id)
 group by department_name
 ),
 
-avg_cost as
+avg_cost as -- 2nd Variable / Alias
 (
 select sum(sum_sal)/count(*) dept_avg
 from dept_costs
@@ -6127,3 +6127,13 @@ select * from dept_costs
 where sum_sal > (select dept_avg from avg_cost);
 
 -- http://www.experts-exchange.com/articles/2375/Subquery-Factoring-WITH-Oracle.html
+------------------------------------
+
+-- Random example of SELF JOIN on Unary One-To-Many relationship
+select e.employee_id, e.first_name, e.manager_id, m.first_name manager_name
+from employees e, employees m
+where e.manager_id = m.employee_id(+)
+order by employee_id;
+-----------------------------------------------------
+
+-- Inserting / Updating / Deleting Using a Subquery as a target
