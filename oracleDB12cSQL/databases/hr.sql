@@ -6260,3 +6260,31 @@ select * from emp_copy;
 -- because the number of records may be different in each table
 -- In the previous example, the number of records are the same in both tables
 -- ***
+
+insert into emp_copy (employee_id, first_name, last_name, email, hire_date, job_id, salary)
+values                (98989, 'David', 'David', 'David', sysdate, 'IT_PROG', 9000);
+
+select * from emp_copy;
+
+-- The below statement will no longer work correct, because it will update all rows
+-- There are no longer the same number of rows in both tables
+-- The records that do not match will be set to NULL
+update emp_copy e_copy
+set salary = (select salary from employees e where e.employee_id = e_copy.employee_id);
+
+-- Records for the employee we added will be set to NULL because there is not a 
+-- corresponding record in the EMPLOYEES table
+select * from emp_copy;
+
+rollback;
+
+insert into emp_copy (employee_id, first_name, last_name, email, hire_date, job_id, salary)
+values                (98989, 'David', 'David', 'David', sysdate, 'IT_PROG', 9000);
+
+-- This query eliminates NULL values being inserted into rows where the records from each
+-- table do not match
+update emp_copy e_copy
+set salary = (select salary from employees e where e.employee_id = e_copy.employee_id)
+where exists (select 1 from employees e where e.employee_id = e_copy.employee_id);
+
+select * from emp_copy;
