@@ -6145,12 +6145,12 @@ desc departments;
 
 select department_id, department_name
 from departments
-where department_id = 90;
+where department_id = 10;
 
 -- Insert into DEPARTMENTS (DEPARTMENT_ID, DEPARTMENT_NAME) VALUES (106, 'Test D')
 insert into
 (
-select department_id, department_name
+select department_id, department_name -- Oracle deals with this SELECT statement like a VIEW
 from departments
 where department_id = 10
 )
@@ -6158,3 +6158,13 @@ values (106, 'Test D');
 
 select * from departments
 where department_id = 106;
+
+-- Insert with Subquery as Target using Check Option
+insert into
+(
+select department_id, department_name
+from departments
+where department_name like 'Test%'
+with check option
+)
+values (107, 'OP');
