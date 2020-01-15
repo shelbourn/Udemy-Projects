@@ -6269,6 +6269,8 @@ select * from emp_copy;
 -- The below statement will no longer work correct, because it will update all rows
 -- There are no longer the same number of rows in both tables
 -- The records that do not match will be set to NULL
+-- There is no record for EMPLOYEE_ID 98989 in the EMPLOYEES table so the column records will
+-- be set to NULL
 update emp_copy e_copy
 set salary = (select salary from employees e where e.employee_id = e_copy.employee_id);
 
@@ -6288,3 +6290,6 @@ set salary = (select salary from employees e where e.employee_id = e_copy.employ
 where exists (select 1 from employees e where e.employee_id = e_copy.employee_id);
 
 select * from emp_copy;
+----------------------------
+
+-- Correlated DELETE
