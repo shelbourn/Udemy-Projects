@@ -6227,6 +6227,7 @@ commit;
 -- Correlated UPDATE
 drop table emp_copy;
 
+-- NOT NULL constraint is the ONLY constraint copied to new table
 create table emp_copy
 as select * from employees;
 
@@ -6241,7 +6242,15 @@ commit;
 
 select * from emp_copy;
 
-update emp_copy e_copy
+-- Updates EMP_COPY SALARY with SALARY from EMPLOYEES
+-- Update statement based on PK (EMPLOYEE_ID)
+-- This is a correlated subquery because EMPLOYEE_ID in the parent query (EMP_COPY) is referenced
+-- in the subquery
+
+-- Make sure that the number of records are the same in both tables before using a
+-- correlated UPDATE
+
+update emp_copy e_copy -- E_COPY is an alias
 set salary = (select salary from employees e where e.employee_id = e_copy.employee_id);
 
 select * from emp_copy;
