@@ -6220,4 +6220,34 @@ where department_id = 106
 commit;
 -------------------------------------------
 
+-- *** IMPORTANT FOR EXAM ***
+
 -- Correlated UPDATE / Correlated DELETE
+
+-- Correlated UPDATE
+drop table emp_copy;
+
+create table emp_copy
+as select * from employees;
+
+drop table emp_cop;
+
+select * from emp_copy;
+
+update emp_copy
+set salary = 0;
+
+commit;
+
+select * from emp_copy;
+
+update emp_copy e_copy
+set salary = (select salary from employees e where e.employee_id = e_copy.employee_id);
+
+select * from emp_copy;
+
+-- ***
+-- You have to be careful when you use the correlated update
+-- because the number of records may be different in each table
+-- In the previous example, the number of records are the same in both tables
+-- ***
