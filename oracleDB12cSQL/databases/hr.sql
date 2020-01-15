@@ -6293,3 +6293,12 @@ select * from emp_copy;
 ----------------------------
 
 -- Correlated DELETE
+
+-- Deletes all rows from EMP_COPY that have an EMPLOYEE_ID which matches an EMPLOYEE_ID
+-- in the EMPLOYEES table
+-- Correlated because EMPLOYEE_ID in subquery references EMPLOYEE_ID in the parent query
+delete from emp_copy
+where exists (select 1 from employees e where e.employee_id = emp_copy.employee_id);
+
+select * from emp_copy;
+-----------------------------------
