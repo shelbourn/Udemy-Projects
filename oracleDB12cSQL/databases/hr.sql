@@ -6139,3 +6139,22 @@ order by employee_id;
 -- Manipulating Data Using Subqueries
 
 -- Inserting / Updating / Deleting Using a Subquery as a target
+
+-- Inserting by Using a Subquery as a Target
+desc departments;
+
+select department_id, department_name
+from departments
+where department_id = 90;
+
+-- Insert into DEPARTMENTS (DEPARTMENT_ID, DEPARTMENT_NAME) VALUES (106, 'Test D')
+insert into
+(
+select department_id, department_name
+from departments
+where department_id = 10
+)
+values (106, 'Test D');
+
+select * from departments
+where department_id = 106;
