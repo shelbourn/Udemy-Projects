@@ -6150,6 +6150,9 @@ from departments
 where department_id = 10;
 
 -- Insert into DEPARTMENTS (DEPARTMENT_ID, DEPARTMENT_NAME) VALUES (106, 'Test D')
+-- Using this method uses a dummy VIEW to perform DML operations.
+-- This prevents you needing to create an actual VIEW and giving people access to it
+-- in order to perform DML operations on it
 insert into
 (
 select department_id, department_name -- Oracle deals with this SELECT statement like a VIEW
@@ -6213,3 +6216,8 @@ delete
 select * from departments
 where department_id = 106
 );
+
+commit;
+-------------------------------------------
+
+-- Correlated UPDATE / Correlated DELETE
