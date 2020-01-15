@@ -6136,4 +6136,6 @@ where e.manager_id = m.employee_id(+)
 order by employee_id;
 -----------------------------------------------------
 
+-- Manipulating Data Using Subqueries
+
 -- Inserting / Updating / Deleting Using a Subquery as a target
