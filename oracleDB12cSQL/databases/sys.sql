@@ -48,6 +48,7 @@ grant delete on hr.employees to demo;
 
 grant update (salary) on hr.employees to demo;
 
+-- Grants all privs to demo that exist in HR for LOCATIONS table
 grant all on hr.locations to demo;
 
 grant select, insert
