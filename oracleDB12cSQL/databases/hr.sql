@@ -6428,3 +6428,7 @@ select * from emp_copy;
   2.) Attempted to perform an operation on a table or view for which you do not have
       the appropriate privalege
 */
+--------------------------------------------
+
+-- System Privaleges & Privaleges Practice 1
+
