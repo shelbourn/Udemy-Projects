@@ -6302,3 +6302,7 @@ where exists (select 1 from employees e where e.employee_id = emp_copy.employee_
 
 select * from emp_copy;
 -----------------------------------
+
+-- Controlling User Access
+
+-- Database Security / System Privaleges & Roles
