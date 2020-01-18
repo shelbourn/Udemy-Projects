@@ -6367,3 +6367,8 @@ select * from emp_copy;
   ALTER USER user
   IDENTIFIED BY new password
 */
+----------------------------------------------
+
+-- Database Security / Object Privaleges
+
+/*
