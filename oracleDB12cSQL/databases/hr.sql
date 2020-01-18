@@ -6429,6 +6429,3 @@ select * from emp_copy;
       the appropriate privalege
 */
 --------------------------------------------
-
--- System Privaleges & Privaleges Practice 1
-
