@@ -6429,3 +6429,6 @@ select * from emp_copy;
       the appropriate privalege
 */
 --------------------------------------------
+
+-- System Privileges & Privileges Practice 1
+-- Go to "sys.sql"
