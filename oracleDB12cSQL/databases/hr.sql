@@ -6306,3 +6306,64 @@ select * from emp_copy;
 -- Controlling User Access
 
 -- Database Security / System Privaleges & Roles
+
+/*
+* Database Security:
+  * System Security - what the user can do in the DB
+  * Data Security - what access a user has to objects within a database
+* System privaleges: Performing a particular action within the database
+* Object privaleges: Manipulating the content of the database objects
+* Schemas: Collection of objects such as tables, views, and sequences
+* The Database Admin (DBA) is a high-level user with the ability to create users
+  and grant users access to the database and its objects.
+* Users require SYSTEM PRIVALEGES to gain access to the database
+* Users require OBJECT PRIVALAGES to manipulate the content of the objects in the
+  database
+  
+* The DBA can:
+  * Create new users
+  * Remove users
+  * Remove tables
+  * Backup tables
+  * Can pass privaleges to other users
+  
+* SYSTEM_PRIVALEGE_MAP contains all available privaleges  
+
+* CREATING USERS SYNTAX:
+
+  CREATE USER user
+  IDENTIFIED BY password;
+  
+  CREATE USER and IDENTIFIED BY are both required keywords
+  
+* Current system privaleges can be found in the SESSION_PRIVS dictionary view
+  * If you query this view then it will tell you what privaleges you have as the
+    user you are logged in as
+
+* GRANTING SYSTEM PRIVALEGES SYNTAX:
+
+  GRANT create sessions, create table, create sequence, create view
+  TO demo;
+  
+  * No user can connect to the DB with the CREATE SESSIONS privalege
+  
+* Role: A named group of related privaleges that can be granted to the user
+  * Makes it easier to revoke and maintain privaleges
+  * A user can have access to several roles
+  * Several users can be assigned the same role
+  * Roles are typically created for a DB application
+  
+* CREATING & GRANTING PRIVALEGES TO A ROLE SYNTAX:
+
+  CREATE ROLE manager;
+  
+  GRANT create table, create view;
+  TO manager
+  
+  GRANT manager TO alice;
+  
+* CHANGING YOUR PASSWORD SYNTAX (after a user has logged in to the DB):
+
+  ALTER USER user
+  IDENTIFIED BY new password
+*/
