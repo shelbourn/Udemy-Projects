@@ -6372,3 +6372,59 @@ select * from emp_copy;
 -- Database Security / Object Privaleges
 
 /*
+* Object Privaleges
+  * ALTER
+  * DELETE
+  * INDEX
+  * INSERT
+  * REFERENCES (Ensure that other users can create FK constraints that reference your table)
+  * SELECT
+  * UPDATE
+  
+* Object privaleges vary from object to object
+* An owner has all the privaleges on the object ** IMPORTANT **
+* An owner can give specific privaleges on that owner's object
+* DBA must give GRANT privalege on objects in order for a user to pass privaleges on to other users
+
+* GRANTING OBJECT PRIVALEGES SYNTAX:
+
+  -- Grant Query Privaleges on the EMPLOYEES table --
+
+  GRANT select
+  ON employees
+  TO demo;
+  
+  -- Grant privaleges to update specific columns to users and roles --
+  
+  GRANT update (department_name, location_id)
+  ON departments
+  TO demo, manager;
+  
+* PASSING ON YOUR PRIVALEGES SYNTAX
+
+  -- Give a user authority to pass along privaleges --
+  
+  GRANT select, insert
+  ON departments
+  TO demo
+  WITH GRANT OPTION; (Allows user DEMO to pass along privaleges to other users)
+  
+  -- Allow all users on the system to query data from DEPARTMENTS table --
+  
+  GRANT select
+  ON departments
+  TO PUBLIC; (PUBLIC = All Users)
+  
+** IMPORTANT **  
+  
+* Oracle Server will not allow a user to perform an operation for which they
+  do not have privaleges for.
+  
+  If the following error is returned then 1 of 2 events has occurred:
+  
+  "Table or view does not exist."
+  
+  1.) Named a table or view that does not exist
+  2.) Attempted to perform an operation on a table or view for which you do not have
+      the appropriate privalege
+*/
