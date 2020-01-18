@@ -62,3 +62,6 @@ to public;
 
 -- System Privileges & Privileges Practice 2
 -- Go to "demo.sql"
+------------------------------------------------
+
+-- Creating ROLEs Practice

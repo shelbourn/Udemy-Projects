@@ -75,7 +75,7 @@ select * from user_sys_privs;
 
 -- Displays all Table Object privs granted
 select * from user_tab_privs_recd
-order by 2;
+order by 2; -- ORDER BY column #2
 
 -- Displays all Column Object privs granted
 select * from user_col_privs_recd;
@@ -84,5 +84,15 @@ select * from user_col_privs_recd;
 -- Granting Privileges to other users
 grant select on emp to hr;
 
--- Displays all privs granted to other users
+-- Displays all table privs granted to other users
 select * from user_tab_privs_made;
+
+-- Grants UPDATE on ENAME column ONLY to HR
+grant update (ename) on emp to hr;
+
+-- Displays all column privs granted to other users
+select * from user_col_privs_made;
+-----------------------------------------
+
+-- Creating ROLEs Practice
+-- Go to "sys.sql"
