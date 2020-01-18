@@ -54,6 +54,10 @@ grant all on hr.locations to demo;
 grant select, insert
 on hr.jobs to demo;
 
+-- Grants SELECT on HR.COUNTRIES to ALL users in the DB
 grant select
 on hr.countries
 to public;
+-----------------------------------------------
+
+-- System Privileges & Privileges Practice 2
