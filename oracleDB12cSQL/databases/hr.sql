@@ -6549,3 +6549,15 @@ select * from emp_default;
 -- Multi-table INSERT statements
 
 -- INSERT ALL statement / INSERT FIRST statement
+
+/*
+Different Clauses for Multi-table INSERT statements
+
+* Unconditional INSERT: For each row returned by the subquery,
+  a row is inserted into each of the target tables
+* Conditional INSERT ALL: For each row returned by the subquery, a row is
+  inserted into each target table if the specified condition is met
+* Conditional INSERT FIRST: For each row returned by the subquery, a row is
+  inserted into the very first target table in which the condition is met.
+* Pivoting INSERT: This is a special case of the unconditional INSERT ALL  
+*/
