@@ -87,3 +87,28 @@ create user ahmed identified by ahmed123;
 grant create session to ahmed;
 
 grant unlimited tablespace to ahmed;
+
+grant manager to ahmed;
+----------------------------------
+
+create role qonly;
+
+-- Grants SELECT on any table
+grant select any table to qonly;
+
+grant qonly to ahmed;
+
+create role iud_emp;
+
+grant insert, update, delete
+on hr.employees
+to iud_emp;
+
+grant iud_emp to ahmed;
+
+-- Displays all Table privs for ROLES
+select * from role_tab_privs
+where role = 'IUD_EMP';
+-------------------------------------------
+
+-- Remainder of lesson in "ahmed.sql"
