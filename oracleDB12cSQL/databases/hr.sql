@@ -6561,3 +6561,39 @@ Different Clauses for Multi-table INSERT statements
   inserted into the very first target table in which the condition is met.
 * Pivoting INSERT: This is a special case of the unconditional INSERT ALL  
 */
+------------------------------------
+
+-- INSERT ALL statement / INSERT FIRST statement Practice
+
+-- 1.) UNCONDITIONAL INSERT
+
+select employee_id, hire_date, salary, manager_id
+from employees;
+
+drop table sal_hist;
+
+create table sal_hist
+( empid number,
+  hiredate date,
+  salary number
+);  
+
+drop table manager_hist;
+
+create table manager_hist
+( empid number,
+  hiredate date,
+  mgr number
+);
+
+insert all
+into sal_hist (empid, hiredate, salary) values (employee_id, hire_date, salary)
+into manager_hist (empid, hiredate, mgr) values (employee_id, hire_date, manager_id)
+select employee_id, hire_date, salary, manager_id
+from employees;
+
+select * from sal_hist;
+
+select * from manager_hist;
+
+delete from sal_hist;
