@@ -6607,7 +6607,9 @@ commit;
 
 -- 2.) CONDITIONAL INSERT ALL
 
+-- *** IMPORTANT NOTE FOR EXAM ***
 -- There may be results that are shared by multiple tables in the CONDITIONAL INSERT ALL statement
+
 insert all
 when salary > 9000 then -- Conditional statement
 into sal_hist (empid, hiredate, salary) values (employee_id, hire_date, salary)
@@ -6624,3 +6626,7 @@ select * from manager_hist;
 select empid from sal_hist
 intersect
 select empid from manager_hist;
+
+delete from sal_hist;
+
+delete from manager_hist;
