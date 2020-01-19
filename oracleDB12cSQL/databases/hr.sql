@@ -6512,3 +6512,6 @@ alter table emp_default
 drop column name;
 
 select * from emp_default;
+---------------------------------------------
+
+-- Copying Rows from another table
