@@ -6516,6 +6516,9 @@ select * from emp_default;
 
 -- Copying Rows from another table
 
+-- Data types of rows inserted from other table must match
+-- Rows that are inserted will take the DEFAULT values for the columns that have
+-- DEFAULT values assigned
 insert into emp_default (empno, ename)
 select employee_id, first_name
 from employees
@@ -6530,3 +6533,15 @@ where department_id = 30;
 
 select * from emp_default;
 
+-- Inserting rows from multiple SELECT statements at once using UNION ALL
+insert into emp_default (empno, ename)
+select employee_id, first_name
+from employees
+where department_id = 70
+union all
+select employee_id, first_name
+from employees
+where department_id = 80;
+
+select * from emp_default;
+----------------------------------------
