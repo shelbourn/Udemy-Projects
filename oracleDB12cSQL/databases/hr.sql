@@ -6449,3 +6449,66 @@ on ahmed.course
 to demo
 with grant option;
 --------------------------------------------------
+
+-- Manipulating Data
+
+/*
+What is a Data Warehouse?
+
+* A data warehouse is a relational DB that is designed for query and analysis
+  rather than for transaction processing.
+* It usually contains historical data derived from transaction data, but can
+  include data from other sources.
+* In addition to a relational DB, a data warehouse environment includes an
+  extraction, transportation, transformation, and loading (ETL) solution. And
+  also an online analytical processing (OLAP) engine.
+* Queries on the data warehouse are useful for reporting, analytics, and data
+  mining.
+  */
+-------------------------------------------------
+
+-- Explicit default value in INSERT & UPDATE statement
+
+drop table emp_default;
+
+create table emp_default
+( empno number,
+  ename varchar2(100),
+  status varchar2(100) default 'Active'
+);
+
+-- If you don't mention the column in the INSERT statement, it will take the
+-- default value (if the column has a DEFAULT value assigned, otherwise it will take NULL)
+insert into emp_default (empno, ename)
+values (1, 'David');
+
+select * from emp_default;
+
+-- You can mention the column in the insert and take the DEFAULT value at the same time
+-- Preferred syntax for using the DEFAULT value
+insert into emp_default (empno, ename, status)
+values (2, 'Lara', default);
+
+select * from emp_default;
+
+insert into emp_default (empno, ename, status)
+values (3, 'Karem', null);
+
+select * from emp_default;
+
+-- Can assigned DEFAULT value using UPDATE statement
+update emp_default
+set status = default
+where empno = 3;
+
+select * from emp_default;
+
+alter table emp_default
+add name varchar2 (100) default 'Suck It';
+
+select * from emp_default;
+
+alter table emp_default
+drop column name;
+
+select * from emp_default;
