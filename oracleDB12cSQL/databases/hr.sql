@@ -6432,3 +6432,12 @@ select * from emp_copy;
 
 -- System Privileges & Privileges Practice 1
 -- Go to "sys.sql"
+---------------------------------------------
+
+-- WITH GRANT option Practice
+select * from ahmed.course;
+
+grant select
+on ahmed.course
+to demo
+with grant option;

@@ -96,3 +96,8 @@ select * from user_col_privs_made;
 
 -- Creating ROLEs Practice
 -- Go to "sys.sql"
+-----------------------------------------
+
+-- WITH GRANT option Practice
+
+select * from ahmed.course;
