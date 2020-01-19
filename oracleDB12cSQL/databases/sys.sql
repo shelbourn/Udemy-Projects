@@ -65,3 +65,25 @@ to public;
 ------------------------------------------------
 
 -- Creating ROLEs Practice
+
+-- Connect as SYSDBA
+
+show con_name;
+
+alter session set container = orclpdb;
+
+create role manager;
+
+grant create table, create view, create sequence
+to manager;
+
+-- Displays all SYSTEM privs granted to ROLES
+select * from role_sys_privs
+where role = 'MANAGER';
+----------------------------------
+
+create user ahmed identified by ahmed123;
+
+grant create session to ahmed;
+
+grant unlimited tablespace to ahmed;
