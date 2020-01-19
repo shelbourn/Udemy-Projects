@@ -6607,10 +6607,20 @@ commit;
 
 -- 2.) CONDITIONAL INSERT ALL
 
+-- There may be results that are shared by multiple tables in the CONDITIONAL INSERT ALL statement
 insert all
-when salary > 9000 then
+when salary > 9000 then -- Conditional statement
 into sal_hist (empid, hiredate, salary) values (employee_id, hire_date, salary)
-when manager_id is not null then
+when manager_id is not null then -- Conditional statement
 into manager_hist (empid, hiredate, mgr) values (employee_id, hire_date, manager_id)
-select employee_id, hire_date, salary, manager_id
+select employee_id, hire_date, salary, manager_id -- Main query
 from employees;
+
+select * from sal_hist;
+
+select * from manager_hist;
+
+-- Shows the EMPID values that have been inserted into both tables
+select empid from sal_hist
+intersect
+select empid from manager_hist;
