@@ -6609,6 +6609,7 @@ commit;
 
 -- *** IMPORTANT NOTE FOR EXAM ***
 -- There may be results that are shared by multiple tables in the CONDITIONAL INSERT ALL statement
+-- The first INSERT condition results are inserted and then the second INSERT condition results are inserted
 
 insert all
 when salary > 9000 then -- Conditional statement
@@ -6630,3 +6631,8 @@ select empid from manager_hist;
 delete from sal_hist;
 
 delete from manager_hist;
+
+commit;
+--------------------------------------------------
+
+-- 3.) INSERT FIRST statement
