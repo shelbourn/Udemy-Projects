@@ -122,3 +122,4 @@ alter session set container = orclpdb;
 drop user ahmed; -- Returns an error because AHMED has created objects
 
 -- CASCADE must be used to drop AHMED and all the user's OBJECTS
+drop user ahmed cascade;
