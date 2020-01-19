@@ -6639,4 +6639,18 @@ commit;
 -- When the first WHEN clause condition is met then it skips all other WHEN clause conditions
 
 insert first
-when salary
+when salary > 6000 then
+into sal_hist (empid, hiredate, salary) values (employee_id, hire_date, salary)
+when manager_id is not null then
+into manager_hist (empid, hiredate, mgr) values (employee_id, hire_date, manager_id)
+select employee_id, hire_date, salary, manager_id
+from employees;
+
+select * from sal_hist;
+
+select * from manager_hist;
+
+-- There will be no shared results between tables with the INSERT FIRST statement
+select empid from sal_hist
+intersect
+select empid from manager_hist;
