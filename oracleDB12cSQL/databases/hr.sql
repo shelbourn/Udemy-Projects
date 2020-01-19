@@ -6515,3 +6515,18 @@ select * from emp_default;
 ---------------------------------------------
 
 -- Copying Rows from another table
+
+insert into emp_default (empno, ename)
+select employee_id, first_name
+from employees
+where department_id = 90;
+
+select * from emp_default;
+
+insert into emp_default (empno, ename)
+select employee_id, first_name
+from employees
+where department_id = 30;
+
+select * from emp_default;
+
