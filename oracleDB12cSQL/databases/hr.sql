@@ -6654,3 +6654,4 @@ select * from manager_hist;
 select empid from sal_hist
 intersect
 select empid from manager_hist;
+-------------------------------------------
