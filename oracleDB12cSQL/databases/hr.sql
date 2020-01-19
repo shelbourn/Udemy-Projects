@@ -6448,3 +6448,4 @@ grant select
 on ahmed.course
 to demo
 with grant option;
+--------------------------------------------------

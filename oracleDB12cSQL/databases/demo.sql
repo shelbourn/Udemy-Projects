@@ -101,3 +101,4 @@ select * from user_col_privs_made;
 -- WITH GRANT option Practice
 
 select * from ahmed.course;
+-----------------------------------------
