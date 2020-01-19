@@ -113,3 +113,12 @@ where role = 'IUD_EMP';
 
 -- Remainder of lesson in "ahmed.sql"
 ----------------------------------------------
+
+-- DROP USER Statement (Not regulary used)
+-- Cannot drop a user who is currently connected to DB
+
+alter session set container = orclpdb;
+
+drop user ahmed; -- Returns an error because AHMED has created objects
+
+-- CASCADE must be used to drop AHMED and all the user's OBJECTS
