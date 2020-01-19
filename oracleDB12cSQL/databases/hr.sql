@@ -6636,3 +6636,7 @@ commit;
 --------------------------------------------------
 
 -- 3.) INSERT FIRST statement
+-- When the first WHEN clause condition is met then it skips all other WHEN clause conditions
+
+insert first
+when salary
