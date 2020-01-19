@@ -140,3 +140,7 @@ What is a Data Warehouse?
 * Queries on the data warehouse are useful for reporting, analytics, and data
   mining.
   */
+-------------------------------------------------
+
+-- Explicit default value in INSERT & UPDATE statement
+
