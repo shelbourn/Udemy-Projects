@@ -6427,6 +6427,13 @@ select * from emp_copy;
   1.) Named a table or view that does not exist
   2.) Attempted to perform an operation on a table or view for which you do not have
       the appropriate privalege
+      
+* REVOKING PRIVILEGES with CASCADE CONSTRAINTS OPTION
+  * Revokes privileges to specified object and all dependent objects specified by
+    referential constraints
+    
+* REVOKING PRIVILEGES with RESTRICT OPTION
+  * Prevents Oracle Server from revoking privs if there are dependent objects or privs
 */
 --------------------------------------------
 
