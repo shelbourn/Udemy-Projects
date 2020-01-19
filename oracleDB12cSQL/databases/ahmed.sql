@@ -69,8 +69,14 @@ with grant option;
 --do this : select * from ahmed.course
 
 --5 now ahmed he will do this
+-- AHMED is the original owner
+-- When he REVOKES the privs from HR all other users that HR granted the privs to
+-- will also have their privs revoked
 revoke select
 on course
 from hr;
 
 --6 then hr and also demo can not do this: select * from ahmed.course
+-------------------------------
+
+-- DROP USER Statement (Not regularly used)
