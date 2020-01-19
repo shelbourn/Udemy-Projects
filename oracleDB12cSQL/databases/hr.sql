@@ -6586,10 +6586,12 @@ create table manager_hist
   mgr number
 );
 
+-- Inserts values into all tables mentioned
+-- The columns that follow the VALUES keyword are the columns from the main query
 insert all
 into sal_hist (empid, hiredate, salary) values (employee_id, hire_date, salary)
 into manager_hist (empid, hiredate, mgr) values (employee_id, hire_date, manager_id)
-select employee_id, hire_date, salary, manager_id
+select employee_id, hire_date, salary, manager_id -- Main query
 from employees;
 
 select * from sal_hist;
@@ -6597,3 +6599,18 @@ select * from sal_hist;
 select * from manager_hist;
 
 delete from sal_hist;
+
+delete from manager_hist;
+
+commit;
+--------------------------------------
+
+-- 2.) CONDITIONAL INSERT ALL
+
+insert all
+when salary > 9000 then
+into sal_hist (empid, hiredate, salary) values (employee_id, hire_date, salary)
+when manager_id is not null then
+into manager_hist (empid, hiredate, mgr) values (employee_id, hire_date, manager_id)
+select employee_id, hire_date, salary, manager_id
+from employees;
