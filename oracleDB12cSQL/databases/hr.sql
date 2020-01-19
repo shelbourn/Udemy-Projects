@@ -6546,4 +6546,6 @@ where department_id = 80;
 select * from emp_default;
 ----------------------------------------
 
+-- Multi-table INSERT statements
+
 -- INSERT ALL statement / INSERT FIRST statement
