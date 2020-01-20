@@ -7048,8 +7048,9 @@ create table date_table
   date3 timestamp with time zone
 );
 
+-- *** IMPORTANT TO KNOW ABOUT USER'S SESSION WITH CURRENT_TIMESTAMP ***
 -- SYSDATE returns the current date and time for the server
--- CURRENT_TIMESTAMP returns the current date and time for the user's session
+-- CURRENT_TIMESTAMP returns the current date and time for the user's session (TIMESTAMP WITH TIME ZONE)
 insert into date_table
 values (sysdate, current_timestamp, current_timestamp);
 
