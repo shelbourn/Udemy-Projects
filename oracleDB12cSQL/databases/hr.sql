@@ -7116,4 +7116,10 @@ select current_timestamp from dual;
 select localtimestamp from dual;
 
 alter session set time_zone = 'America/Los_Angeles';
+---------------------------------------
+
+-- *** GOOD EXAMPLE TO PRACTICE FOR EXAM ***
+
+-- TIMESTAMP with Local Time Zone
+
 
