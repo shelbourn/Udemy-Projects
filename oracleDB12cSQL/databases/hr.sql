@@ -7023,10 +7023,11 @@ select  to_char (sysdate, 'yyyy') the_year,
 from dual;
 
 -- EXTRACT function extracts specific components from date datatypes
+-- This query returns the exact same results as the above query
 select
-extract (year from sysdate),
-extract (month from sysdate),
-extract (day from sysdate)
+extract (year from sysdate) year,
+extract (month from sysdate) month,
+extract (day from sysdate) day
 from dual;
 
 select employee_id, first_name, hire_date,
