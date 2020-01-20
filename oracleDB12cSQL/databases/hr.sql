@@ -7089,11 +7089,16 @@ select sessiontimezone from dual;
 select current_date from dual;
 
 -- User session is the same as the DB session because Oracle is installed on my machine
+-- SYSDATE = database date and time based on where the Oracle server is located
 select to_char (current_date, 'dd-mm-yyyy hh:mi:ss'), to_char (sysdate, 'dd-mm-yyyy hh:mi:ss')
 from dual;
 
 -- Returns the current date and time for the user's session (TIMESTAMP WITH TIME ZONE)
 select current_timestamp from dual;
 
--- Returns the current date and time for the user's session (TIMESTAMP)
+-- *** IMPORTANT FOR EXAM ***
+-- Returns the current date and time for the user's session (TIMESTAMP for user)
+-- TIMESTAMP = timestamp for system/server
+-- LOCALTIMESTAMP = timestamp for user/session
 select localtimestamp from dual;
+
