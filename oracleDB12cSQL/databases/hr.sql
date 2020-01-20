@@ -6838,11 +6838,15 @@ select * from table_b;
   table using FLASHBACK
 */  
 
+-- System Change Number (SCN) is the unique transaction number associated with each
+-- transaction that takes place in the DB
+
 -- All dropped tables and columns are available in RECYCLEBIN
 select * from recyclebin
 order by 2;
 
 -- PURGE prevents any data from being recovered
+-- PURGE also frees up memory in the DB and is routinely performed by DBA
 purge recyclebin;
 
 select * from recyclebin;
@@ -6859,6 +6863,8 @@ select * from emp_copy3;
 
 select * from recyclebin;
 
-flashback table emp_copy3 to before drop;
+flashback table emp_copy3 to before drop; -- before drop refers to the time just before most-recent DROPSCN
 
 select * from emp_copy3;
+
+select * from recyclebin;
