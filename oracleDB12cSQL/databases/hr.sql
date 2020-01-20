@@ -7247,4 +7247,11 @@ order by salary desc
 where rownum <= 3;
 ---------------------------------------------------
 
+-- The ROWID is the unique address of the row
+-- AAAR3QAAEAAAKTtAAA (Example)
+-- AAAR3Q = The data object number (6 characters)
+-- AAE = The data file number (3 characters)
+-- AAAKTt = The date block number (6 characters)
+-- AAA = The row number (3 characters)
+
 -- ROWID Practice
