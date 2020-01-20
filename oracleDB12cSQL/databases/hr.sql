@@ -6740,3 +6740,27 @@ pivot
 order by 1;
 
 -- Case 2
+-- We want to show all DEPARTMENT_IDs with this query
+select * from
+(
+select department_id, job_id
+from employees
+)
+pivot
+(count(1) for job_id in ('MK_MAN', 'MK_REP', 'PU_CLERK', 'PU_MAN')
+)
+order by 1;
+
+-- Case 3
+-- Subqueries will not work with PIVOT statements
+-- The following query will return an error
+select * from
+(
+select department_id, job_id
+from employees
+)
+pivot
+(
+count(1) for job_id in (select distinct job_id from employees)
+)
+order by 1;
