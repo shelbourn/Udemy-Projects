@@ -6874,6 +6874,8 @@ select * from recyclebin;
 
 -- System Change Number (SCN) Examples
 -- SCN versions statement comes right after FROM statement
+-- SCN statements are rarely used in real life
+-- Instead, AUDIT TRIGGERS are used to return the same results
 
 select salary from employees
 where employee_id = 107;
