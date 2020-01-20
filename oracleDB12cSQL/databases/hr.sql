@@ -7236,3 +7236,11 @@ order by salary;
 -- NULLS appear first when ORDER BY DESC
 select * from employees
 order by salary desc;
+
+-- Returns the records with the top 3 highest salaries
+select * from
+(
+select * from employees
+order by salary desc
+)
+where rownum <= 3;
