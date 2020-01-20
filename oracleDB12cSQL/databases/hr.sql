@@ -7064,3 +7064,10 @@ from date_table;
 --------------------------------------
 
 -- V$TIMEZONE_NAMES & Other Functions
+
+-- All Time Zone names are stored in the V$TIMEZONE_NAMES dictionary table
+select * from v$timezone_names
+where tzname like '%America/Chicago%';
+
+-- Time zones can be set to absolute offset or named region
+-- The DBTIMEZONE displays the database's time zone
