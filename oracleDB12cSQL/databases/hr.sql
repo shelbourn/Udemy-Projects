@@ -6962,3 +6962,7 @@ from dual;
 --------------------------------------
 
 -- DAY TO SECOND Examples
+-- Syntax must include hours:minutes:seconds
+-- Returns days, hours, minutes, seconds, fractions of a second
+select interval '33 20:20:20' day to second
+from dual;
