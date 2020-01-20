@@ -6868,3 +6868,17 @@ flashback table emp_copy3 to before drop; -- before drop refers to the time just
 select * from emp_copy3;
 
 select * from recyclebin;
+---------------------------------------
+
+-- *** IMPORTANT FOR EXAM ***
+
+-- System Change Number (SCN) Examples
+
+select salary from employees
+where employee_id = 107;
+
+update employees
+set salary = salary +100
+where employee_id = 107;
+
+commit;
