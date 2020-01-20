@@ -7152,3 +7152,30 @@ select * from web_order;
 -- FINAL LESSON!!! YAY!!!
 
 -- TZ_OFFSET / FROM_TZ / TO_TIMESTAMP
+
+-- TZ_OFFSET
+-- Returns the number deviation from GMT
+select tz_offset ('Asia/Dubai'), tz_offset ('America/Chicago')
+from dual;
+
+-- FROM_TZ
+/*
+* FROM_TZ function is a built-in function that provides the conversion of a
+  TIMESTAMP to TIMESTAMP WITH TIME ZONE for a given time zone
+* It essentially combines the TIMESTAMP and TIME ZONE information into a
+  single operation
+*/  
+
+-- Assigns a TIMESTAMP and TIME ZONE
+select from_tz (timestamp '2000-03-6 08:00:00', 'Asia/Amman')
+from dual;
+
+-- TO_TIMESTAMP
+
+-- Converts CHARACTER to DATE
+select to_date ('20-12-2016', 'dd-mm-yyyy')
+from dual;
+
+-- Converts CHARACTER to TIMESTAMP
+select to_timestamp ('20-12-2016 12:10:33', 'dd-mm-yyyy hh:mi:ss')
+from dual;
