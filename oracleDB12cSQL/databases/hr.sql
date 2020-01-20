@@ -6708,9 +6708,13 @@ Restrictions on Multi_table INSERT Statements:
 
 * You can perform multi_table INSERT statements only on tables, and not on views
   or materialized views
-* You cannot perform a multi_table INSERT on a remote table
+* You cannot perform a multi_table INSERT on a remote table (a table in another DB)
 * You cannot specify a table collection expression when performing a
   multi-table INSERT
 * In a multi-table INSERT, all INSERT_INTO_CLAUSES cannot combine to specify
   more than 999 target columns
 */  
+---------------------------------------------------
+
+-- Creating a Matrix Report using PIVOT
+
