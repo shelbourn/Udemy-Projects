@@ -7211,3 +7211,28 @@ from user_tables;
 ------------------------------------------
 
 -- Differences between ROWNUM and ROWID
+
+-- ROWNUM and ROWID are pseudocolumns and not actual columns in a table
+-- but they behave like real columns
+-- ROWNUM is like a SEQUENCE for the query and changes from query to query
+
+select employee_id, first_name, salary
+from employees;
+
+select rownum, employee_id, first_name, salary
+from employees;
+
+select rownum, employee_id, first_name, salary
+from employees
+where first_name like 'N%';
+
+-- When ORDER BY is used with ROWNUM, the ROWNUMs will not be sequential because
+-- the ORDER BY clause is the last operation that Oracle performs
+-- The ROWNUM assignment is executed before the ORDER BY clause is executed
+select rownum, employee_id, first_name, salary
+from employees
+order by salary;
+
+-- NULLS appear first when ORDER BY DESC
+select * from employees
+order by salary desc;
