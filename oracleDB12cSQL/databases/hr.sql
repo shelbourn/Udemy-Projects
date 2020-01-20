@@ -6929,6 +6929,8 @@ where employee_id = 107;
 * MINUTE: Any number 00 - 59
 * SECOND: Any number 00 - 59.9
 */
+-----------------------------------------
+-- YEAR TO MONTH Examples
 
 -- Returns the number of years and months
 select interval '55-11' year to month
@@ -6945,4 +6947,15 @@ select interval '555-11' year(3) to month
 from dual;
 
 select interval '1000-11' year(4) to month
+from dual;
+
+-- *** IMPORTANT EXAMPLE ***
+-- Converts 350 to number of years and months
+-- Oracle reads this as YEAR TO MONTH
+select interval '350' month -- YEAR TO MONTH
+from dual;
+
+-- Converts 10 to number of years and months
+-- Oracle reads this as YEAR TO MONTH
+select interval '10' year -- YEAR TO MONTH
 from dual;
