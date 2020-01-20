@@ -7180,3 +7180,6 @@ from dual;
 -- Converts CHARACTER to TIMESTAMP
 select to_timestamp ('20-12-2016 12:10:33', 'dd-mm-yyyy hh:mi:ss')
 from dual;
+--------------------------------------------
+
+-- Using SELECT statement to create dynamic scripts
