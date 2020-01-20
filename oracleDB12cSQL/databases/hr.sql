@@ -6878,7 +6878,17 @@ select salary from employees
 where employee_id = 107;
 
 update employees
-set salary = salary +100
+set salary = salary + 100
 where employee_id = 107;
 
 commit;
+
+select salary from employees
+where employee_id = 107;
+
+-- This query returns all versions of SALARY for EMPLOYEE_ID = 107
+-- SCNMIN = 1st record
+-- SCNMAX = Last record
+select salary from employees
+versions between scn minvalue and maxvalue
+where employee_id = 107;
