@@ -6657,3 +6657,29 @@ select empid from manager_hist;
 -------------------------------------------
 
 -- Another INSERT ALL Example
+
+drop table emp_sales;
+
+create table emp_sales
+( emp_id number,
+  week_id number,
+  sales_sun number,
+  sales_mon number,
+  sales_tue number,
+  sales_wed number,
+  sales_thur number
+);
+
+insert into emp_sales values (1, 14, 2000, 3000, 4000, 2500, 1500);
+
+select * from emp_sales;
+
+drop table sales_info;
+
+create table sales_info
+( emp_id number,
+  week_id number,
+  sales number,
+  day varchar2(10)
+);
+
