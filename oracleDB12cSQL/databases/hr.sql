@@ -6987,3 +6987,18 @@ from dual;
 ------------------------------------------
 
 -- TO_YMINTERVAL / TO_DSINTERVAL
+-- TO_YMINTERVAL: Provides a date 1 year and 2 months from SYSDATE, for example
+-- TO_DSINTERVAL: Provides a date 6 days and 2 hours from SYSDATE, for example
+
+select sysdate from dual;
+
+select sysdate, sysdate + 10 from dual;
+
+-- Using TO_YMINTERVAL
+-- Shows date 1 year and 2 months from SYSDATE
+select sysdate, sysdate + interval '01-02' year to month
+from dual;
+
+-- Shows date 1 year and 2 months from SYSDATE
+select sysdate, sysdate + to_yminterval ('01-02')
+from dual;
