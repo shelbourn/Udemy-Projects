@@ -6784,3 +6784,9 @@ order by 1; -- orders by column 1 (DEPARTMENT_ID) and then by column 2 (HIRE_DAT
 -- the MERGE statement
 -- Used when you want the TARGET table to be EXACTLY the same as the ORIGINAL table
 -- You MUST use table aliases when using the MERGE statement
+
+create table table_a
+( id number,
+  name varchar2(100)
+);
+
