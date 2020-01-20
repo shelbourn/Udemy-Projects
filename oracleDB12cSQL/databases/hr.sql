@@ -7034,3 +7034,6 @@ select employee_id, first_name, hire_date,
 extract (year from hire_date) hire_year,
 extract (month from hire_date) hire_month
 from employees;
+------------------------------------------------
+
+-- TIMESTAMP / TIMESTAMP with Time Zone
