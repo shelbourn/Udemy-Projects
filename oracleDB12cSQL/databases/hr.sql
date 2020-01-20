@@ -7068,6 +7068,32 @@ from date_table;
 -- All Time Zone names are stored in the V$TIMEZONE_NAMES dictionary table
 select * from v$timezone_names
 where tzname like '%America/Chicago%';
+-- LMT: Local Mean Time
+-- CST: Central Standard Time
+-- CDT: Central Daylight Time
+-- EST: Eastern Standard Time
+-- CWT: Central West Time
 
 -- Time zones can be set to absolute offset or named region
+-- Absolute Offset: The number (positive or negative) of deviations from GMT
 -- The DBTIMEZONE displays the database's time zone
+-- The DB time zone is defined when the DB is created by DBA
+select dbtimezone from dual;
+
+-- SESSIONTIMEZONE returns the session's time zone
+-- You can set the default client session's time zone using the ORA_SDTZ
+-- environment variable
+select sessiontimezone from dual;
+
+-- This returns the current date for the user's session (date)
+select current_date from dual;
+
+-- User session is the same as the DB session because Oracle is installed on my machine
+select to_char (current_date, 'dd-mm-yyyy hh:mi:ss'), to_char (sysdate, 'dd-mm-yyyy hh:mi:ss')
+from dual;
+
+-- Returns the current date and time for the user's session (TIMESTAMP WITH TIME ZONE)
+select current_timestamp from dual;
+
+-- Returns the current date and time for the user's session (TIMESTAMP)
+select localtimestamp from dual;
