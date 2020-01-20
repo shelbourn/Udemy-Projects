@@ -7247,11 +7247,21 @@ order by salary desc
 where rownum <= 3;
 ---------------------------------------------------
 
--- The ROWID is the unique address of the row
+-- The ROWID is the unique address of the row (will not change)
 -- AAAR3QAAEAAAKTtAAA (Example)
 -- AAAR3Q = The data object number (6 characters)
 -- AAE = The data file number (3 characters)
 -- AAAKTt = The date block number (6 characters)
 -- AAA = The row number (3 characters)
+-- ROWID is useful for when you want to INSERT, UPDATE, DELETE a row in a table
+-- that does not have a PK
 
 -- ROWID Practice
+
+-- This query will return an error
+selet rowid, * from employees;
+
+select rowid, emp.* from employees emp;
+
+select * from employees
+where rowid = 'AAAR3QAAEAAAKTuAAA';
