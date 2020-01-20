@@ -6660,6 +6660,7 @@ select empid from manager_hist;
 
 drop table emp_sales;
 
+-- EMP_SALES is a MATRIX table (all records in 1 row)
 create table emp_sales
 ( emp_id number,
   week_id number,
@@ -6676,6 +6677,7 @@ select * from emp_sales;
 
 drop table sales_info;
 
+-- SALES_INFO is a TABULAR table (all records in multiple rows)
 create table sales_info
 ( emp_id number,
   week_id number,
@@ -6683,3 +6685,18 @@ create table sales_info
   day varchar2(10)
 );
 
+select * from sales_info;
+
+-- Our goal is to INSERT the values from the EMP_SALES matrix table into multiple
+-- rows in the SALES_INFO table
+
+insert all
+into sales_info values (emp_id, week_id, sales_sun, 'SUN')
+into sales_info values (emp_id, week_id, sales_mon, 'MON')
+into sales_info values (emp_id, week_id, sales_tue, 'TUE')
+into sales_info values (emp_id, week_id, sales_wed, 'WED')
+into sales_info values (emp_id, week_id, sales_thur, 'THUR')
+select emp_id, week_id, sales_sun, sales_mon, sales_tue, sales_wed, sales_thur
+from emp_sales;
+
+select * from sales_info;
