@@ -7037,3 +7037,24 @@ from employees;
 ------------------------------------------------
 
 -- TIMESTAMP / TIMESTAMP with Time Zone
+-- TIMESTAMP includes the date down to fractional seconds
+
+drop table date_table;
+
+-- Using DATE datatype and TIMESTAMP datatype
+create table date_table
+( date1 date,
+  date2 timestamp,
+  date3 timestamp with time zone
+);
+
+-- SYSDATE returns the current date and time for the server
+-- CURRENT_TIMESTAMP returns the current date and time for the user's session
+insert into date_table
+values (sysdate, current_timestamp, current_timestamp);
+
+select * from date_table;
+
+-- DATE1 is an alias in this example
+select to_char (date1, 'dd-mm yyyy hh:mi:ss') date1, date2
+from date_table;
