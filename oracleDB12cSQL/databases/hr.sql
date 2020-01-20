@@ -6837,3 +6837,28 @@ select * from table_b;
 * If you issue a DROP TABLE then PURGE, you will not be able to recover that
   table using FLASHBACK
 */  
+
+-- All dropped tables and columns are available in RECYCLEBIN
+select * from recyclebin
+order by 2;
+
+-- PURGE prevents any data from being recovered
+purge recyclebin;
+
+select * from recyclebin;
+
+create table emp_copy3
+as
+select * from employees;
+
+select * from emp_copy3;
+
+drop table emp_copy3;
+
+select * from emp_copy3;
+
+select * from recyclebin;
+
+flashback table emp_copy3 to before drop;
+
+select * from emp_copy3;
