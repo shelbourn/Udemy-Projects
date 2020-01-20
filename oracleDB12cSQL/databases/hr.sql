@@ -7125,6 +7125,7 @@ alter session set time_zone = 'America/Los_Angeles';
 drop table web_order;
 
 -- ORDER_DATE TIMESTAMP is always according to server's time
+-- DELIVERY_DATE TIMESTAMP is always according to recipient's time
 create table web_order
 ( cust_id number,
   name varchar2(100),
@@ -7135,7 +7136,14 @@ create table web_order
   delivery_date timestamp with local time zone
 );
 
+-- CURRENT_TIMESTAMP + 3: CURRENT_TIMESTAMP + number of days to deliver item
 insert into web_order values (1, 'Naser', 'iPhone 6 64GB Gold', 'Amman',
                       current_timestamp, 3, current_timestamp + 3);
                       
+select * from web_order;
+
+-- Suppose that this order was placed by a customer in Jordan
+-- TIMESTAMP WITH LOCAL TIME ZONE stores user's session date and time
+alter session set time_zone = 'Asia/Amman';
+
 select * from web_order;
