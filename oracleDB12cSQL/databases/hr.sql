@@ -6986,12 +6986,13 @@ select interval '500' day(3)
 from dual;
 ------------------------------------------
 
--- TO_YMINTERVAL / TO_DSINTERVAL
+-- TO_YMINTERVAL / TO_DSINTERVAL (Both are functions)
 -- TO_YMINTERVAL: Provides a date 1 year and 2 months from SYSDATE, for example
 -- TO_DSINTERVAL: Provides a date 6 days and 2 hours from SYSDATE, for example
 
 select sysdate from dual;
 
+-- Adds number of days to SYSDATE
 select sysdate, sysdate + 10 from dual;
 
 -- Using TO_YMINTERVAL
@@ -7001,4 +7002,13 @@ from dual;
 
 -- Shows date 1 year and 2 months from SYSDATE
 select sysdate, sysdate + to_yminterval ('01-02')
+from dual;
+
+-- Using TO_DSINTERVAL
+-- Shows date 6 days and 2 hours from SYSDATE
+select sysdate, sysdate + to_dsinterval ('6 02:00:00')
+from dual;
+
+select to_char (sysdate, 'dd-mm-yyyy hh:mi:ss'),
+to_char (sysdate + to_dsinterval ('6 02:00:00'), 'dd-mm-yyyy hh:mi:ss')
 from dual;
