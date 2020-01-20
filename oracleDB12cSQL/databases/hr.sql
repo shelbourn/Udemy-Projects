@@ -6718,3 +6718,21 @@ Restrictions on Multi_table INSERT Statements:
 
 -- Creating a Matrix Report using PIVOT
 
+-- Any column in the GROUP_BY clause should also be in the SELECT statement
+select department_id, job_id, count(1) -- 1 is the same as *
+from employees
+where job_id in ('MK_MAN', 'MK_REP', 'PU_CLERK', 'PU_MAN')
+group by department_id, job_id
+order by 1,2;
+
+-- Case 1
+select * from
+(
+select department_id, job_id
+from employees
+where job_id in ('MK_MAN', 'MK_REP', 'PU_CLERK', 'PU_MAN')
+)
+pivot
+(count(1) for job_id in ('MK_MAN', 'MK_REP', 'PU_CLERK', 'PU_MAN')
+)
+order by 1;
