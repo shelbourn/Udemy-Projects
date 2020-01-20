@@ -6831,3 +6831,9 @@ select * from table_b;
 ----------------------------------------
 
 -- FLASHBACK Table & System Change Number (SCN)
+/*
+* Restores DB to a specific point in time and restores all data structures that
+ existed at that point in time.
+* If you issue a DROP TABLE then PURGE, you will not be able to recover that
+  table using FLASHBACK
+*/  
