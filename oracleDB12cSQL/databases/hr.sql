@@ -6655,3 +6655,5 @@ select empid from sal_hist
 intersect
 select empid from manager_hist;
 -------------------------------------------
+
+-- Another INSERT ALL Example
