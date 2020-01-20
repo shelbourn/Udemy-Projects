@@ -6959,3 +6959,6 @@ from dual;
 -- Oracle reads this as YEAR TO MONTH
 select interval '10' year -- YEAR TO MONTH
 from dual;
+--------------------------------------
+
+-- DAY TO SECOND Examples
