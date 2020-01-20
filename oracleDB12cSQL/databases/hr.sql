@@ -6919,6 +6919,8 @@ where employee_id = 107;
 
 -- Managing Data in Different Time Zones
 
+-- *** IMPORTANT FOR EXAM ***
+
 -- THE INTERVAL (YEAR TO MONTH / DAY TO SECOND)
 
 /*
@@ -6982,3 +6984,6 @@ from dual;
 -- Converts 500 to DAY TO SECOND
 select interval '500' day(3)
 from dual;
+------------------------------------------
+
+-- TO_YMINTERVAL / TO_DSINTERVAL
