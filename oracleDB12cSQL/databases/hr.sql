@@ -6920,3 +6920,29 @@ where employee_id = 107;
 -- Managing Data in Different Time Zones
 
 -- THE INTERVAL (YEAR TO MONTH / DAY TO SECOND)
+
+/*
+* YEAR: Any positive or negative number
+* MONTH: Any number 00 - 11
+* DAY: Any positive or negative number
+* HOUR: Any number 00 - 23
+* MINUTE: Any number 00 - 59
+* SECOND: Any number 00 - 59.9
+*/
+
+-- Returns the number of years and months
+select interval '55-11' year to month
+from dual;
+
+select interval '1-4' year to month
+from dual;
+
+select interval '555-11' year to month
+from dual; -- if the YEAR is more than 2 digits, then you should use SIZE
+
+-- YEAR(3) specifies the SIZE of YEAR to be 3 digits long
+select interval '555-11' year(3) to month
+from dual;
+
+select interval '1000-11' year(4) to month
+from dual;
