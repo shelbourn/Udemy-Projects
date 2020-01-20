@@ -6915,3 +6915,8 @@ select versions_starttime, versions_endtime, salary
 from employees
 versions between scn minvalue and maxvalue
 where employee_id = 107;
+---------------------------------------------------
+
+-- Managing Data in Different Time Zones
+
+-- THE INTERVAL (YEAR TO MONTH / DAY TO SECOND)
