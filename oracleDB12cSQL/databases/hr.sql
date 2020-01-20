@@ -7009,6 +7009,7 @@ from dual;
 select sysdate, sysdate + to_dsinterval ('6 02:00:00')
 from dual;
 
+-- Changes the SYSDATE to characters in order to show the seconds
 select to_char (sysdate, 'dd-mm-yyyy hh:mi:ss'),
 to_char (sysdate + to_dsinterval ('6 02:00:00'), 'dd-mm-yyyy hh:mi:ss')
 from dual;
