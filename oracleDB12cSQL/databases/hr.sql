@@ -7061,3 +7061,6 @@ select * from date_table;
 -- DATE1 is an alias in this example
 select to_char (date1, 'dd-mm yyyy hh:mi:ss') date1, date2
 from date_table;
+--------------------------------------
+
+-- V$TIMEZONE_NAMES & Other Functions
