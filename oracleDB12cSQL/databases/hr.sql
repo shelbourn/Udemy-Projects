@@ -7195,6 +7195,10 @@ select * from regions;
 alter table regions
 drop column creation_date;
 
+-- After executing the below statements, copy the output and paste it into a SQL
+-- editor and batch execute all at once.
+-- NOTE: The below queries DO NOT actually execute the ALTER TABLE statements
+
 -- Executes ALTER_TABLE add CREATION_DATE for all tables in the USER_TABLES DB
 select 'alter table ' || table_name || ' add creation_date date; '
 from user_tables;
