@@ -7102,3 +7102,12 @@ select current_timestamp from dual;
 -- LOCALTIMESTAMP = timestamp for user/session
 select localtimestamp from dual;
 
+-- Change session's time zone
+alter session set time_zone = 'Asia/Amman';
+
+select to_char (current_date, 'dd-mm-yyyy hh:mi:ss'), to_char (sysdate, 'dd-mm-yyyy hh:mi:ss')
+from dual;
+
+-- Returns the current date and time the user's session (TIMESTAMP WITH TIME ZONE)
+select current_timestamp from dual;
+
