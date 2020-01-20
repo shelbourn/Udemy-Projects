@@ -7265,3 +7265,78 @@ select rowid, emp.* from employees emp;
 
 select * from employees
 where rowid = 'AAAR3QAAEAAAKTuAAA';
+----------------------------------------
+
+-- Understanding NULLS when used with (IN / NOT IN)
+
+--we will create this simple table
+
+create table testv
+
+( val number );
+
+--we will insert 4 records, one of these records null
+
+insert into testv values (10);
+
+insert into testv values (20);
+
+insert into testv values (30);
+
+insert into testv values (null);
+
+commit;
+
+--this query will retrieve 4 records
+
+select * from testv
+
+--this query will retrieve 2 records, it will ignore the null
+
+--because ( IN) is equal to =any
+
+select * from testv
+
+where val in (10,20,null )
+
+-- So this mean that prev query can be written as the next query
+
+--please note that ( val=null ) not valid
+
+-- We always deal with null using 2 operators ( is null / is not null )
+
+select * from testv
+
+where val =10 or val =20 or val=null;
+
+--and you can write like this
+
+select * from testv
+
+where val = any (10,20,null )
+
+--now let us move to  (not in )
+
+-- if the (not in ) contains nulls , then no records will be retrived
+
+--because (not in )  equal to (<> all)
+
+select * from testv
+
+where val not in (10,20,null )
+
+--so you can write the prev query like this
+
+select * from testv
+
+where val <> 10
+
+and val <> 20
+
+and val <> null;
+
+--and it can be written like this
+
+select * from testv
+
+where val <> all (10,20,null )
