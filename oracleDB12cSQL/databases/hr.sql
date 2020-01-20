@@ -6952,6 +6952,7 @@ from dual;
 -- *** IMPORTANT EXAMPLE ***
 -- Converts 350 to number of years and months
 -- Oracle reads this as YEAR TO MONTH
+-- 'MONTH' is the category for the number you are providing in the statement
 select interval '350' month -- YEAR TO MONTH
 from dual;
 
@@ -6965,4 +6966,19 @@ from dual;
 -- Syntax must include hours:minutes:seconds
 -- Returns days, hours, minutes, seconds, fractions of a second
 select interval '33 20:20:20' day to second
+from dual;
+
+select interval '333 20:20:20' day(3) to second
+from dual;
+
+-- Converts 500 to DAY TO SECOND
+select interval '500' hour
+from dual;
+
+-- Converts 500 to DAY TO SECOND
+select interval '500' minute
+from dual;
+
+-- Converts 500 to DAY TO SECOND
+select interval '500' day(3)
 from dual;
