@@ -6754,6 +6754,7 @@ order by 1;
 -- Case 3
 -- Subqueries will not work with PIVOT statements
 -- The following query will return an error
+-- Hard-coded queries are the only types of queries that work with PIVOT statements
 select * from
 (
 select department_id, job_id
@@ -6764,3 +6765,18 @@ pivot
 count(1) for job_id in (select distinct job_id from employees)
 )
 order by 1;
+
+-- Case 4
+select * from
+(
+select department_id, job_id, hire_date
+from employees
+where job_id in ('MK_MAN', 'MK_REP', 'PU_CLERK', 'PU_MAN') -- We want JOB_ID to span horizontally
+)
+pivot
+(count(1) for job_id in ('MK_MAN', 'MK_REP', 'PU_CLERK', 'PU_MAN')
+)
+order by 1; -- orders by column 1 (DEPARTMENT_ID) and then by column 2 (HIRE_DATE)
+-------------------------------------------------
+
+-- The MERGE Statement
