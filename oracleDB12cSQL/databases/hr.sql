@@ -7183,3 +7183,20 @@ from dual;
 --------------------------------------------
 
 -- Using SELECT statement to create dynamic scripts
+
+select table_name
+from user_tables;
+
+alter table regions
+add creation_date date;
+
+select * from regions;
+
+alter table regions
+drop column creation_date;
+
+select 'alter table ' || table_name || ' add creation_date date; '
+from user_tables;
+
+select 'alter table ' || table_name || ' drop creation_date date; '
+from user_tables;
