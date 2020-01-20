@@ -7067,7 +7067,7 @@ from date_table;
 
 -- All Time Zone names are stored in the V$TIMEZONE_NAMES dictionary table
 select * from v$timezone_names
-where tzname like '%America/Chicago%';
+where tzname like '%America/Los%';
 -- LMT: Local Mean Time
 -- CST: Central Standard Time
 -- CDT: Central Daylight Time
@@ -7103,6 +7103,7 @@ select current_timestamp from dual;
 select localtimestamp from dual;
 
 -- Change session's time zone
+-- Changing the session's time zone is only valid for the current session
 alter session set time_zone = 'Asia/Amman';
 
 select to_char (current_date, 'dd-mm-yyyy hh:mi:ss'), to_char (sysdate, 'dd-mm-yyyy hh:mi:ss')
@@ -7110,4 +7111,9 @@ from dual;
 
 -- Returns the current date and time the user's session (TIMESTAMP WITH TIME ZONE)
 select current_timestamp from dual;
+
+-- Returns the current date and time for user's session (TIMESTAMP)
+select localtimestamp from dual;
+
+alter session set time_zone = 'America/Los_Angeles';
 
