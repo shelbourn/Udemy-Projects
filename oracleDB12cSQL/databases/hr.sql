@@ -7216,6 +7216,7 @@ from user_tables;
 -- but they behave like real columns
 -- ROWNUM is like a SEQUENCE for the query and changes from query to query
 
+-- ROWNUM Practice
 select employee_id, first_name, salary
 from employees;
 
@@ -7244,3 +7245,6 @@ select * from employees
 order by salary desc
 )
 where rownum <= 3;
+---------------------------------------------------
+
+-- ROWID Practice
