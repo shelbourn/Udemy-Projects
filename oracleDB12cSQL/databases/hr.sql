@@ -6828,3 +6828,6 @@ insert values (a.id, a.name);
 commit;
 
 select * from table_b;
+----------------------------------------
+
+-- FLASHBACK Table & System Change Number (SCN)
