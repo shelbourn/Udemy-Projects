@@ -7147,3 +7147,8 @@ select * from web_order;
 alter session set time_zone = 'Asia/Amman';
 
 select * from web_order;
+----------------------------------------
+
+-- FINAL LESSON!!! YAY!!!
+
+-- TZ_OFFSET / FROM_TZ / TO_TIMESTAMP
