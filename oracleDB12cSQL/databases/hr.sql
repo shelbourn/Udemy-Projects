@@ -7167,6 +7167,7 @@ from dual;
 */  
 
 -- Assigns a TIMESTAMP and TIME ZONE
+-- Converts TIMESTAMP to TIMESTAMP WITH TIME ZONE
 select from_tz (timestamp '2000-03-6 08:00:00', 'Asia/Amman')
 from dual;
 
