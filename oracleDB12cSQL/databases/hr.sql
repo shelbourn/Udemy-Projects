@@ -6717,7 +6717,9 @@ Restrictions on Multi_table INSERT Statements:
 ---------------------------------------------------
 
 -- Creating a Matrix Report using PIVOT
+-- PIVOT creates a MATRIX table from a TABULAR table
 
+-- This is a TABULAR table
 -- Any column in the GROUP_BY clause should also be in the SELECT statement
 select department_id, job_id, count(1) -- 1 is the same as *
 from employees
@@ -6730,9 +6732,11 @@ select * from
 (
 select department_id, job_id
 from employees
-where job_id in ('MK_MAN', 'MK_REP', 'PU_CLERK', 'PU_MAN')
+where job_id in ('MK_MAN', 'MK_REP', 'PU_CLERK', 'PU_MAN') -- We want JOB_ID to span horizontally
 )
 pivot
 (count(1) for job_id in ('MK_MAN', 'MK_REP', 'PU_CLERK', 'PU_MAN')
 )
 order by 1;
+
+-- Case 2
