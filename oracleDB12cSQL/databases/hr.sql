@@ -7013,3 +7013,23 @@ from dual;
 select to_char (sysdate, 'dd-mm-yyyy hh:mi:ss'),
 to_char (sysdate + to_dsinterval ('6 02:00:00'), 'dd-mm-yyyy hh:mi:ss')
 from dual;
+--------------------------------------------------
+
+-- Extract Function
+
+select  to_char (sysdate, 'yyyy') the_year,
+        to_char (sysdate, 'mm') the_month,
+        to_char (sysdate, 'dd') the_day
+from dual;
+
+-- EXTRACT function extracts specific components from date datatypes
+select
+extract (year from sysdate),
+extract (month from sysdate),
+extract (day from sysdate)
+from dual;
+
+select employee_id, first_name, hire_date,
+extract (year from hire_date) hire_year,
+extract (month from hire_date) hire_month
+from employees;
