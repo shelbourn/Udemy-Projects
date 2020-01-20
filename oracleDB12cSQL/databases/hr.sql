@@ -7182,6 +7182,8 @@ select to_timestamp ('20-12-2016 12:10:33', 'dd-mm-yyyy hh:mi:ss')
 from dual;
 --------------------------------------------
 
+-- *** IMPORTANT LESSON ***
+
 -- Using SELECT statement to create dynamic scripts
 
 select table_name
