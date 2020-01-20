@@ -7208,3 +7208,6 @@ from user_tables;
 -- Executes ALTER_TABLE DROP COLUMN CREATION_DATE for all tables in the USER_TABLES DB
 select 'alter table ' || table_name || ' drop column creation_date; '
 from user_tables;
+------------------------------------------
+
+-- Differences between ROWNUM and ROWID
