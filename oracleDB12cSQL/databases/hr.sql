@@ -7038,6 +7038,8 @@ from employees;
 
 -- TIMESTAMP / TIMESTAMP with Time Zone
 -- TIMESTAMP includes the date down to fractional seconds
+-- DATE also includes date down to fractional seconds, but only the date
+-- returns when queried unless you convert it TO_CHAR
 
 drop table date_table;
 
