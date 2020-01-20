@@ -6780,3 +6780,7 @@ order by 1; -- orders by column 1 (DEPARTMENT_ID) and then by column 2 (HIRE_DAT
 -------------------------------------------------
 
 -- The MERGE Statement
+-- You can conditionally INSERT, UPDATE, or DELETE rows in a tables by using
+-- the MERGE statement
+-- Used when you want the TARGET table to be EXACTLY the same as the ORIGINAL table
+-- You MUST use table aliases when using the MERGE statement
