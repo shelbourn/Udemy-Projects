@@ -6873,6 +6873,7 @@ select * from recyclebin;
 -- *** IMPORTANT FOR EXAM ***
 
 -- System Change Number (SCN) Examples
+-- SCN versions statement comes right after FROM statement
 
 select salary from employees
 where employee_id = 107;
@@ -6890,5 +6891,25 @@ where employee_id = 107;
 -- SCNMIN = 1st record
 -- SCNMAX = Last record
 select salary from employees
+versions between scn minvalue and maxvalue
+where employee_id = 107;
+
+-- VERSIONS_STARTTIME (pseudo column) = time when SCN version started
+-- VERSIONS_ENDTIME (pseudo column) = time when SCN version ended
+-- VERSIONS_STARTTIME = NULL, means that it is the first record
+-- VERSIONS_ENDTIME = NULL, means that it is the last record
+select versions_starttime, versions_endtime, salary
+from employees
+versions between scn minvalue and maxvalue
+where employee_id = 107;
+
+update employees
+set salary = salary + 100
+where employee_id = 107;
+
+commit;
+
+select versions_starttime, versions_endtime, salary
+from employees
 versions between scn minvalue and maxvalue
 where employee_id = 107;
