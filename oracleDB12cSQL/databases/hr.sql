@@ -3741,3 +3741,3602 @@ modify (gender char(2)); -- Will work because values are all NULL
 alter table e_emp
 modify (gender varchar2(1)); -- Will work because values are all NULL
 -----------------------------------------
+
+-- ALTER TABLE / DROP COLUMNS
+
+/*
+
+Dropping a Column
+
+* Use the DROP COLUMN clause to drop columns that you no longer need from the table
+
+Guidelines:
+
+* The column may or may not contain data
+* Using the ALTER TABLE DROP COLUMN (old syntax) statement, only one column can be dropped at a time
+* The table must have at least one column remaining in it after it is altered
+* After a column is dropped, it cannot be recovered
+* A primary key that is referended by another column cannot be dropped, unless the
+  cascade option is added
+* Dropping a column can take a while if the column has a large number of values. In this
+  case, it may be btter to set it to be unused and drop it when there are fewer users on
+  the system to avoid extended lockouts.
+  
+  NOTE: Certain columns can never be dropped, such as columns that form part of the
+  partitioning key of a partitioned table or column that form part of the PRIMARY KEY
+  of an index-organized table.
+*/
+
+-- ALTER TABLE / DROP COLUMN Examples
+
+-- Try to drop column DEPARTMENT_ID from DEPARTMENTS table, it will return an error
+-- Can drop columns using the wizard in SQL Developer too through the Actions drop down
+select * from e_emp;
+
+alter table e_emp
+drop column department_id;
+
+alter table e_emp
+drop column created_by; -- Only one column can be dropped at a time using old syntax
+
+alter table e_emp
+add department_id number(4);
+
+select * from e_emp;
+
+update e_emp
+set department_id = 90;
+
+select * from e_emp;
+
+-- New syntax. Allows for dropping multiple columns
+alter table e_emp drop (gender, created_date);
+
+select * from e_emp;
+------------------------------------------------------
+
+-- ALTER TABLE / SET UNUSED
+
+/*
+
+SET UNUSED Option
+
+* You use the SET UNUSED option to mark one or more columns as unused
+* You use the DROP unused COLUMNS option to remove to column that are marked as unused
+* You can specify the ONLINE keyword to indicate that DML operations on the table
+  will be allowed wile marking the column or column UNUSED
+* 2 Steps: 1 - SET COLUMN UNUSED, 2 - DROP UNUSED COLUMNS  
+*/
+
+-- SET UNUSED Examples
+select * from e_emp2;
+
+alter table e_emp2
+set unused (sal); -- Can now create a new column with the name 'SAL'
+
+select * from e_emp2;
+
+select * from user_unused_col_tabs; -- Shows USER-defined columns marked as UNUSED
+
+update e_emp2
+set sal = 100; -- Returns an error because the ONLINE option was not added to UNUSED
+
+select * from e_emp2;
+
+alter table e_emp2
+set unused (fname) online; -- This allows DML operations while the column is marked as UNUSED
+
+select * from e_emp2;
+
+update e_emp2
+set fname = 'xx';
+
+select * from user_unused_col_tabs; -- Queries the dictionary table where unused columns are displayed
+
+alter table e_emp2
+drop unused columns; -- Deletes the columns marked UNUSED from the table
+-------------------------------------------
+
+-- ALTER TABLE / READ ONLY / READ WRITE
+
+/*
+Read-Only Mode (Maintenance Mode)
+
+* Put table in read-only mode, which prevents DDL or DML changes during table maintenance
+* Put the table back into Read/Write mode
+* DDL statements are allowed in READ ONLY mode as long as they do not modify data
+*/
+
+-- READ ONLY / READ WRITE Examples
+select * from e_emp2;
+
+alter table e_emp2 read only;
+
+delete from e_emp2; -- Not allowed
+
+alter table e_emp2
+add (created_by varchar2(100)); -- This is allowed because it does not change any data
+
+alter table e_emp2
+drop (created_by); -- Not allowed because this statement will change data
+
+alter table e_emp2 read write; -- Exits maintenance mode
+
+delete from e_emp2;
+
+select * from e_emp2;
+-------------------------------------
+
+-- DROP TABLE
+
+/* Dropping a Table
+
+* Moves a table to the recycle bin
+* Removes the table and all its data entirely and permanently if the purge clause is specified
+* Invalidates dependent objects and removes object privaledges on the table
+* All data is deleted from the table
+* Any views and synonyms remain, but are invalid
+* Any pending transactions are committed
+* Only the creator of the table or a user with the DROP ANY TABLE privaledge can remove a table
+* Use the FLASHBACK TABLE statement to restore a dropped table from the recycle bin
+* Cannot DROP a master table where dependent tables do not have a ON DELETE CASCADE option set
+*/
+
+-- DROP TABLE Examples
+select * from e_emp2;
+
+drop table e_emp2;
+select * from e_emp2;
+
+select * from user_recyclebin -- Data Dictionary table where dropped tables are stored before purge
+where original_name = 'E_EMP2';
+
+create table x_test
+as select * from jobs;
+
+select * from x_test;
+
+drop table x_test purge; -- Permanently deletes table
+
+select * from user_recyclebin
+where original_name = 'X_TEST'; -- Table does not exist in 'USER_RECYCLEBIN' because the 'PURGE' clause was added
+--------------------------------------
+
+-- RENAME COLUMN / RENAME TABLE
+
+-- RENAME COLUMN
+create table xx_dept_table
+( deptno number,
+  dname varchar2(100)
+);
+
+select * from xx_dept_table;
+
+alter table xx_dept_table
+rename column dname to dept_name;
+
+select * from xx_dept_table;
+
+-- RENAME OBJECT (TABLE, VIEW, etc)
+-- *** IMPORTANT ***
+-- ONLY RENAME TABLES IN THE DESIGN PHASE
+-- NEVER RENAME TABLES WHEN THEY ARE IN PRODUCTION
+rename xx_dept_table to xx_dept_t;
+
+select * from xx_dept_t;
+
+select * from xx_dept_table; -- Table no longer exists
+---------------------------------------
+---------------------------------------
+--***********************************--
+
+-- *** IMPORTANT TIPS FOR EXAM ***
+
+-- DISTINCT clause is used only once and in the beginning of a statement
+-- DISTINCT clause applies to ALL columns in the SELECT statement
+select distinct department_id, salary
+from employees;
+
+select department_id, distinct salary -- Returns an error
+from employees;
+
+select distinct salary, department_id
+from employees;
+--------------------------------------
+
+-- You can create CHAR data type without size, it will take the default size of 1 byte
+-- VARCHAR2 requires a size specification
+drop table emp_1;
+
+create table emp_1
+( empid number,
+  first_name varchar2(100),
+  last_name char -- Default size of CHAR is 1 byte
+);    
+
+insert into emp_1 values (1, 'Matthew', 'Shelbourn'); -- Returns an error because CHAR (default) can only hold 1 byte
+
+insert into emp_1 values (1, 'Matthew', 'S'); -- 'S' is only 1 byte so this is allowed
+--------------------------------------------
+
+-- NULL comes last in ASCENDING (ASC) order
+
+-- 1.)
+select * from employees
+order by commission_pct;
+
+-- 2.)
+select * from employees
+order by commission_pct nulls last; -- Same as ORDER BY default (ascending)
+
+-- 3.)
+select * from employees
+order by commission_pct nulls first; -- Same as ORDER BY (descending)
+
+-- 4.)
+select * from employees
+order by commission_pct desc;
+------------------------------------------
+
+-- ORDER BY
+-- Not best practice to ORDER BY with expression or column not is SELECT statement
+select employee_id, last_name
+from employees
+order by salary+100;
+
+select employee_id || ' ' || last_name test -- 'test' is the alias for the entire concatenation
+from employees
+order by test;
+
+select employee_id || ' ' || last_name "Test" -- Case-sensitive
+from employees
+order by "Test";
+--------------------------------------
+
+-- REPLACE
+
+select replace ('khaled', 'al', 'xx') from dual; -- replaces 'al' with 'xx'
+
+select replace ('khaled', 'al') from dual; -- replaces 'al' with '' (empty character)
+
+-- TRIM
+-- 't' will be the alias of the column for the results in the DUAL table
+select trim (' khal ed                      ') t from dual; -- removes spaces from beginning and end of string
+
+select trim ('k' from 'kkkhakkek') t from dual; -- removes the 'k' from beginning and end of string
+
+select trim ('kh' from 'khakkek') t from dual; -- Error returned. Can only trim one character
+-----------------------------------------
+
+-- Using various methods to return the same results
+select avg(salary)
+from employees
+where department_id = 90;
+
+-- same results as above
+-- return SALARY if the DEPARTMENT_ID = 90 and then calculate the average salary, if not then return NULL
+select avg (decode(department_id, 90, salary, null))
+from employees;
+
+-- same results as previous two queries
+select avg (
+            case when department_id = 90 then salary
+            else null end
+           )
+from employees;           
+---------------------------------------
+
+-- You cannot use constraints with LONG columns, ORDER BY, or GROUP BY 
+drop table emp_2;
+
+create table emp_2
+( empid number primary key,
+  notes long unique -- returns an error because you cannot use constraints with LONG column
+);  
+
+create table emp_2
+( empid number primary key,
+  notes long not null -- works fine, can make LONG column NOT NULL
+);
+
+select * from emp_2
+order by notes; -- will return error
+
+select empid, count(notes)
+from emp_2
+group by notes; -- will return error
+---------------------------------------
+
+-- GROUP BY
+-- GROUP BY clause MUST CONTAIN all columns in the SELECT statement
+-- Unless the SELECT statement only contains a GROUP function (COUNT, etc)
+select to_char (hire_date, 'yyyy'), count (employee_id)
+from employees
+group by to_char (hire_date, 'yyyy');
+
+select to_char (hire_date, 'yyyy'), count (employee_id)
+from employees
+group by to_char (hire_date, 'rr'); -- returns error
+
+select count (employee_id)
+from employees
+group by department_id;
+
+select count (employee_id)
+from employees
+group by (salary-commission_pct);
+
+select salary-commission_pct, count(employee_id)
+from employees
+group by (salary-commission_pct);
+---------------------------------------
+
+-- TO_CHAR
+-- The next 5 statements give the same results
+-- Can use 0 or 9 as a number placeholder
+-- 'G' is the thousands comma separator
+select to_char(1005.50, '9,999.99') from dual;
+select to_char(1005.50, '0,000.00') from dual;
+select to_char(1005.50, '0G000D00') from dual;
+select to_char(1005.50, '9G999D99') from dual;
+select to_char(1005.50, '0G909D99') from dual;
+
+-- Extra 0's will display as 0's (zeros can be number placeholders or zeros)
+-- Extra 9's will display as white spaces
+select to_char(1005.50, '000G909D99') from dual; -- forces 2 zeros to be displayed
+select to_char(1005.50, 'fm000G909D99') from dual; -- formats (removes) white space
+
+-- If you use G or D, then you cannot use . or ,
+select to_char(1005.50, '9G999.99') from dual; -- If you use G or D, then you cannot use . or ,
+
+select to_char(1005.50, '9,99D99') from dual; -- If you use G or D, then you cannot use . or ,
+-------------------------------------------
+
+-- All of the following statements return the same results
+
+select first_name || ' works in \ ' || department_id
+from employees;
+
+select first_name || q'[ works in \ ]' || department_id
+from employees;
+
+select first_name || q'( works in \ )' || department_id
+from employees;
+
+select first_name || q'/ works in \ /' || department_id
+from employees;
+
+select first_name || q'{ works in \ }' || department_id
+from employees;
+
+select first_name || q'' works in \ '' || department_id
+from employees;
+------------------------------------------------
+
+-- Matching the Data Type
+-- Data types of NVL statements must match
+select employee_id, nvl(commission_pct, 0)
+from employees;
+
+select employee_id, nvl(commission_pct, '0') -- Will not return an error because Oracle will do the implicit conversion
+from employees;
+
+select employee_id, nvl(commission_pct, 'no comm') -- Returns an error because data types do not match
+from employees;
+
+select employee_id, nvl(to_char(commission_pct), 'no comm') -- Works because COMMISSION_PCT is converted to CHAR
+from employees;
+
+-- With DECODE the IF/ELSE parts should be of the same Data Type, but Oracle will do implicit conversions
+select employee_id, department_id,
+decode (department_id, 10, 'dept 10', 20, 'dept 20', department_id) -- Works because Oracle will do the implicit conversion on DEPARTMENT_ID and convert it to CHAR
+from employees;
+
+-- In this example, salary+10, salary+20, and 'n/a' should be the same Data Type
+select employee_id, department_id, salary,
+decode (department_id, 10, salary+10, 20, salary+20, 'n/a') raise_sal -- Returns an error because 'n/a' is not a valid number and cannot be implicitly converted
+from employees;
+
+select employee_id, department_id, salary,
+decode (department_id, 10, to_char(salary+10), 20, to_char(salary+20), 'n/a') raise_sal -- Works because we converted SALARY to CHAR
+from employees
+order by department_id;
+--------------------------------------------
+
+-- Implicit Conversions for dates
+-- Oracle will implicitly convert date as long as the:
+-- Day is a valid NUMBER, month is a valid CHAR, and year is a valid NUMBER
+select * from employees
+where hire_date = '17-JUN-03'; -- This is the default date format DD-MON-RR
+
+-- Month is not case sensitive
+select * from employees
+where hire_date = '17-jun-03';
+
+select * from employees
+where hire_date = '17-JUN-2003';
+
+-- Full words for the month also work
+select * from employees
+where hire_date = '17-june-2003';
+
+select * from employees
+where hire_date = '17-06-2003'; -- Will return error because 06 is not a valid CHAR
+-------------------------------
+
+-- Create an empty table as a copy
+drop table xx_emp_zz;
+
+-- Creating an empty table as a copy
+-- WHERE condition can be any untrue statement (1=2, a=b, 3=5, etc)
+create table xx_emp_zz
+as select * from employees
+where 1=2; -- This condition will never be true so the SELECT statement part of the table copy will return no results
+
+select * from xx_emp_zz;
+-----------------------------------
+
+-- FETCH
+-- ROWS can be used with or without the 'S'
+-- FETCH FIRST 5 ROW ONLY will work just fine
+select * from employees
+where salary is not null
+order by salary desc
+fetch first 5 rows only; -- You can also use (fetch next 5 rows only)
+
+-- NULLS for this statement will appear first since NULLS are ordered first in descending
+select * from employees
+order by salary desc
+fetch first 5 rows only;
+
+-- WITH TIES retrieves the next value (6th in this case) if the salary of the 6th record is the same
+select * from employees
+order by salary desc
+fetch first 5 rows with ties; -- FETCH FIRST 5 ROWS ONLY WITH TIES is not valid syntax
+
+select * from employees
+order by salary desc
+fetch first 4 percent rows only;
+
+select * from employees
+order by salary desc
+fetch first 4 percent rows with ties; -- FETCH FIRST 4 PERCENT ROWS ONLY WITH TIES is not valid syntax
+--------------------------------------
+
+/*
+Data Dictionary Views
+
+* Created by Oracle Server
+* User can only have READ access
+* Consists of base tables and user-accessible views (both only accessible by SYS user)
+* All Data Dictionary Views belong to the SYS user
+
+* DICTIONARY
+* USER_OBJECTS
+* USER_TABLES
+* USER_TAB_COLUMNS
+* ETC
+*/
+
+/*
+You can query the dictionary views that are based on the dictionary tables to
+find information such as:
+
+* Definitions of all schema objects in the DB (tables, views, indexes, synonyms,
+  sequences, procedures, functions, packages, triggers, etc
+* Default values for columns
+* Integrity constraint information
+* Names of Oracle users
+* Privaleges and roles that each user has been granted
+* Other general DB information
+*/
+
+/*
+View Naming Conventions (Prefixes for Data Dictionary query statements)
+
+* USER: User's view (what's in your schema; what you own)
+* ALL: Expanded user's view (what you can access)
+* DBA: Database administrator's view (what is in everyone's schemas)
+* V$: Performance-related data
+*/
+--------------------------------------
+
+-- DICTIONARY: Contains the names and descriptions of the dictionary tables and views.
+-- Name in the data dictionary are in UPPERCASE
+
+-- This query displays all dictionary views stored in DICTIONARY
+select * from dictionary
+order by 1;
+
+select * from dictionary
+where table_name like '%COL%'; -- Must be UPPERCASE
+----------------------------------------------------
+
+/*
+USER OBJECTS
+
+* Query USER_OBJECTS to see all the objects that you own
+* Using USER_OBJECTS, you can obtain a listing of all object names and types in
+  your schema, plus the following information:
+    * Date created
+    * Date of last modification
+    * Status (valid or invalid)
+    * Whether the object name was system-generated or not (GENERATED)
+    * Type of object
+    * Dictionary object number of the object (OBJECT_ID)
+    
+USER_OBJECTS Columns
+
+* ONJECT_NAME
+* OBJECT_ID
+* OBJECT_TYPE
+* CREATED
+* LAST_DDL_TIME (Last modified date and time)
+* STATUS (Tables are always valid. Views, procedures, functions, packages, and triggers may not be valid)
+* GENERATED
+
+CAT VIEW (Synonym for USER_CATALOG)
+
+* View that lists tables, views, synonyms, and sequences owned by the user
+* Use for a simplified query and output
+* Contains only two columns: TABLE_NAME and TABLE_TYPE
+* Provides names of all your INDEX, TABLE, CLUSTER, VIEW, SYNONYM, SEQUENCE, or
+  UNDEFINED objects
+
+ALL_OBJECTS
+
+* Query ALL_OBJECTS to see all the objects to which you have access
+*/
+----------------------------------------------
+
+-- USER_OBJECTS / ALL_OBJECTS Examples
+desc user_objects;
+
+select object_name, object_id, object_type, created, last_ddl_time, status, generated
+from user_objects;
+
+select object_name, object_id, object_type, created, last_ddl_time, status, generated
+from user_objects
+where object_name = 'EMPLOYEES';
+
+-- OWNER column is only found in the ALL_OBJECTS view
+select OWNER, object_name, object_id, object_type, created, last_ddl_time, status, generated
+from all_objects
+where object_name = 'EMPLOYEES';
+
+-- USER_CATALOG is a DICTIONARY view containing only TABLE_NAME and TABLE_TYPE
+-- Only contains table types: TABLE, VIEW, INDEX, SYNONYM, SEQUENCE
+select * from user_catalog;
+
+-- CAT is a synonym for USER_CATALOG
+select * from cat;
+--------------------------------------
+
+/*
+USER_TABLES
+
+* Contains the names of your tables
+* Contains information about your tables
+* Contains detailed informaiton about storage
+* TABS view is a synonym of the USER_TABLES view
+*/
+
+/*
+USER_TAB_COLUMNS
+
+* Contains detailed information about the columns in your tables
+
+Contains Additional Information such as:
+
+* Column Names
+* Column data types
+* Length of data types
+* Precision and scale for NUMBER columns
+* Whether NULLS are allowed (Is there a NOT NULL constraint on the column?)
+* Default value
+*/
+--------------------------------------
+
+-- USER_TABLES Examples
+select * from user_tables;
+
+select owner, table_name
+from all_tables;
+
+-- TABS is a synonym of USER_TABLES
+select table_name from tabs;
+--------------------------------
+
+-- USER_TAB_COLUMNS Examples
+select * from user_tab_columns
+where table_name = 'EMPLOYEES'
+order by table_name, column_id;
+-------------------------------------------
+
+-- *** IMPORTANT ***
+-- USER_CONSTRAINTS / USER_CONS_COLUMNS (Part 1)
+
+/*
+Constraint Information:
+
+* USER_CONSTRAINTS describes the constraint definitions on your tables
+* USER_CONS_COLUMNS describes columns that are owned by you and that are specified in constraints
+
+CONSTRAINT Types:
+
+* C (check constraint on a table, or NOT NULL)
+* P (primary key)
+* U (unique key)
+* R (referential integrity [foreign key])
+* V (with cehck option, on a view)
+* O (with read-only, on a view)
+
+The DELETE_RULE can be:
+* CASCADE: If the parent record is deleted, the child records are deleted also
+* SET NULL: If the parent record is deleted, this changes the respective child records to NULL
+* NO ACTION: A parent record can be deleted only if no child record exists
+
+The STATUS can be:
+
+* ENABLED: Constraints are active
+* DISABLED: Constraints are made inactive
+
+USER_CONS_COLUMNS
+
+* A constraint can apply to more than one column
+* You can also write a join between USER_CONSTRAINTS and USER_CONS_COLUMNS to
+  create customized output from both tables
+  */
+  ------------------------------------
+  
+-- USER_CONSTRAINTS / USER_CONS_COLUMNS (Part 2)
+  
+-- USER_CONSTRAINTS
+select * from user_constraints
+where table_name ='EMPLOYEES'; -- DEPT_ID_FK
+
+-- For referential integrity constraints, there is a relationship between the FK in one table
+-- and the PK in another table
+select * from user_constraints
+where constraint_name = 'DEPT_ID_PK';
+-------------------------------------
+
+-- *** IMPORTANT - PRACTICE THESE EXAMPLES ***
+
+-- SELF JOIN (Old Syntax)
+-- (+) is added to D.CONSTRAINT_NAME because we want all results from the M table to show
+-- We want to display all results even if the TABLE_NAME is NULL
+select m.owner, m.table_name, m.constraint_name, m.constraint_type, m.r_constraint_name, d.table_name
+from user_constraints m,
+user_constraints d
+where m.r_constraint_name = d.constraint_name(+)
+and m.table_name = 'EMPLOYEES';
+
+-- SELF JOIN (New Syntax)
+select m.owner, m.table_name, m.constraint_name, m.constraint_type, m.r_constraint_name, d.table_name
+from user_constraints m left outer join -- same as putting the (+) on D.CONSTRAINT_NAME
+user_constraints d
+on (m.r_constraint_name = d.constraint_name)
+where m.table_name = 'EMPLOYEES';
+-----------------------------------------
+
+-- USER_CONS_COLUMNS
+
+-- This query does not display the column names for constraints
+select * from user_constraints
+where table_name = 'EMPLOYEES'; -- EMP_EMP_ID_PK
+
+-- This query displays the column names of constraints
+-- POSITION indicates the position of PK if it is a composite PK
+select * from user_cons_columns
+where table_name = 'EMPLOYEES';
+
+-- Shows composite PK with positions 1 and 2
+select * from user_cons_columns
+where table_name = 'XX_EMP_COL_CONST1';
+
+select m.owner, m.table_name, m.constraint_name, m.constraint_type
+from user_constraints m
+where table_name = 'EMPLOYEES';
+
+-- JOIN for USER_CONSTRAINTS and USER_CONS_COLUMNS (Old Syntax)
+select m.owner, m.table_name, m.constraint_name, m.constraint_type, d.column_name, d.position
+from user_constraints m,
+user_cons_columns d
+where m.constraint_name = d.constraint_name
+and m.table_name = 'EMPLOYEES';
+
+-- JOIN for USER_CONSTRAINTS and USER_CONS_COLUMNS (New Syntax)
+select m.owner, m.table_name, m.constraint_name, m.constraint_type, d.column_name, d.position
+from user_constraints m join
+user_cons_columns d
+on (m.constraint_name = d.constraint_name)
+where m.table_name = 'EMPLOYEES';
+
+
+--------------------------------------------------
+
+-- *** IMPORTANT EXAMPLE TO PRACTICE ***
+
+-- This query displays all the constraints at once
+
+----------------------------------------------------
+
+-- This query counts all the constraints at once
+-- MAIN QUERY
+select count(1) from user_cons_columns;
+
+-- RESULTS FROM THIS QUERY SHOULD HAVE THE SAME COUNT AS QUERY ABOVE
+select m.owner, m.table_name, m.constraint_name, r_m.column_name,
+m.constraint_type, m.search_condition, m.status, d.constraint_name, d.table_name,
+r_d.column_name, r_d.position
+from user_constraints m,
+user_constraints d,
+user_cons_columns r_m,
+user_cons_columns r_d
+-- (+) is put on D.CONSTRAINT_NAME because it has more rows than M.R_CONSTRAINT_NAME
+where m.r_constraint_name = d.constraint_name(+)
+and m.constraint_name = r_m.constraint_name
+-- (+) is put on R_M.CONSTRAINT_NAME because it has more rows than D.CONSTRAINT_NAME
+and d.constraint_name = r_d.constraint_name(+)
+and m.table_name = 'EMPLOYEES'
+order by m.owner, m.table_name, r_d.position;
+
+
+select constraint_name from user_constraints;
+
+select constraint_name from user_cons_columns;
+----------------------------------------------------
+
+-- COMMENTS ON TABLE / COLUMN
+comment on table employees
+is 'This table contains employee data';
+
+select * from user_tab_comments -- ALL_TAB_COMMENTS for all users
+where table_name = 'EMPLOYEES';
+---------------------------
+
+comment on column employees.salary
+is 'This column contains employee salary information :)';
+
+select * from user_col_comments -- ALL_COL_COMMENTS for all users
+where table_name = 'EMPLOYEES';
+
+select * from user_col_comments
+where table_name = 'EMPLOYEES'
+and column_name = 'SALARY';
+-----------------------------------------------
+
+-- SEQUENCES (Part 1)
+
+-- Sequence: Database object that create numbered sequences
+
+/*
+SEQUENCES
+
+* Can automatically generate unique numbers
+* Is a shareable object
+* Can be used to create a primary key value
+* Replaces applicaiton code
+* Speeds up the efficiency of accessing sequence values when cached in memory
+* Sequences are auto-generated and incremented or decremented integers
+* Often used to create primary key values because they must be unique
+* Sequence numbers are stored and generated independent of tables. Therefore,
+  the same sequences can be used for multiple tables
+* It is best to create sequences using the Oracle DB defaults  
+*/  
+
+-- *** IMPORTANT ***
+-- Know the PDF slides for this sections for the exam
+-----------------------------------------------------
+
+-- SEQUENCES (Part 2)
+
+-- Creating basic sequences
+create sequence dept_s;
+
+select * from user_sequences
+where sequence_name = 'DEPT_S';
+
+/*
+KNOW THE FOLLOWING COLUMNS:
+
+* SEQUENCE_NAME
+* MIN_VALUE
+* MAX_VALUE
+* INCREMENT_BY
+* CYCLE_FLAG
+* ORDER_FLAG
+* CACHE_SIZE
+*/
+
+-- select length('9999999999999999999999999999999') from dual;
+
+drop table dept_test_s;
+
+create table dept_test_s
+( depno number primary key,
+  dname varchar2(100)
+);  
+
+insert into dept_test_s (depno, dname)
+values (dept_s.nextval, 'Sales'); -- dept_s.NEXTVAL = name of SEQUENCE and assigns the next available value
+
+insert into dept_test_s (depno, dname)
+values (dept_s.nextval, 'Operation');
+
+select * from dept_test_s; -- DEPNO values are assigned by SEQUENCE DEPT_S
+
+select dept_s.currval from dual; -- Returns the current value of sequence used
+
+-- The following query USES a sequence value, so sequence value 3 will be used by this statement
+-- Anytime you use NEXTVAL with a select statement the next sequence value will be taken
+-- Anytime you assign a sequence value using NEXTVAL and then issue a ROLLBACK, the sequence values will be taken
+select dept_s.nextval from dual; -- Returns the next value that will be used in sequence
+
+insert into dept_test_s (depno, dname)
+values (dept_s.nextval, 'IT');
+
+select * from dept_test_s;
+
+select dept_s.currval from dual;
+--------------------------------------------------
+
+-- SEQUENCES (Part 3)
+drop sequence dept_s1;
+
+create sequence dept_s1
+start with 10
+increment by 20;
+
+select * from user_sequences
+where sequence_name = 'DEPT_S1'; -- will display values from DICTIONARY table
+
+delete from dept_test_s;
+
+insert into dept_test_s (depno, dname)
+values (dept_s1.nextval, 'Marketing');
+
+insert into dept_test_s (depno, dname)
+values (dept_s1.nextval, 'Help Desk');
+
+select * from dept_test_s;
+
+select * from user_sequences
+where sequence_name = 'DEPT_S';
+
+commit;
+---------------------------------------------------
+
+delete from dept_test_s;
+
+drop sequence dept_s2;
+
+create sequence dept_s2
+increment by -5;
+
+select * from user_sequences
+where sequence_name = 'DEPT_S2';
+
+insert into dept_test_s (depno, dname)
+values (dept_s2.nextval, 'Marketing');
+
+insert into dept_test_s (depno, dname)
+values (dept_s2.nextval, 'Help Desk');
+
+select * from dept_test_s;
+--------------------------------------------
+
+update dept_test_s
+set depno = dept_s2.nextval;
+
+select * from dept_test_s
+order by 1; -- Orders by first column in ascending order
+-----------------------------------------------
+
+-- You can create a default value as a sequence while creating a table
+create sequence emp_s;
+
+create table em
+( empid number default emp_s.nextval primary key,
+  name varchar2(100),
+  depno number
+);
+
+insert into em (name) values ('JAMES');
+
+insert into em (name) values ('MARK');
+
+select * from em;
+------------------------------------------------
+
+-- SEQUENCES (Part 4)
+delete from dept_test_s;
+delete from em;
+drop sequence dept_s;
+
+create sequence dept_s;
+
+-- Using CURRVAL and NEXTVAL in inserting scripts
+-- Insert department called 'Support' in table DEPT_TEST_S using the sequence DEPT_S
+-- Then insert 3 employees into EM table that work in the SUPPORT department
+
+insert into dept_test_s (depno, dname)
+values (dept_s.nextval, 'Support'); -- Always use NEXTVAL for Master Table
+
+-- Always use CURRVAL for Detail Table that links to Master Table
+insert into em (name, depno) values ('Al', dept_s.currval);
+insert into em (name, depno) values ('Ahmed', dept_s.currval);
+insert into em (name, depno) values ('Samer', dept_s.currval);
+
+select * from dept_test_s;
+
+-- EMPID is using the sequence EMP_S which still has two values assigned and
+-- therefore has a CURRVAL of 3
+select * from em;
+
+-- Join the two tables
+select e.empid, e.name, e.depno, d.dname
+from em e, dept_test_s d
+where e.depno = d.depno;
+------------------------------------------
+
+-- Altering SEQUENCES
+select * from user_sequences
+where sequence_name = 'DEPT_S';
+
+alter sequence dept_s
+increment by 100;
+
+select * from user_sequences
+where sequence_name = 'DEPT_S';
+
+alter sequence dept_s
+cache 30;
+
+select * from user_sequences
+where sequence_name = 'DEPT_S';
+
+alter sequence dept_s
+maxvalue 9999;
+
+select * from user_sequences
+where sequence_name = 'DEPT_S';
+
+-- *** IMPORTANT FOR EXAM ***
+-- You cannot ALTER the START WITH
+alter sequence dept_s
+start with 170; -- Returns an error
+-----------------------------------
+
+drop sequence s_cycle;
+
+create sequence s_cycle
+start with 1 -- Can use START WITH when creating a SEQUENCE, but START WITH cannot be altered
+increment by 1
+maxvalue 5
+nocache
+cycle;
+
+select s_cycle.nextval from dual; -- SEQUENCE value is taken when using NEXTVAL in a SELECT statement
+select s_cycle.nextval from dual;
+select s_cycle.nextval from dual;
+select s_cycle.nextval from dual;
+select s_cycle.nextval from dual;
+select s_cycle.nextval from dual; -- SEQUENCE value resets when it reaches 5
+
+/*
+NOTES ON SEQUENCES
+
+* Don't use the CYCLE option if a SEQUENCE is used to create a PK value
+* NEXTVAL returns a new SEQUENCE value each time it is used, even for different users
+* NEXTVAL must be issued for that sequence before CURRVAL contains a value
+* NEXTVAL and CURRVAL are Pseudocolumns
+
+Rules for Using NEXTVAL and CURRVAL | *** IMPORTANT FOR EXAM ***
+
+You can use NEXTVAL and CURRVAL in the following contexts:
+
+* The SELECT list of a SELECT statement that is not part of a subquery
+* The SELECT list of a subquery in an INSERT statement
+* The VALUES clause of an INSERT statement
+* The SET clause of an UPDATE statement
+
+You CANNOT use NEXTVAL and CURRVAL in the following contexts:
+
+* The SELECT list of a VIEW
+* A SELECT statement with the DISTINCT keyword
+* A SELECT statement with GROUP BY, HAVING, or ORDER BY clauses
+* A subquery in a SELECT, DELETE, or UPDATE statement
+
+-- Caching sequence values in memory gives faster access to those values
+
+Gaps in a sequence can occur when:
+
+* A ROLLBACK occurs
+* The system crashes
+* A sequence is used in another table
+
+Guidelines for altering a SEQUENCE | *** IMPORTANT FOR EXAM ***
+
+* You must be the owner or have the ALTER privalege for the sequence
+* Only future sequence numbers are affected
+* The sequences must be dropped and re-created to restart the sequence at a different number
+* Some validation is performed
+* To remove a sequence, use the DROP statement
+*/
+----------------------------------------------
+
+-- SYNONYMS
+
+/*
+SYNONYM (Nickname)
+
+* A database object
+* Can be created to give an alternative name to a table or to another database object
+* Requires no storage other than its definition in the data dictionary
+* Is useful for hiding the identity and location of an underlying schema object
+*/
+
+-- Creating Private SYNONYM E for EMPLOYEES table
+drop synonym e;
+
+create synonym e
+for employees;
+
+-- Now you can use the SYNONYM to call the table
+select * from e;
+
+-- The info for SYNONYMS is stored in the dictionary view under USER_SYNONYMS / ALL_SYNONYMS
+select * from user_synonyms;
+
+-- You can drop the SYNONYM using the DROP statement
+drop synonym e;
+
+-- You need CREATE PUBLIC SYNONYM privaleges in order to create PUBLIC SYNONYMS
+create public synonym employees for hr.employees;
+
+-- The above statement allows other user to access EMPLOYEES table without having to use HR.EMPLOYEES
+-- No need to use SELECT * FROM HR.EMPLOYEES
+-- Can just use SELECT * FROM EMPLOYEES
+-----------------------------------------------------
+
+-- *** IMPORTANT ***
+-- INDEXES (Part 1)
+
+/*
+INDEXES
+
+* Is a schema object
+* Can be used by the Oracle Server to speed up the retrieval of rows by using a pointer
+* Can reduce disk input/output (I/O) by using a rapid path access method to locate data quickly
+* Is dependent on the table that it indexes (indexes are tied to specific tables, unlike sequences)
+* Is used and maintained automatically by the Oracle Server
+* When you drop a table, the corresponding indexes are dropped
+* Are logically and physically independent of the data in the object with which they are associated
+  This means that they can be created or dropped at any time, and have no effect on the base
+  tables or other indexes
+* Created Automatically: A unique index is created automatically when you define a PRIMARY KEY or
+  UNIQUE constraint in the table definition.
+  THE NAME OF THE INDEX WILL BE THE SAME AS THE CONSTRAINT NAME
+* Created Manually: You can create unique or nonunique indexes on columns to speed up acces to the rows
+  WITH THIS METHOD, THE USER WILL PROVIDE THE NAME OF THE INDEX
+*/  
+-------------------------------------------------
+
+-- Creating INDEXES Automatically
+drop table emp_ind;
+
+create table emp_ind
+( empno number constraint emp_ind_pk primary key, -- automatically indexed
+  ename varchar2(100) unique, -- automatically indexed (no constraint name so Oracle will automaticall name it)
+  nickname varchar2(100),
+  email varchar2(100)
+);  
+
+insert into emp_ind (empno, ename, nickname, email)
+values ('1', 'Ahmed Samer', 'Ahmed.Samer', 'ahmed.samer@gmail.com');
+
+insert into emp_ind (empno, ename, nickname, email)
+values ('2', 'Rami Nader', 'Rami.Nader', 'rami.nader@hotmail.com');
+
+insert into emp_ind (empno, ename, nickname, email)
+values ('3', 'Khaled Ali', 'Khaled.Ali', 'khaled.ali@hotmail.com');
+
+insert into emp_ind (empno, ename, nickname, email)
+values ('4', 'Hassan Nabil', 'Hassan.Nabil', 'hassan.nabil@yahoo.com');
+
+commit;
+
+delete from emp_ind;
+
+select * from emp_ind;
+
+-- Oracle Server will create implicit UNIQUE indexes for the PK and Unique Key (UK)
+-- The name for the index will be the same as the constraint name
+
+select * from user_indexes
+where table_name = 'EMP_IND';
+
+select * from user_ind_columns
+where table_name = 'EMP_IND';
+
+-- Now Oracle will use the index in the WHERE clause to speed up the query
+select * from emp_ind
+where empno = 1; -- You can see that Oracle uses the index in the 'Explain Plan' section of ORacle SQL Developer
+
+select * from emp_ind
+where ename = 'Ahmed Samer'; -- You can see that Oracle uses the index in the 'Explain Plan' section of ORacle SQL Developer
+-----------------------------------------------
+
+-- Creating INDEXES Manually
+select * from emp_ind
+where nickname = 'Ahmed.Samer'; -- There is no index on NICKNAME so Oracle will make a full scan of the table
+
+-- Must have CREATE INDEX privaleges to create INDEXES
+-- This is a NONUNIQUE INDEX (May contain duplicate index values)
+create index emp_ind_nickname on emp_ind (nickname);
+
+select * from user_indexes
+where table_name = 'EMP_IND';
+
+-- Now the server will user the index for NICKNAME in the WHERE clause
+select * from emp_ind
+where nickname = 'Ahmed.Samer';
+
+-- Now you can create a UNIQUE INDEX for email, but it is better to add a UNIQUE CONSTRAINT
+-- UNIQUE INDEX acts like a UNIQUE CONSTRAINT
+create unique index emp_ind_email on emp_ind (email);
+
+-- Now is you try to insert an existing email address then you will receive an error
+insert into emp_ind (empno, ename, nickname, email)
+values ('10', 'Karem Samer', 'Ahmed.Samer', 'ahmed.samer@gmail.com'); -- Returns an error
+
+-- You can also create an additional index for ENAME using a function-based INDEX -- UPPER(ENAME)
+select * from emp_ind
+where upper(ename) = 'AHMED SAMER';
+
+-- Creates an INDEX on the expression UPPER(ENAME) -- makes a system column for it
+create index emp_ind_up_ename on emp_ind (upper(ename));
+
+select * from user_indexes
+where table_name = 'EMP_IND';
+
+-- This INDEX is tied to an expression, not a column
+select * from user_ind_columns
+where table_name = 'EMP_IND';
+
+-- Displays the expression that the index is tied to
+select * from user_ind_expressions
+where table_name = 'EMP_IND';
+
+select * from emp_ind
+where upper(ename) = 'AHMED SAMER';
+----------------------------------------
+
+-- *** IMPORTANT FOR EXAM ***
+-- INDEXES (Part 2)
+
+/*
+Index Creation Guidelines
+
+Create an Index when:
+
+* A column contains a wide range of values
+* A column contains a large number of null values
+* One or more columns are frequently used together in a WHERE clause or a join condition
+* The table is large and most queries are expected to retriece less than 2% to 4%
+  of the rows in the table
+  
+Do not create and Index when:
+
+* The columns are not often used as a condition in the query (columns that are not frequently used in statements)
+* The table is small or most queries are expected to retriece more than 2% to
+  4% of the rows in the table
+* The table is updated frequently
+* The indexed columns are referenced as part of an expression
+*/
+-----------------------------------------
+
+-- More INDEX Examples
+
+-- Naming the INDEX while creating a table
+drop table emp_ind1;
+
+-- Even though a NONUNIQUE INDEX is created, the values must be unique because it is a PK
+create table emp_ind1
+( empno number constraint emp_ind1_pk primary key using index
+    (create index emp_ind1_ind on emp_ind1 (empno)),
+  fname varchar2(100),
+  lname varchar2(100),
+  email varchar2(100),
+  gender char(1)
+);
+
+insert into emp_ind1 (empno, fname, lname, email, gender)
+values (1, 'M', 'S', 'm@me.com', 'M');
+
+insert into emp_ind1 (empno, fname, lname, email, gender)
+values (1, 'N', 'B', 'n@me.com', 'F');
+
+-- You can create INDEXES of composite columns
+create index emp_ind1_comp on emp_ind1 (fname, lname);
+
+select * from user_indexes
+where table_name = 'EMP_IND1';
+
+select * from user_ind_columns
+where table_name = 'EMP_IND1';
+
+/*
+BITMAP INDEXES
+
+* Specify BITMAP to indicate that the index is to be created with a bitmap for each
+  distinct key, rather than indexing each row separately.
+* Bitmap indexes store the ROWIDS associated with a key value as a bitmap
+* Normal INDEXES point to 1 row, BITMAP INDEXES point to groups of rows
+* Useful where a column contains many rows that have very few distinct values, such as Male or Female
+* Pointer will point to distinct values, not on specific rows
+*/
+
+-- Creating BITMAP INDEX
+creaet bitmap index emp_ind_b on emp_ind1 (gender); -- This feature is only in the Enterprise Edition
+
+-- Dropping an index
+drop index emp_ind1_comp;
+
+select * from user_indexes
+where table_name = 'EMP_IND1';
+------------------------------------------
+
+/*
+VIEWS
+
+* Essentially a stored SELECT statement that has a name
+* VIEWS are logical subsets or combinations of data
+* VIEWS are schema objects
+* A VIEW contains no data of its own
+* The tables on which a VIEW is based are called BASE TABLES
+* VIEWS restrict access to the data because they display selected columns
+* VIEWS can be used to make simple queries to retrieve the results of complicated queries
+* VIEWS provide data independence for ad hoc users and application programs.
+* One VIEW can be used to retrieve data from several tables
+* VIEWS provide groups of users access to data according to their particular criteria
+
+SIMPLE VIEWS
+
+* One table
+* No functions
+* No groups of data
+* DML operations allowed through a VIEW
+
+COMPLEX VIEWS
+
+* One or more tables
+* Contain functions
+* Contain groups of data
+* DML operations not always allowed through a VIEW
+*/
+--------------------------------------------------------
+
+-- Creating a simple VIEW EMP_V1
+-- One table, no functions, no groups, DML operations allowed
+
+drop view emp_v1;
+
+-- Create VIEW EMP_V1 containing EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, HIRE_DATE, JOB_ID
+create view emp_v1
+as
+select employee_id, first_name, last_name, email, hire_date, job_id
+from employees;
+
+-- No I can SELECT from the view the same as I SELECT from a table
+select * from emp_v1;
+
+select * from user_views -- USER_VIEWS and ALL_VIEWS are the data dictionary tables that store VIEWS
+where view_name = 'EMP_V1';
+
+desc emp_v1;
+
+-- You can execute DML operations just like you can with a table
+insert into emp_v1 (employee_id, first_name, last_name, email, hire_date, job_id)
+values (333, 'David', 'King' ,'DKing', sysdate, 'IT_PROG');
+
+-- See the new record in the VIEW
+select * from emp_v1
+where employee_id = 333;
+
+-- See the new record in the original tabel
+select * from employees
+where employee_id = 333;
+-----------------------------------------------------
+
+-- Creating SIMPLE VIEW EMP_V2
+-- But here we will give the columns another name as alias
+
+drop view emp_v2;
+
+create view emp_v2
+as
+select employee_id emp_id, first_name fname, last_name lname, email, hire_date, job_id
+from employees;
+
+select * from emp_v2;
+
+-- So now you can run DML operations but using the new column aliases from the VIEW
+insert into emp_v2 (emp_id, fname, lname, email, hire_date, job_id)
+values (334, 'Lara', 'Croft', 'Lara', sysdate, 'IT_PROG');
+
+select * from emp_v2
+where emp_id = 334;
+
+select * from employees
+where employee_id = 334;
+----------------------------------------------------------
+
+-- Creating SIMPLE VIEW EMP_V3
+-- Here we will give the columns another name inside the VIEW definition
+
+drop view emp_v3;
+
+create view emp_v3 (empid, fname, lname, mail, hiredate, jobs) -- aliases get mapped to columns in SELECT statement below
+as
+select employee_id, first_name, last_name, email, hire_date, job_id
+from employees;
+
+select * from emp_v3;
+-------------------------------------------------------
+
+-- *** IMPORTANT FOR EXAM ***
+-- Creating COMPLEX VIEWS
+
+/*
+Rules for Performing DML Operations on a VIEW
+
+* You can usually perform DML operations on SIMPLE VIEWS
+* You cannot remove a row if the VIEW contains the following:
+  * Group Functions
+  * a GROUP BY clause
+  * The DISTINCT keyword
+  * The pseudocolumn ROWNUM keyword
+  
+You cannot modify data in a VIEW if it contains (No UPDATE statement):
+* Group functions
+* A GROUP BY clause
+* The DISTINCT keyword
+* The pseudocolumn ROWNUM keyword
+* Columns defined by expressions (e.g. SALARY*12)
+
+You cannot add data through a VIEW if the VIEW includes (No INSERT statement):
+* Group functions
+* A GROUP BY clause
+* The DISTINCT keyword
+* The pseudocolumn ROWNUM keyword
+* Columns defined by expressions
+* NOT NULL columns without default value in the base tables that are not selected by the VIEW
+*/
+
+-- ROWNUM (Sidenote)
+select first_name
+from employees;
+
+-- ROWNUM is a pseudocolumn that displays the number of the corresponding ROW
+select rownum, first_name
+from employees;
+-----------------------------------------------
+
+-- Creating COMPLEX VIEWS examples
+
+-- No DML operations allowed on this VIEW because it contains GROUP functions and a GROUP BY clause
+drop view emp_dept_analysis;
+
+create view emp_dept_analysis
+as
+select department_id, count(employee_id) emp_count, -- Must use ALIAS because we can't name column COUNT(EMPLOYEE_ID)
+max(salary) max_sal,
+min(salary) low_sal
+from employees
+group by department_id;
+
+select * from emp_dept_analysis;
+
+-- We want to add the Average Salary also to the VIEW EMP_DEPT_ANALYSIS
+-- So we have to recreate the VIEW again by using (OR REPLACE)
+
+create or replace view emp_dept_analysis
+as
+select department_id, count(employee_id) emp_count,
+max(salary) max_sal,
+min(salary) min_sal,
+avg(salary) avg_sal
+from employees
+group by department_id;
+
+select * from emp_dept_analysis;  
+
+select * from user_views;
+---------------------------------------------------
+
+-- Creating a COMPLEX VIEW that has data from multiple tables
+create or replace view emp_dept_v
+as
+select employee_id, first_name ||' '|| last_name name,
+salary, nvl(department_name, 'no dept') department_name
+from employees e left outer join departments d
+on (e.department_id = d.department_id); -- DEPARTMENT_ID = FK of EMPLOYEES table and PK of DEPARTMENTS table
+
+select * from emp_dept_v;
+-------------------------------------------------------
+
+-- With READ ONLY / With CHECK option / FORCE VIEW
+
+-- Creating VIEW with READ ONLY
+create or replace view emp_v_read
+as
+select employee_id, first_name, last_name, email, hire_date, job_id
+from employees
+where department_id = 90
+with read only;
+
+select * from emp_v_read;
+
+-- No DML operations allowed on READ-ONLY VIEW
+-- Queries are allowed only
+delete from emp_v_read;
+
+-- Oracle creates a constraint for READ ONLY VIEWS/TABLES
+-- Constraint type 'O' = READ ONLY
+select * from user_constraints
+where table_name = 'EMP_V_READ';
+--------------------------------------------------------
+
+-- Creating a VIEW with CHECK OPTIONS
+-- CHECK OPTION allows DML operations only within the scope of the VIEW
+-- In this case, DML operations are only allowed on records in DEPARTMENT 90
+create or replace view emp_v_chq_const
+as
+select employee_id, first_name, last_name, email, hire_date, job_id, department_id
+from employees
+where department_id = 90
+with check option;
+
+-- Constraint type 'V' = VIEW with CHECK OPTION
+select * from emp_v_chq_const;
+
+select * from user_constraints
+where table_name = 'EMP_V_CHQ_CONST';
+
+-- You can ONLY use DML operations with the VIEW range, which is DEPARTMENT 90
+insert into emp_v_chq_const (employee_id, first_name, last_name, email, hire_date, job_id, department_id)
+values (444, 'FADI', 'ALI', 'FALI', sysdate, 'IT_PROG', 90);
+
+select * from emp_v_chq_const;
+
+-- Any DML operations out of the VIEW's range will return an error (VIEW WITH CHECK OPTION WHERE clause violation)
+insert into emp_v_chq_const (employee_id, first_name, last_name, email, hire_date, job_id, department_id)
+values (446, 'SAED', 'ALI', 'SALI', sysdate, 'IT_PROG', 10); -- Returns an error
+--------------------------------------------------
+
+-- FORCE VIEW
+-- Forces a VIEWS creation even if the DB objects don' yet exist
+-- The below statement creates a VIEW on the table JRX even though JRX doesn't exist
+
+drop view force_v;
+
+create or replace force view force_v
+as
+select eno, ename
+from jrx;
+
+select * from user_views
+where view_name = 'FORCE_V';  
+-----------------------------------------------------
+
+-- Adding Constraints / Dropping Constraints
+
+-- Adding Constraints to tables
+-- Create 2 tables: EMP2 and DEPT2 (identical to EMPLOYEES and DEPARTMENTS)
+
+drop table emp2;
+
+-- No constraints are copied from EMPLOYEES except NOT NULL constraint
+create table emp2
+as select * from employees;
+
+desc emp2;
+
+select * from emp2;
+
+drop table dept2;
+
+-- No constraints are copied from DEPARTMENTS except NOT NULL constraint
+create table dept2
+as select * from departments;
+
+desc dept2;
+
+select * from dept2;
+
+-- There are many methods of adding constraints to a table
+
+-- 1.) Adding Primary Key (PK)
+
+-- Method 1.) Adding a PK without unique name (not preferred or commonly used)
+-- Here the constraint name will be sys_cn%
+
+-- Makes EMPLOYEE_ID a PK
+alter table emp2
+modify employee_id primary key;
+
+select * from user_constraints
+where table_name = 'EMP2';
+
+select * from user_cons_columns
+where table_name = 'EMP2';
+
+-- '&' = substitution variable (pushes a modal popup for entering a value)
+alter table emp2
+drop constraint &constraint; -- 'constraint' does not have to be fully spelled out, can enter 'cons' as long as there are no other columns containing 'cons'
+
+select * from user_constraints
+where table_name = 'EMP2';
+
+-- Method 2.) Adding PK with a unique name (preferred method)
+
+alter table emp2
+add constraint emp2_pk primary key(employee_id);
+
+select * from user_constraints
+where table_name = 'EMP2';
+
+alter table dept2
+add constraint dept2_pk primary key(department_id);
+--------------------------------------
+
+-- 2.) Adding a Foreign Key (FK)
+
+-- Method 1.) Adding a FK without a unique name (not preferred or commonly used)
+
+alter table emp2
+modify department_id references dept2(department_id);
+
+select * from user_constraints
+where table_name = 'EMP2';
+
+alter table emp2
+drop constraint &con_name;
+
+-- Method 2.) Adding a FK with a unique name (preferred and commonly used)
+
+alter table emp2
+add constraint emp2_fk_dept foreign key(department_id) references dept2(department_id);
+
+select * from user_constraints
+where table_name = 'EMP2';
+--------------------------------------------------
+
+-- 3.) Adding NOT NULL Constraint
+-- Will work only if the table is empty or the column has a value for every ROW
+
+alter table emp2
+modify first_name not null;
+------------------------------------------------
+
+delete from dept2; -- Returns an error because DEPT2 has child records in another table (EMP2 - DEPARTMENT_ID)
+
+select * from user_constraints
+where table_name in ('EMP2', 'DEPT2')
+and constraint_type in ('P', 'R')
+order by table_name;
+
+-- Referenced column constraints must be removed before this query will work
+alter table dept2
+drop primary key; -- Can also be done by ALTER TABLE DEPT2 DROP CONSTRAINT DEPT2_PK;
+
+-- When you do this, it will drop all related constraints
+-- Drops the PK and all related FKs
+alter table dept2
+drop primary key cascade;
+
+-- Shows that PK of DEPT2 and FK of EMP2 have been deleted
+select * from user_constraints
+where table_name in ('EMP2', 'DEPT2')
+and constraint_type in ('P', 'R')
+order by table_name;
+---------------------------------------------------
+
+-- Adding PK back to DEPT2
+alter table dept2
+add constraint dept2_pk primary key (department_id);
+
+-- Adding FK back to EMP2
+alter table emp2
+add constraint emp2_fk_dept foreign key(department_id) references dept2 (department_id);
+
+select * from user_constraints
+where table_name in ('EMP2', 'DEPT2')
+and constraint_type in ('P', 'R')
+order by table_name;
+----------------------------------------------------
+
+-- Dropping a column with constraints
+
+-- We want to drop column DEPARTMENT_ID from DEPT2 (PK with child records)
+alter table dept2
+drop column department_id; -- returns an error due to child records
+
+-- Drops the column and all related constraints
+alter table dept2
+drop column department_id cascade constraints;
+
+-- Shows that PK from DEPT2 and FK from EMP2 have been deleted
+select * from user_constraints
+where table_name in ('EMP2', 'DEPT2')
+and constraint_type in ('P', 'R');
+
+-- Will show DEPARTMENT_ID has been dropped
+select * from dept2;
+
+-- DEPARTMENT_ID will still be in table, but will no longer be a FK
+select * from emp2;
+-----------------------------------------------
+
+-- RENAME COLUMN / RENAME CONSTRAINT
+
+-- Renaming Columns
+
+select * from emp2;
+
+select * from user_cons_columns
+where table_name = 'EMP2';
+
+-- Also changes the related column name in the USER_CONSTRAINTS table
+alter table emp2
+rename column first_name to fname;
+
+select * from emp2;
+
+select * from user_cons_columns
+where table_name = 'EMP2';
+
+select * from user_constraints
+where table_name in ('EMP2', 'DEPT2')
+and constraint_type in ('P', 'R')
+order by table_name;
+
+-- Changing the constraint name
+alter table emp2
+rename constraint emp2_pk to new_emp2_pk;
+
+-- Will show the new constraint name
+select * from user_constraints
+where table_name in ('EMP2', 'DEPT2')
+and constraint_type in ('P', 'R')
+order by table_name;
+------------------------------------------
+
+-- Enable / Disable Constraints
+-- When constraints are created they are enabled by default
+-- Disabling constraints may be useful for large data migrations
+
+drop table emp2;
+
+-- Child table always has columns that refer to PKs in other tables
+create table emp2
+as select * from employees;
+
+drop table dept2;
+
+-- Master table always has FKs in other tables referring to it
+create table dept2
+as select * from departments;
+
+alter table dept2
+add constraint dept2_pk primary key (department_id);
+
+alter table emp2
+add constraint emp2_pk primary key (employee_id);
+
+alter table emp2
+add constraint emp2_fk_dept foreign key (department_id) references dept2 (department_id);
+
+select * from user_constraints
+where table_name in ('EMP2', 'DEPT2')
+and constraint_type in ('P', 'R')
+order by table_name;
+
+select * from user_indexes
+where table_name = 'EMP2';
+
+-- Disables PK constraint
+alter table emp2
+disable constraint emp2_pk;
+
+select * from user_constraints
+where table_name in ('EMP2', 'DEPT2')
+and constraint_type in ('P', 'R')
+order by table_name;
+
+-- *** IMPORTANT FOR EXAM ***
+-- When the PK constraint is disabled, it also drops the index for it
+select * from user_indexes
+where table_name = 'EMP2';
+
+alter table emp2
+enable constraint emp2_pk;
+
+-- Re-enabling the PK constraint also recreates the INDEX for it
+select * from user_indexes
+where table_name = 'EMP2';
+----------------------------------
+
+-- *** IMPORTANT ***
+-- Trying to disable a master table constraint that has references to it from other tables
+-- will return an error
+
+-- DEPT2_PK is a FK in the EMP2 table so the constraint cannot be disabled like this
+alter table dept2
+disable constraint dept2_pk;
+
+-- Must disable the constraint using CASCADE option
+-- This will also disable the related FKs in other tables
+alter table dept2
+disable constraint dept2_pk cascade;
+
+-- DEPT2_PK and EMP2_FK_DEPT have both been disabled
+select * from user_constraints
+where table_name in ('EMP2', 'DEPT2')
+and constraint_type in ('P', 'R')
+order by table_name;
+--------------------------------------
+
+-- *** IMPORTANT FOR EXAM ***
+-- DEFERRABLE Constraints
+
+-- DEFERRABLE INITALLY DEFERRED / IMMEDIATE CAN ONLY BE CHANGED FOR SESSION, NOT PERMANENTLY!!!
+
+-- Deferrable constraints do not return an error if the constraint has been violated
+-- until a COMMIT is issued
+
+-- DEFFERABLE Constraints Examples
+-- Two Types of DEFERRABLE constraints
+-- 1.) DEFERRABLE INITIALLY DEFERRED
+-- 2.) DEFERRABLE INITIALLY IMMEDIATE
+
+drop table emp_sal;
+
+create table emp_sal
+( emp_id number,
+  sal number,
+  bonus number,
+  constraint sal_ck check (sal > 100), -- Salary must be greater than 100
+  constraint bonus_ck check (bonus > 0) -- Bonus must be greater than 0
+);
+
+select * from emp_sal;
+
+-- Look at the columns that are DEFERRABLE and DEFERRED
+select * from user_constraints
+where table_name = 'EMP_SAL';
+
+-- Any DML operation that does not meet the constraint condition will return an error immediately
+insert into emp_sal (emp_id, sal, bonus)
+values (1, 90, 5); -- Returns and error due to salary constraint
+
+insert into emp_sal (emp_id, sal, bonus)
+values (1, 100, -2); -- Returns an error due to bonus constraint
+
+-- Let's drop the constraint and re-create them with new options
+alter table emp_sal
+drop constraint sal_ck;
+
+alter table emp_sal
+drop constraint bonus_ck;
+
+-- INITALLY DEFERRED = Constraint check deferred until COMMIT
+alter table emp_sal
+add constraint sal_ck check (sal > 100) deferrable initially deferred;
+
+-- INITIALLY IMMEDIATE = Constraint check not deferred and will be immediate, won't wait until COMMIT
+alter table emp_sal
+add constraint bonus_ck check (bonus > 0) deferrable initially immediate;
+
+alter table emp_sal
+disable constraint sal_ck;
+
+alter table emp_sal
+enable constraint sal_ck;
+
+select * from user_constraints
+where table_name = 'EMP_SAL';
+
+-- DEFERRABLE INITIALLY DEFERRED, constraint will be violated when COMMIT is issued
+-- INSERT allowed even though the constraint SAL_CK is violated
+insert into emp_sal (emp_id, sal, bonus)
+values (1, 90, 5);
+
+-- Error will be returned now because SAL_CK is violated
+-- ROLLBACK is issued automatically
+commit;
+
+-- DEFARRABLE INITIALLY IMMEDIATE will be violated immediately (acts as a normal constraint)
+insert into emp_sal (emp_id, sal, bonus)
+values (1, 200, -1); -- Returns an error immediately because the BONUS_CK constraint is violated
+
+-- Can change between INITIALLY IMMEDIATE and INITIALLY DEFERRED
+-- Setting will be chaged for THIS SESSION ONLY
+set constraint sal_ck immediate;
+
+-- Change will not show in data dictionary table
+-- Original setting will show in data dictionary table
+select * from user_constraints
+where table_name = 'EMP_SAL';
+
+-- Now the violation error will not be deferred until COMMIT
+insert into emp_sal (emp_id, sal, bonus)
+values (1, 90, 5);
+-------------------------------------------
+
+-- *** IMPORTANT FOR EXAM ***
+
+drop table emp_sal;
+
+create table emp_sal
+( emp_id number,
+  sal number,
+  bonus number,
+  constraint sal_ck check (sal > 100),
+  constraint bonus_ck check (bonus > 0)
+);  
+
+-- Now you will not be able to change the constraint to IMMEDIATE / DEFERRED
+-- Because the constraints were created without "DEFERRABLE INITIALLY DEFERRED / IMMEDIATE"
+-- Cannot change DEFERRED / IMMEDIATE without the DEFERRABLE option when the constraint is created
+-- In order to use DEFERRED / IMMEDIATE you must now drop the constraints and recreate them
+-- with DEFERRABLE INITIALLY DEFERRED / IMMEDIATE
+set constraint sal_ck immediate;
+set constraint sal_ck deferred;
+--------------------------
+
+-- GLOBAL TEMPORARY TABLE
+
+-- The GLOBAL TEMPORARY TABLE is a table that holds data that exists for the duration
+-- of the transaction (session) only
+-- Each session can see and modify its data only (will not exist in a new session)
+-- Useful for situations where it is not practical to create an actual table
+-- Useful for storing data related to things like website shopping carts
+
+drop table cart;
+
+create global temporary table cart
+( item_no number, qty number)
+on commit delete rows; -- Rows are deleted automatically when COMMIT is issued
+
+insert into cart values (1, 10);
+insert into cart values (2, 4);
+
+-- Other users will not see these records when they query this table
+select * from cart;
+
+-- COMMIT deletes rows because we used ON COMMIT DELETE ROWS when the table was created
+commit;
+
+select * from cart;
+
+drop table cart2;
+
+create global temporary table cart2
+( item_no number, qty number)
+on commit preserve rows;
+
+insert into cart2 values (1, 10);
+insert into cart2 values (2, 13);
+insert into cart2 values (3, 1);
+
+-- Rows are preserved because we used the ON COMMIT PRESERVE ROWS clause when we created the table
+-- Data is deleted when session is terminated (closing SQL Developer, etc)
+commit;
+
+select * from cart2;
+-------------------------------------------
+
+-- About SQL*Loader
+
+-- The SQL*Loader is a bulk loader utility used to moving data from external files
+-- into the Oracle Database
+-- Used to work with external files
+-- Used a CSV delimited file to load data
+
+drop table emp_load;
+
+-- Create a table with the same structure as the CSV file
+create table emp_load
+( empno number,
+  fname varchar2(100),
+  lname varchar2(100)
+);
+
+select * from emp_load;
+
+-- We will use the file emp.csv
+-- We want to move the data from this file to the table EMP_LOAD
+-- We will use SQL*Loader
+-- We need to first create a control file called [file].ctl (example: emp.ctl)
+
+/*
+Code to be placed in emp.ctl file
+
+Load Data
+INFILE 'C:\Users\matts\Projects\Udemy-Projects\oracleDB12cSQL\instructorAssets\emp.csv'
+APPEND
+INTO Table emp_load
+FIELDS TERMINATED BY ','
+(empno,
+fname,
+lname
+)
+*/
+
+-- Then after this we execute this command: sqlldr control=C:\Users\matts\Projects\Udemy-Projects\oracleDB12cSQL\instructorAssets\emp.ctl log=C:\Users\matts\Projects\Udemy-Projects\oracleDB12cSQL\instructorAssets\emp.log from CMD windows command prompt
+-- sqlldr control=C:\Users\matts\Projects\Udemy-Projects\oracleDB12cSQL\instructorAssets\emp.ctl log=C:\Users\matts\Projects\Udemy-Projects\oracleDB12cSQL\instructorAssets\emp.log
+-- Connect as user: hr/hr@orclpdb
+-- emp.log file shows the results/details for the load transaction
+
+select * from emp_load;
+
+-- Removes all rows from table
+truncate table emp_load;
+
+select * from emp_load;
+
+-- If you change some row values to be incorrect data types, then the log will
+-- Show how many errors there were and with which rows
+-- I have changed one row that should be a number to a character data type
+-- The row with a value of incorrect data type will not be loaded because it results in an error
+
+-- File emp.bad will list all the rows that were not imported due to errors
+-----------------------------------------------
+-- *** I couldn't get any of these to work for me ***
+
+
+-- External Tables (Part 1)
+
+-- External Tables rely on SQL*Loader
+-- External tables are read only tables whose metadata is stored in the DB
+-- Data is stored outside the DB
+-- DML Operations are not allowed
+-- No indexes can be created on external tables
+-- You can access the data with 2 methods (Oracle_Loader and Oracle_Datapump)
+-- To read external data, you first need to create a directory in the DB
+
+/*
+To create a directory you need to create any DIRECTORY privalege, the DBA should
+give you this - connect to SQLPLUS - SYS AS SYSDBA
+
+alter session set container=orclpdb;
+grant create any DIRECTORY to HR;
+*/
+
+-- in SQL PLUS connected as: SYS AS SYSDBA
+-- alter session set container=orclpdb;
+-- grant create any DIRECTORY to hr;
+-- Execute these before trying to create any directories
+create or replace directory emp_dir
+as 'C:\Users\matts\Projects\Udemy-Projects\oracleDB12cSQL\instructorAssets';
+
+-- Directory owner will always be SYS
+select * from all_directories -- ALL_DIRECTORIES is a data dictionary  table showing all directories
+where directory_name = 'EMP_DIR';
+
+drop table emp_load_ext;
+
+create table emp_load_ext
+    ( employee_number number,
+      fname varchar2(100),
+      lname varchar2(100)
+    )
+  organization external
+    ( type oracle_loader
+      default directory emp_dir
+      access parameters
+        ( records delimited by newline
+          fields terminated by ','
+        )
+      location ('old_emp_data.csv')
+    )
+    reject limit unlimited;
+    
+    select * from emp_load_ext;
+    
+-- DML Operations are not supported on external tables
+-- If you want to change the data you must go to the original external file itself
+----------------------------------------
+
+-- External Tables (Part 2)
+
+-- Using External Tables with Oracle Data Pump
+
+-- The select statement creates the records that are stored in EMP.dmp
+-- EMP.dmp creates the EMP_PUMP table
+
+drop table emp_pump;
+
+-- Creating an external .dmp file using a SELECT statement to create a table
+create table emp_pump
+    ( employee_number, -- These are the columns in the new table
+      fname,
+      lname
+    )
+  organization external
+    ( type ORACLE_DATAPUMP
+      default directory emp_dir
+      location ('EMP.dmp')
+    )
+    as
+    select employee_id, first_name, last_name
+    from employees;
+    
+select * from emp_pump;
+
+-- Reading an external .dmp file to create an external table
+create table emp_pump_read
+      ( employee_number number,
+        fname varchar2(100),
+        lname varchar2 (100)
+      )
+    organization external
+      ( type ORACLE_DATAPUMP
+        default directory emp_dir
+        location ('EMP.dmp')
+      );
+      
+select * from emp_pump_read;   
+--------------------------------
+
+-- Using the subquery as a source table
+
+select location_id, city
+from locations;
+
+select department_id, department_name, location_id
+from departments;
+
+-- Joins DEPARTMENTS with LOCATIONS using subquery from LOCATIONS as a source (table sort of)
+select dept.department_id, dept.department_name, loc.city
+from departments dept,
+(select location_id, city from locations) loc -- we name the subquery using inline view
+where dept.location_id = loc.location_id;
+
+-- Let's create a real-world example to understand why we use the inline view
+
+drop table student;
+
+create table student
+( student_id number primary key,
+  student_name varchar2(100)
+);
+
+insert into student values (1, 'ahmed ali');
+insert into student values (2, 'ammer jamal');
+insert into student values (3, 'sara nayef');
+
+commit;
+
+select * from student;
+
+drop table student_major;
+
+create table student_major
+( term varchar2(6),
+  student_id number,
+  major varchar2(100),
+  constraint student_major_pk primary key (term, student_id),
+  constraint student_major_fk1 foreign key (student_id) references student (student_id)
+);
+
+insert into student_major values (201401, 1, 'IT');
+insert into student_major values (201402, 1, 'Computer Science');
+insert into student_major values (201401, 2, 'Accounting');
+insert into student_major values (201402, 2, 'Accounting');
+insert into student_major values (201401, 3, 'Marketing');
+insert into student_major values (201402, 3, 'Marketing');
+insert into student_major values (201403, 3, 'Administration');
+commit;
+
+select student_id, term, major
+from student_major
+order by 1, 2;
+
+-- Now we need a report to show each student along with their major
+-- The logic is that the current major should appear in the report
+
+select student_id, term, major
+from student_major a
+where term = (select max(term) from student_major b where b.student_id = a.student_id);
+
+-- So now we can join this SELECT statement with the student table to get the name
+
+-- *** IMPORTANT FOR EXAM ***
+-- Using a subquery as a source
+
+-- This query used the entire SELECT statement above as a source for the JOIN
+select st.student_id, st.student_name, st_major.major
+from student st,
+(
+select student_id, term, major
+from student_major a
+where term = (select max(term) from student_major b where b.student_id = a.student_id)
+) st_major -- ST_MAJOR = alias for subquery
+where st.student_id = st_major.student_id;
+----------------------------------------------
+
+-- Multiple Column Subqueries
+
+-- Pairwise / Non Pairwise Subqueries
+
+select * from employees
+where first_name = 'John';
+
+/*
+Display the details for the employees who are managed by the same manager and
+who work in the same department as the employees who have the first name 'John'
+*/
+
+select * from employees
+where manager_id = 108 and department_id = 100
+and first_name <> 'John'
+union all
+select * from employees
+where manager_id = 100 and department_id = 80
+and first_name <> 'John'
+union all
+select * from employees
+where manager_id = 123 and department_id = 50
+and first_name <> 'John';
+
+-- This is an alternate method of executing the query above
+-- This is called a Pairwise Comparison Subquery
+
+-- The column in WHERE clause match the columns in IN clause (Pairwise)
+select * from employees
+where (manager_id, department_id) in (select manager_id, department_id -- Both columns need to match
+                                      from employees where first_name = 'John')
+and first_name <> 'John';
+-------------------------------------
+
+select * from employees
+where first_name = 'John';
+
+/*
+Display the details of the employees who are managed by the same manager as
+the employees with the first name 'John' and work in the same department as
+the employees with the first name 'John'
+*/
+
+select * from employees
+where manager_id in (108, 100, 123)
+and department_id in (100, 80, 50)
+and first_name <> 'John';
+
+-- This query will return the same results as the above query
+-- This is called a Non Pairwise Subquery
+
+-- The columns do not need to match (Non Pairwise)
+select * from employees
+where manager_id in ( select manager_id -- Only one column needs to match
+                      from employees where first_name = 'John'
+                    )
+and department_id in (  select department_id -- Only one column needs to match
+                        from employees where first_name = 'John'
+                     )
+and first_name <> 'John';
+------------------------------------------
+
+-- *** IMPORTANT - STUDY THIS ***
+
+-- Scalar Subquery / Correlated Subquery
+
+-- Scalar Subquery
+-- Subquery that returns exactly one column value from one row
+
+select employee_id, first_name, last_name, salary,
+(select max(salary) from employees) max_sal -- Scalar subquery
+from employees;
+
+-- We want to display the department name also in the query using a subquery
+-- We will use a scalar subquery to do this
+-- It is called a correlated subquery at the same time
+-- Correlated Subquery: A subquery that reference a column in the parent query
+
+-- With this subquery, all rows from EMPLOYEES table will be returned without
+-- having to do a LEFT OUTER JOIN
+select employee_id, first_name, last_name, department_id,
+(select department_name from departments b where b.department_id = e.department_id) dept_name -- Correlated subquery
+from employees e;
+
+select employee_id, first_name, last_name, department_id,
+nvl( (select department_name from departments b where b.department_id = e.department_id), 'no dept') dept_name
+from employees e;
+
+-- Another Correlated Subquery example
+-- Find the employees who earn more than the average salary in their departments
+
+select department_id, avg (salary)
+from employees
+group by department_id;
+
+select * from employees
+where department_id = 100
+and salary > 8609;
+
+-- This query combines the above two queries
+-- DEPARTMENT_ID in the subquery must be set equal to DEPARTMENT_ID in parent query
+select employee_id, first_name, last_name, department_id, salary
+from employees e
+where salary > (select round(avg(salary)) from employees c where c.department_id = e.department_id)
+order by department_id;
+
+-- More readable version of the query above
+-- DEPARTMENT_ID in the subquery must be set equal to DEPARTMENT_ID in parent query
+select employee_id, first_name, last_name, department_id, salary,
+  (select round(avg(salary)) from employees r where r.department_id = e.department_id) avg_sal
+  from employees e
+  where salary > (select round(avg(salary)) from employees c where c.department_id = e.department_id)
+  order by department_id;
+------------------------------------------------
+  
+-- Refresher on EXISTS / NOT EXISTS
+-- Always use table name aliases with EXISTS and NOT EXISTS
+-- Always use EXISTS / NOT EXISTS when possible instead of IN / NOT IN
+-- EXISTS / NOT EXISTS have better performance
+  
+-- Display all the departments that have employees
+select * from departments d
+where exists (select 1 from employees e where e.department_id = d.department_id);
+  
+-- Alternate method of returning the same results as above (Not Preferred)
+select * from departments d
+where department_id in (select department_id from employees e);
+  
+-- Display all the departments that have no employees
+select * from departments d
+where not exists (select 1 from employees e where e.department_id = d.department_id);
+  
+-- When there are NULL values, the NOT IN operator will return zero values
+select * from departments d
+where department_id not in (select department_id from employees e);
+-------------------------------------------
+
+-- WITH Clause
+
+-- Helps with complicated queries
+-- Stores statements in memory
+-- Helps to retrieve data faster
+
+-- WITH stores a query in a variable/alias for use later
+with emp -- EMP is alias and is required using WITH clause
+as
+(
+select employee_id, first_name from employees
+)
+select first_name
+from emp;
+----------------------------
+
+with emp -- 1st Variable / Alias
+as
+(
+select employee_id, first_name, department_id, salary from employees
+),
+dept_sum_sal -- 2nd Variable / Alias
+as
+(
+select department_id, sum(salary) sum_sal
+from emp
+group by department_id
+)
+select * from dept_sum_sal;
+
+-- Display each DEPARTMENT_NAME, and COUNT of EMPLOYEES
+select department_id, count (1) -- 1 = * (COUNT all rows)
+from employees
+group by department_id;
+
+select department_name, cnt
+from departments dept,
+      (select department_id, count(1) cnt
+      from employees
+      group by department_id) dept_count
+where dept.department_id = dept_count.department_id;
+
+-- This query is the same as above, but will be faster because it is stored in memory
+with dept_count
+as
+        (select department_id, count(1) cnt
+        from employees
+        group by department_id)
+select department_name, cnt
+from departments, dept_count
+where departments.department_id = dept_count.department_id;
+
+-- *** GOOD EXAMPLE FOR EXAM ***
+
+/*
+Write a query to display the department name and total salaries for the departments
+but only for those departments that have total salaries greater that the average
+salary across all departments.
+*/
+
+-- Shows the sum of salaries for each department
+select department_name, sum(salary) sum_sal
+from employees e
+join departments d
+on (e.department_id = d.department_id)
+group by department_name;
+
+select sum (tot_salaries)/count(*)
+from
+(
+select department_name, sum(salary) tot_salaries
+from employees e
+join
+departments d
+on (e.department_id = d.department_id)
+group by department_name
+);
+
+-- Answering the question without WITH clause
+select department_name, sum(salary) tot_salaries
+from employees e
+join
+departments d
+on (e.department_id = d.department_id)
+group by department_name
+having sum(salary) > (select sum (tot_salaries)/count(*)
+                      from
+                          (
+                          select department_name, sum(salary) tot_salaries
+                          from
+                          employees e
+                          join
+                          departments d
+                          on (e.department_id = d.department_id)
+                          group by department_name
+                          )
+                      );
+                      
+-- Answering the question using the WITH clause
+with
+dept_costs as --1st Variable / Alias
+(
+select department_name, sum(salary) sum_sal
+from
+employees e
+join
+departments d
+on (e.department_id = d.department_id)
+group by department_name
+),
+
+avg_cost as -- 2nd Variable / Alias
+(
+select sum(sum_sal)/count(*) dept_avg
+from dept_costs
+)
+select * from dept_costs
+where sum_sal > (select dept_avg from avg_cost);
+
+-- http://www.experts-exchange.com/articles/2375/Subquery-Factoring-WITH-Oracle.html
+------------------------------------
+
+-- Random example of SELF JOIN on Unary One-To-Many relationship
+select e.employee_id, e.first_name, e.manager_id, m.first_name manager_name
+from employees e, employees m
+where e.manager_id = m.employee_id(+)
+order by employee_id;
+-----------------------------------------------------
+
+-- Manipulating Data Using Subqueries
+
+-- Inserting / Updating / Deleting Using a Subquery as a target
+-- When you use INSERT/UPDATE/DELETE with a subquery as a target, the SELECT statement
+-- is treated like a VIEW by Oracle, but it is not stored in memory
+
+-- Inserting by Using a Subquery as a Target
+desc departments;
+
+select department_id, department_name
+from departments
+where department_id = 10;
+
+-- Insert into DEPARTMENTS (DEPARTMENT_ID, DEPARTMENT_NAME) VALUES (106, 'Test D')
+-- Using this method uses a dummy VIEW to perform DML operations.
+-- This prevents you needing to create an actual VIEW and giving people access to it
+-- in order to perform DML operations on it
+insert into
+(
+select department_id, department_name -- Oracle deals with this SELECT statement like a VIEW
+from departments
+where department_id = 90
+)
+values (107, 'Test D');
+
+select * from departments
+where department_id = 106;
+
+-- Insert with Subquery as Target using Check Option
+insert into
+(
+select department_id, department_name
+from departments
+where department_name like 'Test%'
+with check option -- Check that new DEPARTMENT_NAME has 'Test%' in it
+)
+values (107, 'OP'); -- Returns an error because the DEPARTMENT_NAME does not have 'Test%' in it
+
+insert into
+(
+select department_id, department_name
+from departments
+where department_name like 'Test%'
+with check option -- Check that new DEPARTMENT_NAME has 'Test%' in it
+)
+values (108, 'Test D');
+
+insert into
+(
+select department_id, department_name
+from departments
+where department_name like 'Test%'
+)
+values (109, 'OP');
+
+select * from departments;
+
+-- Updating using a Subquery as a Target
+select employee_id, first_name, salary
+from employees
+where department_id = 20;
+
+update
+(
+select employee_id, first_name, salary
+from employees
+where department_id = 20
+)
+set salary = salary +100;
+
+select employee_id, first_name, salary
+from employees
+where department_id = 20;
+
+-- Deleting using a Subquery as a Target
+delete
+(
+select * from departments
+where department_id = 106
+);
+
+commit;
+-------------------------------------------
+
+-- *** IMPORTANT FOR EXAM ***
+
+-- Correlated UPDATE / Correlated DELETE
+
+-- Correlated UPDATE
+drop table emp_copy;
+
+-- NOT NULL constraint is the ONLY constraint copied to new table
+create table emp_copy
+as select * from employees;
+
+drop table emp_cop;
+
+select * from emp_copy;
+
+update emp_copy
+set salary = 0;
+
+commit;
+
+select * from emp_copy;
+
+-- Updates EMP_COPY SALARY with SALARY from EMPLOYEES
+-- Update statement based on PK (EMPLOYEE_ID)
+-- This is a correlated subquery because EMPLOYEE_ID in the parent query (EMP_COPY) is referenced
+-- in the subquery
+
+-- Make sure that the number of records are the same in both tables before using a
+-- correlated UPDATE
+
+update emp_copy e_copy -- E_COPY is an alias
+set salary = (select salary from employees e where e.employee_id = e_copy.employee_id);
+
+select * from emp_copy;
+
+-- ***
+-- You have to be careful when you use the correlated update
+-- because the number of records may be different in each table
+-- In the previous example, the number of records are the same in both tables
+-- ***
+
+insert into emp_copy (employee_id, first_name, last_name, email, hire_date, job_id, salary)
+values                (98989, 'David', 'David', 'David', sysdate, 'IT_PROG', 9000);
+
+select * from emp_copy;
+
+-- The below statement will no longer work correct, because it will update all rows
+-- There are no longer the same number of rows in both tables
+-- The records that do not match will be set to NULL
+-- There is no record for EMPLOYEE_ID 98989 in the EMPLOYEES table so the column records will
+-- be set to NULL
+update emp_copy e_copy
+set salary = (select salary from employees e where e.employee_id = e_copy.employee_id);
+
+-- Records for the employee we added will be set to NULL because there is not a 
+-- corresponding record in the EMPLOYEES table
+select * from emp_copy;
+
+rollback;
+
+insert into emp_copy (employee_id, first_name, last_name, email, hire_date, job_id, salary)
+values                (98989, 'David', 'David', 'David', sysdate, 'IT_PROG', 9000);
+
+-- This query eliminates NULL values being inserted into rows where the records from each
+-- table do not match
+update emp_copy e_copy
+set salary = (select salary from employees e where e.employee_id = e_copy.employee_id)
+where exists (select 1 from employees e where e.employee_id = e_copy.employee_id);
+
+select * from emp_copy;
+----------------------------
+
+-- Correlated DELETE
+
+-- Deletes all rows from EMP_COPY that have an EMPLOYEE_ID which matches an EMPLOYEE_ID
+-- in the EMPLOYEES table
+-- Correlated because EMPLOYEE_ID in subquery references EMPLOYEE_ID in the parent query
+delete from emp_copy
+where exists (select 1 from employees e where e.employee_id = emp_copy.employee_id);
+
+select * from emp_copy;
+-----------------------------------
+
+-- Controlling User Access
+
+-- Database Security / System Privaleges & Roles
+
+/*
+* Database Security:
+  * System Security - what the user can do in the DB
+  * Data Security - what access a user has to objects within a database
+* System privaleges: Performing a particular action within the database
+* Object privaleges: Manipulating the content of the database objects
+* Schemas: Collection of objects such as tables, views, and sequences
+* The Database Admin (DBA) is a high-level user with the ability to create users
+  and grant users access to the database and its objects.
+* Users require SYSTEM PRIVALEGES to gain access to the database
+* Users require OBJECT PRIVALAGES to manipulate the content of the objects in the
+  database
+  
+* The DBA can:
+  * Create new users
+  * Remove users
+  * Remove tables
+  * Backup tables
+  * Can pass privaleges to other users
+  
+* SYSTEM_PRIVALEGE_MAP contains all available privaleges  
+
+* CREATING USERS SYNTAX:
+
+  CREATE USER user
+  IDENTIFIED BY password;
+  
+  CREATE USER and IDENTIFIED BY are both required keywords
+  
+* Current system privaleges can be found in the SESSION_PRIVS dictionary view
+  * If you query this view then it will tell you what privaleges you have as the
+    user you are logged in as
+
+* GRANTING SYSTEM PRIVALEGES SYNTAX:
+
+  GRANT create sessions, create table, create sequence, create view
+  TO demo;
+  
+  * No user can connect to the DB with the CREATE SESSIONS privalege
+  
+* Role: A named group of related privaleges that can be granted to the user
+  * Makes it easier to revoke and maintain privaleges
+  * A user can have access to several roles
+  * Several users can be assigned the same role
+  * Roles are typically created for a DB application
+  
+* CREATING & GRANTING PRIVALEGES TO A ROLE SYNTAX:
+
+  CREATE ROLE manager;
+  
+  GRANT create table, create view;
+  TO manager
+  
+  GRANT manager TO alice;
+  
+* CHANGING YOUR PASSWORD SYNTAX (after a user has logged in to the DB):
+
+  ALTER USER user
+  IDENTIFIED BY new password
+*/
+----------------------------------------------
+
+-- Database Security / Object Privaleges
+
+/*
+* Object Privaleges
+  * ALTER
+  * DELETE
+  * INDEX
+  * INSERT
+  * REFERENCES (Ensure that other users can create FK constraints that reference your table)
+  * SELECT
+  * UPDATE
+  
+* Object privaleges vary from object to object
+* An owner has all the privaleges on the object ** IMPORTANT **
+* An owner can give specific privaleges on that owner's object
+* DBA must give GRANT privalege on objects in order for a user to pass privaleges on to other users
+
+* GRANTING OBJECT PRIVALEGES SYNTAX:
+
+  -- Grant Query Privaleges on the EMPLOYEES table --
+
+  GRANT select
+  ON employees
+  TO demo;
+  
+  -- Grant privaleges to update specific columns to users and roles --
+  
+  GRANT update (department_name, location_id)
+  ON departments
+  TO demo, manager;
+  
+* PASSING ON YOUR PRIVALEGES SYNTAX
+
+  -- Give a user authority to pass along privaleges --
+  
+  GRANT select, insert
+  ON departments
+  TO demo
+  WITH GRANT OPTION; (Allows user DEMO to pass along privaleges to other users)
+  
+  -- Allow all users on the system to query data from DEPARTMENTS table --
+  
+  GRANT select
+  ON departments
+  TO PUBLIC; (PUBLIC = All Users)
+  
+** IMPORTANT **  
+  
+* Oracle Server will not allow a user to perform an operation for which they
+  do not have privaleges for.
+  
+  If the following error is returned then 1 of 2 events has occurred:
+  
+  "Table or view does not exist."
+  
+  1.) Named a table or view that does not exist
+  2.) Attempted to perform an operation on a table or view for which you do not have
+      the appropriate privalege
+      
+* REVOKING PRIVILEGES with CASCADE CONSTRAINTS OPTION
+  * Revokes privileges to specified object and all dependent objects specified by
+    referential constraints
+    
+* REVOKING PRIVILEGES with RESTRICT OPTION
+  * Prevents Oracle Server from revoking privs if there are dependent objects or privs
+*/
+--------------------------------------------
+
+-- System Privileges & Privileges Practice 1
+-- Go to "sys.sql"
+---------------------------------------------
+
+-- WITH GRANT option Practice
+select * from ahmed.course;
+
+grant select
+on ahmed.course
+to demo
+with grant option;
+--------------------------------------------------
+
+-- Manipulating Data
+
+/*
+What is a Data Warehouse?
+
+* A data warehouse is a relational DB that is designed for query and analysis
+  rather than for transaction processing.
+* It usually contains historical data derived from transaction data, but can
+  include data from other sources.
+* In addition to a relational DB, a data warehouse environment includes an
+  extraction, transportation, transformation, and loading (ETL) solution. And
+  also an online analytical processing (OLAP) engine.
+* Queries on the data warehouse are useful for reporting, analytics, and data
+  mining.
+  */
+-------------------------------------------------
+
+-- Explicit default value in INSERT & UPDATE statement
+
+drop table emp_default;
+
+create table emp_default
+( empno number,
+  ename varchar2(100),
+  status varchar2(100) default 'Active'
+);
+
+-- If you don't mention the column in the INSERT statement, it will take the
+-- default value (if the column has a DEFAULT value assigned, otherwise it will take NULL)
+insert into emp_default (empno, ename)
+values (1, 'David');
+
+select * from emp_default;
+
+-- You can mention the column in the insert and take the DEFAULT value at the same time
+-- Preferred syntax for using the DEFAULT value
+insert into emp_default (empno, ename, status)
+values (2, 'Lara', default);
+
+select * from emp_default;
+
+insert into emp_default (empno, ename, status)
+values (3, 'Karem', null);
+
+select * from emp_default;
+
+-- Can assigned DEFAULT value using UPDATE statement
+update emp_default
+set status = default
+where empno = 3;
+
+select * from emp_default;
+
+alter table emp_default
+add name varchar2 (100) default 'Suck It';
+
+select * from emp_default;
+
+alter table emp_default
+drop column name;
+
+select * from emp_default;
+---------------------------------------------
+
+-- Copying Rows from another table
+
+-- Data types of rows inserted from other table must match
+-- Rows that are inserted will take the DEFAULT values for the columns that have
+-- DEFAULT values assigned
+insert into emp_default (empno, ename)
+select employee_id, first_name
+from employees
+where department_id = 90;
+
+select * from emp_default;
+
+insert into emp_default (empno, ename)
+select employee_id, first_name
+from employees
+where department_id = 30;
+
+select * from emp_default;
+
+-- Inserting rows from multiple SELECT statements at once using UNION ALL
+insert into emp_default (empno, ename)
+select employee_id, first_name
+from employees
+where department_id = 70
+union all
+select employee_id, first_name
+from employees
+where department_id = 80;
+
+select * from emp_default;
+----------------------------------------
+
+-- Multi-table INSERT statements
+
+-- INSERT ALL statement / INSERT FIRST statement
+
+/*
+Different Clauses for Multi-table INSERT statements
+
+* Unconditional INSERT: For each row returned by the subquery,
+  a row is inserted into each of the target tables
+* Conditional INSERT ALL: For each row returned by the subquery, a row is
+  inserted into each target table if the specified condition is met
+* Conditional INSERT FIRST: For each row returned by the subquery, a row is
+  inserted into the very first target table in which the condition is met.
+* Pivoting INSERT: This is a special case of the unconditional INSERT ALL  
+*/
+------------------------------------
+
+-- INSERT ALL statement / INSERT FIRST statement Practice
+
+-- 1.) UNCONDITIONAL INSERT
+
+select employee_id, hire_date, salary, manager_id
+from employees;
+
+drop table sal_hist;
+
+create table sal_hist
+( empid number,
+  hiredate date,
+  salary number
+);  
+
+drop table manager_hist;
+
+create table manager_hist
+( empid number,
+  hiredate date,
+  mgr number
+);
+
+-- Inserts values into all tables mentioned
+-- The columns that follow the VALUES keyword are the columns from the main query
+insert all
+into sal_hist (empid, hiredate, salary) values (employee_id, hire_date, salary)
+into manager_hist (empid, hiredate, mgr) values (employee_id, hire_date, manager_id)
+select employee_id, hire_date, salary, manager_id -- Main query
+from employees;
+
+select * from sal_hist;
+
+select * from manager_hist;
+
+delete from sal_hist;
+
+delete from manager_hist;
+
+commit;
+--------------------------------------
+
+-- 2.) CONDITIONAL INSERT ALL
+
+-- *** IMPORTANT NOTE FOR EXAM ***
+-- There may be results that are shared by multiple tables in the CONDITIONAL INSERT ALL statement
+-- The first INSERT condition results are inserted and then the second INSERT condition results are inserted
+
+insert all
+when salary > 9000 then -- Conditional statement
+into sal_hist (empid, hiredate, salary) values (employee_id, hire_date, salary)
+when manager_id is not null then -- Conditional statement
+into manager_hist (empid, hiredate, mgr) values (employee_id, hire_date, manager_id)
+select employee_id, hire_date, salary, manager_id -- Main query
+from employees;
+
+select * from sal_hist;
+
+select * from manager_hist;
+
+-- Shows the EMPID values that have been inserted into both tables
+select empid from sal_hist
+intersect
+select empid from manager_hist;
+
+delete from sal_hist;
+
+delete from manager_hist;
+
+commit;
+--------------------------------------------------
+
+-- 3.) INSERT FIRST statement
+-- When the first WHEN clause condition is met then it skips all other WHEN clause conditions
+
+insert first
+when salary > 6000 then
+into sal_hist (empid, hiredate, salary) values (employee_id, hire_date, salary)
+when manager_id is not null then
+into manager_hist (empid, hiredate, mgr) values (employee_id, hire_date, manager_id)
+select employee_id, hire_date, salary, manager_id
+from employees;
+
+select * from sal_hist;
+
+select * from manager_hist;
+
+-- There will be no shared results between tables with the INSERT FIRST statement
+select empid from sal_hist
+intersect
+select empid from manager_hist;
+-------------------------------------------
+
+-- Another INSERT ALL Example
+
+drop table emp_sales;
+
+-- EMP_SALES is a MATRIX table (all records in 1 row)
+create table emp_sales
+( emp_id number,
+  week_id number,
+  sales_sun number,
+  sales_mon number,
+  sales_tue number,
+  sales_wed number,
+  sales_thur number
+);
+
+insert into emp_sales values (1, 14, 2000, 3000, 4000, 2500, 1500);
+
+select * from emp_sales;
+
+drop table sales_info;
+
+-- SALES_INFO is a TABULAR table (all records in multiple rows)
+create table sales_info
+( emp_id number,
+  week_id number,
+  sales number,
+  day varchar2(10)
+);
+
+select * from sales_info;
+
+-- Our goal is to INSERT the values from the EMP_SALES matrix table into multiple
+-- rows in the SALES_INFO table
+
+insert all
+into sales_info values (emp_id, week_id, sales_sun, 'SUN')
+into sales_info values (emp_id, week_id, sales_mon, 'MON')
+into sales_info values (emp_id, week_id, sales_tue, 'TUE')
+into sales_info values (emp_id, week_id, sales_wed, 'WED')
+into sales_info values (emp_id, week_id, sales_thur, 'THUR')
+select emp_id, week_id, sales_sun, sales_mon, sales_tue, sales_wed, sales_thur
+from emp_sales;
+
+select * from sales_info;
+
+/*
+*** IMPORTANT FOR EXAM ***
+
+Restrictions on Multi_table INSERT Statements:
+
+* You can perform multi_table INSERT statements only on tables, and not on views
+  or materialized views
+* You cannot perform a multi_table INSERT on a remote table (a table in another DB)
+* You cannot specify a table collection expression when performing a
+  multi-table INSERT
+* In a multi-table INSERT, all INSERT_INTO_CLAUSES cannot combine to specify
+  more than 999 target columns
+*/  
+---------------------------------------------------
+
+-- Creating a Matrix Report using PIVOT
+-- PIVOT creates a MATRIX table from a TABULAR table
+
+-- This is a TABULAR table
+-- Any column in the GROUP_BY clause should also be in the SELECT statement
+select department_id, job_id, count(1) -- 1 is the same as *
+from employees
+where job_id in ('MK_MAN', 'MK_REP', 'PU_CLERK', 'PU_MAN')
+group by department_id, job_id
+order by 1,2;
+
+-- Case 1
+select * from
+(
+select department_id, job_id
+from employees
+where job_id in ('MK_MAN', 'MK_REP', 'PU_CLERK', 'PU_MAN') -- We want JOB_ID to span horizontally
+)
+pivot
+(count(1) for job_id in ('MK_MAN', 'MK_REP', 'PU_CLERK', 'PU_MAN')
+)
+order by 1;
+
+-- Case 2
+-- We want to show all DEPARTMENT_IDs with this query
+select * from
+(
+select department_id, job_id
+from employees
+)
+pivot
+(count(1) for job_id in ('MK_MAN', 'MK_REP', 'PU_CLERK', 'PU_MAN')
+)
+order by 1;
+
+-- Case 3
+-- Subqueries will not work with PIVOT statements
+-- The following query will return an error
+-- Hard-coded queries are the only types of queries that work with PIVOT statements
+select * from
+(
+select department_id, job_id
+from employees
+)
+pivot
+(
+count(1) for job_id in (select distinct job_id from employees)
+)
+order by 1;
+
+-- Case 4
+select * from
+(
+select department_id, job_id, hire_date
+from employees
+where job_id in ('MK_MAN', 'MK_REP', 'PU_CLERK', 'PU_MAN') -- We want JOB_ID to span horizontally
+)
+pivot
+(count(1) for job_id in ('MK_MAN', 'MK_REP', 'PU_CLERK', 'PU_MAN')
+)
+order by 1; -- orders by column 1 (DEPARTMENT_ID) and then by column 2 (HIRE_DATE)
+-------------------------------------------------
+
+-- The MERGE Statement
+-- You can conditionally INSERT, UPDATE, or DELETE rows in a tables by using
+-- the MERGE statement
+-- Used when you want the TARGET table to be EXACTLY the same as the ORIGINAL table
+-- You MUST use table aliases when using the MERGE statement
+-- MERGE statement must be used on tables whose columns have the same data types
+-- MERGE can be substituted using separate INSERT and UPDATE statements
+-- but the MERGE statement performs both operations in 1 statement
+
+create table table_a
+( id number,
+  name varchar2(100)
+);
+
+select * from table_a;
+
+insert into table_a values (1, 'khaled');
+insert into table_a values (2, 'ali');
+insert into table_a values (3, 'ahmed');
+
+commit;
+
+select * from table_a;
+
+create table table_b
+( id number,
+  name varchar2(100)
+);  
+
+insert into table_b values (1, 'xxxxx');
+insert into table_b values (2, 'xxxxx');
+
+commit;
+
+select * from table_b;
+
+-- MERGE Statement
+merge into table_b b
+using (select * from table_a) a
+on (b.id = a.id)
+when matched then
+update
+set b.name = a.name
+when not matched then
+insert values (a.id, a.name);
+
+commit;
+
+select * from table_b;
+----------------------------------------
+
+-- FLASHBACK Table & System Change Number (SCN)
+/*
+* Restores DB to a specific point in time and restores all data structures that
+ existed at that point in time.
+* If you issue a DROP TABLE then PURGE, you will not be able to recover that
+  table using FLASHBACK
+*/  
+
+-- System Change Number (SCN) is the unique transaction number associated with each
+-- transaction that takes place in the DB
+
+-- All dropped tables and columns are available in RECYCLEBIN
+select * from recyclebin
+order by 2;
+
+-- PURGE prevents any data from being recovered
+-- PURGE also frees up memory in the DB and is routinely performed by DBA
+purge recyclebin;
+
+select * from recyclebin;
+
+create table emp_copy3
+as
+select * from employees;
+
+select * from emp_copy3;
+
+drop table emp_copy3;
+
+select * from emp_copy3;
+
+select * from recyclebin;
+
+flashback table emp_copy3 to before drop; -- before drop refers to the time just before most-recent DROPSCN
+
+select * from emp_copy3;
+
+select * from recyclebin;
+---------------------------------------
+
+-- *** IMPORTANT FOR EXAM ***
+
+-- System Change Number (SCN) Examples
+-- SCN versions statement comes right after FROM statement
+-- SCN statements are rarely used in real life
+-- Instead, AUDIT TRIGGERS are used to return the same results
+
+select salary from employees
+where employee_id = 107;
+
+update employees
+set salary = salary + 100
+where employee_id = 107;
+
+commit;
+
+select salary from employees
+where employee_id = 107;
+
+-- This query returns all versions of SALARY for EMPLOYEE_ID = 107
+-- SCNMIN = 1st record
+-- SCNMAX = Last record
+select salary from employees
+versions between scn minvalue and maxvalue
+where employee_id = 107;
+
+-- VERSIONS_STARTTIME (pseudo column) = time when SCN version started
+-- VERSIONS_ENDTIME (pseudo column) = time when SCN version ended
+-- VERSIONS_STARTTIME = NULL, means that it is the first record
+-- VERSIONS_ENDTIME = NULL, means that it is the last record
+select versions_starttime, versions_endtime, salary
+from employees
+versions between scn minvalue and maxvalue
+where employee_id = 107;
+
+update employees
+set salary = salary + 100
+where employee_id = 107;
+
+commit;
+
+select versions_starttime, versions_endtime, salary
+from employees
+versions between scn minvalue and maxvalue
+where employee_id = 107;
+---------------------------------------------------
+
+-- Managing Data in Different Time Zones
+
+-- *** IMPORTANT FOR EXAM ***
+
+-- THE INTERVAL (YEAR TO MONTH / DAY TO SECOND)
+
+/*
+* YEAR: Any positive or negative number
+* MONTH: Any number 00 - 11
+* DAY: Any positive or negative number
+* HOUR: Any number 00 - 23
+* MINUTE: Any number 00 - 59
+* SECOND: Any number 00 - 59.9
+*/
+-----------------------------------------
+-- YEAR TO MONTH Examples
+
+-- Returns the number of years and months
+select interval '55-11' year to month
+from dual;
+
+select interval '1-4' year to month
+from dual;
+
+select interval '555-11' year to month
+from dual; -- if the YEAR is more than 2 digits, then you should use SIZE
+
+-- YEAR(3) specifies the SIZE of YEAR to be 3 digits long
+select interval '555-11' year(3) to month
+from dual;
+
+select interval '1000-11' year(4) to month
+from dual;
+
+-- *** IMPORTANT EXAMPLE ***
+-- Converts 350 to number of years and months
+-- Oracle reads this as YEAR TO MONTH
+-- 'MONTH' is the category for the number you are providing in the statement
+select interval '350' month -- YEAR TO MONTH
+from dual;
+
+-- Converts 10 to number of years and months
+-- Oracle reads this as YEAR TO MONTH
+select interval '10' year -- YEAR TO MONTH
+from dual;
+--------------------------------------
+
+-- DAY TO SECOND Examples
+-- Syntax must include hours:minutes:seconds
+-- Returns days, hours, minutes, seconds, fractions of a second
+select interval '33 20:20:20' day to second
+from dual;
+
+select interval '333 20:20:20' day(3) to second
+from dual;
+
+-- Converts 500 to DAY TO SECOND
+select interval '500' hour
+from dual;
+
+-- Converts 500 to DAY TO SECOND
+select interval '500' minute
+from dual;
+
+-- Converts 500 to DAY TO SECOND
+select interval '500' day(3)
+from dual;
+------------------------------------------
+
+-- TO_YMINTERVAL / TO_DSINTERVAL (Both are functions)
+-- TO_YMINTERVAL: Provides a date 1 year and 2 months from SYSDATE, for example
+-- TO_DSINTERVAL: Provides a date 6 days and 2 hours from SYSDATE, for example
+
+select sysdate from dual;
+
+-- Adds number of days to SYSDATE
+select sysdate, sysdate + 10 from dual;
+
+-- Using TO_YMINTERVAL
+-- Shows date 1 year and 2 months from SYSDATE
+select sysdate, sysdate + interval '01-02' year to month
+from dual;
+
+-- Shows date 1 year and 2 months from SYSDATE
+select sysdate, sysdate + to_yminterval ('01-02')
+from dual;
+
+-- Using TO_DSINTERVAL
+-- Shows date 6 days and 2 hours from SYSDATE
+select sysdate, sysdate + to_dsinterval ('6 02:00:00')
+from dual;
+
+-- Changes the SYSDATE to characters in order to show the seconds
+select to_char (sysdate, 'dd-mm-yyyy hh:mi:ss'),
+to_char (sysdate + to_dsinterval ('6 02:00:00'), 'dd-mm-yyyy hh:mi:ss')
+from dual;
+--------------------------------------------------
+
+-- Extract Function
+
+select  to_char (sysdate, 'yyyy') the_year,
+        to_char (sysdate, 'mm') the_month,
+        to_char (sysdate, 'dd') the_day
+from dual;
+
+-- EXTRACT function extracts specific components from date datatypes
+-- This query returns the exact same results as the above query
+select
+extract (year from sysdate) year,
+extract (month from sysdate) month,
+extract (day from sysdate) day
+from dual;
+
+select employee_id, first_name, hire_date,
+extract (year from hire_date) hire_year,
+extract (month from hire_date) hire_month
+from employees;
+------------------------------------------------
+
+-- TIMESTAMP / TIMESTAMP with Time Zone
+-- TIMESTAMP includes the date down to fractional seconds
+-- DATE also includes date down to fractional seconds, but only the date
+-- returns when queried unless you convert it TO_CHAR
+
+drop table date_table;
+
+-- Using DATE datatype and TIMESTAMP datatype
+create table date_table
+( date1 date,
+  date2 timestamp,
+  date3 timestamp with time zone
+);
+
+-- *** IMPORTANT TO KNOW ABOUT USER'S SESSION WITH CURRENT_TIMESTAMP ***
+-- SYSDATE returns the current date and time for the server
+-- CURRENT_TIMESTAMP returns the current date and time for the user's session (TIMESTAMP WITH TIME ZONE)
+insert into date_table
+values (sysdate, current_timestamp, current_timestamp);
+
+select * from date_table;
+
+-- DATE1 is an alias in this example
+select to_char (date1, 'dd-mm yyyy hh:mi:ss') date1, date2
+from date_table;
+--------------------------------------
+
+-- V$TIMEZONE_NAMES & Other Functions
+
+-- All Time Zone names are stored in the V$TIMEZONE_NAMES dictionary table
+select * from v$timezone_names
+where tzname like '%America/Los%';
+-- LMT: Local Mean Time
+-- CST: Central Standard Time
+-- CDT: Central Daylight Time
+-- EST: Eastern Standard Time
+-- CWT: Central West Time
+
+-- Time zones can be set to absolute offset or named region
+-- Absolute Offset: The number (positive or negative) of deviations from GMT
+-- The DBTIMEZONE displays the database's time zone
+-- The DB time zone is defined when the DB is created by DBA
+select dbtimezone from dual;
+
+-- SESSIONTIMEZONE returns the session's time zone
+-- You can set the default client session's time zone using the ORA_SDTZ
+-- environment variable
+select sessiontimezone from dual;
+
+-- This returns the current date for the user's session (date)
+select current_date from dual;
+
+-- User session is the same as the DB session because Oracle is installed on my machine
+-- SYSDATE = database date and time based on where the Oracle server is located
+select to_char (current_date, 'dd-mm-yyyy hh:mi:ss'), to_char (sysdate, 'dd-mm-yyyy hh:mi:ss')
+from dual;
+
+-- Returns the current date and time for the user's session (TIMESTAMP WITH TIME ZONE)
+select current_timestamp from dual;
+
+-- *** IMPORTANT FOR EXAM ***
+-- Returns the current date and time for the user's session (TIMESTAMP for user)
+-- TIMESTAMP = timestamp for system/server
+-- LOCALTIMESTAMP = timestamp for user/session
+select localtimestamp from dual;
+
+-- Change session's time zone
+-- Changing the session's time zone is only valid for the current session
+alter session set time_zone = 'Asia/Amman';
+
+select to_char (current_date, 'dd-mm-yyyy hh:mi:ss'), to_char (sysdate, 'dd-mm-yyyy hh:mi:ss')
+from dual;
+
+-- Returns the current date and time the user's session (TIMESTAMP WITH TIME ZONE)
+select current_timestamp from dual;
+
+-- Returns the current date and time for user's session (TIMESTAMP)
+select localtimestamp from dual;
+
+alter session set time_zone = 'America/Los_Angeles';
+---------------------------------------
+
+-- *** GOOD EXAMPLE TO PRACTICE FOR EXAM ***
+
+-- TIMESTAMP with Local Time Zone
+
+drop table web_order;
+
+-- ORDER_DATE TIMESTAMP is always according to server's time
+-- DELIVERY_DATE TIMESTAMP is always according to recipient's time
+create table web_order
+( cust_id number,
+  name varchar2(100),
+  item varchar2(100),
+  delivery_location varchar2(100),
+  order_date timestamp with time zone,
+  delivery_period number,
+  delivery_date timestamp with local time zone
+);
+
+-- CURRENT_TIMESTAMP + 3: CURRENT_TIMESTAMP + number of days to deliver item
+insert into web_order values (1, 'Naser', 'iPhone 6 64GB Gold', 'Amman',
+                      current_timestamp, 3, current_timestamp + 3);
+                      
+select * from web_order;
+
+-- Suppose that this order was placed by a customer in Jordan
+-- TIMESTAMP WITH LOCAL TIME ZONE stores user's session date and time
+alter session set time_zone = 'Asia/Amman';
+
+select * from web_order;
+----------------------------------------
+
+-- FINAL LESSON!!! YAY!!!
+
+-- TZ_OFFSET / FROM_TZ / TO_TIMESTAMP
+
+-- TZ_OFFSET
+-- Returns the number deviation from GMT
+select tz_offset ('Asia/Dubai'), tz_offset ('America/Chicago')
+from dual;
+
+-- FROM_TZ
+/*
+* FROM_TZ function is a built-in function that provides the conversion of a
+  TIMESTAMP to TIMESTAMP WITH TIME ZONE for a given time zone
+* It essentially combines the TIMESTAMP and TIME ZONE information into a
+  single operation
+*/  
+
+-- Assigns a TIMESTAMP and TIME ZONE
+-- Converts TIMESTAMP to TIMESTAMP WITH TIME ZONE
+select from_tz (timestamp '2000-03-6 08:00:00', 'Asia/Amman')
+from dual;
+
+-- TO_TIMESTAMP
+
+-- Converts CHARACTER to DATE
+select to_date ('20-12-2016', 'dd-mm-yyyy')
+from dual;
+
+-- Converts CHARACTER to TIMESTAMP
+select to_timestamp ('20-12-2016 12:10:33', 'dd-mm-yyyy hh:mi:ss')
+from dual;
+--------------------------------------------
+
+-- *** IMPORTANT LESSON ***
+
+-- Using SELECT statement to create dynamic scripts
+
+select table_name
+from user_tables;
+
+alter table regions
+add creation_date date;
+
+select * from regions;
+
+alter table regions
+drop column creation_date;
+
+-- After executing the below statements, copy the output and paste it into a SQL
+-- editor and batch execute all at once.
+-- NOTE: The below queries DO NOT actually execute the ALTER TABLE statements
+
+-- Executes ALTER_TABLE add CREATION_DATE for all tables in the USER_TABLES DB
+select 'alter table ' || table_name || ' add creation_date date; '
+from user_tables;
+
+-- Executes ALTER_TABLE DROP COLUMN CREATION_DATE for all tables in the USER_TABLES DB
+select 'alter table ' || table_name || ' drop column creation_date; '
+from user_tables;
+------------------------------------------
+
+-- Differences between ROWNUM and ROWID
+
+-- ROWNUM and ROWID are pseudocolumns and not actual columns in a table
+-- but they behave like real columns
+-- ROWNUM is like a SEQUENCE for the query and changes from query to query
+
+-- ROWNUM Practice
+select employee_id, first_name, salary
+from employees;
+
+select rownum, employee_id, first_name, salary
+from employees;
+
+select rownum, employee_id, first_name, salary
+from employees
+where first_name like 'N%';
+
+-- When ORDER BY is used with ROWNUM, the ROWNUMs will not be sequential because
+-- the ORDER BY clause is the last operation that Oracle performs
+-- The ROWNUM assignment is executed before the ORDER BY clause is executed
+select rownum, employee_id, first_name, salary
+from employees
+order by salary;
+
+-- NULLS appear first when ORDER BY DESC
+select * from employees
+order by salary desc;
+
+-- Returns the records with the top 3 highest salaries
+select * from
+(
+select * from employees
+order by salary desc
+)
+where rownum <= 3;
+---------------------------------------------------
+
+-- The ROWID is the unique address of the row (will not change)
+-- AAAR3QAAEAAAKTtAAA (Example)
+-- AAAR3Q = The data object number (6 characters)
+-- AAE = The data file number (3 characters)
+-- AAAKTt = The date block number (6 characters)
+-- AAA = The row number (3 characters)
+-- ROWID is useful for when you want to INSERT, UPDATE, DELETE a row in a table
+-- that does not have a PK
+
+-- ROWID Practice
+
+-- This query will return an error
+selet rowid, * from employees;
+
+select rowid, emp.* from employees emp;
+
+select * from employees
+where rowid = 'AAAR3QAAEAAAKTuAAA';
+----------------------------------------
+
+-- Understanding NULLS when used with (IN / NOT IN)
+
+--we will create this simple table
+
+create table testv
+
+( val number );
+
+--we will insert 4 records, one of these records null
+
+insert into testv values (10);
+
+insert into testv values (20);
+
+insert into testv values (30);
+
+insert into testv values (null);
+
+commit;
+
+--this query will retrieve 4 records
+
+select * from testv
+
+--this query will retrieve 2 records, it will ignore the null
+
+--because ( IN) is equal to =any
+
+select * from testv
+
+where val in (10,20,null )
+
+-- So this mean that prev query can be written as the next query
+
+--please note that ( val=null ) not valid
+
+-- We always deal with null using 2 operators ( is null / is not null )
+
+select * from testv
+
+where val =10 or val =20 or val=null;
+
+--and you can write like this
+
+select * from testv
+
+where val = any (10,20,null )
+
+--now let us move to  (not in )
+
+-- if the (not in ) contains nulls , then no records will be retrived
+
+--because (not in )  equal to (<> all)
+
+select * from testv
+
+where val not in (10,20,null )
+
+--so you can write the prev query like this
+
+select * from testv
+
+where val <> 10
+
+and val <> 20
+
+and val <> null;
+
+--and it can be written like this
+
+select * from testv
+
+where val <> all (10,20,null )
