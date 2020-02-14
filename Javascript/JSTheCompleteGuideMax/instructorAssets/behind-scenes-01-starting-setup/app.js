@@ -2,6 +2,7 @@
 // Var is function and global scope
 // Block Scope: Anything within curly braces {}
 // Global scope variables (Let, Var) can be changed within Block and Function scopes, but those changes will only be visible to the Block or Function scopes
+// DON'T USE VAR!!!!!!!!
 
 // let name = 'Matt' // this variable will now be ignored due to shadow variable
 // // let name = 'Sara' // Won't work because 'name' has already been declared in global scope
