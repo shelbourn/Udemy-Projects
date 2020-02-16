@@ -18,7 +18,7 @@
  * etc
  */
 
-// Primitive Value Properties
+// Primitive Value Properties (Stored in the Stack)
 let name = 'Matt'
 let newName = 'Matt'
 
@@ -26,7 +26,7 @@ name === newName //Returns True
 
 let anotherNewName = name //Copies value of name to anotherNewName
 
-// Reference Value Properties
+// Reference Value Properties (Stored in the Heap)
 const user = { age: 30 }
 const newUser = user //References the address of the user object
 
