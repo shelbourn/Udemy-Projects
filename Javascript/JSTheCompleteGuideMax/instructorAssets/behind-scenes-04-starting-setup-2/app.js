@@ -1,5 +1,7 @@
+// Functions without Return statements are implicitly returned
+
 function getName() {
-	return prompt('Your age: ', '')
+	return prompt('Your name: ')
 }
 
 function greet() {
