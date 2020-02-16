@@ -38,4 +38,6 @@ const user2 = { age: 30 }
 
 user === user2 //Returns false because these are different objects with difference reference addresses
 
+user.name = 'Matt' // Will work even though user is a const because this is not modifying the object's reference address
+
 // All of these properties apply to arrays also
