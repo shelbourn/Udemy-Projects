@@ -1,10 +1,20 @@
 const startGameBtn = document.getElementById('start-game-btn')
 
-// Function Declarations: Hoisted and initialized
-// Function Expressions: Hoisted and not initialized
+// Anonymous Functions can be used with Function Expressions
+// const start = function() {
+// 	console.log('Game is starting...')
+// }
 
-const start = function() {
+// Another use case for anonymous functions
+// In this case the function would not be called immediately
+startGameBtn.addEventListener('click', function() {
 	console.log('Game is starting...')
-}
+})
 
-startGameBtn.addEventListener('click', start)
+// In this case the function would be called immediately
+startGameBtn.addEventListener(
+	'click',
+	(function() {
+		console.log('Game is starting...')
+	})() // Extra parens call function immediately
+)
