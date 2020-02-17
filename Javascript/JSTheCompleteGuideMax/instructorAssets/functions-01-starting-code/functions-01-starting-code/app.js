@@ -9,8 +9,9 @@ function startGame() {
 // Functions can be stored in objects
 // These are called Function Methods
 const person = {
-  name: 'Max' // Property
-	greet: function greet() { // Function Method
+	name: 'Max', // Property
+	greet: function greet() {
+		// Function Method
 		console.log('Hello there!')
 	},
 }
