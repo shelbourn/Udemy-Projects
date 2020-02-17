@@ -20,6 +20,11 @@ const getPlayerChoice = function() {
 }
 
 startGameBtn.addEventListener('click', function() {
+	//Returns function if the game is already running
+	if (gameIsRunning) {
+		return
+	}
+	gameIsRunning = true
 	console.log('Game is starting...')
 	const playerSelection = getPlayerChoice() //Remember to use () at the end of a function's name
 	console.log(playerSelection)
