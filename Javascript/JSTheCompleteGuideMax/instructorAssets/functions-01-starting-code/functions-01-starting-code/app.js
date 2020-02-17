@@ -1,3 +1,5 @@
+// getElementById, addEventListener, etc are function methods
+
 const startGameBtn = document.getElementById('start-game-btn')
 
 function startGame() {
@@ -5,8 +7,10 @@ function startGame() {
 }
 
 // Functions can be stored in objects
+// These are called Function Methods
 const person = {
-	greet: function greet() {
+  name: 'Max' // Property
+	greet: function greet() { // Function Method
 		console.log('Hello there!')
 	},
 }
