@@ -4,6 +4,6 @@ function startGame() {
 	console.log('Game is starting...')
 }
 
-console.log(typeof startGame)
+console.dir(startGame) // .dir is similar to .log but provides more detail
 
 startGameBtn.addEventListener('click', startGame)
