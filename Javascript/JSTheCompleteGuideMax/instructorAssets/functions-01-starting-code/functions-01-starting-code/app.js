@@ -4,4 +4,6 @@ function startGame() {
 	console.log('Game is starting...')
 }
 
-startGameBtn.addEventListener('click', startGame)
+// startGame() // Direct Function execution
+
+startGameBtn.addEventListener('click', startGame) // Indirect function execution
