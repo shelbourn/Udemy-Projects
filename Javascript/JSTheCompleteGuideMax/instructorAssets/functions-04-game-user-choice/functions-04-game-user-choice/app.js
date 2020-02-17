@@ -5,6 +5,8 @@ const PAPER = 'PAPER'
 const SCISSORS = 'SCISSORS'
 const DEFAULT_USER_CHOICE = ROCK
 
+let gameIsRunning = false
+
 const getPlayerChoice = function() {
 	const selection = prompt(
 		`${ROCK}, ${PAPER} or ${SCISSORS}?`,
@@ -19,5 +21,6 @@ const getPlayerChoice = function() {
 
 startGameBtn.addEventListener('click', function() {
 	console.log('Game is starting...')
-	const playerSelection = getPlayerChoice
+	const playerSelection = getPlayerChoice() //Remember to use () at the end of a function's name
+	console.log(playerSelection)
 })
