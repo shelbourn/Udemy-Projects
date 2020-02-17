@@ -5,9 +5,12 @@ const PAPER = 'PAPER'
 const SCISSORS = 'SCISSORS'
 
 const getPlayerChoice = function() {
-	const selection = prompt(`${ROCK}, ${PAPER} or ${SCISSORS}?`, '').toUpperCase
+	const selection = prompt(
+		`${ROCK}, ${PAPER} or ${SCISSORS}?`,
+		''
+	).toUpperCase()
 	if (selection !== ROCK && selection !== PAPER && selection !== SCISSORS) {
-		alert('Invalid choice! We chose Rock for you!')
+		alert(`Invalid choice! We chose ${ROCK} for you!`)
 	}
 }
 
