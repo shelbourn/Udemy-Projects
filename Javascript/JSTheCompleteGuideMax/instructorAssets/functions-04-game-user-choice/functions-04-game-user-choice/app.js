@@ -18,6 +18,9 @@ const getPlayerChoice = function() {
 	}
 	return selection
 }
+const getComputerChoice = function() {
+	const randomValue = Math.random() //Method that generates a random number between 0 and 1
+}
 
 startGameBtn.addEventListener('click', function() {
 	//Returns function if the game is already running
