@@ -36,19 +36,28 @@ const getComputerChoice = function() {
 }
 
 // Winner Selection
-const getWinner = (cChoice, pChoice) => {
-	if (cChoice === pChoice) {
-		return RESULT_DRAW
-	} else if (
-		(cChoice === ROCK && pChoice === PAPER) ||
-		(cChoice === PAPER && pChoice === SCISSORS) ||
-		(cChoice === SCISSORS && pChoice === ROCK)
-	) {
-		return RESULT_PLAYER_WINS
-	} else {
-		return RESULT_COMPUTER_WINS
-	}
-}
+// Arrow functions can only be used with arrow functions and must appear on the right side of an equal sign in an expression, in an event listener, etc
+// Arrow functions with only one expression can omit the curly braces and the 'return' keyword
+const getWinner = (cChoice, pChoice) =>
+	cChoice === pChoice
+		? RESULT_DRAW
+		: (cChoice === ROCK && pChoice === PAPER) ||
+		  (cChoice === PAPER && pChoice === SCISSORS) ||
+		  (cChoice === SCISSORS && pChoice === ROCK)
+		? RESULT_PLAYER_WINS
+		: RESULT_COMPUTER_WINS
+
+// if (cChoice === pChoice) {
+// 	return RESULT_DRAW
+// } else if (
+// 	(cChoice === ROCK && pChoice === PAPER) ||
+// 	(cChoice === PAPER && pChoice === SCISSORS) ||
+// 	(cChoice === SCISSORS && pChoice === ROCK)
+// ) {
+// 	return RESULT_PLAYER_WINS
+// } else {
+// 	return RESULT_COMPUTER_WINS
+// }
 
 // Game Start
 startGameBtn.addEventListener('click', function() {
