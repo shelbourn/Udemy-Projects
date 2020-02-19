@@ -63,4 +63,5 @@ startGameBtn.addEventListener('click', function() {
 	const winner = getWinner(computerChoice, playerChoice)
 	console.log(playerChoice)
 	console.log(computerChoice)
-})console.log(winner)
+	console.log(winner)
+})
