@@ -1,3 +1,4 @@
+//Global Variables
 const startGameBtn = document.getElementById('start-game-btn')
 
 const ROCK = 'ROCK'
@@ -7,6 +8,7 @@ const DEFAULT_USER_CHOICE = ROCK
 
 let gameIsRunning = false
 
+// Get Player Choice
 const getPlayerChoice = function() {
 	const selection = prompt(
 		`${ROCK}, ${PAPER} or ${SCISSORS}?`,
@@ -18,10 +20,19 @@ const getPlayerChoice = function() {
 	}
 	return selection
 }
+// Get Computer Choice
 const getComputerChoice = function() {
 	const randomValue = Math.random() //Method that generates a random number between 0 and 1
+	if (randomValue < 0.34) {
+		return ROCK
+	} else if (randomValue < 0.67) {
+		return PAPER
+	} else {
+		return SCISSORS
+	}
 }
 
+// Game Start
 startGameBtn.addEventListener('click', function() {
 	//Returns function if the game is already running
 	if (gameIsRunning) {
