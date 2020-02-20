@@ -12,7 +12,7 @@ const RESULT_COMPUTER_WINS = 'COMPUTER_WINS'
 let gameIsRunning = false
 
 // Get Player Choice
-const getPlayerChoice = function() {
+const getPlayerChoice = () => {
 	const selection = prompt(
 		`${ROCK}, ${PAPER} or ${SCISSORS}?`,
 		''
@@ -24,7 +24,7 @@ const getPlayerChoice = function() {
 	return selection
 }
 // Get Computer Choice
-const getComputerChoice = function() {
+const getComputerChoice = () => {
 	const randomValue = Math.random() //Method that generates a random number between 0 and 1
 	if (randomValue < 0.34) {
 		return ROCK
@@ -37,9 +37,15 @@ const getComputerChoice = function() {
 
 // Winner Selection
 // Arrow functions can only be used with arrow functions and must appear on the right side of an equal sign in an expression, in an event listener, etc
-// Arrow functions with only one expression can omit the curly braces and the 'return' keyword
+// Arrow functions with only one expression can omit the curly braces and the 'return' keyword - NO RETURN KEYWORD IS PERMITTED
 // Arrow functions don't require arguments
 // Arrow function with only 1 argument/parameter does not require parens
+
+// Arrow function with more than 1 argument/parameter
+const test3 = arg2 => {
+	arg2 *= 2
+	return arg2
+}
 
 // Arrow function with only 1 argument/parameter
 const test2 = arg => 5 + arg
@@ -77,7 +83,7 @@ const getWinner = (cChoice, pChoice) =>
 // }
 
 // Game Start
-startGameBtn.addEventListener('click', function() {
+startGameBtn.addEventListener('click', () => {
 	//Returns function if the game is already running
 	if (gameIsRunning) {
 		return
