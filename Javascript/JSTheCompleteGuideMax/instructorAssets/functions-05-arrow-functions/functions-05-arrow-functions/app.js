@@ -40,7 +40,10 @@ const getComputerChoice = () => {
 // Arrow functions with only one expression can omit the curly braces and the 'return' keyword - NO RETURN KEYWORD IS PERMITTED
 // Arrow functions don't require arguments
 // Arrow function with only 1 argument/parameter does not require parens
+// Arrow functions can be used to create objects, with a shortened syntax -- Object must be contained by ()
 
+// Arrow function to create object
+const objectLoader = pName => ({ name: pName }) // Object contained by {}, function contained by ()
 // Arrow function with more than 1 argument/parameter
 const test3 = arg2 => {
 	arg2 *= 2
