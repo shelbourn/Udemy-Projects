@@ -38,6 +38,10 @@ const getComputerChoice = function() {
 // Winner Selection
 // Arrow functions can only be used with arrow functions and must appear on the right side of an equal sign in an expression, in an event listener, etc
 // Arrow functions with only one expression can omit the curly braces and the 'return' keyword
+// Arrow functions don't require arguments
+
+// Arrow function without arguments
+const test = () => 5 + 5
 
 // Example - Arrow Function
 const add = (a, b) => a + b
