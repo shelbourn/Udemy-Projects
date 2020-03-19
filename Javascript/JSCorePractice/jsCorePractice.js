@@ -37,3 +37,9 @@ const toStringTest = () => {
 }
 
 /************* .filter() Method */
+
+const filterTestArray = () => {
+	let testArray = [8, 4, 10, 14, 16, 22, 35, 42, 28]
+	let testOutput = testArray.toString()
+	document.getElementById('FilterArray').innerHTML = testOutput
+}
