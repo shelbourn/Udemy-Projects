@@ -63,9 +63,20 @@ const userTestArray = [
 	'Chari',
 ]
 
+let userTempInput // Necessary to store User Input in global scope for access in more than 1 function
+
+// Gets user input, pushes it to userTestArray then displays the new array on webpage
 const userTestInput = () => {
 	let userInput = prompt('What is your first name?')
+	userTempInput = userInput
 	userTestArray.push(userInput)
 	let userTestOutput = userTestArray.toString()
 	document.getElementById('UserTestInput').innerHTML = userTestOutput
+}
+
+// Using .filter() to display only the user's input
+const userFilterTest = () => {
+	document.getElementById(
+		'UserFilterTest'
+	).innerHTML = userTestArray.filter(element => element.includes(userTempInput))
 }
