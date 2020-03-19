@@ -13,6 +13,7 @@
  * setInterval()
  * clearInterval()
  * .innerHTML
+ * .toString()
  */
 
 /******* .innerHTML - Retrieves or modifies the contents of an HTML element */
@@ -26,3 +27,13 @@ console.log(retrieveHTML)
 
 document.getElementById('ChangeTest').innerHTML =
 	'If you are seeing this then .innerHTML has successfully modified the content of this HTML element'
+
+/********* .toString() Method */
+
+const toStringTest = () => {
+	let testArray = ['Skylar', 'Charlie', 'Matthew', 'Nikki', 'Andrew', 'Michael']
+	let testOutput = testArray.toString()
+	document.getElementById('ToString').innerHTML = testOutput
+}
+
+/************* .filter() Method */
