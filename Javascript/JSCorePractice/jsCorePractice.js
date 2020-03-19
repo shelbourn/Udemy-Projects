@@ -25,9 +25,10 @@ console.log(retrieveHTML)
 
 // Changing HTML of element - modified the content of HTML element with ID "ChangeTest"
 
-document.getElementById('ChangeTest').innerHTML =
-	'If you are seeing this then .innerHTML has successfully modified the content of this HTML element'
-
+const innerChangeTest = () => {
+	document.getElementById('ChangeTest').innerHTML =
+		'If you are seeing this then .innerHTML has successfully modified the content of this HTML element'
+}
 /********* .toString() Method */
 
 const toStringTest = () => {
